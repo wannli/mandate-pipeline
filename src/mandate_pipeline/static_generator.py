@@ -94,6 +94,19 @@ def load_all_documents(data_dir: Path, checks: list) -> list[dict]:
             title = extract_title(text)
             agenda_items = extract_agenda_items(text)
             symbol_references = find_symbol_references(text)
+            doc_type = classify_doc_type(symbol, text)
+            base_proposal_symbol = None
+            if doc_type == "proposal":
+                base_proposal_symbol = symbol
+            elif doc_type == "amendment":
+                front_matter = text.split("\f", 2)[0:2]
+                front_matter_text = "\f".join(front_matter)[:4000]
+                symbol_match = re.search(
+                    r"\bA/\d+/(?:L\.\d+|C\.\d+/\d+/L\.\d+|C\.\d+/L\.\d+)(?:/Rev\.\d+)?\b",
+                    front_matter_text
+                )
+                if symbol_match:
+                    base_proposal_symbol = symbol_match.group(0)
 
             # Run checks
             signals = run_checks(paragraphs, checks) if checks else {}
@@ -111,6 +124,8 @@ def load_all_documents(data_dir: Path, checks: list) -> list[dict]:
                 "title": title,
                 "agenda_items": agenda_items,
                 "symbol_references": symbol_references,
+                "doc_type": doc_type,
+                "base_proposal_symbol": base_proposal_symbol,
                 "signals": signals,
                 "signal_summary": signal_summary,
                 "num_paragraphs": len(paragraphs),
@@ -144,6 +159,18 @@ def is_resolution(symbol: str) -> bool:
 def is_proposal(symbol: str) -> bool:
     """Return True if symbol looks like a draft/proposal (L. symbol)."""
     return "/L." in symbol
+
+
+def classify_doc_type(symbol: str, text: str) -> str:
+    """Classify document type for linking metadata."""
+    if is_resolution(symbol):
+        return "resolution"
+    if is_proposal(symbol):
+        front_matter = "\n".join(text.splitlines()[:50])
+        if "/Rev." in symbol or re.search(r"\bamendment\b", front_matter, re.IGNORECASE):
+            return "amendment"
+        return "proposal"
+    return "other"
 
 
 def link_documents(documents: list[dict]) -> None:
@@ -949,6 +976,19 @@ def generate_site_verbose(
                 title = extract_title(text)
                 agenda_items = extract_agenda_items(text)
                 symbol_references = find_symbol_references(text)
+                doc_type = classify_doc_type(symbol, text)
+                base_proposal_symbol = None
+                if doc_type == "proposal":
+                    base_proposal_symbol = symbol
+                elif doc_type == "amendment":
+                    front_matter = text.split("\f", 2)[0:2]
+                    front_matter_text = "\f".join(front_matter)[:4000]
+                    symbol_match = re.search(
+                        r"\bA/\d+/(?:L\.\d+|C\.\d+/\d+/L\.\d+|C\.\d+/L\.\d+)(?:/Rev\.\d+)?\b",
+                        front_matter_text
+                    )
+                    if symbol_match:
+                        base_proposal_symbol = symbol_match.group(0)
                 signals = run_checks(paragraphs, checks) if checks else {}
 
                 # Build signal summary
@@ -964,6 +1004,8 @@ def generate_site_verbose(
                     "title": title,
                     "agenda_items": agenda_items,
                     "symbol_references": symbol_references,
+                    "doc_type": doc_type,
+                    "base_proposal_symbol": base_proposal_symbol,
                     "signals": signals,
                     "signal_summary": signal_summary,
                     "num_paragraphs": len(paragraphs),
