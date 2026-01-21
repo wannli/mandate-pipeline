@@ -594,8 +594,8 @@ class TestStaticGenerator:
         """Load all documents from data directory."""
         from mandate_pipeline.static_generator import load_all_documents
 
-        # Create fake PDF structure (note: downloader creates A_80_L.1.pdf from A/80/L.1)
-        pdf_dir = tmp_path / "data" / "pdfs" / "L_documents"
+        # Create fake PDF structure (flat pdfs/ directory)
+        pdf_dir = tmp_path / "data" / "pdfs"
         pdf_dir.mkdir(parents=True)
         (pdf_dir / "A_80_L.1.pdf").write_bytes(b"%PDF-1.4 fake")
 
@@ -627,7 +627,7 @@ class TestStaticGenerator:
         config_dir = tmp_path / "config"
         config_dir.mkdir()
         data_dir = tmp_path / "data"
-        (data_dir / "pdfs" / "L_documents").mkdir(parents=True)
+        (data_dir / "pdfs").mkdir(parents=True)
         output_dir = tmp_path / "docs"
 
         # Create config files
@@ -649,8 +649,8 @@ patterns:
 """
         )
 
-        # Create fake PDF
-        (data_dir / "pdfs" / "L_documents" / "A_80_L.1.pdf").write_bytes(b"%PDF-1.4 fake")
+        # Create fake PDF (flat pdfs/ directory)
+        (data_dir / "pdfs" / "A_80_L.1.pdf").write_bytes(b"%PDF-1.4 fake")
 
         # Mock extraction
         mocker.patch(

@@ -234,7 +234,7 @@ def sync_pattern(
     Args:
         pattern: Pattern definition
         state: Current sync state
-        data_dir: Directory to store PDFs (data_dir/pdfs/{pattern_name}/)
+        data_dir: Directory to store PDFs (data_dir/pdfs/)
         max_consecutive_misses: Stop after this many consecutive 404s
 
     Returns:
@@ -242,8 +242,8 @@ def sync_pattern(
     """
     pattern_name = pattern["name"]
     
-    # Create output directory
-    output_dir = data_dir / "pdfs" / pattern_name.replace(" ", "_")
+    # Create output directory (flat structure)
+    output_dir = data_dir / "pdfs"
     output_dir.mkdir(parents=True, exist_ok=True)
 
     new_docs, highest = sync_simple_pattern(

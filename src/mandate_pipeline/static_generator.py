@@ -75,42 +75,37 @@ def load_all_documents(data_dir: Path, checks: list) -> list[dict]:
     if not pdfs_dir.exists():
         return documents
 
-    for pattern_dir in pdfs_dir.iterdir():
-        if not pattern_dir.is_dir():
+    for pdf_file in pdfs_dir.glob("*.pdf"):
+        # Extract symbol from filename
+        symbol = filename_to_symbol(pdf_file.stem)
+
+        try:
+            # Extract text and paragraphs
+            text = extract_text(pdf_file)
+            paragraphs = extract_operative_paragraphs(text)
+
+            # Run checks
+            signals = run_checks(paragraphs, checks) if checks else {}
+
+            # Build signal summary
+            signal_summary = {}
+            for para_signals in signals.values():
+                for sig in para_signals:
+                    signal_summary[sig] = signal_summary.get(sig, 0) + 1
+
+            documents.append({
+                "symbol": symbol,
+                "filename": pdf_file.name,
+                "paragraphs": paragraphs,
+                "signals": signals,
+                "signal_summary": signal_summary,
+                "num_paragraphs": len(paragraphs),
+                "un_url": get_un_document_url(symbol),
+            })
+
+        except Exception as e:
+            print(f"Error processing {pdf_file}: {e}")
             continue
-
-        for pdf_file in pattern_dir.glob("*.pdf"):
-            # Extract symbol from filename
-            symbol = pdf_file.stem.replace("_", "/")
-
-            try:
-                # Extract text and paragraphs
-                text = extract_text(pdf_file)
-                paragraphs = extract_operative_paragraphs(text)
-
-                # Run checks
-                signals = run_checks(paragraphs, checks) if checks else {}
-
-                # Build signal summary
-                signal_summary = {}
-                for para_signals in signals.values():
-                    for sig in para_signals:
-                        signal_summary[sig] = signal_summary.get(sig, 0) + 1
-
-                documents.append({
-                    "symbol": symbol,
-                    "filename": pdf_file.name,
-                    "pattern_dir": pattern_dir.name,
-                    "paragraphs": paragraphs,
-                    "signals": signals,
-                    "signal_summary": signal_summary,
-                    "num_paragraphs": len(paragraphs),
-                    "un_url": get_un_document_url(symbol),
-                })
-
-            except Exception as e:
-                print(f"Error processing {pdf_file}: {e}")
-                continue
 
     # Sort by symbol
     def sort_key(doc):
@@ -288,23 +283,59 @@ def generate_signal_page(documents: list, check: dict, output_dir: Path) -> None
         f.write(html)
 
 
-def group_documents_by_pattern(documents: list) -> dict:
+def symbol_matches_pattern(symbol: str, pattern: dict) -> bool:
     """
-    Group documents by their source pattern directory.
+    Check if a document symbol matches a pattern template.
+
+    Args:
+        symbol: Document symbol (e.g., "A/RES/80/1")
+        pattern: Pattern definition with template
+
+    Returns:
+        True if symbol matches the pattern
+    """
+    template = pattern.get("template", "")
+    
+    # Convert template to regex pattern
+    # e.g., "A/RES/{session}/{number}" -> "A/RES/\d+/\d+"
+    regex_pattern = template
+    regex_pattern = regex_pattern.replace("{session}", r"\d+")
+    regex_pattern = regex_pattern.replace("{number}", r"\d+")
+    regex_pattern = regex_pattern.replace("{committee}", r"\d+")
+    regex_pattern = "^" + regex_pattern + "$"
+    
+    return bool(re.match(regex_pattern, symbol))
+
+
+def group_documents_by_pattern(documents: list, patterns: list) -> dict:
+    """
+    Group documents by matching pattern.
 
     Args:
         documents: List of document dicts
+        patterns: List of pattern definitions
 
     Returns:
         Dict mapping pattern names to lists of documents
     """
-    documents_by_pattern = {}
+    documents_by_pattern = {p["name"]: [] for p in patterns}
+    documents_by_pattern["Other"] = []
+    
     for doc in documents:
-        # Convert pattern_dir (e.g., "L_documents") to readable name (e.g., "L documents")
-        pattern = doc.get("pattern_dir", "Unknown").replace("_", " ")
-        if pattern not in documents_by_pattern:
-            documents_by_pattern[pattern] = []
-        documents_by_pattern[pattern].append(doc)
+        symbol = doc.get("symbol", "")
+        matched = False
+        for pattern in patterns:
+            if symbol_matches_pattern(symbol, pattern):
+                documents_by_pattern[pattern["name"]].append(doc)
+                matched = True
+                break
+        if not matched:
+            documents_by_pattern["Other"].append(doc)
+    
+    # Remove empty "Other" category
+    if not documents_by_pattern["Other"]:
+        del documents_by_pattern["Other"]
+    
     return documents_by_pattern
 
 
@@ -329,12 +360,8 @@ def generate_documents_list_page(documents: list, checks: list, output_dir: Path
         for sig, count in doc.get("signal_summary", {}).items():
             total_signal_counts[sig] = total_signal_counts.get(sig, 0) + count
 
-    # Group documents by pattern
-    documents_by_pattern = group_documents_by_pattern(documents)
-
     html = template.render(
         documents=documents,
-        documents_by_pattern=documents_by_pattern,
         checks=checks,
         total_docs=len(documents),
         docs_with_signals=len([d for d in documents if d.get("signals")]),
@@ -358,25 +385,12 @@ def compute_matrix(documents: list, patterns: list, checks: list) -> dict:
         Dict mapping pattern_name -> {signal_name: count}
     """
     # Group documents by pattern
-    docs_by_pattern = group_documents_by_pattern(documents)
-    
-    # Map pattern_dir names to pattern names from config
-    pattern_name_map = {}
-    for p in patterns:
-        # Convert pattern name to match pattern_dir format
-        dir_name = p["name"].replace(" ", "_")
-        pattern_name_map[p["name"].replace("_", " ")] = p["name"]
+    docs_by_pattern = group_documents_by_pattern(documents, patterns)
     
     matrix = {}
     for pattern in patterns:
         pattern_name = pattern["name"]
-        # Find docs matching this pattern (try different name formats)
-        pattern_docs = []
-        for key, docs in docs_by_pattern.items():
-            # Match by checking if pattern name is in the key
-            if pattern_name.replace(" ", "_") == key.replace(" ", "_"):
-                pattern_docs = docs
-                break
+        pattern_docs = docs_by_pattern.get(pattern_name, [])
         
         matrix[pattern_name] = {}
         for check in checks:
@@ -401,23 +415,17 @@ def compute_pattern_doc_counts(documents: list, patterns: list) -> dict:
     Returns:
         Dict mapping pattern_name -> doc count
     """
-    docs_by_pattern = group_documents_by_pattern(documents)
+    docs_by_pattern = group_documents_by_pattern(documents, patterns)
     
     counts = {}
     for pattern in patterns:
         pattern_name = pattern["name"]
-        # Find docs matching this pattern
-        for key, docs in docs_by_pattern.items():
-            if pattern_name.replace(" ", "_") == key.replace(" ", "_"):
-                counts[pattern_name] = len(docs)
-                break
-        if pattern_name not in counts:
-            counts[pattern_name] = 0
+        counts[pattern_name] = len(docs_by_pattern.get(pattern_name, []))
     
     return counts
 
 
-def generate_pattern_page(documents: list, pattern: dict, checks: list, output_dir: Path) -> None:
+def generate_pattern_page(documents: list, pattern: dict, checks: list, patterns: list, output_dir: Path) -> None:
     """
     Generate individual pattern page.
 
@@ -425,6 +433,7 @@ def generate_pattern_page(documents: list, pattern: dict, checks: list, output_d
         documents: All documents
         pattern: Pattern definition
         checks: All check definitions
+        patterns: All pattern definitions (for grouping)
         output_dir: Output directory (patterns/ subdirectory)
     """
     output_dir = Path(output_dir)
@@ -434,14 +443,8 @@ def generate_pattern_page(documents: list, pattern: dict, checks: list, output_d
     template = env.get_template("pattern.html")
 
     pattern_name = pattern["name"]
-    docs_by_pattern = group_documents_by_pattern(documents)
-    
-    # Find docs matching this pattern
-    pattern_docs = []
-    for key, docs in docs_by_pattern.items():
-        if pattern_name.replace(" ", "_") == key.replace(" ", "_"):
-            pattern_docs = docs
-            break
+    docs_by_pattern = group_documents_by_pattern(documents, patterns)
+    pattern_docs = docs_by_pattern.get(pattern_name, [])
 
     # Calculate signal counts for this pattern
     pattern_signal_counts = {}
@@ -542,7 +545,7 @@ def generate_site(config_dir: Path, data_dir: Path, output_dir: Path) -> None:
         generate_signal_page(documents, check, output_dir / "signals")
 
     for pattern in patterns:
-        generate_pattern_page(documents, pattern, checks, output_dir / "patterns")
+        generate_pattern_page(documents, pattern, checks, patterns, output_dir / "patterns")
 
     # Generate data exports
     generate_data_json(documents, checks, output_dir)
@@ -600,44 +603,39 @@ def generate_site_verbose(
     pdfs_dir = data_dir / "pdfs"
 
     if pdfs_dir.exists():
-        for pattern_dir in pdfs_dir.iterdir():
-            if not pattern_dir.is_dir():
-                continue
+        for pdf_file in pdfs_dir.glob("*.pdf"):
+            doc_start_time = time.time()
+            symbol = filename_to_symbol(pdf_file.stem)
 
-            for pdf_file in pattern_dir.glob("*.pdf"):
-                doc_start_time = time.time()
-                symbol = pdf_file.stem.replace("_", "/")
+            try:
+                text = extract_text(pdf_file)
+                paragraphs = extract_operative_paragraphs(text)
+                signals = run_checks(paragraphs, checks) if checks else {}
 
-                try:
-                    text = extract_text(pdf_file)
-                    paragraphs = extract_operative_paragraphs(text)
-                    signals = run_checks(paragraphs, checks) if checks else {}
+                # Build signal summary
+                signal_summary = {}
+                for para_signals in signals.values():
+                    for sig in para_signals:
+                        signal_summary[sig] = signal_summary.get(sig, 0) + 1
 
-                    # Build signal summary
-                    signal_summary = {}
-                    for para_signals in signals.values():
-                        for sig in para_signals:
-                            signal_summary[sig] = signal_summary.get(sig, 0) + 1
+                doc = {
+                    "symbol": symbol,
+                    "filename": pdf_file.name,
+                    "paragraphs": paragraphs,
+                    "signals": signals,
+                    "signal_summary": signal_summary,
+                    "num_paragraphs": len(paragraphs),
+                    "un_url": get_un_document_url(symbol),
+                }
+                documents.append(doc)
 
-                    doc = {
-                        "symbol": symbol,
-                        "filename": pdf_file.name,
-                        "pattern_dir": pattern_dir.name,
-                        "paragraphs": paragraphs,
-                        "signals": signals,
-                        "signal_summary": signal_summary,
-                        "num_paragraphs": len(paragraphs),
-                        "un_url": get_un_document_url(symbol),
-                    }
-                    documents.append(doc)
+                doc_duration = time.time() - doc_start_time
+                if on_load_document:
+                    on_load_document(symbol, len(paragraphs), signal_summary, doc_duration)
 
-                    doc_duration = time.time() - doc_start_time
-                    if on_load_document:
-                        on_load_document(symbol, len(paragraphs), signal_summary, doc_duration)
-
-                except Exception as e:
-                    if on_load_error:
-                        on_load_error(str(pdf_file), str(e))
+            except Exception as e:
+                if on_load_error:
+                    on_load_error(str(pdf_file), str(e))
 
     # Sort documents
     def sort_key(doc):
@@ -681,7 +679,7 @@ def generate_site_verbose(
             on_generate_page("signal", f"signals/{check['signal'].lower().replace(' ', '-')}.html")
 
     for pattern in patterns:
-        generate_pattern_page(documents, pattern, checks, output_dir / "patterns")
+        generate_pattern_page(documents, pattern, checks, patterns, output_dir / "patterns")
         slug = pattern["name"].lower().replace(" ", "_").replace(".", "").replace("(", "").replace(")", "")
         if on_generate_page:
             on_generate_page("pattern", f"patterns/{slug}.html")
