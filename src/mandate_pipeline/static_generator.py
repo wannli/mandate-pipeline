@@ -869,6 +869,24 @@ def generate_site_verbose(
             try:
                 text = extract_text(pdf_file)
                 paragraphs = extract_operative_paragraphs(text)
+                doc_type = classify_doc_type(symbol, text)
+                # Heuristic trade-offs:
+                # - We scan a short front-matter window to keep it fast, but
+                #   amendments can reference targets later in the document.
+                # - The regex is conservative, so unknown formats fall back to None.
+                # - We now capture optional /Rev.X suffixes found in draft symbols.
+                base_proposal_symbol = None
+                if doc_type == "proposal":
+                    base_proposal_symbol = symbol
+                elif doc_type == "amendment":
+                    front_matter = text.split("\f", 2)[0:2]
+                    front_matter_text = "\f".join(front_matter)[:4000]
+                    symbol_match = re.search(
+                        r"\bA/\d+/(?:L\.\d+|C\.\d+/\d+/L\.\d+|C\.\d+/L\.\d+)(?:/Rev\.\d+)?\b",
+                        front_matter_text
+                    )
+                    if symbol_match:
+                        base_proposal_symbol = symbol_match.group(0)
                 signals = run_checks(paragraphs, checks) if checks else {}
 
                 # Build signal summary
@@ -880,6 +898,8 @@ def generate_site_verbose(
                 doc = {
                     "symbol": symbol,
                     "filename": pdf_file.name,
+                    "doc_type": doc_type,
+                    "base_proposal_symbol": base_proposal_symbol,
                     "paragraphs": paragraphs,
                     "signals": signals,
                     "signal_summary": signal_summary,
