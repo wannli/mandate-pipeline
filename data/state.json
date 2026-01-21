@@ -26,7 +26,31 @@
     },
     "Committee L documents (committee6)": {
       "highest_found": 24
+    },
+    "General Assembly resolutions": {
+      "highest_found": 246
+    },
+    "General Assembly proposals": {
+      "highest_found": 42
+    },
+    "C1 proposals": {
+      "highest_found": 63
+    },
+    "C2 proposals": {
+      "highest_found": 63
+    },
+    "C3 proposals": {
+      "highest_found": 65
+    },
+    "C4 proposals": {
+      "highest_found": 21
+    },
+    "C5 proposals": {
+      "highest_found": 22
+    },
+    "C6 proposals": {
+      "highest_found": 24
     }
   },
-  "last_sync": "2026-01-21T03:02:31.685379+00:00"
+  "last_sync": "2026-01-21T03:36:33.440030+00:00"
 }
