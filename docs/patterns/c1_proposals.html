@@ -68,7 +68,10 @@
 <!-- Header -->
 <div class="mb-8">
     <h1 class="text-3xl font-bold text-gray-900 tracking-tight">C1 proposals</h1>
-    <p class="mt-2 text-muted">63 documents · Pattern: <code class="text-sm bg-gray-100 px-2 py-0.5 rounded">A/C.{committee}/{session}/L.{number}</code></p>
+    
+    <p class="mt-1 text-xs text-muted">59 adopted drafts hidden</p>
+    
+    <p class="mt-2 text-muted">4 documents · Pattern: <code class="text-sm bg-gray-100 px-2 py-0.5 rounded">A/C.{committee}/{session}/L.{number}</code></p>
 </div>
 
 <!-- Signal Summary for this Pattern -->
@@ -80,7 +83,7 @@
         
         <a href="../matrix/c1_proposals_agenda.html" class="flex items-center gap-3 px-4 py-3 rounded-lg border border-gray-200 bg-white hover:border-un-blue hover:shadow-sm transition-all">
             <span class="text-sm font-medium text-gray-700">agenda</span>
-            <span class="text-lg font-bold text-un-blue">59</span>
+            <span class="text-lg font-bold text-un-blue">1</span>
         </a>
         
         
@@ -88,24 +91,24 @@
         
         <a href="../matrix/c1_proposals_pga.html" class="flex items-center gap-3 px-4 py-3 rounded-lg border border-gray-200 bg-white hover:border-un-blue hover:shadow-sm transition-all">
             <span class="text-sm font-medium text-gray-700">PGA</span>
-            <span class="text-lg font-bold text-un-blue">138</span>
+            <span class="text-lg font-bold text-un-blue">2</span>
         </a>
         
         
         
         
-        <a href="../matrix/c1_proposals_process.html" class="flex items-center gap-3 px-4 py-3 rounded-lg border border-gray-200 bg-white hover:border-un-blue hover:shadow-sm transition-all">
+        <div class="flex items-center gap-3 px-4 py-3 rounded-lg border border-gray-200 bg-white">
             <span class="text-sm font-medium text-gray-700">process</span>
-            <span class="text-lg font-bold text-un-blue">3</span>
-        </a>
+            <span class="text-lg font-bold text-gray-300">0</span>
+        </div>
         
         
         
         
-        <a href="../matrix/c1_proposals_report.html" class="flex items-center gap-3 px-4 py-3 rounded-lg border border-gray-200 bg-white hover:border-un-blue hover:shadow-sm transition-all">
+        <div class="flex items-center gap-3 px-4 py-3 rounded-lg border border-gray-200 bg-white">
             <span class="text-sm font-medium text-gray-700">report</span>
-            <span class="text-lg font-bold text-un-blue">32</span>
-        </a>
+            <span class="text-lg font-bold text-gray-300">0</span>
+        </div>
         
         
     </div>
@@ -123,13 +126,22 @@
             <button id="show-all-btn" class="px-3 py-1.5 text-sm font-medium rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
                 Show All
             </button>
+            
+            <button id="toggle-adopted-btn" class="px-3 py-1.5 text-sm font-medium rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
+                Show adopted drafts (59)
+            </button>
+            
         </div>
     </div>
     
     <div class="space-y-6">
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -137,6 +149,14 @@
                         A/C.1/80/L.1
                     </a>
                     <span class="text-sm text-muted">12 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_17.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/17
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -242,7 +262,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -250,6 +274,14 @@
                         A/C.1/80/L.2
                     </a>
                     <span class="text-sm text-muted">8 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_67.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/67
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -403,7 +435,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -411,6 +447,14 @@
                         A/C.1/80/L.3
                     </a>
                     <span class="text-sm text-muted">9 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_19.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/19
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -533,7 +577,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -541,6 +589,14 @@
                         A/C.1/80/L.4
                     </a>
                     <span class="text-sm text-muted">13 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_48.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/48
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -642,7 +698,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -650,6 +710,14 @@
                         A/C.1/80/L.5
                     </a>
                     <span class="text-sm text-muted">6 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_18.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/18
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -772,7 +840,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -780,6 +852,14 @@
                         A/C.1/80/L.6
                     </a>
                     <span class="text-sm text-muted">9 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_42.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/42
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -858,7 +938,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -866,6 +950,14 @@
                         A/C.1/80/L.7
                     </a>
                     <span class="text-sm text-muted">6 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_27.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/27
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -946,7 +1038,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -954,6 +1050,14 @@
                         A/C.1/80/L.8
                     </a>
                     <span class="text-sm text-muted">4 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_29.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/29
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -1032,7 +1136,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -1040,6 +1148,14 @@
                         A/C.1/80/L.9
                     </a>
                     <span class="text-sm text-muted">20 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_46.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/46
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -1204,7 +1320,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -1212,6 +1332,14 @@
                         A/C.1/80/L.10
                     </a>
                     <span class="text-sm text-muted">5 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_13.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/13
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -1290,7 +1418,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -1298,6 +1430,14 @@
                         A/C.1/80/L.11
                     </a>
                     <span class="text-sm text-muted">8 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_25.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/25
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -1403,7 +1543,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -1411,6 +1555,14 @@
                         A/C.1/80/L.12
                     </a>
                     <span class="text-sm text-muted">5 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_30.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/30
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -1464,7 +1616,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -1472,6 +1628,14 @@
                         A/C.1/80/L.13
                     </a>
                     <span class="text-sm text-muted">5 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_32.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/32
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -1550,7 +1714,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -1558,6 +1726,14 @@
                         A/C.1/80/L.14
                     </a>
                     <span class="text-sm text-muted">9 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_40.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/40
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -1636,7 +1812,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -1644,6 +1824,14 @@
                         A/C.1/80/L.15
                     </a>
                     <span class="text-sm text-muted">15 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_49.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/49
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -1907,7 +2095,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -1915,6 +2107,14 @@
                         A/C.1/80/L.16
                     </a>
                     <span class="text-sm text-muted">7 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_64.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/64
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -1995,7 +2195,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -2003,6 +2207,14 @@
                         A/C.1/80/L.17
                     </a>
                     <span class="text-sm text-muted">7 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_50.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/50
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -2083,7 +2295,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -2091,6 +2307,14 @@
                         A/C.1/80/L.18
                     </a>
                     <span class="text-sm text-muted">15 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_54.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/54
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -2217,7 +2441,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -2225,6 +2453,14 @@
                         A/C.1/80/L.19
                     </a>
                     <span class="text-sm text-muted">17 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_43.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/43
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -2360,7 +2596,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -2368,6 +2608,14 @@
                         A/C.1/80/L.20
                     </a>
                     <span class="text-sm text-muted">4 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_16.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/16
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -2421,7 +2669,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -2429,6 +2681,14 @@
                         A/C.1/80/L.21
                     </a>
                     <span class="text-sm text-muted">7 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_22.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/22
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -2534,7 +2794,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -2542,6 +2806,14 @@
                         A/C.1/80/L.22
                     </a>
                     <span class="text-sm text-muted">6 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_41.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/41
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -2620,7 +2892,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -2628,6 +2904,14 @@
                         A/C.1/80/L.23
                     </a>
                     <span class="text-sm text-muted">2 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_59.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/59
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -2712,7 +2996,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -2720,6 +3008,14 @@
                         A/C.1/80/L.24
                     </a>
                     <span class="text-sm text-muted">6 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_37.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/37
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -2810,7 +3106,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -2818,6 +3118,14 @@
                         A/C.1/80/L.25
                     </a>
                     <span class="text-sm text-muted">4 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_33.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/33
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -2896,7 +3204,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -2904,6 +3216,14 @@
                         A/C.1/80/L.26
                     </a>
                     <span class="text-sm text-muted">6 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_51.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/51
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -2957,7 +3277,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -2965,6 +3289,14 @@
                         A/C.1/80/L.27
                     </a>
                     <span class="text-sm text-muted">9 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_69.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/69
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -3043,7 +3375,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -3051,6 +3387,14 @@
                         A/C.1/80/L.28
                     </a>
                     <span class="text-sm text-muted">10 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_12.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/12
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -3104,7 +3448,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -3112,6 +3460,14 @@
                         A/C.1/80/L.29
                     </a>
                     <span class="text-sm text-muted">15 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_68.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/68
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -3301,7 +3657,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -3309,6 +3669,14 @@
                         A/C.1/80/L.30
                     </a>
                     <span class="text-sm text-muted">11 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_35.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/35
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -3389,7 +3757,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -3397,6 +3769,14 @@
                         A/C.1/80/L.31
                     </a>
                     <span class="text-sm text-muted">10 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_26.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/26
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -3550,7 +3930,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -3558,6 +3942,14 @@
                         A/C.1/80/L.32
                     </a>
                     <span class="text-sm text-muted">8 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_14.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/14
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -3638,7 +4030,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -3646,6 +4042,14 @@
                         A/C.1/80/L.33
                     </a>
                     <span class="text-sm text-muted">14 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_60.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/60
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -3751,7 +4155,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -3759,6 +4167,14 @@
                         A/C.1/80/L.34
                     </a>
                     <span class="text-sm text-muted">10 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_36.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/36
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -3849,7 +4265,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card no-signals" data-has-signals="false">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card no-signals"
+             data-has-signals="false"
+             data-adopted="false"
+             >
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -3857,6 +4277,7 @@
                         A/C.1/80/L.35
                     </a>
                     <span class="text-sm text-muted">0 paragraphs</span>
+                    
                     
                     
                     
@@ -3879,7 +4300,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -3887,6 +4312,14 @@
                         A/C.1/80/L.36
                     </a>
                     <span class="text-sm text-muted">11 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_44.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/44
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -3988,7 +4421,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -3996,6 +4433,14 @@
                         A/C.1/80/L.37
                     </a>
                     <span class="text-sm text-muted">7 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_20.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/20
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -4097,7 +4542,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -4105,6 +4554,14 @@
                         A/C.1/80/L.38
                     </a>
                     <span class="text-sm text-muted">11 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_21.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/21
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -4206,7 +4663,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card no-signals" data-has-signals="false">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card no-signals"
+             data-has-signals="false"
+             data-adopted="false"
+             >
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -4214,6 +4675,7 @@
                         A/C.1/80/L.39
                     </a>
                     <span class="text-sm text-muted">0 paragraphs</span>
+                    
                     
                     
                     
@@ -4236,7 +4698,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="false"
+             >
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -4244,6 +4710,7 @@
                         A/C.1/80/L.40
                     </a>
                     <span class="text-sm text-muted">6 paragraphs</span>
+                    
                     
                     
                     
@@ -4330,7 +4797,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -4338,6 +4809,14 @@
                         A/C.1/80/L.41
                     </a>
                     <span class="text-sm text-muted">4 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_57.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/57
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -4391,7 +4870,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -4399,6 +4882,14 @@
                         A/C.1/80/L.42
                     </a>
                     <span class="text-sm text-muted">10 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_61.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/61
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -4477,7 +4968,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -4485,6 +4980,14 @@
                         A/C.1/80/L.43
                     </a>
                     <span class="text-sm text-muted">11 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_70.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/70
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -4565,7 +5068,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -4573,6 +5080,14 @@
                         A/C.1/80/L.44
                     </a>
                     <span class="text-sm text-muted">23 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_24.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/24
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -4825,7 +5340,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -4833,6 +5352,14 @@
                         A/C.1/80/L.45
                     </a>
                     <span class="text-sm text-muted">6 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_45.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/45
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -5003,7 +5530,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -5011,6 +5542,14 @@
                         A/C.1/80/L.46
                     </a>
                     <span class="text-sm text-muted">11 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_58.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/58
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -5091,7 +5630,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -5099,6 +5642,14 @@
                         A/C.1/80/L.47
                     </a>
                     <span class="text-sm text-muted">12 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_28.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/28
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -5225,7 +5776,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -5233,6 +5788,14 @@
                         A/C.1/80/L.48
                     </a>
                     <span class="text-sm text-muted">12 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_66.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/66
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -5369,7 +5932,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -5377,6 +5944,14 @@
                         A/C.1/80/L.49
                     </a>
                     <span class="text-sm text-muted">10 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_62.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/62
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -5455,7 +6030,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -5463,6 +6042,14 @@
                         A/C.1/80/L.50
                     </a>
                     <span class="text-sm text-muted">5 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_47.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/47
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -5516,7 +6103,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -5524,6 +6115,14 @@
                         A/C.1/80/L.51
                     </a>
                     <span class="text-sm text-muted">37 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_38.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/38
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -5775,7 +6374,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -5783,6 +6386,14 @@
                         A/C.1/80/L.52
                     </a>
                     <span class="text-sm text-muted">11 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_52.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/52
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -5884,7 +6495,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -5892,6 +6507,14 @@
                         A/C.1/80/L.53
                     </a>
                     <span class="text-sm text-muted">7 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_55.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/55
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -5970,7 +6593,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -5978,6 +6605,14 @@
                         A/C.1/80/L.54
                     </a>
                     <span class="text-sm text-muted">37 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_63.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/63
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -6125,7 +6760,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -6133,6 +6772,14 @@
                         A/C.1/80/L.55
                     </a>
                     <span class="text-sm text-muted">32 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_39.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/39
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -6423,7 +7070,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -6431,6 +7082,14 @@
                         A/C.1/80/L.56
                     </a>
                     <span class="text-sm text-muted">4 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_23.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/23
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -6484,7 +7143,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -6492,6 +7155,14 @@
                         A/C.1/80/L.57
                     </a>
                     <span class="text-sm text-muted">4 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_56.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/56
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -6572,7 +7243,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -6580,6 +7255,14 @@
                         A/C.1/80/L.58
                     </a>
                     <span class="text-sm text-muted">11 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_65.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/65
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -6865,7 +7548,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -6873,6 +7560,14 @@
                         A/C.1/80/L.59
                     </a>
                     <span class="text-sm text-muted">12 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_53.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/53
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -6953,7 +7648,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -6961,6 +7660,14 @@
                         A/C.1/80/L.60
                     </a>
                     <span class="text-sm text-muted">20 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_71.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/71
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -7356,7 +8063,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -7364,6 +8075,14 @@
                         A/C.1/80/L.61
                     </a>
                     <span class="text-sm text-muted">10 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_31.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/31
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -7465,7 +8184,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card " data-has-signals="true">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card "
+             data-has-signals="true"
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -7473,6 +8196,14 @@
                         A/C.1/80/L.62
                     </a>
                     <span class="text-sm text-muted">36 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_34.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/34
+                        </a>
+                    </span>
+                    
                     
                     
                     
@@ -7637,7 +8368,11 @@
         </div>
         
         
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card no-signals" data-has-signals="false">
+        
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card no-signals"
+             data-has-signals="false"
+             data-adopted="false"
+             >
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -7645,6 +8380,7 @@
                         A/C.1/80/L.63
                     </a>
                     <span class="text-sm text-muted">0 paragraphs</span>
+                    
                     
                     
                     
@@ -7673,25 +8409,61 @@
 document.addEventListener('DOMContentLoaded', function() {
     const signalsOnlyBtn = document.getElementById('signals-only-btn');
     const showAllBtn = document.getElementById('show-all-btn');
+    const toggleAdoptedBtn = document.getElementById('toggle-adopted-btn');
     const noSignalDocs = document.querySelectorAll('.doc-card.no-signals');
+    const adoptedDocs = document.querySelectorAll('.doc-card[data-adopted="true"]');
+    let showAdopted = false;
+    let signalsOnlyMode = true;
     
     function setSignalsOnly() {
+        signalsOnlyMode = true;
         signalsOnlyBtn.className = 'px-3 py-1.5 text-sm font-medium rounded-lg bg-un-blue text-white';
         showAllBtn.className = 'px-3 py-1.5 text-sm font-medium rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors';
         noSignalDocs.forEach(doc => doc.style.display = 'none');
+        applyAdoptedVisibility();
     }
     
     function setShowAll() {
+        signalsOnlyMode = false;
         showAllBtn.className = 'px-3 py-1.5 text-sm font-medium rounded-lg bg-un-blue text-white';
         signalsOnlyBtn.className = 'px-3 py-1.5 text-sm font-medium rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors';
         noSignalDocs.forEach(doc => {
             doc.style.display = 'block';
             doc.style.opacity = '0.6';
         });
+        applyAdoptedVisibility();
+    }
+
+    function applyAdoptedVisibility() {
+        adoptedDocs.forEach(doc => {
+            if (!showAdopted) {
+                doc.style.display = 'none';
+                return;
+            }
+            if (signalsOnlyMode && doc.classList.contains('no-signals')) {
+                doc.style.display = 'none';
+                return;
+            }
+            doc.style.display = 'block';
+            doc.style.opacity = '0.6';
+        });
+    }
+
+    function toggleAdopted() {
+        showAdopted = !showAdopted;
+        if (toggleAdoptedBtn) {
+            toggleAdoptedBtn.textContent = showAdopted
+                ? 'Hide adopted drafts'
+                : 'Show adopted drafts (59)';
+        }
+        applyAdoptedVisibility();
     }
     
     signalsOnlyBtn.addEventListener('click', setSignalsOnly);
     showAllBtn.addEventListener('click', setShowAll);
+    if (toggleAdoptedBtn) {
+        toggleAdoptedBtn.addEventListener('click', toggleAdopted);
+    }
     
     // Default: signals only
     setSignalsOnly();

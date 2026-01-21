@@ -71,6 +71,7 @@
 <div class="mb-8">
     <h1 class="text-3xl font-bold text-gray-900 tracking-tight">agenda in C5 proposals</h1>
     <p class="mt-2 text-muted">2 paragraphs across 1 documents</p>
+    
 </div>
 
 <!-- Paragraphs grouped by document -->
@@ -79,7 +80,10 @@
     
     
     
-    <div class="border border-gray-200 rounded-lg overflow-hidden">
+    
+    <div class="border border-gray-200 rounded-lg overflow-hidden"
+         data-adopted="false"
+         >
         <!-- Document Header -->
         <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -91,6 +95,7 @@
                     ">
                     2 paragraphs
                 </span>
+                
             </div>
             <a href="https://docs.un.org/en/a/c.5/80/l.14?direct=true" target="_blank" class="text-sm text-muted hover:text-un-blue transition-colors">PDF ↗</a>
         </div>
@@ -129,6 +134,38 @@
 <div class="mt-8">
     <a href="../patterns/c5_proposals.html" class="text-un-blue hover:underline">← Back to C5 proposals</a>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleAdoptedBtn = document.getElementById('toggle-adopted-btn');
+    const adoptedDocs = document.querySelectorAll('[data-adopted="true"]');
+    let showAdopted = false;
+
+    function applyAdoptedVisibility() {
+        adoptedDocs.forEach(doc => {
+            if (showAdopted) {
+                doc.style.display = 'block';
+                doc.style.opacity = '0.6';
+            } else {
+                doc.style.display = 'none';
+            }
+        });
+    }
+
+    function toggleAdopted() {
+        showAdopted = !showAdopted;
+        if (toggleAdoptedBtn) {
+            toggleAdoptedBtn.textContent = showAdopted
+                ? 'Hide adopted drafts'
+                : 'Show adopted drafts (0)';
+        }
+        applyAdoptedVisibility();
+    }
+
+    if (toggleAdoptedBtn) {
+        toggleAdoptedBtn.addEventListener('click', toggleAdopted);
+    }
+});
+</script>
 
     </main>
     
