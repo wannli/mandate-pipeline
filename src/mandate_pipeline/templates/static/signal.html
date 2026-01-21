@@ -76,7 +76,7 @@
                         {{ para.num }}
                     </a>
                     <p class="text-sm text-gray-700 leading-relaxed">
-                        {{ para.text }}
+                        {{ para.text|highlight_signals([signal]) }}
                     </p>
                 </div>
                 {% endfor %}

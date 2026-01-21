@@ -186,13 +186,82 @@ def generate_search_index(documents: list, output_dir: Path) -> None:
         json.dump(index_data, f)
 
 
-def get_templates_env() -> Environment:
+def highlight_signal_phrases(text: str, phrases: list[str]) -> str:
+    """
+    Highlight signal phrases in text with <mark> tags.
+
+    Args:
+        text: The paragraph text
+        phrases: List of phrases to highlight
+
+    Returns:
+        Text with phrases wrapped in <mark> tags
+    """
+    from markupsafe import Markup, escape
+
+    # Escape HTML in the original text first
+    escaped_text = str(escape(text))
+
+    # Sort phrases by length (longest first) to avoid partial replacements
+    sorted_phrases = sorted(phrases, key=len, reverse=True)
+
+    for phrase in sorted_phrases:
+        # Case-insensitive replacement
+        escaped_phrase = str(escape(phrase))
+        pattern = re.compile(re.escape(escaped_phrase), re.IGNORECASE)
+        escaped_text = pattern.sub(
+            lambda m: f'<mark class="bg-yellow-200 px-0.5 rounded">{m.group(0)}</mark>',
+            escaped_text
+        )
+
+    return Markup(escaped_text)
+
+
+# Global variable to store checks for use in template filter
+_template_checks = []
+
+
+def get_templates_env(checks: list = None) -> Environment:
     """Get Jinja2 environment for static templates."""
+    global _template_checks
+    if checks is not None:
+        _template_checks = checks
+
     templates_dir = Path(__file__).parent / "templates" / "static"
-    return Environment(
+    env = Environment(
         loader=FileSystemLoader(str(templates_dir)),
         autoescape=True,
     )
+
+    # Add custom filter for highlighting signal phrases
+    def highlight_signals_filter(text, signals=None):
+        """
+        Jinja2 filter to highlight signal phrases in text.
+        
+        Args:
+            text: The paragraph text
+            signals: List of signal names that matched this paragraph
+        
+        Returns:
+            Text with matched phrases highlighted
+        """
+        if not signals or not _template_checks:
+            return text
+
+        # Collect all phrases for the signals that matched
+        phrases_to_highlight = []
+        for check in _template_checks:
+            if check.get("signal") in signals:
+                phrases_to_highlight.extend(check.get("phrases", []))
+
+        if not phrases_to_highlight:
+            return text
+
+        return highlight_signal_phrases(text, phrases_to_highlight)
+
+    env.filters["highlight_signals"] = highlight_signals_filter
+
+    return env
 
 
 def generate_document_page(doc: dict, checks: list, output_dir: Path) -> None:
@@ -207,7 +276,7 @@ def generate_document_page(doc: dict, checks: list, output_dir: Path) -> None:
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    env = get_templates_env()
+    env = get_templates_env(checks)
     template = env.get_template("document_detail.html")
 
     # Build paragraph data
@@ -235,19 +304,20 @@ def generate_document_page(doc: dict, checks: list, output_dir: Path) -> None:
         f.write(html)
 
 
-def generate_signal_page(documents: list, check: dict, output_dir: Path) -> None:
+def generate_signal_page(documents: list, check: dict, checks: list, output_dir: Path) -> None:
     """
     Generate signal-filtered HTML page.
 
     Args:
         documents: All documents
         check: Check definition for this signal
+        checks: All check definitions (for highlighting)
         output_dir: Output directory (signals/ subdirectory)
     """
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    env = get_templates_env()
+    env = get_templates_env(checks)
     template = env.get_template("signal.html")
 
     signal = check["signal"]
@@ -474,7 +544,7 @@ def generate_pattern_page(documents: list, pattern: dict, checks: list, patterns
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    env = get_templates_env()
+    env = get_templates_env(checks)
     template = env.get_template("pattern.html")
 
     pattern_name = pattern["name"]
@@ -540,6 +610,7 @@ def generate_pattern_signal_page(
     documents: list,
     pattern: dict,
     signal: str,
+    checks: list,
     patterns: list,
     output_dir: Path
 ) -> None:
@@ -550,13 +621,14 @@ def generate_pattern_signal_page(
         documents: All documents
         pattern: Pattern definition
         signal: Signal name to filter by
+        checks: All check definitions (for highlighting)
         patterns: All pattern definitions (for grouping)
         output_dir: Output directory (matrix/ subdirectory)
     """
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    env = get_templates_env()
+    env = get_templates_env(checks)
     template = env.get_template("pattern_signal.html")
 
     pattern_name = pattern["name"]
@@ -687,13 +759,13 @@ def generate_site(config_dir: Path, data_dir: Path, output_dir: Path) -> None:
         generate_document_page(doc, checks, output_dir / "documents")
 
     for check in checks:
-        generate_signal_page(documents, check, output_dir / "signals")
+        generate_signal_page(documents, check, checks, output_dir / "signals")
 
     for pattern in patterns:
         generate_pattern_page(documents, pattern, checks, patterns, output_dir / "patterns")
         # Generate pattern+signal pages
         for check in checks:
-            generate_pattern_signal_page(documents, pattern, check["signal"], patterns, output_dir / "matrix")
+            generate_pattern_signal_page(documents, pattern, check["signal"], checks, patterns, output_dir / "matrix")
 
     # Generate data exports
     generate_data_json(documents, checks, output_dir)
@@ -823,7 +895,7 @@ def generate_site_verbose(
             on_generate_page("document", f"documents/{symbol_to_filename(doc['symbol'])}.html")
 
     for check in checks:
-        generate_signal_page(documents, check, output_dir / "signals")
+        generate_signal_page(documents, check, checks, output_dir / "signals")
         if on_generate_page:
             on_generate_page("signal", f"signals/{check['signal'].lower().replace(' ', '-')}.html")
 
@@ -834,7 +906,7 @@ def generate_site_verbose(
             on_generate_page("pattern", f"patterns/{pattern_slug}.html")
         # Generate pattern+signal pages
         for check in checks:
-            generate_pattern_signal_page(documents, pattern, check["signal"], patterns, output_dir / "matrix")
+            generate_pattern_signal_page(documents, pattern, check["signal"], checks, patterns, output_dir / "matrix")
             signal_slug = get_signal_slug(check["signal"])
             if on_generate_page:
                 on_generate_page("matrix", f"matrix/{pattern_slug}_{signal_slug}.html")

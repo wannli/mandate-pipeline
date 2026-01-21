@@ -84,7 +84,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">{{ para.text }}</p>
+                <p class="text-gray-700 leading-relaxed text-sm">{{ para.text|highlight_signals(para.signals) }}</p>
                 {% if para.signals %}
                 <div class="mt-2 flex flex-wrap gap-1">
                     {% for sig in para.signals %}
