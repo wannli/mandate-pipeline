@@ -177,6 +177,8 @@ def load_all_documents(data_dir: Path, checks: list) -> list[dict]:
 
 def normalize_title(title: str) -> str:
     """Normalize a title for fuzzy matching."""
+    # Strip resolution/decision number prefix like "80/60." or "80/60 "
+    title = re.sub(r"^\d+/\d+[.\s]+", "", title)
     return re.sub(r"[^a-z0-9]+", " ", title.lower()).strip()
 
 
