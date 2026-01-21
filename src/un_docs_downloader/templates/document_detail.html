@@ -1,0 +1,221 @@
+{% extends "base.html" %}
+
+{% block title %}{{ symbol }} - UN Docs Downloader{% endblock %}
+
+{% block content %}
+<!-- Breadcrumb & Header -->
+<div class="mb-6">
+    <nav class="flex items-center gap-2 text-sm text-slate-500 mb-2">
+        <a href="/documents" class="hover:text-sky-600 transition-colors">Documents</a>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        <span class="text-slate-900 font-medium">{{ symbol }}</span>
+    </nav>
+    
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+            <h1 class="text-3xl font-bold text-slate-900">{{ symbol }}</h1>
+            <p class="mt-1 text-slate-600">{{ total_paragraphs }} operative paragraphs, {{ total_signals }} signals detected</p>
+        </div>
+        <div class="flex items-center gap-3">
+            <a href="/pdf/{{ folder }}/{{ filename }}" target="_blank"
+               class="inline-flex items-center px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium rounded-lg transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+    <!-- Main Content -->
+    <div class="lg:col-span-3 space-y-4">
+        <!-- Filter Bar -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 sticky top-4 z-10">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" id="showSignalsOnly" onchange="filterParagraphs()" 
+                               class="w-4 h-4 text-sky-600 border-slate-300 rounded focus:ring-sky-500">
+                        <span class="text-sm font-medium text-slate-700">Show only paragraphs with signals</span>
+                    </label>
+                </div>
+                <span class="text-sm text-slate-500" id="paragraphCount">
+                    Showing {{ paragraphs|length }} paragraphs
+                </span>
+            </div>
+        </div>
+        
+        <!-- Paragraphs -->
+        {% if paragraphs %}
+        <div id="paragraphsList" class="space-y-3">
+            {% for para in paragraphs %}
+            <div class="paragraph bg-white rounded-xl shadow-sm border transition-all duration-200
+                        {% if para.signals %}border-l-4 border-l-sky-500 border-slate-200{% else %}border-slate-200{% endif %}"
+                 data-has-signal="{{ 'true' if para.signals else 'false' }}"
+                 id="para-{{ para.number }}">
+                
+                <div class="p-5">
+                    <!-- Paragraph Header -->
+                    <div class="flex items-start justify-between gap-4 mb-3">
+                        <div class="flex items-center gap-3">
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full 
+                                         {% if para.signals %}bg-sky-100 text-sky-700{% else %}bg-slate-100 text-slate-600{% endif %}
+                                         text-lg font-bold">
+                                {{ para.number }}
+                            </span>
+                            {% if para.signals %}
+                            <div class="flex flex-wrap gap-1.5">
+                                {% for signal in para.signals %}
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold
+                                    {% if 'agenda' in signal|lower %}bg-blue-100 text-blue-700
+                                    {% elif 'pga' in signal|lower %}bg-purple-100 text-purple-700
+                                    {% elif 'sg' in signal|lower %}bg-amber-100 text-amber-700
+                                    {% elif 'follow' in signal|lower %}bg-rose-100 text-rose-700
+                                    {% else %}bg-slate-100 text-slate-700{% endif %}">
+                                    {{ signal }}
+                                </span>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <!-- Paragraph Text -->
+                    <p class="text-slate-700 leading-relaxed pl-13">{{ para.text }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-12 text-center">
+            <svg class="w-16 h-16 mx-auto text-slate-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+            <h3 class="text-lg font-medium text-slate-900 mb-2">No operative paragraphs found</h3>
+            <p class="text-slate-600">This document may not contain numbered operative paragraphs.</p>
+        </div>
+        {% endif %}
+    </div>
+    
+    <!-- Sidebar -->
+    <div class="lg:col-span-1">
+        <div class="sticky top-4 space-y-4">
+            <!-- Summary Card -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
+                <h3 class="text-lg font-semibold text-slate-900 mb-4">Summary</h3>
+                
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between py-2 border-b border-slate-100">
+                        <span class="text-slate-600">Total Paragraphs</span>
+                        <span class="font-semibold text-slate-900">{{ total_paragraphs }}</span>
+                    </div>
+                    <div class="flex items-center justify-between py-2 border-b border-slate-100">
+                        <span class="text-slate-600">With Signals</span>
+                        <span class="font-semibold text-sky-600">{{ paragraphs|selectattr('signals')|list|length }}</span>
+                    </div>
+                    <div class="flex items-center justify-between py-2">
+                        <span class="text-slate-600">Total Signals</span>
+                        <span class="font-semibold text-emerald-600">{{ total_signals }}</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Signal Navigation -->
+            {% set signal_paras = paragraphs | selectattr('signals') | list %}
+            {% if signal_paras %}
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
+                <h3 class="text-lg font-semibold text-slate-900 mb-4">Signal Paragraphs</h3>
+                
+                <div class="space-y-2 max-h-96 overflow-y-auto">
+                    {% for para in signal_paras %}
+                    <a href="#para-{{ para.number }}" 
+                       onclick="highlightParagraph({{ para.number }})"
+                       class="block p-3 rounded-lg bg-slate-50 hover:bg-sky-50 border border-transparent hover:border-sky-200 transition-colors">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-semibold text-slate-900">Para {{ para.number }}</span>
+                        </div>
+                        <div class="flex flex-wrap gap-1">
+                            {% for signal in para.signals %}
+                            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium
+                                {% if 'agenda' in signal|lower %}bg-blue-100 text-blue-700
+                                {% elif 'pga' in signal|lower %}bg-purple-100 text-purple-700
+                                {% elif 'sg' in signal|lower %}bg-amber-100 text-amber-700
+                                {% elif 'follow' in signal|lower %}bg-rose-100 text-rose-700
+                                {% else %}bg-slate-100 text-slate-700{% endif %}">
+                                {{ signal }}
+                            </span>
+                            {% endfor %}
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            
+            <!-- Active Checks -->
+            {% if checks %}
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
+                <h3 class="text-lg font-semibold text-slate-900 mb-4">Active Checks</h3>
+                
+                <div class="space-y-2">
+                    {% for check in checks %}
+                    <div class="flex items-center gap-2 text-sm">
+                        <span class="w-2 h-2 rounded-full 
+                            {% if 'agenda' in check.signal|lower %}bg-blue-500
+                            {% elif 'pga' in check.signal|lower %}bg-purple-500
+                            {% elif 'sg' in check.signal|lower %}bg-amber-500
+                            {% elif 'follow' in check.signal|lower %}bg-rose-500
+                            {% else %}bg-slate-500{% endif %}"></span>
+                        <span class="text-slate-700">{{ check.title }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script>
+function filterParagraphs() {
+    const showSignalsOnly = document.getElementById('showSignalsOnly').checked;
+    const paragraphs = document.querySelectorAll('.paragraph');
+    let visible = 0;
+    
+    paragraphs.forEach(para => {
+        if (showSignalsOnly && para.dataset.hasSignal === 'false') {
+            para.style.display = 'none';
+        } else {
+            para.style.display = 'block';
+            visible++;
+        }
+    });
+    
+    document.getElementById('paragraphCount').textContent = `Showing ${visible} paragraphs`;
+}
+
+function highlightParagraph(num) {
+    // Remove previous highlights
+    document.querySelectorAll('.paragraph').forEach(el => {
+        el.classList.remove('ring-2', 'ring-sky-500', 'ring-offset-2');
+    });
+    
+    // Add highlight
+    const para = document.getElementById('para-' + num);
+    if (para) {
+        para.classList.add('ring-2', 'ring-sky-500', 'ring-offset-2');
+        para.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+}
+
+// Handle hash navigation
+if (window.location.hash) {
+    const num = window.location.hash.replace('#para-', '');
+    setTimeout(() => highlightParagraph(num), 100);
+}
+</script>
+{% endblock %}

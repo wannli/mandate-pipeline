@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>follow-up - UN Docs Analyzer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        un: {
+                            blue: '#009edb',
+                            dark: '#1a365d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body class="h-full bg-slate-50">
+    <div class="min-h-full">
+        <!-- Navigation -->
+        <nav class="bg-gradient-to-r from-slate-900 to-slate-800 shadow-lg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex items-center space-x-8">
+                        <a href="./index.html" class="flex items-center space-x-2">
+                            <svg class="w-8 h-8 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            <span class="text-white font-bold text-lg">UN Docs Analyzer</span>
+                        </a>
+                        <div class="hidden md:flex items-center space-x-1">
+                            <a href="../index.html" class="text-slate-300 hover:text-white hover:bg-slate-700 px-3 py-2 rounded-md text-sm font-medium transition-colors">Dashboard</a>
+                            <a href="../documents/index.html" class="text-slate-300 hover:text-white hover:bg-slate-700 px-3 py-2 rounded-md text-sm font-medium transition-colors">Documents</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main content -->
+        <main class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            
+<!-- Header -->
+<div class="mb-6">
+    <div class="flex items-center gap-2 text-sm text-slate-500 mb-2">
+        <a href="../index.html" class="hover:text-sky-600">Dashboard</a>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        <span class="text-slate-900">follow-up</span>
+    </div>
+    <h1 class="text-3xl font-bold text-slate-900">follow-up</h1>
+    <p class="mt-2 text-slate-600">6 documents with "follow-up signal"</p>
+</div>
+
+<!-- Check Info -->
+<div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 mb-6">
+    <h2 class="text-sm font-medium text-slate-700 mb-2">Matching Phrases</h2>
+    <div class="flex flex-wrap gap-2">
+        
+        <span class="px-3 py-1 rounded-lg text-sm bg-slate-100 text-slate-700 font-mono">
+            "remain seized"
+        </span>
+        
+        <span class="px-3 py-1 rounded-lg text-sm bg-slate-100 text-slate-700 font-mono">
+            "follow-up"
+        </span>
+        
+        <span class="px-3 py-1 rounded-lg text-sm bg-slate-100 text-slate-700 font-mono">
+            "next session"
+        </span>
+        
+    </div>
+</div>
+
+<!-- Documents with this signal -->
+
+<div class="space-y-4">
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_3.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/3
+                </a>
+                <span class="text-sm text-slate-500">
+                    4 matching paragraphs
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_3.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F3/pdf/A%2FRES%2F80%2F3.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-rose-200 bg-rose-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_3.html#para-20"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-rose-200 text-rose-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #20
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-rose-900
+                       ">
+                        We underscore that national leadership and ownership of development strategies and policies of landlocked developing countries, transit countries and development partners must be ensured during the whole process of implementation, follow-up and monitoring. Awaza Political Declaration A/RES/80/3 5/5 25-16680
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-rose-200 bg-rose-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_3.html#para-21"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-rose-200 text-rose-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #21
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-rose-900
+                       ">
+                        We call for closer coordination between the Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States and United Nations country teams in landlocked developing countries, as an important tool for follow-up to and review of the implementation of provisions of the Awaza Programme of Action, underlining that the Office should be provided with adequate resources to fulfil its mandate, including through the existing trust fund. We also stress the critical importance of the more proactive role of United Nations agencies, including through the United Nations resident coordinators and country teams, in mobilizing all stakeholders to help Governments of landlocked developing countries to address the challenges caused by those countries’ structural constraints.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-rose-200 bg-rose-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_3.html#para-22"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-rose-200 text-rose-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #22
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-rose-900
+                       ">
+                        We emphasize that efficient and mutually complementary follow-up and monitoring mechanisms aligned with existing global frameworks and adapted at the national, subregional, regional and global levels are crucial for the successful implementation of the Awaza Programme of Action. III. Conclusion and call to action
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-rose-200 bg-rose-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_3.html#para-24"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-rose-200 text-rose-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #24
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-rose-900
+                       ">
+                        We request the Secretary-General to ensure the full mobilization and coordination of all relevant parts of the United Nations system to facilitate coordinated implementation and coherence in the follow-up to and monitoring of the Awaza Programme of Action at the national, subregional, regional and global levels. We call upon relevant organizations and bodies of the United Nations system and invite international organizations and relevant regional and subregional organizations to integrate the Awaza Programme of Action into their programmes of work, as appropriate, within their respective mandates.
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_5.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/5
+                </a>
+                <span class="text-sm text-slate-500">
+                    3 matching paragraphs
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_5.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F5/pdf/A%2FRES%2F80%2F5.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-rose-200 bg-rose-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_5.html#para-22"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-rose-200 text-rose-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #22
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-rose-900
+                       ">
+                        We reaffirm that the Commission for Social Development has the primary responsibility for the follow-up to the Summit and review of the implementation of the Copenhagen Declaration and Programme of Action.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-rose-200 bg-rose-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_5.html#para-42"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-rose-200 text-rose-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #42
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-rose-900
+                       ">
+                        We welcome the ambitious package of reforms and actions under the Sevilla Commitment to close the financing gap with urgency and catalyse sustainable development investments at scale, in which we committed to take concrete actions to enhance fiscal space, address debt challenges of developing countries and lower the cost of capital and to provide and mobilize additional, innovative, adequate, affordable, predictable and accessible financing from all sources, recognizing the comparative advantages of public and private finance. In this regard, we commit to: (a) Continue reforming the international financial architecture, enhancing its resilience, coherence and effectiveness in responding to present and future challenges and crises and making global economic governance more inclusive, representative, equitable and effective, strengthening the roles of the United Nations, international financial institutions and other relevant international organizations while recognizing their respective mandates and governance bodies, and recognizing that the international community must work together to broaden and enhance the voice and representation of developing countries in international financial and economic institutions; (b) Increasing investment in social policies, including social protection systems, inclusive education, healthcare and housing; (c) Calling upon the multilateral development banks to pay greater attention to financing for social development; (d) Ensuring fair and timely solutions to address sovereign debt challenges and debt distress and their effect on social development; Doha Political Declaration of the “World Social Summit” under the title “the Second World Summit for Social Development” A/RES/80/5 17/18 25-17700 (e) Strengthening the inclusiveness and effectiveness of international tax cooperation at the United Nations, while taking into consideration the work of other relevant forums and institutions, and continuing to engage constructively in the negotiations on the United Nations framework convention on international tax cooperation and its protocols and encourage support for the process; (f) Reiterating that Member States are strongly urged to refrain from promulgating and applying any unilateral economic, financial or trade measures not in accordance with international law and the Charter of the United Nations that impede the full achievement of economic and social development, particularly in developing countries; (g) Reaffirming the importance of official development assistance as a key component of international development cooperation in helping developing countries achieve sustainable development and acknowledging the urgency of undertaking sustained efforts to reverse declining trends in official development assistance and urge developed countries to scale up and fulfil their respective official development assistance commitments, including the long-standing commitment by most developed countries to achieve the targets of 0.7 per cent of gross national income for official development assistance to developing countries, and between 0.15 and 0.2 per cent of gross national income for official development assistance to the least developed countries; (h) Strengthening multilateral cooperation to enhance fiscal space for social spending and supporting developing countries in ensuring predictable, adequate and uninterrupted funding of social protection and other essential social spending during shocks and crises; (i) Promoting and scaling up North-South, South-South and triangular cooperation as critical modalities for mobilizing knowledge, technical cooperation and resources to address social challenges and foster innovation in social development policies while strengthening and respecting national ownership, and recognizing that South-South cooperation is a complement to, not a substitute for, North-South cooperation. Follow-up
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-rose-200 bg-rose-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_5.html#para-43"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-rose-200 text-rose-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #43
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-rose-900
+                       ">
+                        We reiterate our commitment to the full implementation of the social development agenda, including through improving and strengthening its framework for international and regional cooperation, as established under the Copenhagen Declaration and Programme of Action and through following up on the Doha Political Declaration of the “World Social Summit” under the title “the Second World Summit for Social Development”. In this regard we decide to: (a) Proceed to a five-year follow-up process on the Doha Political Declaration and the Copenhagen Declaration and Programme of Action, starting in 2031, to assess progress, identify gaps and renew the commitments, and convene a high-level plenary meeting under the auspices of the General Assembly, the modalities and outcome of which shall be decided no later than the eighty-fifth session of the Assembly; (b) Request the Secretary-General, in consultation with Member States, to prepare a report, in preparation of the follow-up process of the Doha Political Declaration and the Copenhagen Declaration and Programme of Action and no later than the eighty-fifth session of the General Assembly, which assesses progress and identifies gaps in social development; (c) Reaffirm that the Commission for Social Development has the primary responsibility for the follow-up and the review of the World Summit for Social A/RES/80/5 Doha Political Declaration of the “World Social Summit” under the title “the Second World Summit for Social Development” 25-17700 18/18 Development, the outcome of the twenty-fourth special session of the General Assembly, of the Doha Summit and intergovernmental social development commitments, and to proceed to the strengthening of its role, including in contribution to the follow-up process; (d) Invite the United Nations regional commissions, within their respective mandates, to convene preparatory meetings at the regional level in advance of the follow-up, with the aim of assessing progress made, gaps and opportunities for action towards the implementation of the Doha Political Declaration and the Copenhagen Declaration and Programme of Action. The regional commissions are invited to utilize existing mechanisms and platforms to conduct the regional preparatory meetings; (e) Invite the Economic and Social Council, the funds and programmes of the United Nations development system and the relevant organizations and specialized agencies, within their respective mandates, to further integrate into their work programmes relevant intergovernmental social development commitments and to be actively involved in the follow-up process; (f) Strengthen effective multilateralism and international cooperation, as well as foster greater inter-agency cooperation and better policy coherence within the United Nations system; (g) Encourage stronger coordination, each within their respective mandates, between the United Nations and the international financial institutions through regular and substantive dialogues, including during the sessions of the Commission for Social Development, on enhancing financing mechanisms and assistance to advance social development, particularly in developing countries; (h) Strengthen multi-stakeholder engagement and partnerships, including with parliamentarians, civil society, employers’ and workers’ organizations, youth, organizations of persons with disabilities, academia, local and regional authorities, faith-based organizations and the private sector to implement the commitments; (i) Support developing countries, particularly African countries, least developed countries, small island developing States and landlocked developing countries, in, inter alia, strengthening the capacity of national statistical offices and data systems to ensure access to high-quality, timely, reliable and disaggregated social development data.
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_6.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/6
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_6.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F6/pdf/A%2FRES%2F80%2F6.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-rose-200 bg-rose-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_6.html#para-22"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-rose-200 text-rose-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #22
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-rose-900
+                       ">
+                        Continues to welcome the statement by the President of the Security Council of 12 February 2013, 9 in which the Council reiterated its previous call regarding the importance of State cooperation with the International Criminal Court, in accordance with the respective obligations of States, and expressed its commitment to effective follow-up of Council decisions in this regard;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_9.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/9
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_9.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F9/pdf/A%2FRES%2F80%2F9.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-rose-200 bg-rose-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_9.html#para-31"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-rose-200 text-rose-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #31
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-rose-900
+                       ">
+                        We acknowledge that the gaps between the Global Plan of Action and its implementation by Member States should be closed, and recognize that arrangements are needed to ensure the systematic follow-up to and review of all of the commitments we are making at the present high-level meeting, including in the quadrennial high- level meetings of the General Assembly to appraise progress achieved in the implementation of the Global Plan of Action. We will also promote the development of clearer analysis of successful counter-trafficking responses, and assessment and evaluation frameworks that include consideration of how laws, policies or practical measures affect victims of trafficking in persons. _______________ 15 Guiding Principles on Business and Human Rights: Implementing the United Nations “Protect, Respect and Remedy” Framework (A/HRC/17/31, annex).
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_11.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/11
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_11.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F11/pdf/A%2FRES%2F80%2F11.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-rose-200 bg-rose-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_11.html#para-1"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-rose-200 text-rose-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #1
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-rose-900
+                       ">
+                        Reaffirms all relevant resolutions relating to the mandate of the Peacebuilding Commission, and, mindful of the important role of the Commission, also reaffirms the need to strengthen its fulfilment by: (a) Requesting the Peacebuilding Commission to establish a detailed, predictable and flexible annual programme of work reflecting, inter alia, its country- specific, regional and thematic issues, while also taking into consideration the programmes of work of the General Assembly, the Security Council and the Economic and Social Council, as appropriate; (b) Requesting the Peacebuilding Commission, in line with its mandate, to serve as a platform to support Member States, upon their request, to strengthen their national peacebuilding and sustaining peace efforts by: (i) Assisting Member States in building their national capacities to promote, develop, where they do not exist, and implement their voluntary and nationally owned prevention and peacebuilding strategies, efforts and other related frameworks in accordance with their national priorities and needs, including by sharing good practices and lessons learned; (ii) Inviting international financial institutions and regional development banks to engage in relevant country-specific discussions, upon request by the country concerned, including on nationally led and owned prevention and peacebuilding strategies, priorities and other related frameworks and, where appropriate and in line with their governance arrangements, to consider providing additional resources in support of their implementation; (c) Taking note of the decision of the Security Council to consider, where appropriate and on a case-by-case basis, referring countries transitioning off its agenda, at their request and with their consent, to the Peacebuilding Commission, with due respect for national ownership and mindful of the benefits of sustained engagement with the Commission; (d) Requesting the Peacebuilding Commission to strengthen its impact through regular follow-up, monitoring and assessment of the implementation of its outcomes, and diversified modalities of engagement with relevant stakeholders; (e) Requesting the Peacebuilding Commission to continue serving as a platform to convene all relevant actors, and gather analysis and expertise, including by leveraging information related to peacebuilding impact, with a view to advocating for developing and sharing good practices in peacebuilding and promoting system- wide coordination; (f) Requesting the Peacebuilding Commission to continue monitoring the implementation of its existing strategies and action plans, including through their regular assessments, to advance the women and peace and security and youth, peace and security agendas, with a view to supporting the full, equal, meaningful and safe _______________ 4 A/79/634-S/2024/869, annex. A/RES/80/11 2025 review of the United Nations peacebuilding architecture 25-19633 4/7 participation of women, and promoting the full, effective, safe and meaningful participation of youth in peacebuilding and sustaining peace; (g) Requesting the Peacebuilding Commission to continue reviewing its working methods and practices, with a view to enhancing the efficiency in delivering on its mandates, and its impact in support of peacebuilding and sustaining peace, and also requesting the Commission to report back in the context of its annual report; (h) Reaffirming the practice that, in the use of conference rooms, priority must be given to meetings of Member States, and in this regard requests the Secretariat to explore options, within existing resources, to regularly provide venues and conference services to the Peacebuilding Commission, including by providing it with priority access to rooms with full United Nations membership capacity for its ambassadorial- level meetings, without prejudice to the scheduling requirements of the Charter bodies; (i) Requesting the Department of Global Communications of the Secretariat, in partnership with the Peacebuilding Support Office, and within existing resources, to support the Peacebuilding Commission in providing regular coverage and increasing the visibility of its activities in order to attract more attention from the media and the public;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_12.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/12
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_12.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F12/pdf/A%2FRES%2F80%2F12.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-rose-200 bg-rose-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_12.html#para-9"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-rose-200 text-rose-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #9
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-rose-900
+                       ">
+                        Decides to remain seized of the matter of the possible establishment of a process of periodic reviews of the Report on Military Expenditures, taking into account the information referred to in paragraph 8 above;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+</div>
+
+
+
+        </main>
+        
+        <!-- Footer -->
+        <footer class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500">
+            
+            Generated by UN Docs Analyzer
+            
+        </footer>
+    </div>
+</body>
+</html>

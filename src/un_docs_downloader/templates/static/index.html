@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - UN Docs Analyzer{% endblock %}
+
+{% block nav_index %}./index.html{% endblock %}
+{% block nav_documents %}./documents/index.html{% endblock %}
+
+{% block content %}
+<!-- Header -->
+<div class="mb-8">
+    <h1 class="text-3xl font-bold text-slate-900">UN Documents Dashboard</h1>
+    <p class="mt-2 text-slate-600">Automated analysis of UN General Assembly documents</p>
+</div>
+
+<!-- Stats Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+        <div class="flex items-center">
+            <div class="p-3 rounded-full bg-sky-100">
+                <svg class="w-6 h-6 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+            </div>
+            <div class="ml-4">
+                <p class="text-sm font-medium text-slate-500">Total Documents</p>
+                <p class="text-2xl font-bold text-slate-900">{{ total_docs }}</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+        <div class="flex items-center">
+            <div class="p-3 rounded-full bg-emerald-100">
+                <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </div>
+            <div class="ml-4">
+                <p class="text-sm font-medium text-slate-500">With Signals</p>
+                <p class="text-2xl font-bold text-slate-900">{{ docs_with_signals }}</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+        <div class="flex items-center">
+            <div class="p-3 rounded-full bg-amber-100">
+                <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+                </svg>
+            </div>
+            <div class="ml-4">
+                <p class="text-sm font-medium text-slate-500">Checks Active</p>
+                <p class="text-2xl font-bold text-slate-900">{{ checks|length }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Signal Summary -->
+<div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-8">
+    <h2 class="text-lg font-semibold text-slate-900 mb-4">Signal Summary</h2>
+    <div class="flex flex-wrap gap-3">
+        {% for check in checks %}
+        <a href="./signals/{{ check.title|lower|replace(' ', '-') }}.html" 
+           class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all hover:scale-105
+           {% if 'agenda' in check.signal|lower %}bg-blue-100 text-blue-700 hover:bg-blue-200
+           {% elif 'pga' in check.signal|lower %}bg-purple-100 text-purple-700 hover:bg-purple-200
+           {% elif 'sg' in check.signal|lower or 'secretary' in check.title|lower %}bg-amber-100 text-amber-700 hover:bg-amber-200
+           {% elif 'follow' in check.signal|lower %}bg-rose-100 text-rose-700 hover:bg-rose-200
+           {% else %}bg-slate-100 text-slate-700 hover:bg-slate-200{% endif %}">
+            {{ check.title }}
+            <span class="px-2 py-0.5 rounded-full bg-white text-xs font-bold">{{ total_signal_counts.get(check.signal, 0) }}</span>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Patterns -->
+<div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-8">
+    <h2 class="text-lg font-semibold text-slate-900 mb-4">Document Patterns</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {% for pattern in patterns %}
+        <div class="border border-slate-200 rounded-lg p-4">
+            <h3 class="font-medium text-slate-900">{{ pattern.name }}</h3>
+            <p class="text-sm text-slate-500 font-mono mt-1">{{ pattern.template }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Recent Documents Preview -->
+<div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+    <div class="flex items-center justify-between mb-4">
+        <h2 class="text-lg font-semibold text-slate-900">Recent Documents</h2>
+        <a href="./documents/index.html" class="text-sm text-sky-600 hover:text-sky-700 font-medium">View all &rarr;</a>
+    </div>
+    <div class="space-y-3">
+        {% for doc in documents[-5:]|reverse %}
+        <div class="flex items-center justify-between py-2 border-b border-slate-100 last:border-0">
+            <a href="./documents/{{ doc.filename.replace('.pdf', '.html') }}" class="font-medium text-slate-900 hover:text-sky-600">
+                {{ doc.symbol }}
+            </a>
+            <div class="flex items-center gap-2">
+                {% for signal in doc.signal_summary.keys() %}
+                <span class="px-2 py-0.5 rounded text-xs font-medium
+                    {% if 'agenda' in signal|lower %}bg-blue-100 text-blue-700
+                    {% elif 'pga' in signal|lower %}bg-purple-100 text-purple-700
+                    {% elif 'sg' in signal|lower %}bg-amber-100 text-amber-700
+                    {% elif 'follow' in signal|lower %}bg-rose-100 text-rose-700
+                    {% else %}bg-slate-100 text-slate-700{% endif %}">
+                    {{ signal|truncate(15) }}
+                </span>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+Generated {{ generated_at }} | <a href="./data.json" class="text-sky-600 hover:underline">JSON API</a>
+{% endblock %}

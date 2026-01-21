@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}Configure Patterns - UN Docs Downloader{% endblock %}
+
+{% block content %}
+<div class="mb-8">
+    <h1 class="text-3xl font-bold text-slate-900">Configure Patterns</h1>
+    <p class="mt-2 text-slate-600">Define document symbol patterns to scan for UN documents</p>
+</div>
+
+{% if error %}
+<div class="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl flex items-start gap-3">
+    <svg class="w-5 h-5 text-red-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+    </svg>
+    <p class="text-red-700">{{ error }}</p>
+</div>
+{% endif %}
+
+{% if success %}
+<div class="mb-6 p-4 bg-emerald-50 border border-emerald-200 rounded-xl flex items-start gap-3">
+    <svg class="w-5 h-5 text-emerald-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+    </svg>
+    <p class="text-emerald-700">{{ success }}</p>
+</div>
+{% endif %}
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- Editor -->
+    <div class="lg:col-span-2">
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="p-4 border-b border-slate-100 bg-slate-50">
+                <h2 class="font-semibold text-slate-900">YAML Configuration</h2>
+            </div>
+            
+            <form method="POST">
+                <textarea name="patterns_yaml" 
+                    class="w-full h-96 p-4 font-mono text-sm border-0 focus:ring-0 resize-none"
+                    placeholder="patterns:
+  - name: &quot;L documents&quot;
+    template: &quot;A/{session}/L.{number}&quot;
+    session: 80
+    start: 1
+
+  - name: &quot;Resolutions&quot;
+    template: &quot;A/RES/{session}/{number}&quot;
+    session: 80
+    start: 1">{{ patterns_yaml }}</textarea>
+                
+                <div class="p-4 border-t border-slate-100 bg-slate-50 flex justify-end">
+                    <button type="submit" 
+                            class="inline-flex items-center px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white font-medium rounded-lg transition-colors">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Preview -->
+    <div class="lg:col-span-1">
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden sticky top-4">
+            <div class="p-4 border-b border-slate-100 bg-slate-50">
+                <h2 class="font-semibold text-slate-900">Current Patterns ({{ patterns|length }})</h2>
+            </div>
+            
+            <div class="p-4">
+                {% if patterns %}
+                <div class="space-y-4">
+                    {% for pattern in patterns %}
+                    <div class="p-3 bg-slate-50 rounded-lg">
+                        <div class="font-semibold text-slate-900 mb-2">{{ pattern.name }}</div>
+                        <div class="space-y-1 text-sm">
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-500">Template</span>
+                                <code class="text-xs bg-white border border-slate-200 px-2 py-1 rounded">{{ pattern.template }}</code>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-500">Session</span>
+                                <span class="font-medium text-slate-700">{{ pattern.session }}</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-500">Start</span>
+                                <span class="font-medium text-slate-700">{{ pattern.start }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-slate-500 italic text-sm">No patterns defined yet</p>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Help -->
+        <div class="mt-4 bg-amber-50 border border-amber-200 rounded-xl p-4">
+            <h3 class="font-semibold text-amber-900 mb-2">Template Variables</h3>
+            <ul class="text-sm text-amber-800 space-y-1">
+                <li><code class="bg-amber-100 px-1 rounded">{number}</code> - Auto-incrementing number</li>
+                <li><code class="bg-amber-100 px-1 rounded">{session}</code> - GA session number</li>
+                <li><code class="bg-amber-100 px-1 rounded">{committee}</code> - Committee (use list for multiple)</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documents - UN Docs Analyzer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        un: {
+                            blue: '#009edb',
+                            dark: '#1a365d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body class="h-full bg-slate-50">
+    <div class="min-h-full">
+        <!-- Navigation -->
+        <nav class="bg-gradient-to-r from-slate-900 to-slate-800 shadow-lg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex items-center space-x-8">
+                        <a href="./index.html" class="flex items-center space-x-2">
+                            <svg class="w-8 h-8 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            <span class="text-white font-bold text-lg">UN Docs Analyzer</span>
+                        </a>
+                        <div class="hidden md:flex items-center space-x-1">
+                            <a href="../index.html" class="text-slate-300 hover:text-white hover:bg-slate-700 px-3 py-2 rounded-md text-sm font-medium transition-colors">Dashboard</a>
+                            <a href="./index.html" class="text-slate-300 hover:text-white hover:bg-slate-700 px-3 py-2 rounded-md text-sm font-medium transition-colors">Documents</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main content -->
+        <main class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            
+<!-- Header -->
+<div class="mb-6">
+    <h1 class="text-3xl font-bold text-slate-900">Documents</h1>
+    <p class="mt-2 text-slate-600">20 documents, 18 with signals</p>
+</div>
+
+<!-- Search and Filters -->
+<div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 mb-6 sticky top-0 z-20">
+    <div class="flex flex-col md:flex-row md:items-center gap-4">
+        <div class="flex items-center gap-2 flex-wrap">
+            <span class="text-sm font-medium text-slate-700">Filter:</span>
+            <button onclick="filterBySignal('all')" id="btn-all"
+                    class="check-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all bg-slate-900 text-white">
+                All (20)
+            </button>
+            
+            <button onclick="filterBySignal('agenda signal')" id="btn-agenda-signal"
+                    class="check-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                    bg-blue-100 text-blue-700 hover:bg-blue-200
+                    ">
+                agenda (28)
+            </button>
+            
+            <button onclick="filterBySignal('Secretariat signal')" id="btn-Secretariat-signal"
+                    class="check-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                    bg-slate-100 text-slate-700 hover:bg-slate-200">
+                Secretariat (4)
+            </button>
+            
+            <button onclick="filterBySignal('SG signal')" id="btn-SG-signal"
+                    class="check-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                    bg-amber-100 text-amber-700 hover:bg-amber-200
+                    ">
+                Secretary-General (38)
+            </button>
+            
+            <button onclick="filterBySignal('follow-up signal')" id="btn-follow-up-signal"
+                    class="check-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                    bg-rose-100 text-rose-700 hover:bg-rose-200
+                    ">
+                follow-up (11)
+            </button>
+            
+        </div>
+        
+        <div class="flex-1"></div>
+        
+        <div class="flex items-center gap-3">
+            <div class="relative">
+                <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                <input type="text" id="search" placeholder="Search..." 
+                       class="pl-9 pr-4 py-1.5 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 w-48"
+                       oninput="performSearch()">
+            </div>
+            <span class="text-sm text-slate-500"><span id="visibleCount">20</span> shown</span>
+        </div>
+    </div>
+</div>
+
+<!-- Documents List -->
+
+<div class="space-y-3" id="documentsList">
+    
+    <div class="doc-row bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden transition-all"
+         data-symbol="a/80/l.1"
+         data-signals='{}'
+         data-content="">
+        
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="./A_80_L.1.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/80/L.1
+                </a>
+                <span class="text-sm text-slate-500">0 paragraphs</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="./A_80_L.1.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    View
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2F80%2FL.1/pdf/A%2F80%2FL.1.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Signal Summary -->
+        <div class="p-4">
+            
+            <p class="text-slate-400 text-sm italic">No signals detected</p>
+            
+        </div>
+    </div>
+    
+    <div class="doc-row bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden transition-all"
+         data-symbol="a/res/80/1"
+         data-signals='{}'
+         data-content="Decides, without setting a precedent for future general debates and mandated high-level meetings and while stressing that the representatives of the State of Palestine should be able to participate in person in the relevant meetings at the United Nations in New York, that: (a) The State of Palestine may submit a pre‑recorded statement of its President, which will be played in the General Assembly Hall during the general debate of the _______________ 1 See resolution 169 (II). A/RES/80/1...">
+        
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="./A_RES_80_1.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/1
+                </a>
+                <span class="text-sm text-slate-500">3 paragraphs</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="./A_RES_80_1.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    View
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F1/pdf/A%2FRES%2F80%2F1.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Signal Summary -->
+        <div class="p-4">
+            
+            <p class="text-slate-400 text-sm italic">No signals detected</p>
+            
+        </div>
+    </div>
+    
+    <div class="doc-row bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden transition-all"
+         data-symbol="a/res/80/2"
+         data-signals='{"SG signal": 1}'
+         data-content="Reaffirms its role in accordance with the provisions of Article 19 of the Charter of the United Nations and the advisory role of the Committee on Contributions in accordance with rule 160 of the rules of procedure of the General Assembly; Also reaffirms its resolution 54/237 C of 23 December 1999; Requests the Secretary-General to continue to bring to the attention of Member States the deadline specified in resolution 54/237 C, including through an early announcement in the Journal of the...">
+        
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="./A_RES_80_2.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/2
+                </a>
+                <span class="text-sm text-slate-500">6 paragraphs</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="./A_RES_80_2.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    View
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F2/pdf/A%2FRES%2F80%2F2.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Signal Summary -->
+        <div class="p-4">
+            
+            <div class="flex flex-wrap gap-2">
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-amber-50 text-amber-700 border border-amber-200
+                    ">
+                    SG signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">1</span>
+                </span>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="doc-row bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden transition-all"
+         data-symbol="a/res/80/3"
+         data-signals='{"SG signal": 1, "agenda signal": 3, "follow-up signal": 4}'
+         data-content="We, the Heads of State and Government and high-level representatives, met in Awaza, Turkmenistan, from 5 to 8 August 2025 at the Third United Nations Conference on Landlocked Developing Countries, with the participation of representatives of intergovernmental and non‑governmental organizations, the private sector, civil society, academia and other stakeholders, under the theme “Driving progress through A/RES/80/3 Awaza Political Declaration 25-16680 2/5 partnerships” with the objective of...">
+        
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="./A_RES_80_3.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/3
+                </a>
+                <span class="text-sm text-slate-500">25 paragraphs</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="./A_RES_80_3.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    View
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F3/pdf/A%2FRES%2F80%2F3.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Signal Summary -->
+        <div class="p-4">
+            
+            <div class="flex flex-wrap gap-2">
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-blue-50 text-blue-700 border border-blue-200
+                    ">
+                    agenda signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">3</span>
+                </span>
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-rose-50 text-rose-700 border border-rose-200
+                    ">
+                    follow-up signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">4</span>
+                </span>
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-amber-50 text-amber-700 border border-amber-200
+                    ">
+                    SG signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">1</span>
+                </span>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="doc-row bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden transition-all"
+         data-symbol="a/res/80/4"
+         data-signals='{"SG signal": 2, "agenda signal": 1}'
+         data-content="Takes note of the report of the Secretary-General on the implementation of resolution 79/7;1 Reiterates its call upon all States to refrain from promulgating and applying laws and measures of the kind referred to in the preamble to the present resolution, in conformity with their obligations under the Charter of the United Nations and international law, which, inter alia, reaffirm the freedom of trade and navigation; Once again urges States that have and continue to apply such laws and...">
+        
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="./A_RES_80_4.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/4
+                </a>
+                <span class="text-sm text-slate-500">5 paragraphs</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="./A_RES_80_4.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    View
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F4/pdf/A%2FRES%2F80%2F4.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Signal Summary -->
+        <div class="p-4">
+            
+            <div class="flex flex-wrap gap-2">
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-amber-50 text-amber-700 border border-amber-200
+                    ">
+                    SG signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">2</span>
+                </span>
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-blue-50 text-blue-700 border border-blue-200
+                    ">
+                    agenda signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">1</span>
+                </span>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="doc-row bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden transition-all"
+         data-symbol="a/res/80/5"
+         data-signals='{"SG signal": 1, "agenda signal": 8, "follow-up signal": 3}'
+         data-content="We, Heads of State and Government and high representatives, have gathered in Doha from 4 to 6 November 2025 at the Second World Summit for Social Development to build a more just, inclusive, equitable and sustainable world, by addressing gaps, assessing progress and recommitting to the Copenhagen Declaration on Social Development and Programme of Action of the World Summit for Social Development 1 and their implementation, and give momentum towards the implementation of the 2030 Agenda for...">
+        
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="./A_RES_80_5.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/5
+                </a>
+                <span class="text-sm text-slate-500">44 paragraphs</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="./A_RES_80_5.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    View
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F5/pdf/A%2FRES%2F80%2F5.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Signal Summary -->
+        <div class="p-4">
+            
+            <div class="flex flex-wrap gap-2">
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-blue-50 text-blue-700 border border-blue-200
+                    ">
+                    agenda signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">8</span>
+                </span>
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-rose-50 text-rose-700 border border-rose-200
+                    ">
+                    follow-up signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">3</span>
+                </span>
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-amber-50 text-amber-700 border border-amber-200
+                    ">
+                    SG signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">1</span>
+                </span>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="doc-row bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden transition-all"
+         data-symbol="a/res/80/6"
+         data-signals='{"SG signal": 8, "Secretariat signal": 1, "follow-up signal": 1}'
+         data-content="Welcomes the report of the International Criminal Court for 2024/25; 4 Also welcomes the States that have become Parties to the Rome Statute of the International Criminal Court, and calls upon all States in all regions of the world that are not yet Parties to the Rome Statute to consider ratifying, accepting, approving or acceding to it without delay; Further welcomes the States Parties as well as States not Parties to the Rome Statute that are Parties to the Agreement on the Privileges and...">
+        
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="./A_RES_80_6.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/6
+                </a>
+                <span class="text-sm text-slate-500">32 paragraphs</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="./A_RES_80_6.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    View
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F6/pdf/A%2FRES%2F80%2F6.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Signal Summary -->
+        <div class="p-4">
+            
+            <div class="flex flex-wrap gap-2">
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-slate-50 text-slate-700 border border-slate-200">
+                    Secretariat signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">1</span>
+                </span>
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-amber-50 text-amber-700 border border-amber-200
+                    ">
+                    SG signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">8</span>
+                </span>
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-rose-50 text-rose-700 border border-rose-200
+                    ">
+                    follow-up signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">1</span>
+                </span>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="doc-row bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden transition-all"
+         data-symbol="a/res/80/7"
+         data-signals='{"SG signal": 1, "Secretariat signal": 1, "agenda signal": 1}'
+         data-content="Takes note with appreciation of the report of the International Atomic Energy Agency; Takes note of resolutions GC(69)/RES/7, entitled “Nuclear and radiation safety”; GC(69)/RES/8, entitled “Nuclear security”; GC(69)/RES/9, entitled “Strengthening the Agency’s activities related to nuclear science, technology and applications”, comprising GC(69)/RES/9 A.2, entitled “Support to the African Union’s Pan African Tsetse and Trypanosomosis Eradication Campaign (AU‑PATTEC)”, GC(69)/RES/9 A.3,...">
+        
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="./A_RES_80_7.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/7
+                </a>
+                <span class="text-sm text-slate-500">5 paragraphs</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="./A_RES_80_7.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    View
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F7/pdf/A%2FRES%2F80%2F7.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Signal Summary -->
+        <div class="p-4">
+            
+            <div class="flex flex-wrap gap-2">
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-blue-50 text-blue-700 border border-blue-200
+                    ">
+                    agenda signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">1</span>
+                </span>
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-slate-50 text-slate-700 border border-slate-200">
+                    Secretariat signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">1</span>
+                </span>
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-amber-50 text-amber-700 border border-amber-200
+                    ">
+                    SG signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">1</span>
+                </span>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="doc-row bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden transition-all"
+         data-symbol="a/res/80/8"
+         data-signals='{"SG signal": 1, "agenda signal": 2}'
+         data-content="Urges Member States to observe the Olympic Truce individually and collectively, within the framework of the Charter of the United Nations, throughout the period from the seventh day before the start of the XXV Olympic Winter Games until the seventh day following the end of the XIV Paralympic Winter Games, to be held in Milano-Cortina in 2026, in particular, to ensure the safe passage, access and participation of athletes, officials and all other accredited persons taking part in the Olympic...">
+        
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="./A_RES_80_8.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/8
+                </a>
+                <span class="text-sm text-slate-500">9 paragraphs</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="./A_RES_80_8.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    View
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F8/pdf/A%2FRES%2F80%2F8.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Signal Summary -->
+        <div class="p-4">
+            
+            <div class="flex flex-wrap gap-2">
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-blue-50 text-blue-700 border border-blue-200
+                    ">
+                    agenda signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">2</span>
+                </span>
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-amber-50 text-amber-700 border border-amber-200
+                    ">
+                    SG signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">1</span>
+                </span>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="doc-row bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden transition-all"
+         data-symbol="a/res/80/9"
+         data-signals='{"SG signal": 3, "agenda signal": 2, "follow-up signal": 1}'
+         data-content="We, the States Members of the United Nations, welcome the fifteenth anniversary of the adoption of the United Nations Global Plan of Action to Combat Trafficking in Persons,1 reaffirm our commitments made therein, as well as in the previously adopted Political Declarations of 20172 and 2021,3 and evince our strong political will to take decisive concerted action to end this heinous crime, wherever it may occur. We recall and reaffirm our commitments to the 2030 Agenda for Sustainable...">
+        
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="./A_RES_80_9.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/9
+                </a>
+                <span class="text-sm text-slate-500">31 paragraphs</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="./A_RES_80_9.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    View
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F9/pdf/A%2FRES%2F80%2F9.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Signal Summary -->
+        <div class="p-4">
+            
+            <div class="flex flex-wrap gap-2">
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-blue-50 text-blue-700 border border-blue-200
+                    ">
+                    agenda signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">2</span>
+                </span>
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-amber-50 text-amber-700 border border-amber-200
+                    ">
+                    SG signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">3</span>
+                </span>
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-rose-50 text-rose-700 border border-rose-200
+                    ">
+                    follow-up signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">1</span>
+                </span>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="doc-row bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden transition-all"
+         data-symbol="a/res/80/10"
+         data-signals='{"SG signal": 1}'
+         data-content="Decides to proclaim 5 September of each year as the International Day of the World’s Indigenous Women and Girls; Requests the Secretary-General to bring the present resolution to the attention of all States Members of the United Nations, members of the specialized agencies and observers of the General Assembly, as well as the organizations of the United Nations system and other relevant stakeholders, for appropriate observance of the International Day of the World’s Indigenous Women and...">
+        
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="./A_RES_80_10.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/10
+                </a>
+                <span class="text-sm text-slate-500">3 paragraphs</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="./A_RES_80_10.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    View
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F10/pdf/A%2FRES%2F80%2F10.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Signal Summary -->
+        <div class="p-4">
+            
+            <div class="flex flex-wrap gap-2">
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-amber-50 text-amber-700 border border-amber-200
+                    ">
+                    SG signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">1</span>
+                </span>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="doc-row bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden transition-all"
+         data-symbol="a/res/80/11"
+         data-signals='{"SG signal": 8, "Secretariat signal": 1, "agenda signal": 2, "follow-up signal": 1}'
+         data-content="Reaffirms all relevant resolutions relating to the mandate of the Peacebuilding Commission, and, mindful of the important role of the Commission, also reaffirms the need to strengthen its fulfilment by: (a) Requesting the Peacebuilding Commission to establish a detailed, predictable and flexible annual programme of work reflecting, inter alia, its country- specific, regional and thematic issues, while also taking into consideration the programmes of work of the General Assembly, the Security...">
+        
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="./A_RES_80_11.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/11
+                </a>
+                <span class="text-sm text-slate-500">30 paragraphs</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="./A_RES_80_11.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    View
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F11/pdf/A%2FRES%2F80%2F11.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Signal Summary -->
+        <div class="p-4">
+            
+            <div class="flex flex-wrap gap-2">
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-blue-50 text-blue-700 border border-blue-200
+                    ">
+                    agenda signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">2</span>
+                </span>
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-slate-50 text-slate-700 border border-slate-200">
+                    Secretariat signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">1</span>
+                </span>
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-rose-50 text-rose-700 border border-rose-200
+                    ">
+                    follow-up signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">1</span>
+                </span>
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-amber-50 text-amber-700 border border-amber-200
+                    ">
+                    SG signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">8</span>
+                </span>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="doc-row bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden transition-all"
+         data-symbol="a/res/80/12"
+         data-signals='{"SG signal": 4, "Secretariat signal": 1, "agenda signal": 1, "follow-up signal": 1}'
+         data-content="Calls upon Member States, with a view to achieving the broadest possible participation, to provide the Secretary-General, by 30 April annually, with a report on their military expenditures for the latest fiscal year for which data are available, using, preferably and to the extent possible, one of the online reporting forms, including, if appropriate, a nil report or the “single figure” report on military expenditures or any _______________ 1 A/54/298. 2 A/66/89, A/66/89/Corr.1,...">
+        
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="./A_RES_80_12.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/12
+                </a>
+                <span class="text-sm text-slate-500">10 paragraphs</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="./A_RES_80_12.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    View
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F12/pdf/A%2FRES%2F80%2F12.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Signal Summary -->
+        <div class="p-4">
+            
+            <div class="flex flex-wrap gap-2">
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-amber-50 text-amber-700 border border-amber-200
+                    ">
+                    SG signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">4</span>
+                </span>
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-slate-50 text-slate-700 border border-slate-200">
+                    Secretariat signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">1</span>
+                </span>
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-rose-50 text-rose-700 border border-rose-200
+                    ">
+                    follow-up signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">1</span>
+                </span>
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-blue-50 text-blue-700 border border-blue-200
+                    ">
+                    agenda signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">1</span>
+                </span>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="doc-row bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden transition-all"
+         data-symbol="a/res/80/13"
+         data-signals='{"SG signal": 1, "agenda signal": 1}'
+         data-content="Takes note of the report of the Ad Hoc Committee on the Indian Ocean; Reiterates its conviction that the participation of all permanent members of the Security Council and the major maritime users of the Indian Ocean in the work of the Ad Hoc Committee is important and would greatly facilitate the development of a mutually beneficial dialogue to advance peace, security and stability in the Indian Ocean region; Requests the Chair of the Ad Hoc Committee to continue his informal consultations...">
+        
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="./A_RES_80_13.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/13
+                </a>
+                <span class="text-sm text-slate-500">5 paragraphs</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="./A_RES_80_13.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    View
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F13/pdf/A%2FRES%2F80%2F13.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Signal Summary -->
+        <div class="p-4">
+            
+            <div class="flex flex-wrap gap-2">
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-amber-50 text-amber-700 border border-amber-200
+                    ">
+                    SG signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">1</span>
+                </span>
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-blue-50 text-blue-700 border border-blue-200
+                    ">
+                    agenda signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">1</span>
+                </span>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="doc-row bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden transition-all"
+         data-symbol="a/res/80/14"
+         data-signals='{"SG signal": 1, "agenda signal": 1}'
+         data-content="Recalls with satisfaction the entry into force of the African Nuclear- Weapon-Free Zone Treaty (Treaty of Pelindaba) on 15 July 2009; Calls upon African States that have not yet done so to sign and ratify the Treaty as soon as possible; _______________ 1 A/50/426, annex. 2 A/51/113-S/1996/276, annex. 3 S/PRST/1996/17; see Resolutions and Decisions of the Security Council, 1996 (S/INF/52). A/RES/80/14 African Nuclear-Weapon-Free Zone Treaty 25-19971 2/2 Recalls the convening of the first...">
+        
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="./A_RES_80_14.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/14
+                </a>
+                <span class="text-sm text-slate-500">8 paragraphs</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="./A_RES_80_14.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    View
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F14/pdf/A%2FRES%2F80%2F14.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Signal Summary -->
+        <div class="p-4">
+            
+            <div class="flex flex-wrap gap-2">
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-amber-50 text-amber-700 border border-amber-200
+                    ">
+                    SG signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">1</span>
+                </span>
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-blue-50 text-blue-700 border border-blue-200
+                    ">
+                    agenda signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">1</span>
+                </span>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="doc-row bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden transition-all"
+         data-symbol="a/res/80/15"
+         data-signals='{"agenda signal": 1}'
+         data-content="Welcomes the fact that the Treaty for the Prohibition of Nuclear Weapons in Latin America and the Caribbean (Treaty of Tlatelolco) is in force for all sovereign States of the region; Notes with satisfaction that the year 2025 marks the fifty-sixth anniversary of the entry into force, on 25 April 1969, of the Treaty of Tlatelolco and of the establishment of the Agency for the Prohibition of Nuclear Weapons in Latin America and the Caribbean; Reiterates the importance of the cooperation...">
+        
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="./A_RES_80_15.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/15
+                </a>
+                <span class="text-sm text-slate-500">6 paragraphs</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="./A_RES_80_15.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    View
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F15/pdf/A%2FRES%2F80%2F15.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Signal Summary -->
+        <div class="p-4">
+            
+            <div class="flex flex-wrap gap-2">
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-blue-50 text-blue-700 border border-blue-200
+                    ">
+                    agenda signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">1</span>
+                </span>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="doc-row bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden transition-all"
+         data-symbol="a/res/80/16"
+         data-signals='{"SG signal": 2, "agenda signal": 1}'
+         data-content="Decides to endorse the final report of the open-ended working group as contained in document A/80/257; Requests the Secretary-General to provide the necessary support to operationalize all aspects of the Global Mechanism on developments in the field of ICTs in the context of international security and advancing responsible State behaviour in the use of ICTs, starting in 2026, in accordance with the elements agreed in annex C to document A/79/214, as endorsed by the General Assembly in its...">
+        
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="./A_RES_80_16.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/16
+                </a>
+                <span class="text-sm text-slate-500">4 paragraphs</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="./A_RES_80_16.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    View
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F16/pdf/A%2FRES%2F80%2F16.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Signal Summary -->
+        <div class="p-4">
+            
+            <div class="flex flex-wrap gap-2">
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-amber-50 text-amber-700 border border-amber-200
+                    ">
+                    SG signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">2</span>
+                </span>
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-blue-50 text-blue-700 border border-blue-200
+                    ">
+                    agenda signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">1</span>
+                </span>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="doc-row bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden transition-all"
+         data-symbol="a/res/80/17"
+         data-signals='{"SG signal": 3, "agenda signal": 1}'
+         data-content="Urges all parties directly concerned to seriously consider taking the practical and urgent steps required for the implementation of the proposal to establish a nuclear-weapon-free zone in the region of the Middle East in accordance with the relevant resolutions of the General Assembly, and, as a means of promoting this objective, invites the countries concerned to adhere to the Treaty on the Non-Proliferation of Nuclear Weapons;3 Calls upon all countries of the region that have not yet done...">
+        
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="./A_RES_80_17.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/17
+                </a>
+                <span class="text-sm text-slate-500">12 paragraphs</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="./A_RES_80_17.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    View
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F17/pdf/A%2FRES%2F80%2F17.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Signal Summary -->
+        <div class="p-4">
+            
+            <div class="flex flex-wrap gap-2">
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-amber-50 text-amber-700 border border-amber-200
+                    ">
+                    SG signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">3</span>
+                </span>
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-blue-50 text-blue-700 border border-blue-200
+                    ">
+                    agenda signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">1</span>
+                </span>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="doc-row bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden transition-all"
+         data-symbol="a/res/80/18"
+         data-signals='{"agenda signal": 1}'
+         data-content="Reaffirms the urgent need to reach an early agreement on effective international arrangements to assure non‑nuclear-weapon States against the use or threat of use of nuclear weapons; Notes with satisfaction that in the Conference on Disarmament there is no objection, in principle, to the idea of an international convention to assure non‑nuclear-weapon States against the use or threat of use of nuclear weapons, although the difficulties with regard to evolving a common approach acceptable to...">
+        
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="./A_RES_80_18.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/18
+                </a>
+                <span class="text-sm text-slate-500">6 paragraphs</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="./A_RES_80_18.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    View
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F18/pdf/A%2FRES%2F80%2F18.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Signal Summary -->
+        <div class="p-4">
+            
+            <div class="flex flex-wrap gap-2">
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-blue-50 text-blue-700 border border-blue-200
+                    ">
+                    agenda signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">1</span>
+                </span>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="doc-row bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden transition-all"
+         data-symbol="a/res/80/19"
+         data-signals='{"agenda signal": 2}'
+         data-content="Reaffirms the importance and urgency of preventing an arms race in outer space and the readiness of all States to contribute to that common objective, in conformity with the provisions of the Treaty on Principles Governing the Activities of States in the Exploration and Use of Outer Space, including the Moon and Other Celestial Bodies; Reaffirms its recognition, as stated in the report of the Ad Hoc Committee on the Prevention of an Arms Race in Outer Space, that the legal regime applicable...">
+        
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="./A_RES_80_19.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/19
+                </a>
+                <span class="text-sm text-slate-500">9 paragraphs</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="./A_RES_80_19.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    View
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F19/pdf/A%2FRES%2F80%2F19.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Signal Summary -->
+        <div class="p-4">
+            
+            <div class="flex flex-wrap gap-2">
+                
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    bg-blue-50 text-blue-700 border border-blue-200
+                    ">
+                    agenda signal
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">2</span>
+                </span>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+</div>
+
+
+
+<script>
+let searchIndex = null;
+let currentFilter = 'all';
+
+// Load search index
+fetch('../search-index.json')
+    .then(r => r.json())
+    .then(data => {
+        searchIndex = lunr(function() {
+            this.ref('symbol');
+            this.field('symbol', { boost: 10 });
+            this.field('content');
+            
+            data.documents.forEach(doc => {
+                this.add(doc);
+            });
+        });
+        window.searchDocs = data.documents;
+    })
+    .catch(e => console.log('Search index not available'));
+
+function filterBySignal(signal) {
+    currentFilter = signal;
+    
+    // Update button styles
+    document.querySelectorAll('.check-btn').forEach(btn => {
+        btn.classList.remove('ring-2', 'ring-offset-2', 'ring-slate-900');
+    });
+    
+    const btnId = signal === 'all' ? 'btn-all' : `btn-${signal.replace(/ /g, '-')}`;
+    const activeBtn = document.getElementById(btnId);
+    if (activeBtn) {
+        activeBtn.classList.add('ring-2', 'ring-offset-2', 'ring-slate-900');
+    }
+    
+    applyFilters();
+}
+
+function performSearch() {
+    applyFilters();
+}
+
+function applyFilters() {
+    const searchTerm = document.getElementById('search').value.toLowerCase();
+    const rows = document.querySelectorAll('.doc-row');
+    let visible = 0;
+    
+    // Get search results if we have an index and search term
+    let searchResults = null;
+    if (searchIndex && searchTerm.length >= 2) {
+        try {
+            searchResults = new Set(searchIndex.search(searchTerm + '*').map(r => r.ref.toLowerCase()));
+        } catch(e) {
+            searchResults = null;
+        }
+    }
+    
+    rows.forEach(row => {
+        const symbol = row.dataset.symbol;
+        const signals = JSON.parse(row.dataset.signals || '{}');
+        const content = (row.dataset.content || '').toLowerCase();
+        
+        let show = true;
+        
+        // Signal filter
+        if (currentFilter !== 'all' && !signals[currentFilter]) {
+            show = false;
+        }
+        
+        // Search filter
+        if (show && searchTerm) {
+            if (searchResults) {
+                show = searchResults.has(symbol);
+            } else {
+                show = symbol.includes(searchTerm) || content.includes(searchTerm);
+            }
+        }
+        
+        row.style.display = show ? '' : 'none';
+        if (show) visible++;
+    });
+    
+    document.getElementById('visibleCount').textContent = visible;
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+    filterBySignal('all');
+});
+</script>
+
+        </main>
+        
+        <!-- Footer -->
+        <footer class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500">
+            
+            Generated by UN Docs Analyzer
+            
+        </footer>
+    </div>
+</body>
+</html>

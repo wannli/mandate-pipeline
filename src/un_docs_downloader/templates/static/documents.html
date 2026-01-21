@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+
+{% block title %}Documents - UN Docs Analyzer{% endblock %}
+
+{% block nav_index %}../index.html{% endblock %}
+{% block nav_documents %}./index.html{% endblock %}
+
+{% block content %}
+<!-- Header -->
+<div class="mb-6">
+    <h1 class="text-3xl font-bold text-slate-900">Documents</h1>
+    <p class="mt-2 text-slate-600">{{ total_docs }} documents, {{ docs_with_signals }} with signals</p>
+</div>
+
+<!-- Search and Filters -->
+<div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 mb-6 sticky top-0 z-20">
+    <div class="flex flex-col md:flex-row md:items-center gap-4">
+        <div class="flex items-center gap-2 flex-wrap">
+            <span class="text-sm font-medium text-slate-700">Filter:</span>
+            <button onclick="filterBySignal('all')" id="btn-all"
+                    class="check-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all bg-slate-900 text-white">
+                All ({{ total_docs }})
+            </button>
+            {% for check in checks %}
+            <button onclick="filterBySignal('{{ check.signal }}')" id="btn-{{ check.signal|replace(' ', '-') }}"
+                    class="check-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                    {% if 'agenda' in check.signal|lower %}bg-blue-100 text-blue-700 hover:bg-blue-200
+                    {% elif 'pga' in check.signal|lower %}bg-purple-100 text-purple-700 hover:bg-purple-200
+                    {% elif 'sg' in check.signal|lower %}bg-amber-100 text-amber-700 hover:bg-amber-200
+                    {% elif 'follow' in check.signal|lower %}bg-rose-100 text-rose-700 hover:bg-rose-200
+                    {% else %}bg-slate-100 text-slate-700 hover:bg-slate-200{% endif %}">
+                {{ check.title }} ({{ total_signal_counts.get(check.signal, 0) }})
+            </button>
+            {% endfor %}
+        </div>
+        
+        <div class="flex-1"></div>
+        
+        <div class="flex items-center gap-3">
+            <div class="relative">
+                <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                <input type="text" id="search" placeholder="Search..." 
+                       class="pl-9 pr-4 py-1.5 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 w-48"
+                       oninput="performSearch()">
+            </div>
+            <span class="text-sm text-slate-500"><span id="visibleCount">{{ documents|length }}</span> shown</span>
+        </div>
+    </div>
+</div>
+
+<!-- Documents List -->
+{% if documents %}
+<div class="space-y-3" id="documentsList">
+    {% for doc in documents %}
+    <div class="doc-row bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden transition-all"
+         data-symbol="{{ doc.symbol|lower }}"
+         data-signals='{{ doc.signal_summary|tojson }}'
+         data-content="{{ doc.paragraphs.values()|join(' ')|truncate(500) }}">
+        
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="./{{ doc.symbol|replace('/', '_') }}.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    {{ doc.symbol }}
+                </a>
+                <span class="text-sm text-slate-500">{{ doc.num_paragraphs }} paragraphs</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="./{{ doc.symbol|replace('/', '_') }}.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    View
+                </a>
+                <a href="{{ doc.un_url }}" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Signal Summary -->
+        <div class="p-4">
+            {% if doc.signal_summary %}
+            <div class="flex flex-wrap gap-2">
+                {% for signal, count in doc.signal_summary.items() %}
+                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium
+                    {% if 'agenda' in signal|lower %}bg-blue-50 text-blue-700 border border-blue-200
+                    {% elif 'pga' in signal|lower %}bg-purple-50 text-purple-700 border border-purple-200
+                    {% elif 'sg' in signal|lower %}bg-amber-50 text-amber-700 border border-amber-200
+                    {% elif 'follow' in signal|lower %}bg-rose-50 text-rose-700 border border-rose-200
+                    {% else %}bg-slate-50 text-slate-700 border border-slate-200{% endif %}">
+                    {{ signal }}
+                    <span class="px-1.5 py-0.5 rounded bg-white text-xs font-bold">{{ count }}</span>
+                </span>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="text-slate-400 text-sm italic">No signals detected</p>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% else %}
+<div class="bg-white rounded-xl shadow-sm border border-slate-200 p-12 text-center">
+    <svg class="w-16 h-16 mx-auto text-slate-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+    </svg>
+    <h3 class="text-lg font-medium text-slate-900 mb-2">No documents yet</h3>
+    <p class="text-slate-600">Run the discovery pipeline to download and analyze UN documents.</p>
+</div>
+{% endif %}
+
+<script>
+let searchIndex = null;
+let currentFilter = 'all';
+
+// Load search index
+fetch('../search-index.json')
+    .then(r => r.json())
+    .then(data => {
+        searchIndex = lunr(function() {
+            this.ref('symbol');
+            this.field('symbol', { boost: 10 });
+            this.field('content');
+            
+            data.documents.forEach(doc => {
+                this.add(doc);
+            });
+        });
+        window.searchDocs = data.documents;
+    })
+    .catch(e => console.log('Search index not available'));
+
+function filterBySignal(signal) {
+    currentFilter = signal;
+    
+    // Update button styles
+    document.querySelectorAll('.check-btn').forEach(btn => {
+        btn.classList.remove('ring-2', 'ring-offset-2', 'ring-slate-900');
+    });
+    
+    const btnId = signal === 'all' ? 'btn-all' : `btn-${signal.replace(/ /g, '-')}`;
+    const activeBtn = document.getElementById(btnId);
+    if (activeBtn) {
+        activeBtn.classList.add('ring-2', 'ring-offset-2', 'ring-slate-900');
+    }
+    
+    applyFilters();
+}
+
+function performSearch() {
+    applyFilters();
+}
+
+function applyFilters() {
+    const searchTerm = document.getElementById('search').value.toLowerCase();
+    const rows = document.querySelectorAll('.doc-row');
+    let visible = 0;
+    
+    // Get search results if we have an index and search term
+    let searchResults = null;
+    if (searchIndex && searchTerm.length >= 2) {
+        try {
+            searchResults = new Set(searchIndex.search(searchTerm + '*').map(r => r.ref.toLowerCase()));
+        } catch(e) {
+            searchResults = null;
+        }
+    }
+    
+    rows.forEach(row => {
+        const symbol = row.dataset.symbol;
+        const signals = JSON.parse(row.dataset.signals || '{}');
+        const content = (row.dataset.content || '').toLowerCase();
+        
+        let show = true;
+        
+        // Signal filter
+        if (currentFilter !== 'all' && !signals[currentFilter]) {
+            show = false;
+        }
+        
+        // Search filter
+        if (show && searchTerm) {
+            if (searchResults) {
+                show = searchResults.has(symbol);
+            } else {
+                show = symbol.includes(searchTerm) || content.includes(searchTerm);
+            }
+        }
+        
+        row.style.display = show ? '' : 'none';
+        if (show) visible++;
+    });
+    
+    document.getElementById('visibleCount').textContent = visible;
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+    filterBySignal('all');
+});
+</script>
+{% endblock %}

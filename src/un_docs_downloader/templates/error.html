@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Error - UN Docs Downloader{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2 style="color: #c53030;">Error</h2>
+    <p style="margin-top: 1rem;">{{ error }}</p>
+    <p style="margin-top: 1rem;">
+        <a href="/documents" class="btn">Back to Documents</a>
+    </p>
+</div>
+{% endblock %}

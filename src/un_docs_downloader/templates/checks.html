@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}Configure Checks - UN Docs Downloader{% endblock %}
+
+{% block content %}
+<div class="mb-8">
+    <h1 class="text-3xl font-bold text-slate-900">Configure Checks</h1>
+    <p class="mt-2 text-slate-600">Define signal checks to detect specific phrases in operative paragraphs</p>
+</div>
+
+{% if error %}
+<div class="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl flex items-start gap-3">
+    <svg class="w-5 h-5 text-red-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+    </svg>
+    <p class="text-red-700">{{ error }}</p>
+</div>
+{% endif %}
+
+{% if success %}
+<div class="mb-6 p-4 bg-emerald-50 border border-emerald-200 rounded-xl flex items-start gap-3">
+    <svg class="w-5 h-5 text-emerald-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+    </svg>
+    <p class="text-emerald-700">{{ success }}</p>
+</div>
+{% endif %}
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- Editor -->
+    <div class="lg:col-span-2">
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="p-4 border-b border-slate-100 bg-slate-50">
+                <h2 class="font-semibold text-slate-900">YAML Configuration</h2>
+            </div>
+            
+            <form method="POST">
+                <textarea name="checks_yaml" 
+                    class="w-full h-96 p-4 font-mono text-sm border-0 focus:ring-0 resize-none"
+                    placeholder="checks:
+  - title: &quot;agenda&quot;
+    signal: &quot;agenda signal&quot;
+    phrases:
+      - &quot;agenda&quot;
+      - &quot;agenda item&quot;
+
+  - title: &quot;PGA&quot;
+    signal: &quot;PGA signal&quot;
+    phrases:
+      - &quot;requests the President of the General Assembly&quot;">{{ checks_yaml }}</textarea>
+                
+                <div class="p-4 border-t border-slate-100 bg-slate-50 flex justify-end">
+                    <button type="submit" 
+                            class="inline-flex items-center px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white font-medium rounded-lg transition-colors">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Preview -->
+    <div class="lg:col-span-1">
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden sticky top-4">
+            <div class="p-4 border-b border-slate-100 bg-slate-50">
+                <h2 class="font-semibold text-slate-900">Current Checks ({{ checks|length }})</h2>
+            </div>
+            
+            <div class="p-4">
+                {% if checks %}
+                <div class="space-y-4">
+                    {% for check in checks %}
+                    <div class="p-3 bg-slate-50 rounded-lg">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-semibold text-slate-900">{{ check.title }}</span>
+                            <span class="px-2 py-1 text-xs font-medium rounded-full
+                                {% if 'agenda' in check.signal|lower %}bg-blue-100 text-blue-700
+                                {% elif 'pga' in check.signal|lower %}bg-purple-100 text-purple-700
+                                {% elif 'sg' in check.signal|lower %}bg-amber-100 text-amber-700
+                                {% elif 'follow' in check.signal|lower %}bg-rose-100 text-rose-700
+                                {% else %}bg-slate-100 text-slate-700{% endif %}">
+                                {{ check.signal }}
+                            </span>
+                        </div>
+                        <div class="flex flex-wrap gap-1">
+                            {% for phrase in check.phrases %}
+                            <span class="text-xs bg-white border border-slate-200 px-2 py-1 rounded">{{ phrase }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-slate-500 italic text-sm">No checks defined yet</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
