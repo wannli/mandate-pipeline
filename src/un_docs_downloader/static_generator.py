@@ -396,3 +396,159 @@ def generate_site(config_dir: Path, data_dir: Path, output_dir: Path) -> None:
     generate_search_index(documents, output_dir)
 
     print(f"Generated static site with {len(documents)} documents in {output_dir}")
+
+
+def generate_site_verbose(
+    config_dir: Path,
+    data_dir: Path,
+    output_dir: Path,
+    on_load_start: callable = None,
+    on_load_document: callable = None,
+    on_load_error: callable = None,
+    on_load_end: callable = None,
+    on_generate_start: callable = None,
+    on_generate_page: callable = None,
+    on_generate_end: callable = None,
+) -> dict:
+    """
+    Generate the complete static site with verbose callbacks.
+
+    Args:
+        config_dir: Directory containing checks.yaml and patterns.yaml
+        data_dir: Directory containing pdfs/ subdirectory
+        output_dir: Output directory for static site
+        on_load_start: Callback() when starting to load documents
+        on_load_document: Callback(symbol, num_paragraphs, signals, duration) for each doc
+        on_load_error: Callback(path, error) for load errors
+        on_load_end: Callback(total, duration) when done loading
+        on_generate_start: Callback() when starting to generate pages
+        on_generate_page: Callback(page_type, name) for each page
+        on_generate_end: Callback(duration) when done generating
+
+    Returns:
+        Dict with stats: total_documents, documents_with_signals, signal_counts, etc.
+    """
+    import time
+
+    config_dir = Path(config_dir)
+    data_dir = Path(data_dir)
+    output_dir = Path(output_dir)
+
+    # Load config
+    checks = load_checks(config_dir / "checks.yaml")
+    patterns = load_patterns(config_dir / "patterns.yaml")
+
+    # Load all documents with callbacks
+    if on_load_start:
+        on_load_start()
+
+    load_start_time = time.time()
+    documents = []
+    pdfs_dir = data_dir / "pdfs"
+
+    if pdfs_dir.exists():
+        for pattern_dir in pdfs_dir.iterdir():
+            if not pattern_dir.is_dir():
+                continue
+
+            for pdf_file in pattern_dir.glob("*.pdf"):
+                doc_start_time = time.time()
+                symbol = pdf_file.stem.replace("_", "/")
+
+                try:
+                    text = extract_text(pdf_file)
+                    paragraphs = extract_operative_paragraphs(text)
+                    signals = run_checks(paragraphs, checks) if checks else {}
+
+                    # Build signal summary
+                    signal_summary = {}
+                    for para_signals in signals.values():
+                        for sig in para_signals:
+                            signal_summary[sig] = signal_summary.get(sig, 0) + 1
+
+                    doc = {
+                        "symbol": symbol,
+                        "filename": pdf_file.name,
+                        "pattern_dir": pattern_dir.name,
+                        "paragraphs": paragraphs,
+                        "signals": signals,
+                        "signal_summary": signal_summary,
+                        "num_paragraphs": len(paragraphs),
+                        "un_url": get_un_document_url(symbol),
+                    }
+                    documents.append(doc)
+
+                    doc_duration = time.time() - doc_start_time
+                    if on_load_document:
+                        on_load_document(symbol, len(paragraphs), signal_summary, doc_duration)
+
+                except Exception as e:
+                    if on_load_error:
+                        on_load_error(str(pdf_file), str(e))
+
+    # Sort documents
+    def sort_key(doc):
+        numbers = re.findall(r'\d+', doc["symbol"])
+        return [int(n) for n in numbers] if numbers else [0]
+    documents.sort(key=sort_key)
+
+    load_duration = time.time() - load_start_time
+    if on_load_end:
+        on_load_end(len(documents), load_duration)
+
+    # Generate pages
+    if on_generate_start:
+        on_generate_start()
+
+    generate_start_time = time.time()
+
+    # Create output directories
+    output_dir.mkdir(parents=True, exist_ok=True)
+    (output_dir / "documents").mkdir(exist_ok=True)
+    (output_dir / "signals").mkdir(exist_ok=True)
+
+    # Generate pages
+    generate_index_page(documents, checks, patterns, output_dir)
+    if on_generate_page:
+        on_generate_page("index", "index.html")
+
+    generate_documents_list_page(documents, checks, output_dir / "documents")
+    if on_generate_page:
+        on_generate_page("documents_list", "documents/index.html")
+
+    for doc in documents:
+        generate_document_page(doc, checks, output_dir / "documents")
+        if on_generate_page:
+            on_generate_page("document", f"documents/{symbol_to_filename(doc['symbol'])}.html")
+
+    for check in checks:
+        generate_signal_page(documents, check, output_dir / "signals")
+        if on_generate_page:
+            on_generate_page("signal", f"signals/{check['title'].lower().replace(' ', '-')}.html")
+
+    # Generate data exports
+    generate_data_json(documents, checks, output_dir)
+    if on_generate_page:
+        on_generate_page("data", "data.json")
+
+    generate_search_index(documents, output_dir)
+    if on_generate_page:
+        on_generate_page("search", "search-index.json")
+
+    generate_duration = time.time() - generate_start_time
+    if on_generate_end:
+        on_generate_end(generate_duration)
+
+    # Calculate stats
+    total_signal_counts = {}
+    for doc in documents:
+        for sig, count in doc.get("signal_summary", {}).items():
+            total_signal_counts[sig] = total_signal_counts.get(sig, 0) + count
+
+    return {
+        "total_documents": len(documents),
+        "documents_with_signals": len([d for d in documents if d.get("signals")]),
+        "document_pages": len(documents),
+        "signal_pages": len(checks),
+        "signal_counts": total_signal_counts,
+    }

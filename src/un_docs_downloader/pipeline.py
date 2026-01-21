@@ -289,3 +289,114 @@ def sync_all_patterns(
     save_sync_state(state_path, state)
 
     return results
+
+
+def sync_all_patterns_verbose(
+    config_dir: Path,
+    data_dir: Path,
+    max_consecutive_misses: int = 3,
+    on_check: callable = None,
+    on_download: callable = None,
+    on_error: callable = None,
+    on_pattern_start: callable = None,
+    on_pattern_end: callable = None,
+) -> dict:
+    """
+    Sync all patterns with verbose callbacks for logging.
+
+    Args:
+        config_dir: Directory containing patterns.yaml
+        data_dir: Directory to store PDFs and state
+        max_consecutive_misses: Stop after this many consecutive 404s per pattern
+        on_check: Callback(symbol, exists, consecutive_misses) for each check
+        on_download: Callback(symbol, path, size, duration) for each download
+        on_error: Callback(symbol, error) for download errors
+        on_pattern_start: Callback(pattern_name, start_number) when starting a pattern
+        on_pattern_end: Callback(pattern_name, new_count, duration) when done with pattern
+
+    Returns:
+        Dict with sync results: {pattern_name: [new_symbols], ...}
+    """
+    import time
+
+    patterns = load_patterns(config_dir / "patterns.yaml")
+    state_path = data_dir / "state.json"
+    state = load_sync_state(state_path)
+
+    results = {}
+
+    for pattern in patterns:
+        pattern_name = pattern["name"]
+        start_number = get_start_number(pattern, state)
+        pattern_start_time = time.time()
+
+        if on_pattern_start:
+            on_pattern_start(pattern_name, start_number)
+
+        # Create output directory
+        output_dir = data_dir / "pdfs" / pattern_name.replace(" ", "_")
+        output_dir.mkdir(parents=True, exist_ok=True)
+
+        # Create a modified pattern starting from our resume point
+        resume_pattern = pattern.copy()
+        resume_pattern["start"] = start_number
+
+        new_docs = []
+        highest_found = state.get("patterns", {}).get(pattern_name, {}).get(
+            "highest_found", pattern.get("start", 1) - 1
+        )
+        consecutive_misses = 0
+        current_number = start_number
+
+        for symbol in generate_symbols(resume_pattern):
+            exists = document_exists(symbol)
+
+            if exists:
+                consecutive_misses = 0
+
+                if on_check:
+                    on_check(symbol, True, 0)
+
+                # Download the document
+                try:
+                    download_start = time.time()
+                    pdf_path = download_document(symbol, output_dir=output_dir)
+                    download_duration = time.time() - download_start
+                    file_size = pdf_path.stat().st_size
+
+                    if on_download:
+                        on_download(symbol, pdf_path, file_size, download_duration)
+
+                    new_docs.append(symbol)
+                    highest_found = current_number
+
+                except Exception as e:
+                    if on_error:
+                        on_error(symbol, str(e))
+            else:
+                consecutive_misses += 1
+
+                if on_check:
+                    on_check(symbol, False, consecutive_misses)
+
+                if consecutive_misses >= max_consecutive_misses:
+                    break
+
+            current_number += 1
+
+        # Update state
+        if pattern_name not in state["patterns"]:
+            state["patterns"][pattern_name] = {}
+        state["patterns"][pattern_name]["highest_found"] = highest_found
+
+        results[pattern_name] = new_docs
+
+        pattern_duration = time.time() - pattern_start_time
+        if on_pattern_end:
+            on_pattern_end(pattern_name, len(new_docs), pattern_duration)
+
+    # Save updated state
+    state["last_sync"] = datetime.now(timezone.utc).isoformat()
+    save_sync_state(state_path, state)
+
+    return results
