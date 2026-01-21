@@ -65,8 +65,8 @@ def extract_title(text: str) -> str:
     """
     Extract a document title using simple heuristics.
 
-    The title is assumed to be the first non-empty line before the operative
-    paragraphs or before an A/RES stamp line.
+    For resolutions: title is after "Resolution adopted by" with format "80/1. Title"
+    For proposals: title is after "draft resolution" line, may span multiple lines.
 
     Args:
         text: Full text of the document
@@ -85,12 +85,12 @@ def extract_title(text: str) -> str:
     stop_at = min(stop_indices) if stop_indices else len(lines)
 
     skip_prefixes = (
-        "United Nations",
-        "General Assembly",
-        "Security Council",
         "Distr.",
     )
     skip_regexes = [
+        r"^United Nations$",
+        r"^General Assembly$",
+        r"^Security Council$",
         r"^[A-Z]{1,2}/[A-Z0-9./-]+$",
         r"^Agenda item",
         r"^Item\s+\d+",
@@ -102,31 +102,117 @@ def extract_title(text: str) -> str:
         r"^(First|Second|Third|Fourth|Fifth|Sixth) Committee$",
         r"^A/RES",
         r"^Original:",
+        r"^\[on the report of",
+        r"^\[without reference to",
+        # Skip facilitator/submitter lines (end with country in parentheses)
+        r"^.*\([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*(?:\s+of\s+[A-Z][a-z]+)?\s*\)\s*$",
+        # Skip "on the basis of informal consultations" lines
+        r".*on the basis of informal consultations",
+        # Skip lines referencing other draft resolutions
+        r"^.*resolution\s+A/C\.\d+/\d+/L\.\d+",
     ]
 
-    first_candidate = ""
-    start_at = 0
+    # Patterns that indicate end of title (start of document body)
+    title_end_patterns = [
+        r"^The General Assembly",
+        r"^The Security Council",
+        r"^Recalling",
+        r"^Reaffirming",
+        r"^Noting",
+        r"^Recognizing",
+        r"^Welcoming",
+        r"^Expressing",
+        r"^Bearing in mind",
+        r"^Having",
+        r"^Mindful",
+        r"^Concerned",
+        r"^Convinced",
+        r"^Guided by",
+        r"^Taking note",
+        r"^Pursuant to",
+    ]
 
+    def is_skip_line(candidate: str) -> bool:
+        if candidate.startswith(skip_prefixes):
+            return True
+        if any(re.match(pattern, candidate) for pattern in skip_regexes):
+            return True
+        return False
+
+    def is_title_end(candidate: str) -> bool:
+        return any(re.match(pattern, candidate) for pattern in title_end_patterns)
+
+    # For resolutions: find title after "Resolution adopted by" line
+    # The title format is "80/1. Title..." and may span multiple lines
+    resolution_start = None
     for idx, line in enumerate(lines[:stop_at]):
-        if re.search(r"draft resolution", line, re.IGNORECASE):
+        if re.search(r"Resolution adopted by", line, re.IGNORECASE):
+            resolution_start = idx + 1
+            break
+
+    if resolution_start is not None:
+        # Look for resolution number format (e.g., "80/60. Title...")
+        res_title_parts = []
+        collecting_res_title = False
+        for line in lines[resolution_start:stop_at]:
+            candidate = line.strip()
+
+            if re.match(r"^\d+/\d+\.\s+\S", candidate):
+                res_title_parts.append(candidate)
+                collecting_res_title = True
+                continue
+
+            if collecting_res_title:
+                # Stop at empty line or body start
+                if not candidate or is_title_end(candidate):
+                    break
+                # Continue collecting title lines
+                res_title_parts.append(candidate)
+
+        if res_title_parts:
+            return " ".join(res_title_parts)
+
+    # For proposals: find title after "draft resolution" or "draft decision" line
+    start_at = 0
+    for idx, line in enumerate(lines[:stop_at]):
+        if re.search(r"draft (resolution|decision)", line, re.IGNORECASE):
             start_at = idx + 1
             break
 
+    # Collect title parts (may span multiple lines)
+    title_parts = []
+    collecting = False
+
     for line in lines[start_at:stop_at]:
         candidate = line.strip()
-        if not candidate:
+
+        # Skip empty lines before title starts
+        if not candidate and not collecting:
             continue
-        if candidate.startswith(skip_prefixes):
-            continue
-        if any(re.match(pattern, candidate) for pattern in skip_regexes):
-            continue
+
+        # Check for resolution number format (e.g., "80/60. Title...")
         if re.match(r"^\d+/\d+\.\s+\S", candidate):
             return candidate
-        if not first_candidate:
-            first_candidate = candidate
 
-    if first_candidate:
-        return first_candidate
+        # Skip header lines
+        if is_skip_line(candidate):
+            continue
+
+        # Stop if we hit the document body
+        if is_title_end(candidate):
+            break
+
+        # Empty line after title started means title is complete
+        if not candidate and collecting:
+            break
+
+        # Found a title line
+        if candidate:
+            title_parts.append(candidate)
+            collecting = True
+
+    if title_parts:
+        return " ".join(title_parts)
 
     return ""
 
