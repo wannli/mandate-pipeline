@@ -1,0 +1,479 @@
+# Mandate Pipeline
+
+A document discovery and analysis system that automatically downloads UN General Assembly resolutions and proposals, extracts text, identifies mandate-related signals, and generates an interactive static website.
+
+## Overview
+
+The Mandate Pipeline automates the process of:
+1. **Discovering** new UN documents from the UN ODS API
+2. **Extracting** text and structure from PDFs
+3. **Detecting** mandate-related signals using configurable phrase matching
+4. **Linking** related documents (resolutions to proposals)
+5. **Generating** a static website for browsing and analysis
+
+## Quick Start
+
+```bash
+# Install dependencies
+pip install -e .
+
+# Run full pipeline (discover + generate)
+mandate build --config ./config --data ./data --output ./docs --verbose
+
+# Or run stages separately
+mandate discover --config ./config --data ./data --verbose
+mandate generate --config ./config --data ./data --output ./docs --verbose
+```
+
+## Project Structure
+
+```
+mandate-pipeline/
+├── config/                    # Configuration files
+│   ├── checks.yaml           # Signal detection rules
+│   └── patterns.yaml         # Document patterns to discover
+├── data/                      # Persistent data
+│   ├── pdfs/                 # Downloaded PDF documents
+│   ├── state.json            # Discovery sync state
+│   └── lineage.json          # Document linkage cache
+├── docs/                      # Generated static website
+├── src/mandate_pipeline/      # Core Python package
+│   ├── cli.py                # Command-line interface
+│   ├── pipeline.py           # Document discovery logic
+│   ├── downloader.py         # PDF download from UN servers
+│   ├── extractor.py          # PDF text extraction
+│   ├── checks.py             # Signal detection system
+│   ├── lineage.py            # Document linkage analysis
+│   ├── static_generator.py   # HTML site generation
+│   └── templates/            # Jinja2 HTML templates
+└── tests/                     # Test suite
+```
+
+## Pipeline Architecture
+
+### Phase 1: Document Discovery
+
+The `discover` command finds and downloads new UN documents.
+
+**Process:**
+1. Load document patterns from `config/patterns.yaml`
+2. For each pattern, generate sequential symbols (e.g., A/80/L.1, A/80/L.2, ...)
+3. Check if each document exists via UN ODS API
+4. Download found PDFs to `data/pdfs/`
+5. Stop after 3 consecutive 404s (configurable)
+6. Save progress to `data/state.json`
+
+**Key Features:**
+- **Incremental**: Only checks documents newer than last sync
+- **Adaptive**: Resets miss counter on successful finds (handles numbering gaps)
+- **Stateful**: Progress persisted between runs
+
+### Phase 2: Site Generation
+
+The `generate` command processes documents and builds the website.
+
+**Substages:**
+
+1. **Document Loading**: Scan all PDFs in `data/pdfs/`
+
+2. **Text Extraction** (`extractor.py`):
+   - Extract full text using PyMUPDF
+   - Parse operative paragraphs (numbered sections)
+   - Extract document title
+   - Find agenda item references
+   - Identify UN symbol references
+
+3. **Signal Detection** (`checks.py`):
+   - Match phrases from `config/checks.yaml` against paragraphs
+   - Case-insensitive substring matching
+   - Each paragraph can trigger multiple signals
+
+4. **Document Linking** (`static_generator.py`):
+   - **Pass 1**: Link via explicit symbol references (100% confidence)
+   - **Pass 2**: Link via fuzzy title matching (85%+ similarity threshold)
+
+5. **Site Generation**: Create HTML pages and data exports
+
+### Phase 3: Lineage Analysis
+
+The `lineage` command builds the document relationship cache.
+
+**Process:**
+1. Scan all PDFs and extract symbol references
+2. Classify documents (resolution/proposal/other)
+3. Cache results in `data/lineage.json` (uses hash to skip unchanged files)
+4. Export metadata to `docs/data.json`
+
+## Data Flow
+
+```
+UN ODS API
+    ↓
+[Discovery] → data/state.json
+    ↓
+data/pdfs/*.pdf
+    ↓
+[Extraction] → Text, paragraphs, titles, references
+    ↓
+[Signal Detection] → Matched phrases per paragraph
+    ↓
+[Document Linking] → Resolution ↔ Proposal relationships
+    ↓
+[Site Generation]
+    ↓
+docs/                 (static website)
+├── index.html       (dashboard)
+├── documents/       (individual pages)
+├── signals/         (filter by signal)
+├── patterns/        (filter by pattern)
+├── matrix/          (pattern × signal)
+├── data.json        (machine-readable export)
+└── search-index.json
+```
+
+## Configuration
+
+### patterns.yaml
+
+Defines which document symbols to discover:
+
+```yaml
+patterns:
+  - name: "General Assembly resolutions"
+    template: "A/RES/{session}/{number}"
+    session: 80
+    start: 1
+
+  - name: "General Assembly proposals"
+    template: "A/{session}/L.{number}"
+    session: 80
+    start: 1
+
+  - name: "C1 proposals"
+    template: "A/C.{committee}/{session}/L.{number}"
+    committee: 1
+    session: 80
+    start: 1
+```
+
+- `template`: Symbol format with `{variable}` placeholders
+- `session`, `committee`: Fixed values substituted into template
+- `{number}`: Auto-incrementing counter
+- `start`: Initial number for this pattern
+
+### checks.yaml
+
+Defines signal detection rules:
+
+```yaml
+checks:
+  - signal: "agenda"
+    phrases:
+      - "decides to include"
+      - "decides to place on the provisional agenda"
+      - "requests the inclusion"
+
+  - signal: "PGA"
+    phrases:
+      - "President of the General Assembly"
+      - "high-level meeting"
+
+  - signal: "report"
+    phrases:
+      - "report to the General Assembly"
+      - "submit a report"
+```
+
+- `signal`: Name of the signal (used in website sections)
+- `phrases`: List of phrases to match (case-insensitive)
+
+## CLI Commands
+
+### mandate discover
+
+Discover and download new documents.
+
+```bash
+mandate discover \
+  --config ./config \
+  --data ./data \
+  --max-misses 3 \
+  --verbose
+```
+
+| Option | Description |
+|--------|-------------|
+| `--config` | Directory containing patterns.yaml |
+| `--data` | Directory for state.json and pdfs/ |
+| `--max-misses` | Stop after N consecutive 404s (default: 3) |
+| `--verbose` | Log each document check |
+
+### mandate generate
+
+Generate static site from downloaded documents.
+
+```bash
+mandate generate \
+  --config ./config \
+  --data ./data \
+  --output ./docs \
+  --verbose
+```
+
+| Option | Description |
+|--------|-------------|
+| `--config` | Directory containing checks.yaml and patterns.yaml |
+| `--data` | Directory with pdfs/ and lineage.json |
+| `--output` | Output directory for static site |
+| `--verbose` | Log each document processed |
+
+### mandate build
+
+Run discover + generate (full pipeline).
+
+```bash
+mandate build \
+  --config ./config \
+  --data ./data \
+  --output ./docs \
+  --max-misses 3 \
+  --verbose
+```
+
+### mandate lineage
+
+Update lineage cache and export data.json.
+
+```bash
+mandate lineage \
+  --config ./config \
+  --data ./data \
+  --output ./docs \
+  --verbose
+```
+
+## State Files
+
+### data/state.json
+
+Tracks discovery progress:
+
+```json
+{
+  "last_sync": "2026-01-20T10:30:45.123456+00:00",
+  "patterns": {
+    "General Assembly resolutions": {
+      "highest_found": 250
+    },
+    "General Assembly proposals": {
+      "highest_found": 185
+    }
+  }
+}
+```
+
+### data/lineage.json
+
+Caches document linkage data:
+
+```json
+{
+  "generated_at": "2026-01-20T10:35:22.123456+00:00",
+  "documents": {
+    "A/80/L.1": {
+      "last_modified_hash": "sha256...",
+      "classification": "proposal",
+      "links": ["A/80/L.2", "A/RES/80/5"]
+    }
+  }
+}
+```
+
+### docs/data.json
+
+Complete metadata export for external tools:
+
+```json
+{
+  "generated_at": "...",
+  "checks": [...],
+  "documents": [...],
+  "stats": {
+    "total_documents": 250,
+    "documents_with_signals": 120,
+    "signal_counts": {"agenda": 45, "report": 78}
+  }
+}
+```
+
+## GitHub Actions Automation
+
+Three workflows automate the pipeline:
+
+### fetch-documents.yml
+
+- **Trigger**: Daily at 6 AM UTC or manual
+- **Action**: Run `mandate discover`, commit new PDFs
+- **Result**: `data/pdfs/` and `data/state.json` updated
+
+### linkage-analysis.yml
+
+- **Trigger**: After fetch-documents or manual
+- **Action**: Run `mandate lineage`
+- **Result**: `data/lineage.json` and `docs/data.json` updated
+
+### build-site.yml
+
+- **Trigger**: Changes to data/lineage.json, config/, or src/
+- **Action**: Run `mandate generate`, deploy to GitHub Pages
+- **Result**: Static website updated
+
+**Workflow Chain:**
+```
+Schedule (6 AM UTC)
+    ↓
+fetch-documents.yml
+    ↓ (on success)
+linkage-analysis.yml
+    ↓ (triggers)
+build-site.yml
+```
+
+## Key Algorithms
+
+### Document Discovery
+
+```
+FOR EACH pattern:
+  current = state.highest_found + 1
+  consecutive_misses = 0
+
+  WHILE consecutive_misses < max_misses:
+    symbol = generate_symbol(pattern, current)
+
+    IF exists_locally(symbol):
+      current += 1
+      CONTINUE
+
+    IF exists_remote(symbol):
+      download(symbol)
+      consecutive_misses = 0
+    ELSE:
+      consecutive_misses += 1
+
+    current += 1
+
+  state.highest_found = current - consecutive_misses - 1
+```
+
+### Signal Detection
+
+```
+FOR EACH paragraph:
+  FOR EACH check:
+    FOR EACH phrase IN check.phrases:
+      IF phrase.lower() IN paragraph.lower():
+        signals[paragraph].append(check.signal)
+        BREAK  # One match per check
+```
+
+### Document Linking
+
+```
+PASS 1: Explicit References
+  FOR EACH resolution:
+    FOR EACH symbol_reference:
+      IF symbol_reference IS proposal:
+        LINK(resolution → proposal, confidence=1.0)
+
+PASS 2: Fuzzy Title Matching
+  FOR EACH unlinked resolution:
+    FOR EACH proposal:
+      IF fuzzy_match(title) >= 85%:
+        confidence = similarity + (0.05 IF agenda_overlap)
+        LINK(resolution → proposal, confidence)
+```
+
+## Generated Website Structure
+
+| Page | Purpose |
+|------|---------|
+| `index.html` | Dashboard with pattern × signal matrix |
+| `documents/index.html` | All documents grouped by pattern |
+| `documents/{symbol}.html` | Individual document detail |
+| `signals/{signal}.html` | Documents with specific signal |
+| `patterns/{pattern}.html` | Documents matching pattern |
+| `matrix/{pattern}_{signal}.html` | Pattern × signal intersection |
+| `data.json` | Machine-readable metadata |
+| `search-index.json` | Client-side search index |
+
+## Dependencies
+
+**Core:**
+- `requests` - HTTP requests to UN API
+- `pymupdf` - PDF text extraction
+- `pyyaml` - YAML configuration parsing
+- `jinja2` - HTML template rendering
+- `rapidfuzz` - Fuzzy string matching
+
+**Development:**
+- `pytest` - Testing framework
+- `pytest-mock` - Mocking support
+
+**Optional (web interface):**
+- `fastapi` - Web API framework
+- `uvicorn` - ASGI server
+
+## Testing
+
+```bash
+# Run all tests
+pytest tests/
+
+# Run with verbose output
+pytest tests/ -v
+
+# Run only integration tests (real API calls)
+pytest tests/ -m integration
+
+# Run with coverage
+pytest tests/ --cov=src/mandate_pipeline
+```
+
+## Extending the System
+
+### Add New Document Patterns
+
+Edit `config/patterns.yaml`:
+
+```yaml
+patterns:
+  - name: "Security Council resolutions"
+    template: "S/RES/{number}"
+    start: 2700
+```
+
+### Add New Signals
+
+Edit `config/checks.yaml`:
+
+```yaml
+checks:
+  - signal: "budget"
+    phrases:
+      - "programme budget implications"
+      - "financial implications"
+      - "appropriation"
+```
+
+### Custom Extraction
+
+Extend `src/mandate_pipeline/extractor.py` to parse additional data from PDFs.
+
+### Custom Reports
+
+Extend `src/mandate_pipeline/static_generator.py` to generate additional HTML pages or exports.
+
+## License
+
+MIT License
