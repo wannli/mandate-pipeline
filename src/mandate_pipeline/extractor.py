@@ -89,7 +89,6 @@ def extract_title(text: str) -> str:
         "General Assembly",
         "Security Council",
         "Distr.",
-        "General",
     )
     skip_regexes = [
         r"^[A-Z]{1,2}/[A-Z0-9./-]+$",
