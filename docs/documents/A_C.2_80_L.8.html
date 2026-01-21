@@ -171,6 +171,10 @@
     
 
     
+        
+            
+        
+    
 
     
 
@@ -193,6 +197,13 @@
                 bg-blue-100 text-blue-700 hover:bg-blue-200
                 ">
             agenda signal
+        </button>
+        
+        <button onclick="highlightSignal('PGA signal')" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                bg-purple-100 text-purple-700 hover:bg-purple-200
+                ">
+            PGA signal
         </button>
         
         <button onclick="highlightSignal('Secretariat signal')" 
@@ -921,7 +932,7 @@
     
     <div id="para-44" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         data-signals='["PGA signal"]'>
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -930,6 +941,16 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Invites the President of the General Assembly to hold a one-day informal interactive dialogue of the Assembly on commodity markets during the first half of 2026, within existing resources, to review world commodity trends and prospects and possible strategies for economic and export diversification, as well as value addition for sustainable development, particularly in commodity-dependent developing countries, with the aim of sharing experiences and lessons learned, on a date and in a format to be decided by the President of the Assembly;</p>
+                
+                <div class="mt-3 flex flex-wrap gap-2">
+                    
+                    <span class="px-2 py-0.5 rounded text-xs font-medium
+                        bg-purple-100 text-purple-700
+                        ">
+                        PGA signal
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>

@@ -139,6 +139,10 @@
     
 
     
+        
+            
+        
+    
 
     
         
@@ -159,6 +163,13 @@
                 bg-blue-100 text-blue-700 hover:bg-blue-200
                 ">
             agenda signal
+        </button>
+        
+        <button onclick="highlightSignal('PGA signal')" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                bg-purple-100 text-purple-700 hover:bg-purple-200
+                ">
+            PGA signal
         </button>
         
         <button onclick="highlightSignal('all')" class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium bg-slate-900 text-white">
@@ -601,7 +612,7 @@
     
     <div id="para-24" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         data-signals='["PGA signal"]'>
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -610,6 +621,16 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Encourages all countries, intergovernmental bodies, organizations of the United Nations system, relevant non-governmental organizations and all other relevant stakeholders to give due consideration to the contribution of culture to the achievement of sustainable development in the formulation of national, regional and international development policies and international cooperation instruments, and in this regard, building upon the discussion at the previous high-level event on culture and sustainable development, invites the President of the General Assembly to host a one-day high-level interactive dialogue on this subject, within existing resources, during the eighty-first session of the Assembly, and to invite the United Nations Educational, Scientific and Cultural Organization to support the President of the Assembly, within its existing mandates;</p>
+                
+                <div class="mt-3 flex flex-wrap gap-2">
+                    
+                    <span class="px-2 py-0.5 rounded text-xs font-medium
+                        bg-purple-100 text-purple-700
+                        ">
+                        PGA signal
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>

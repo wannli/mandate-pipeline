@@ -10,3 +10,8 @@ checks:
     signal: "Secretariat signal"
     phrases:
       - "Secretariat"
+
+  - title: "PGA"
+    signal: "PGA signal"
+    phrases:
+      - "President of the General Assembly"

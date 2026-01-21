@@ -1,0 +1,3356 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PGA - Mandate Pipeline</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        un: {
+                            blue: '#009edb',
+                            dark: '#1a365d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body class="h-full bg-slate-50">
+    <div class="min-h-full">
+        <!-- Navigation -->
+        <nav class="bg-gradient-to-r from-slate-900 to-slate-800 shadow-lg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex items-center space-x-8">
+                        <a href="./index.html" class="flex items-center space-x-2">
+                            <svg class="w-8 h-8 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            <span class="text-white font-bold text-lg">Mandate Pipeline</span>
+                        </a>
+                        <div class="hidden md:flex items-center space-x-1">
+                            <a href="../index.html" class="text-slate-300 hover:text-white hover:bg-slate-700 px-3 py-2 rounded-md text-sm font-medium transition-colors">Dashboard</a>
+                            <a href="../documents/index.html" class="text-slate-300 hover:text-white hover:bg-slate-700 px-3 py-2 rounded-md text-sm font-medium transition-colors">Documents</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main content -->
+        <main class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            
+<!-- Header -->
+<div class="mb-6">
+    <div class="flex items-center gap-2 text-sm text-slate-500 mb-2">
+        <a href="../index.html" class="hover:text-sky-600">Dashboard</a>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        <span class="text-slate-900">PGA</span>
+    </div>
+    <h1 class="text-3xl font-bold text-slate-900">PGA</h1>
+    <p class="mt-2 text-slate-600">56 documents with "PGA signal"</p>
+</div>
+
+<!-- Check Info -->
+<div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 mb-6">
+    <h2 class="text-sm font-medium text-slate-700 mb-2">Matching Phrases</h2>
+    <div class="flex flex-wrap gap-2">
+        
+        <span class="px-3 py-1 rounded-lg text-sm bg-slate-100 text-slate-700 font-mono">
+            "President of the General Assembly"
+        </span>
+        
+    </div>
+</div>
+
+<!-- Documents with this signal -->
+
+<div class="space-y-4">
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.1_80_L.15.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.1/80/L.15
+                </a>
+                <span class="text-sm text-slate-500">
+                    2 matching paragraphs
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.1_80_L.15.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.1%2F80%2FL.15/pdf/A%2FC.1%2F80%2FL.15.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.1_80_L.15.html#para-9"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #9
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Reiterates its request to the President of the General Assembly to organize, on 26 September every year, a one-day high-level plenary meeting of the Assembly to commemorate and promote the International Day for the Total Elimination of Nuclear Weapons;
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.1_80_L.15.html#para-10"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #10
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Decides that the aforementioned high-level plenary meeting shall be held with the participation of Member and observer States, represented at the highest possible level, as well as with the participation of the President of the General Assembly and the Secretary-General;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.2_80_L.5.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.2/80/L.5
+                </a>
+                <span class="text-sm text-slate-500">
+                    6 matching paragraphs
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.2_80_L.5.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.2%2F80%2FL.5/pdf/A%2FC.2%2F80%2FL.5.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.5.html#para-42"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #42
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Takes note of the benefits of updating the existing General Assembly resolutions on smooth transition, and requests the President of the General Assembly to establish an open-ended ad hoc working group of Member States on the smooth transition for countries graduating from the list of least developed countries to carry out an inclusive and transparent process to review and update the existing resolutions on smooth transition and support to graduating least developed countries and recently graduated countries;
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.5.html#para-57"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #57
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Requests the President of the General Assembly to organize, in 2026, a one-day special thematic event, with the participation of Member States, non-governmental organizations, civil society, the private sector and academic institutions, in order to provide input to the comprehensive high-level midterm review;
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.5.html#para-58"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #58
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Requests the President of the General Assembly at its eighty-first session to appoint two co-facilitators, one from a developed country and one from a developing country, to oversee and direct informal intergovernmental consultations on all issues relating to the review and its preparatory process;
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.5.html#para-62"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #62
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Further decides that the opening plenary meeting of the midterm review will include statements by the President of the midterm review, the Secretary-General of the United Nations, the President of the General Assembly, the President of the Economic and Social Council, the former and current Chairs of the Group of Least Developed Countries, the President of the European Commission, the President of the World Bank Group and one representative each from civil society and the private sector;
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.5.html#para-66"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #66
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Requests the President of the General Assembly to organize a four-day preparatory meeting of experts, to be chaired by the co-facilitators, with interpretation services, no later than January 2027, with a view to considering the draft outcome document;
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.5.html#para-77"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #77
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Stresses, while recognizing the intergovernmental nature of the comprehensive midterm review, the importance of the effective, well-structured and broad participation of all relevant stakeholders, including parliamentarians, civil society and the private sector, in the midterm review, including national and regional reviews and thematic preparations, as well as in the interactive thematic round tables and side events during the midterm review, underlines that intergovernmental mechanisms at the global and regional levels, including those of the United Nations regional commissions, as well as relevant substantive material and statistical data, should be effectively utilized in the review process, and decides: (a) To invite non-governmental organizations that are in consultative status with the Economic and Social Council to register with the Secretariat in order to participate in the comprehensive midterm review; (b) To invite other relevant stakeholders, including organizations and bodies of the United Nations system, international financial institutions, civil society organizations, the private sector, other international bodies and other non-governmental organizations to participate as observers in the midterm review; (c) To request the President of the General Assembly to draw up a list of representatives of other relevant non-governmental organizations, civil society organizations, academic institutions and the private sector who may participate in the midterm review, taking into account the principles of transparency and of equitable geographical representation and with due regard for gender parity and to submit the proposed list to Member States for their consideration on a non-objection basis and bring the list to the attention of the Assembly for a final decision by the Assembly on participation in the midterm review;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.2_80_L.8.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.2/80/L.8
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.2_80_L.8.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.2%2F80%2FL.8/pdf/A%2FC.2%2F80%2FL.8.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.8.html#para-44"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #44
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Invites the President of the General Assembly to hold a one-day informal interactive dialogue of the Assembly on commodity markets during the first half of 2026, within existing resources, to review world commodity trends and prospects and possible strategies for economic and export diversification, as well as value addition for sustainable development, particularly in commodity-dependent developing countries, with the aim of sharing experiences and lessons learned, on a date and in a format to be decided by the President of the Assembly;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.2_80_L.11.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.2/80/L.11
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.2_80_L.11.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.2%2F80%2FL.11/pdf/A%2FC.2%2F80%2FL.11.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.11.html#para-30"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #30
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Invites, in this regard, the President of the General Assembly and the Secretary-General to give appropriate consideration to the central role of maintaining and facilitating the financial and macroeconomic stability of developing countries, including debt sustainability, and of supporting an appropriately enabling domestic and international economic, financial and regulatory environment for the means of implementation of the 2030 Agenda, including financial inclusion, and in this regard invites all major institutional stakeholders, including the International Monetary Fund, the World Bank and the United Nations Conference on Trade and Development, to support these efforts, in accordance with their respective mandates;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.2_80_L.12.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.2/80/L.12
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.2_80_L.12.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.2%2F80%2FL.12/pdf/A%2FC.2%2F80%2FL.12.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.12.html#para-46"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #46
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Reiterates the invitation to the President of the General Assembly and the Secretary-General to give appropriate consideration to the central role of maintaining and facilitating the financial and macroeconomic stability of developing countries, A/C.2/80/L.12 25-16556 12/13 including debt sustainability, and of supporting an appropriately enabling domestic and international economic, financial and regulatory environment for the means of implementation of the 2030 Agenda, and in this regard invites all major institutional stakeholders, including the International Monetary Fund, the World Bank and the United Nations Conference on Trade and Development, to support these efforts, in accordance with their respective mandates;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.2_80_L.14.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.2/80/L.14
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.2_80_L.14.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.2%2F80%2FL.14/pdf/A%2FC.2%2F80%2FL.14.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.14.html#para-17"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #17
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Invites the President of the General Assembly to convene a meeting during the eighty-first session of the Assembly, within existing resources and in a format decided by the President, to discuss the support needed in pursuing the middle-income countries agenda, including the advancement of a strategic plan of action, as called for in the 2024 Rabat Declaration on Middle-Income Countries and reaffirmed in the 2025 Makati Declaration on Middle-Income Countries, that would guide development cooperation with middle-income countries and support national strategies to achieve sustainable development, and requests the Secretary-General to consider these discussions in the drafting of his report on the implementation of the present resolution;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.2_80_L.16.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.2/80/L.16
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.2_80_L.16.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.2%2F80%2FL.16/pdf/A%2FC.2%2F80%2FL.16.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.16.html#para-3"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #3
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Notes the results of the high-level meeting on sustainable transport convened by the President of the General Assembly on 17 April 2024, during the United Nations Sustainability Week, as well as the multi-stakeholder consultations conducted in 2024 and 2025, which provided political momentum and comprehensive inputs toward shaping the implementation plan for the Decade;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.2_80_L.17.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.2/80/L.17
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.2_80_L.17.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.2%2F80%2FL.17/pdf/A%2FC.2%2F80%2FL.17.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.17.html#para-65"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #65
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Decides to finalize the modalities for the overall review by the General Assembly of the implementation of the outcomes of the World Summit on the Information Society, in accordance with paragraph 71 of General Assembly resolution 70/125, and notes the appointment by the President of the General Assembly of two co-facilitators to convene open intergovernmental consultations for that purpose, involving the input and participation of all stakeholders in the review process, including in the preparatory process;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.2_80_L.18.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.2/80/L.18
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.2_80_L.18.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.2%2F80%2FL.18/pdf/A%2FC.2%2F80%2FL.18.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.18.html#para-51"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #51
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Requests the President of the General Assembly to convene, during the eightieth session of the Assembly, a meeting on science, technology and innovation for development with a special focus on actions to address the needs of developing countries in those fields, and requests the Secretary-General to consider these discussions in the drafting of his report on the implementation of the present resolution;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.2_80_L.19.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.2/80/L.19
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.2_80_L.19.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.2%2F80%2FL.19/pdf/A%2FC.2%2F80%2FL.19.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.19.html#para-24"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #24
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Encourages all countries, intergovernmental bodies, organizations of the United Nations system, relevant non-governmental organizations and all other relevant stakeholders to give due consideration to the contribution of culture to the achievement of sustainable development in the formulation of national, regional and international development policies and international cooperation instruments, and in this regard, building upon the discussion at the previous high-level event on culture and sustainable development, invites the President of the General Assembly to host a one-day high-level interactive dialogue on this subject, within existing resources, during the eighty-first session of the Assembly, and to invite the United Nations Educational, Scientific and Cultural Organization to support the President of the Assembly, within its existing mandates;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.2_80_L.22.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.2/80/L.22
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.2_80_L.22.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.2%2F80%2FL.22/pdf/A%2FC.2%2F80%2FL.22.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.22.html#para-14"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #14
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Recalls the convening of the joint thematic event by the President of the General Assembly and the President of the Economic and Social Council entitled “El Niño 2023–2024: Actions for the safety, sustainability, and resilience of people and the planet” on 30 April 2024;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.2_80_L.23.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.2/80/L.23
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.2_80_L.23.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.2%2F80%2FL.23/pdf/A%2FC.2%2F80%2FL.23.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.23.html#para-47"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #47
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Invites the President of the General Assembly, the President of the Economic and Social Council, the Secretary-General and the United Nations Office on Drugs and Crime to give appropriate consideration to the importance of combating illicit financial flows and strengthening good practices on asset return to foster sustainable development, calls upon the relevant organizations of the United Nations system, within their respective mandates and resources, to continue their consideration of the negative impact of illicit financial flows on financing the 2030 Agenda based on its indicator 16.4.1 and to coordinate their efforts to further explore policy responses to the phenomenon, and in this regard invites all other relevant international institutions to support these efforts, in accordance with their respective mandates;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.2_80_L.35.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.2/80/L.35
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.2_80_L.35.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.2%2F80%2FL.35/pdf/A%2FC.2%2F80%2FL.35.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.35.html#para-38"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #38
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Welcomes the convening of the global stocktake, marking the completion of the United Nations Decade of Sustainable Energy for All (2014–2024), to further accelerate the implementation of Sustainable Development Goal 7, held on 19 April 2024, by the President of the General Assembly, and notes with appreciation his call to action, in this regard;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.2_80_L.39.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.2/80/L.39
+                </a>
+                <span class="text-sm text-slate-500">
+                    2 matching paragraphs
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.2_80_L.39.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.2%2F80%2FL.39/pdf/A%2FC.2%2F80%2FL.39.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.39.html#para-4"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #4
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Recalls the convening of a high-level interactive dialogue on sand and dust storms, held at Headquarters in New York on 16 July 2018, to discuss action-oriented recommendations and address the challenges faced by the affected countries, including ways to improve policy coordination at the global level to tackle those challenges in the context of the Sustainable Development Goals, during which the continuing need to confront the challenges presented by sand and dust storms was highlighted, and also recalls the convening of the high-level meeting on sand and dust storms, by the President of the General Assembly at the seventy-ninth session of the Assembly, in collaboration with the United Nations Coalition on Combating Sand and Dust Storms, in the General Assembly Hall, at United Nations Headquarters in New York, held on 10 July 2025 in the context of the International Day of Combating Sand and Dust Storms, to discuss the challenges faced by affected countries to further practical actions at the regional and global levels;
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.39.html#para-25"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #25
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Emphasizes the importance of reviewing the implementation of the United Nations Decade on Combating Sand and Dust Storms at its eighty-fourth session, as a means to assess progress made and identify challenges encountered, with a view to enhancing international cooperation and support for affected countries and providing timely opportunities to advance discussion on the matter, including the convening of the first United Nations Conference on Combating Sand and Dust Storms under the auspices of the President of the General Assembly,
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.2_80_L.47.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.2/80/L.47
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.2_80_L.47.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.2%2F80%2FL.47/pdf/A%2FC.2%2F80%2FL.47.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.47.html#para-54"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #54
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Requests the President of the General Assembly to convene, during the eightieth session of the Assembly, a meeting on science, technology and innovation for development with a special focus on actions to address the needs of developing countries in those fields, in conjunction with the multi-stakeholder forum on science, technology and innovation for the Sustainable Development Goals, and requests the Secretary-General to consider these discussions in the drafting of his report on the implementation of the present resolution;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.2_80_L.48.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.2/80/L.48
+                </a>
+                <span class="text-sm text-slate-500">
+                    4 matching paragraphs
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.2_80_L.48.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.2%2F80%2FL.48/pdf/A%2FC.2%2F80%2FL.48.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.48.html#para-63"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #63
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Requests the President of the General Assembly and the President of the Economic and Social Council, within existing mandate and resources, to jointly organize, in 2026, a one-day special thematic event, with the participation of Member States, observer States and observers, non-governmental organizations, civil society, the private sector and academic institutions, in order to provide input to the comprehensive high-level midterm review;
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.48.html#para-64"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #64
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Requests the President of the General Assembly at its eighty-first session to appoint two co-facilitators, one from a developed country and one from a developing country, to oversee and direct informal intergovernmental consultations on all issues relating to the review and its preparatory process within existing mandate and resources;
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.48.html#para-71"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #71
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Requests the co-facilitators to organize a two-day preparatory meeting in New York, to be convened by the President of the General Assembly, within existing resources, no later than January 2027, with a view to considering the draft outcome document;
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.48.html#para-79"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #79
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Stresses, while recognizing the intergovernmental nature of the comprehensive midterm review, the importance of the effective, well-structured and broad participation of all relevant stakeholders, including parliamentarians, civil society and the private sector, in the midterm review, including national and regional reviews and thematic preparations, as well as in the interactive thematic round tables and side events during the midterm review, underlines that intergovernmental mechanisms at the global and regional levels, including those of the United Nations regional commissions, as well as relevant substantive material and statistical data, should be effectively utilized in the review process, and decides: (a) To invite non-governmental organizations that are in consultative status with the Economic and Social Council to register with the Secretariat in order to participate in the comprehensive midterm review; (b) To invite other relevant stakeholders, including organizations and bodies of the United Nations system, international financial institutions, civil society organizations, the private sector, other international bodies and other non- governmental organizations to participate as observers in the midterm review; (c) To request the President of the General Assembly to draw up a list of representatives of other relevant non-governmental organizations, civil society organizations, academic institutions and the private sector who may participate in the midterm review, taking into account the principles of transparency and of equitable geographical representation and with due regard for gender parity and to submit the proposed list to Member States for their consideration on a non-objection basis and bring the list to the attention of the Assembly for a final decision by the Assembly on participation in the midterm review;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.2_80_L.50.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.2/80/L.50
+                </a>
+                <span class="text-sm text-slate-500">
+                    2 matching paragraphs
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.2_80_L.50.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.2%2F80%2FL.50/pdf/A%2FC.2%2F80%2FL.50.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.50.html#para-4"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #4
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Also recalls the convening of the high-level meeting on sand and dust storms, by the President of the General Assembly at the seventy-ninth session of the Assembly, in collaboration with the United Nations Coalition on Combating Sand and Dust Storms, in the General Assembly Hall, at United Nations Headquarters in New York, held on 10 July 2025 in the context of the International Day of Combating Sand and Dust Storms, at which participants discussed the challenges faced by affected countries to further practical actions at the regional and global levels;
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.50.html#para-24"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #24
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Emphasizes the importance of reviewing the implementation of the United Nations Decade on Combating Sand and Dust Storms at its eighty-fourth session, as a means to assess progress made and identify challenges encountered, with a view to enhancing international cooperation and support for affected countries and providing timely opportunities to advance discussion on the matter, including through the convening of a high-level ministerial meeting on the mid-term review of the Decade, under the auspices of the President of the General Assembly, through voluntary contributions and without duplication of effort, to advance international cooperation and support for affected countries and to discuss their challenges, needs and priorities, including ways to enhance regional and global policy coordination, in coordination with the United Nations Coalition on Combating Sand and Dust Storms and other relevant United Nations entities, which will result in a summary of the proceedings to be prepared by the President of the General Assembly as its outcome document;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.2_80_L.52.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.2/80/L.52
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.2_80_L.52.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.2%2F80%2FL.52/pdf/A%2FC.2%2F80%2FL.52.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.52.html#para-44"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #44
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Invites the President of the General Assembly to hold a one-day informal interactive dialogue of the Assembly on commodity markets during the first half of 2026, within existing resources, to review world commodity trends and prospects and possible strategies for economic and export diversification, as well as value addition for sustainable development, particularly in commodity-dependent developing countries, with the aim of sharing experiences and lessons learned, on a date and in a format to be decided by the President of the Assembly;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.2_80_L.55.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.2/80/L.55
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.2_80_L.55.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.2%2F80%2FL.55/pdf/A%2FC.2%2F80%2FL.55.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.55.html#para-17"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #17
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Invites the President of the General Assembly to convene a meeting during the eighty-first session of the Assembly, within existing resources and in a format decided by the President, to discuss the support needed in pursuing the middle-income countries agenda, including the advancement of a strategic plan of action, as called for in the 2024 Rabat Declaration on Middle-Income Countries and reaffirmed in the 2025 Makati Declaration on Middle-Income Countries, that would guide development cooperation with middle-income countries and support national strategies to achieve sustainable development, and requests the Secretary-General to consider these discussions in the drafting of his report on the implementation of the present resolution;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.2_80_L.56.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.2/80/L.56
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.2_80_L.56.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.2%2F80%2FL.56/pdf/A%2FC.2%2F80%2FL.56.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.56.html#para-4"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #4
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Takes note of the recommendation contained in the report of the Administrator of the United Nations Development Programme on a review of the outcome document of the second High-level Conference, and requests the President of the General Assembly to appoint two co-facilitators, one from a developing country and one from a developed country, at the eightieth session of the Assembly to facilitate an intergovernmental process on the modalities of the review of the outcome document of the Conference, within existing resources;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.2_80_L.58.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.2/80/L.58
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.2_80_L.58.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.2%2F80%2FL.58/pdf/A%2FC.2%2F80%2FL.58.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.2_80_L.58.html#para-66"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #66
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Takes note of the modalities resolution for the overall review by the General Assembly of the implementation of the outcomes of the World Summit on the Information Society, as contained in General Assembly resolution 79/277, and notes the appointment by the President of the General Assembly of two co-facilitators to convene open intergovernmental consultations, involving the input and participation of all stakeholders in the review process, including in the preparatory process;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.3_80_L.3.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.3/80/L.3
+                </a>
+                <span class="text-sm text-slate-500">
+                    2 matching paragraphs
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.3_80_L.3.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.3%2F80%2FL.3/pdf/A%2FC.3%2F80%2FL.3.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.3_80_L.3.html#para-21"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #21
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Invites the President of the General Assembly, in cooperation with the United Nations Office on Drugs and Crime and with the involvement of relevant stakeholders, to hold, within existing resources and during the eightieth session, a high-level debate on the theme “Preventing and combating illicit trafficking in A/C.3/80/L.3 25-16593 16/24 wildlife” and to prepare a summary of the discussion for transmission to the Commission on Crime Prevention and Criminal Justice and to all Member States;
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.3_80_L.3.html#para-22"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #22
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Also invites the President of the General Assembly, in cooperation with the United Nations Office on Drugs and Crime and with the involvement of relevant stakeholders, to hold, within existing resources and during the eighty-first session, a high-level debate on the theme “Advancing justice for children in all rule of law efforts” and to prepare a summary of the discussion for transmission to the Commission on Crime Prevention and Criminal Justice and to all Member States;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.3_80_L.4.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.3/80/L.4
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.3_80_L.4.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.3%2F80%2FL.4/pdf/A%2FC.3%2F80%2FL.4.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.3_80_L.4.html#para-6"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #6
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Reaffirms its request to the Secretary-General and to the President of the General Assembly, in close cooperation and coordination with Member States, to take all appropriate measures to arrange the high-level meeting;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.3_80_L.17.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.3/80/L.17
+                </a>
+                <span class="text-sm text-slate-500">
+                    3 matching paragraphs
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.3_80_L.17.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.3%2F80%2FL.17/pdf/A%2FC.3%2F80%2FL.17.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.3_80_L.17.html#para-55"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #55
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Takes note with appreciation of the summary reports of the three informal interactive hearings on possible further measures necessary to enhance the participation of Indigenous Peoples’ representatives and institutions in relevant United Nations meetings on issues affecting them, held at United Nations Headquarters on 17 April 2018, 25 April 2019 and 20 April 2023, recalls General Assembly resolution 70/232, whereby the Assembly requested the President of the General Assembly to conduct timely, inclusive, representative and transparent consultations with Member States, Indigenous Peoples’ representatives and institutions from all regions of the world, and existing relevant mechanisms of the United Nations, on the possible measures necessary, including procedural and institutional steps and accreditation criteria, to enable the participation of Indigenous Peoples’ representatives and institutions in meetings of relevant United Nations bodies on issues affecting them, and also recalls Assembly resolutions 71/321 and 77/203, whereby the Assembly decided to continue the consideration of possible further measures necessary to enhance the participation of Indigenous Peoples’ __________________ 44 A/75/255. A/C.3/80/L.17 15/15 25-16913 representatives and institutions in relevant United Nations meetings on issues affecting them at the seventy-eighth session, as originally requested in resolution 71/321;
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.3_80_L.17.html#para-56"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #56
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Congratulates the President of the General Assembly for convening a successful and productive high-level event to commemorate the tenth anniversary of the adoption of the outcome document of the high-level plenary meeting of the General Assembly known as the World Conference on Indigenous Peoples in order to raise awareness of the importance of pursuing its objectives;
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.3_80_L.17.html#para-60"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #60
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Decides to initiate, at the high-level panel, a discussion on the organization of the Second World Conference on Indigenous Peoples, to be held in 2028, and invites the President of the General Assembly, at its eighty-first session, to conduct open-ended consultations with Member States and representatives of Indigenous Peoples within the framework of the Permanent Forum on Indigenous Issues, as well as with the Expert Mechanism on the Rights of Indigenous Peoples and the Special Rapporteur, in order to determine the modalities for the meeting, including the participation of Indigenous Peoples in the Conference;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.3_80_L.55.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.3/80/L.55
+                </a>
+                <span class="text-sm text-slate-500">
+                    3 matching paragraphs
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.3_80_L.55.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.3%2F80%2FL.55/pdf/A%2FC.3%2F80%2FL.55.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.3_80_L.55.html#para-54"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #54
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Decides to hold a one-day high-level meeting to mark the twenty-fifth anniversary of the adoption of the Durban Declaration and Programme of Action, to be convened by the President of the General Assembly in collaboration with the Office of the United Nations High Commissioner for Human Rights and at the level of Heads of State and Government, by no later than the last day of the general debate of the Assembly at its eighty-first session, on the theme “Mobilizing global public support for the full and effective implementation of the Durban Declaration and Programme of Action”, and to adopt a succinct political declaration aimed at mobilizing political will at the national, regional and international levels for the full and effective implementation of and follow-up to the Durban Declaration and Programme of Action;
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.3_80_L.55.html#para-55"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #55
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Recommends that the President of the General Assembly appoint two co-facilitators to present options and modalities for the high-level meeting, as well as the political declaration;
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.3_80_L.55.html#para-65"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #65
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Requests the President of the General Assembly and the President of the Human Rights Council to continue to convene annual commemorative meetings of the Assembly and the Council during the commemoration of the International Day for the Elimination of Racial Discrimination, with the appropriate focus and themes, and in this context encourages the participation of Member States, eminent personalities active in the struggle against racial discrimination, and civil society organizations in accordance with the rules of procedure of the Assembly and the Council, respectively;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.4_80_L.5.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.4/80/L.5
+                </a>
+                <span class="text-sm text-slate-500">
+                    2 matching paragraphs
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.4_80_L.5.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.4%2F80%2FL.5/pdf/A%2FC.4%2F80%2FL.5.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.4_80_L.5.html#para-5"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #5
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Requests the President of the General Assembly to organize, on 18 December 2025, a one-day high-level plenary meeting of the General Assembly to commemorate the sixty-fifth anniversary of the Declaration on the Granting of Independence to Colonial Countries and Peoples, with the participation of Member States and observers, as well as of the President of the General Assembly, the President of the Economic and Social Council and the Secretary-General, as part of activities to mark the observance of the International Day for the first time; __________________ 1 Resolution 217 A (III). 2 Resolution 1514 (XV). A/C.4/80/L.5 3/3 25-16303
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.4_80_L.5.html#para-6"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #6
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Invites the President of the General Assembly to organize, each 14 December thereafter, should it not fall on a weekend, an informal plenary meeting of the General Assembly to commemorate and promote the International Day, with the participation of Member States and observers, as well as of the President of the General Assembly, the President of the Economic and Social Council and the Secretary-General;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.5_80_L.9.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.5/80/L.9
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.5_80_L.9.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.5%2F80%2FL.9/pdf/A%2FC.5%2F80%2FL.9.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.5_80_L.9.html#para-8"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #8
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Recognizes the efforts of the President of the General Assembly and the Chair of the Fifth Committee in following up with the Chairs of the relevant Main Committees on the consideration of the programmes without recommendations from the Committee for Programme and Coordination, in accordance with paragraph 8 of its resolution 79/247, and reiterates that incoming Presidents of the General Assembly __________________ 3 A/80/6 (Plan outline), A/80/6 (Sect. 2), A/80/6 (Sect. 3), A/80/6 (Sect. 4), A/80/6 (Sect. 5), A/80/6 (Sect. 6), A/80/6 (Sect. 8), A/80/6 (Sect. 9), A/80/6 (Sect. 10), A/80/6 (Sect. 11), A/80/6 (Sect. 12), A/80/6 (Sect. 13), A/80/6 (Sect. 14), A/80/6 (Sect. 15), A/80/6 (Sect. 16), A/80/6 (Sect. 17), A/80/6 (Sect. 18), A/80/6 (Sect. 19), A/80/6 (Sect. 20), A/80/6 (Sect. 21), A/80/6 (Sect. 22), A/80/6 (Sect. 24), A/80/6 (Sect. 24)/Corr.1, A/80/6 (Sect. 25), A/80/6 (Sect. 26), A/80/6 (Sect. 27), A/80/6 (Sect. 28), A/80/6 (Sect. 29), A/80/6 (Sect. 29A), A/80/6 (Sect. 29B), A/80/6 (Sect. 29C), A/80/6 (Sect. 29D), A/80/6 (Sect. 29E), A/80/6 (Sect. 29F), A/80/6 (Sect. 30), A/80/6 (Sect. 31) and A/80/6 (Sect. 34). 4 A/C.5/80/10. 5 A/C.5/80/12. 6 A/C.5/80/13. 7 A/C.5/80/11. A/C.5/80/L.9 3/3 25-20795 and Chairs of the Fifth Committee shall reach out to and support the Chairs of the Main Committees to ensure that conclusions and recommendations are issued on time;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_C.5_80_L.19.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/C.5/80/L.19
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_C.5_80_L.19.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.5%2F80%2FL.19/pdf/A%2FC.5%2F80%2FL.19.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_C.5_80_L.19.html#para-35"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #35
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Commends the Department for General Assembly and Conference Management and the President of the General Assembly for organizing a training session on accessibility and sensitivity awareness for Secretariat staff and delegates of Member States and observers, and invites the Secretary-General to continue such efforts in future, within existing resources; III Enhancing integrated global management, leveraging technology and measuring the quality of conference services
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_1.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/1
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_1.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F1/pdf/A%2FRES%2F80%2F1.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_1.html#para-2"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #2
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Also decides that, in addition to the records of the general debate of the General Assembly at its eightieth session, the President of the General Assembly will circulate as a document of the Assembly the statement referred to in paragraph 1 (a) above, delivered by means of a pre‑recorded statement during the general debate and submitted to the President no later than the day on which the pre‑recorded statement is played in the Assembly Hall;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_80_L.2.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/80/L.2
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_80_L.2.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2F80%2FL.2/pdf/A%2F80%2FL.2.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_80_L.2.html#para-2"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #2
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Also decides that, in addition to the records of the general debate of the General Assembly at its eightieth session, the President of the General Assembly will circulate as a document of the Assembly the statement delivered by the Head of State by means of a pre-recorded statement during the general debate and submitted to the President no later than the day on which the pre-recorded statement is played in the Assembly Hall;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_80_L.3.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/80/L.3
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_80_L.3.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2F80%2FL.3/pdf/A%2F80%2FL.3.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_80_L.3.html#para-9"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #9
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Requests the President of the General Assembly to convene, within existing resources, on 24 April 2026, a special commemorative meeting of the Assembly in observance of the fortieth anniversary of the Chernobyl disaster;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_8.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/8
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_8.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F8/pdf/A%2FRES%2F80%2F8.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_8.html#para-8"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #8
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Requests the Secretary-General and the President of the General Assembly to promote the observance of the Olympic Truce among Member States and support for human development initiatives through sport and to continue to cooperate effectively with the International Olympic Committee, the International Paralympic Committee and the sporting community in general in the realization of those objectives;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_80_L.10.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/80/L.10
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_80_L.10.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2F80%2FL.10/pdf/A%2F80%2FL.10.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_80_L.10.html#para-8"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #8
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Requests the Secretary-General and the President of the General Assembly to promote the observance of the Olympic Truce among Member States and support for human development initiatives through sport and to continue to cooperate effectively with the International Olympic Committee, the International Paralympic Committee and the sporting community in general in the realization of those objectives;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_80_L.27.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/80/L.27
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_80_L.27.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2F80%2FL.27/pdf/A%2F80%2FL.27.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_80_L.27.html#para-12"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #12
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Requests the President of the General Assembly to convene, within existing resources, on 24 April 2026, a special commemorative meeting of the Assembly in observance of the fortieth anniversary of the Chornobyl disaster;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_49.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/49
+                </a>
+                <span class="text-sm text-slate-500">
+                    2 matching paragraphs
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_49.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F49/pdf/A%2FRES%2F80%2F49.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_49.html#para-9"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #9
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Reiterates its request to the President of the General Assembly to organize, on 26 September every year, a one-day high-level plenary meeting of the Assembly to commemorate and promote the International Day for the Total Elimination of Nuclear Weapons;
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_49.html#para-10"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #10
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Decides that the aforementioned high-level plenary meeting shall be held with the participation of Member and observer States, represented at the highest possible level, as well as with the participation of the President of the General Assembly and the Secretary-General;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_106.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/106
+                </a>
+                <span class="text-sm text-slate-500">
+                    2 matching paragraphs
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_106.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F106/pdf/A%2FRES%2F80%2F106.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_106.html#para-5"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #5
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Requests the President of the General Assembly to organize, on 18 December 2025, a one-day high-level plenary meeting of the General Assembly to commemorate the sixty-fifth anniversary of the Declaration on the Granting of Independence to Colonial Countries and Peoples, with the participation of Member States and observers, as well as of the President of the General Assembly, the President of the Economic and Social Council and the Secretary-General, as part of activities to mark the observance of the International Day for the first time;
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_106.html#para-6"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #6
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Invites the President of the General Assembly to organize, each 14 December thereafter, should it not fall on a weekend, an informal plenary meeting _______________ 2 Resolution 1514 (XV). International Day against Colonialism in All Its Forms and Manifestations A/RES/80/106 3/3 25-20110 of the General Assembly to commemorate and promote the International Day, with the participation of Member States and observers, as well as of the President of the General Assembly, the President of the Economic and Social Council and the Secretary-General;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_111.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/111
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_111.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F111/pdf/A%2FRES%2F80%2F111.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_111.html#para-12"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #12
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Requests the President of the General Assembly to convene, within existing resources, on 24 April 2026, a special commemorative meeting of the Assembly in observance of the fortieth anniversary of the Chornobyl disaster;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_118.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/118
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_118.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F118/pdf/A%2FRES%2F80%2F118.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_118.html#para-66"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #66
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Takes note of the modalities resolution for the overall review by the General Assembly of the implementation of the outcomes of the World Summit on the Information Society, as contained in General Assembly resolution 79/277, and notes the appointment by the President of the General Assembly of two co-facilitators to convene open intergovernmental consultations, involving the input and participation of all stakeholders in the review process, including in the preparatory process;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_122.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/122
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_122.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F122/pdf/A%2FRES%2F80%2F122.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_122.html#para-34"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #34
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Invites, in this regard, the President of the General Assembly and the Secretary-General to give appropriate consideration to the central role of maintaining and facilitating the financial and macroeconomic stability of developing countries, including debt sustainability, and of supporting an appropriately enabling domestic and international economic, financial and regulatory environment for the means of implementation of the 2030 Agenda, including financial inclusion, and in this regard invites all major institutional stakeholders, including the International Monetary Fund, the World Bank and the United Nations Conference on Trade and Development, to support these efforts, in accordance with their respective mandates;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_123.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/123
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_123.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F123/pdf/A%2FRES%2F80%2F123.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_123.html#para-47"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #47
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Reiterates the invitation to the President of the General Assembly and the Secretary-General to give appropriate consideration to the central role of maintaining and facilitating the financial and macroeconomic stability of developing countries, including debt sustainability, and of supporting an appropriately enabling domestic and international economic, financial and regulatory environment for the means of implementation of the 2030 Agenda, and in this regard invites all major institutional stakeholders, including the International Monetary Fund, the World Bank and the United Nations Conference on Trade and Development, to support these efforts, in accordance with their respective mandates;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_124.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/124
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_124.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F124/pdf/A%2FRES%2F80%2F124.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_124.html#para-44"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #44
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Invites the President of the General Assembly to hold a one-day informal interactive dialogue of the Assembly on commodity markets during the first half of 2026, within existing resources, to review world commodity trends and prospects and possible strategies for economic and export diversification, as well as value addition for sustainable development, particularly in commodity-dependent developing countries, with the aim of sharing experiences and lessons learned, on a date and in a format to be decided by the President of the Assembly;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_126.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/126
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_126.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F126/pdf/A%2FRES%2F80%2F126.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_126.html#para-48"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #48
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Invites the President of the General Assembly, the President of the Economic and Social Council, the Secretary-General and the United Nations Office on Drugs and Crime to give appropriate consideration to the importance of combating illicit financial flows and strengthening good practices on asset return to foster sustainable development, calls upon the relevant organizations of the United Nations system, within their respective mandates and resources, to continue their consideration of the negative impact of illicit financial flows on financing the 2030 Agenda based on its indicator 16.4.1 and to coordinate their efforts to further explore policy responses to the phenomenon, and in this regard invites all other relevant international institutions to support these efforts, in accordance with their respective mandates;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_137.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/137
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_137.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F137/pdf/A%2FRES%2F80%2F137.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_137.html#para-15"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #15
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Recalls the convening of the joint thematic event by the President of the General Assembly and the President of the Economic and Social Council entitled “El Niño 2023–2024: Actions for the safety, sustainability, and resilience of people and the planet” on 30 April 2024;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_142.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/142
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_142.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F142/pdf/A%2FRES%2F80%2F142.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_142.html#para-38"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #38
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Welcomes the convening of the global stocktake, marking the completion of the United Nations Decade of Sustainable Energy for All (2014–2024), to further accelerate the implementation of Sustainable Development Goal 7, held on 19 April 2024, by the President of the General Assembly, and notes with appreciation his call to action, in this regard;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_143.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/143
+                </a>
+                <span class="text-sm text-slate-500">
+                    2 matching paragraphs
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_143.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F143/pdf/A%2FRES%2F80%2F143.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_143.html#para-4"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #4
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Also recalls the convening of the high-level meeting on sand and dust storms, by the President of the General Assembly at the seventy-ninth session of the Assembly, in collaboration with the United Nations Coalition on Combating Sand and Dust Storms, in the General Assembly Hall, at United Nations Headquarters in New York, held on 10 July 2025 in the context of the International Day of Combating Sand and Dust Storms, at which participants discussed the challenges faced by affected countries to further practical actions at the regional and global levels;
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_143.html#para-24"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #24
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Emphasizes the importance of reviewing the implementation of the United Nations Decade on Combating Sand and Dust Storms at its eighty-fourth session, as a means to assess progress made and identify challenges encountered, with a view to enhancing international cooperation and support for affected countries and providing timely opportunities to advance discussion on the matter, including through the convening of a high-level ministerial meeting on the mid-term review of the Decade, under the auspices of the President of the General Assembly, through voluntary contributions and without duplication of effort, to advance international cooperation and support for affected countries and to discuss their challenges, needs and priorities, including ways to enhance regional and global policy coordination, in coordination with the United Nations Coalition on Combating Sand and Dust Storms and other relevant United Nations entities, which will result in a summary of the proceedings to be prepared by the President of the General Assembly as its outcome document;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_147.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/147
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_147.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F147/pdf/A%2FRES%2F80%2F147.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_147.html#para-54"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #54
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Requests the President of the General Assembly to convene, during the eightieth session of the Assembly, a meeting on science, technology and innovation for development with a special focus on actions to address the needs of developing countries in those fields, in conjunction with the multi-stakeholder forum on science, technology and innovation for the Sustainable Development Goals, and requests the Secretary-General to consider these discussions in the drafting of his report on the implementation of the present resolution;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_148.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/148
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_148.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F148/pdf/A%2FRES%2F80%2F148.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_148.html#para-24"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #24
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Encourages all countries, intergovernmental bodies, organizations of the United Nations system, relevant non‑governmental organizations and all other relevant stakeholders to give due consideration to the contribution of culture to the achievement of sustainable development in the formulation of national, regional and international development policies and international cooperation instruments, and in this regard, building upon the discussion at the previous high-level event on culture and sustainable development, invites the President of the General Assembly to host a one-day high-level interactive dialogue on this subject, within existing resources, during the eighty-first session of the Assembly, and to invite the United Nations Educational, Scientific and Cultural Organization to support the President of the Assembly, within its existing mandates; Culture and sustainable development A/RES/80/148 11/11 25-20767
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_149.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/149
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_149.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F149/pdf/A%2FRES%2F80%2F149.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_149.html#para-17"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #17
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Invites the President of the General Assembly to convene a meeting during the eighty-first session of the Assembly, within existing resources and in a format decided by the President, to discuss the support needed in pursuing the middle-income countries agenda, including the advancement of a strategic plan of action, as called for in the 2024 Rabat Declaration on Middle-Income Countries and reaffirmed in the 2025 Makati Declaration on Middle-Income Countries, that would guide development cooperation with middle-income countries and support national strategies to achieve sustainable development, and requests the Secretary-General to consider these discussions in the drafting of his report on the implementation of the present resolution;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_150.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/150
+                </a>
+                <span class="text-sm text-slate-500">
+                    4 matching paragraphs
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_150.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F150/pdf/A%2FRES%2F80%2F150.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_150.html#para-63"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #63
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Requests the President of the General Assembly and the President of the Economic and Social Council, within existing mandate and resources, to jointly organize, in 2026, a one-day special thematic event, with the participation of Member States, observer States and observers, non‑governmental organizations, civil society, the private sector and academic institutions, in order to provide input to the comprehensive high-level midterm review;
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_150.html#para-64"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #64
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Requests the President of the General Assembly at its eighty-first session to appoint two co-facilitators, one from a developed country and one from a developing country, to oversee and direct informal intergovernmental consultations on all issues relating to the review and its preparatory process within existing mandate and resources;
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_150.html#para-71"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #71
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Requests the co-facilitators to organize a two-day preparatory meeting in New York, to be convened by the President of the General Assembly, within existing resources, no later than January 2027, with a view to considering the draft outcome document;
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_150.html#para-79"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #79
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Stresses, while recognizing the intergovernmental nature of the comprehensive midterm review, the importance of the effective, well-structured and broad participation of all relevant stakeholders, including parliamentarians, civil society and the private sector, in the midterm review, including national and regional reviews and thematic preparations, as well as in the interactive thematic round tables and side events during the midterm review, underlines that intergovernmental mechanisms at the global and regional levels, including those of the United Nations regional commissions, as well as relevant substantive material and statistical data, should be effectively utilized in the review process, and decides: (a) To invite non‑governmental organizations that are in consultative status with the Economic and Social Council to register with the Secretariat in order to participate in the comprehensive midterm review; (b) To invite other relevant stakeholders, including organizations and bodies of the United Nations system, international financial institutions, civil society organizations, the private sector, other international bodies and other non‑governmental organizations to participate as observers in the midterm review; (c) To request the President of the General Assembly to draw up a list of representatives of other relevant non‑governmental organizations, civil society organizations, academic institutions and the private sector who may participate in the A/RES/80/150 Follow-up to the Fifth United Nations Conference on the Least Developed Countries 25-20774 18/18 midterm review, taking into account the principles of transparency and of equitable geographical representation and with due regard for gender parity and to submit the proposed list to Member States for their consideration on a non‑objection basis and bring the list to the attention of the Assembly for a final decision by the Assembly on participation in the midterm review;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_156.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/156
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_156.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F156/pdf/A%2FRES%2F80%2F156.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_156.html#para-4"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #4
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Takes note of the recommendation contained in the report of the Administrator of the United Nations Development Programme on a review of the outcome document of the second High-level Conference, and requests the President of the General Assembly to appoint two co-facilitators, one from a developing country and one from a developed country, at the eightieth session of the Assembly to facilitate an intergovernmental process on the modalities of the review of the outcome document of the Conference, within existing resources;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_191.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/191
+                </a>
+                <span class="text-sm text-slate-500">
+                    2 matching paragraphs
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_191.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F191/pdf/A%2FRES%2F80%2F191.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_191.html#para-56"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #56
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Congratulates the President of the General Assembly for convening a successful and productive high-level event to commemorate the tenth anniversary of the adoption of the outcome document of the high-level plenary meeting of the General Assembly known as the World Conference on Indigenous Peoples in order to raise awareness of the importance of pursuing its objectives;
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_191.html#para-60"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #60
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Decides to initiate, at the high-level panel, a discussion on the organization of the Second World Conference on Indigenous Peoples, to be held in 2028, and invites the President of the General Assembly, at its eighty-first session, to conduct open-ended consultations with Member States and representatives of Indigenous Peoples within the framework of the Permanent Forum on Indigenous Issues, as well as with the Expert Mechanism on the Rights of Indigenous Peoples and the Special Rapporteur, in order to determine the modalities for the meeting, including the participation of Indigenous Peoples in the Conference;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_193.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/193
+                </a>
+                <span class="text-sm text-slate-500">
+                    3 matching paragraphs
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_193.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F193/pdf/A%2FRES%2F80%2F193.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_193.html#para-54"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #54
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Decides to hold a one-day high-level meeting to mark the twenty-fifth anniversary of the adoption of the Durban Declaration and Programme of Action, to be convened by the President of the General Assembly in collaboration with the Office of the United Nations High Commissioner for Human Rights and at the level of Heads of State and Government, by no later than the last day of the general debate of the Assembly at its eighty-first session, on the theme “Mobilizing global public support for the full and effective implementation of the Durban Declaration and Programme of Action”, and to adopt a succinct political declaration aimed at mobilizing political will at the national, regional and international levels for the full and effective implementation of and follow-up to the Durban Declaration and Programme of Action;
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_193.html#para-55"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #55
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Recommends that the President of the General Assembly appoint two co‑facilitators to present options and modalities for the high-level meeting, as well as the political declaration;
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_193.html#para-65"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #65
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Requests the President of the General Assembly and the President of the Human Rights Council to continue to convene annual commemorative meetings of the Assembly and the Council during the commemoration of the International Day for the Elimination of Racial Discrimination, with the appropriate focus and themes, and in this context encourages the participation of Member States, eminent personalities active in the struggle against racial discrimination, and civil society organizations in accordance with the rules of procedure of the Assembly and the Council, respectively;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_228.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/228
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_228.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F228/pdf/A%2FRES%2F80%2F228.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_228.html#para-6"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #6
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Reaffirms its request to the Secretary-General and to the President of the General Assembly, in close cooperation and coordination with Member States, to take all appropriate measures to arrange the high-level meeting;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_229.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/229
+                </a>
+                <span class="text-sm text-slate-500">
+                    2 matching paragraphs
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_229.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F229/pdf/A%2FRES%2F80%2F229.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_229.html#para-22"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #22
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Invites the President of the General Assembly, in cooperation with the United Nations Office on Drugs and Crime and with the involvement of relevant stakeholders, to hold, within existing resources and during the eightieth session, a high-level debate on the theme “Preventing and combating illicit trafficking in wildlife and other crimes that affect the environment” and to prepare a summary of the discussion for transmission to the Commission on Crime Prevention and Criminal Justice and to all Member States; A/RES/80/229 Strengthening the United Nations crime prevention and criminal justice programme, in particular its technical cooperation capacity 25-20947 18/27
+                    </p>
+                </div>
+            </div>
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_229.html#para-23"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #23
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Also invites the President of the General Assembly, in cooperation with the United Nations Office on Drugs and Crime and with the involvement of relevant stakeholders, to hold, within existing resources and during the eighty-first session, a high-level debate on the theme “Advancing justice for children in crime prevention and criminal justice efforts” and to prepare a summary of the discussion for transmission to the Commission on Crime Prevention and Criminal Justice and to all Member States;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_233.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/233
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_233.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F233/pdf/A%2FRES%2F80%2F233.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_233.html#para-8"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #8
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Recognizes the efforts of the President of the General Assembly and the Chair of the Fifth Committee in following up with the Chairs of the relevant Main Committees on the consideration of the programmes without recommendations from the Committee for Programme and Coordination, in accordance with paragraph 8 of its resolution 79/247, and reiterates that incoming Presidents of the General Assembly and Chairs of the Fifth Committee shall reach out to and support the Chairs of the Main Committees to ensure that conclusions and recommendations are issued on time;
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <!-- Document Header -->
+        <div class="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-4">
+                <a href="../documents/A_RES_80_234.html" 
+                   class="font-bold text-lg text-slate-900 hover:text-sky-600 transition-colors">
+                    A/RES/80/234
+                </a>
+                <span class="text-sm text-slate-500">
+                    1 matching paragraph
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="../documents/A_RES_80_234.html" 
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                    View All
+                </a>
+                <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F234/pdf/A%2FRES%2F80%2F234.pdf?OpenElement" target="_blank"
+                   class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-slate-500 hover:bg-slate-100 rounded-lg transition-colors">
+                    PDF
+                </a>
+            </div>
+        </div>
+        
+        <!-- Matching Paragraphs -->
+        <div class="p-4 space-y-3">
+            
+            <div class="rounded-lg border p-3
+                border-purple-200 bg-purple-50
+                ">
+                <div class="flex items-start gap-3">
+                    <a href="../documents/A_RES_80_234.html#para-35"
+                       class="inline-flex items-center justify-center min-w-[2.5rem] px-2 py-1 rounded-md text-sm font-bold 
+                       bg-purple-200 text-purple-800
+                       
+                       hover:opacity-80 transition-opacity">
+                        #35
+                    </a>
+                    <p class="text-sm leading-relaxed flex-1
+                       text-purple-900
+                       ">
+                        Commends the Department for General Assembly and Conference Management and the President of the General Assembly for organizing a training session on accessibility and sensitivity awareness for Secretariat staff and delegates of Member States and observers, and invites the Secretary-General to continue such efforts in future, within existing resources; III Enhancing integrated global management, leveraging technology and measuring the quality of conference services
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+</div>
+
+
+
+        </main>
+        
+        <!-- Footer -->
+        <footer class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500">
+            
+            Generated by Mandate Pipeline
+            
+        </footer>
+    </div>
+</body>
+</html>

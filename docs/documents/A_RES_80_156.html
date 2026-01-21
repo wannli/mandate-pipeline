@@ -85,6 +85,10 @@
     
 
     
+        
+            
+        
+    
 
     
         
@@ -184,6 +188,13 @@
     <h2 class="text-sm font-medium text-slate-700 mb-3">Signals Detected</h2>
     <div class="flex flex-wrap gap-2">
         
+        <button onclick="highlightSignal('PGA signal')" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                bg-purple-100 text-purple-700 hover:bg-purple-200
+                ">
+            PGA signal
+        </button>
+        
         <button onclick="highlightSignal('agenda signal')" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
                 bg-blue-100 text-blue-700 hover:bg-blue-200
@@ -251,7 +262,7 @@
     
     <div id="para-4" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         data-signals='["PGA signal"]'>
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -260,6 +271,16 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Takes note of the recommendation contained in the report of the Administrator of the United Nations Development Programme on a review of the outcome document of the second High-level Conference, and requests the President of the General Assembly to appoint two co-facilitators, one from a developing country and one from a developed country, at the eightieth session of the Assembly to facilitate an intergovernmental process on the modalities of the review of the outcome document of the Conference, within existing resources;</p>
+                
+                <div class="mt-3 flex flex-wrap gap-2">
+                    
+                    <span class="px-2 py-0.5 rounded text-xs font-medium
+                        bg-purple-100 text-purple-700
+                        ">
+                        PGA signal
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>
