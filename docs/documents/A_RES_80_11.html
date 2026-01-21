@@ -67,7 +67,7 @@
     </div>
     <div class="flex items-center justify-between">
         <h1 class="text-3xl font-bold text-slate-900">A/RES/80/11</h1>
-        <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F11/pdf/A%2FRES%2F80%2F11.pdf?OpenElement" target="_blank"
+        <a href="https://docs.un.org/en/a/res/80/11?direct=true" target="_blank"
            class="inline-flex items-center px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white font-medium rounded-lg transition-colors">
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -86,13 +86,7 @@
             
         
     
-        
-            
-        
-    
 
-    
-        
     
 
     
@@ -158,7 +152,7 @@
 <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 mb-6">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-medium text-slate-700">Filter Paragraphs</h2>
-        <span class="text-xs text-slate-500">2 with signals, 28 without</span>
+        <span class="text-xs text-slate-500">1 with signals, 29 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
@@ -166,17 +160,10 @@
             Signals Only
         </button>
         
-        <button onclick="filterSignal('agenda signal')" 
-                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
-                bg-blue-100 text-blue-700 hover:bg-blue-200
-                ">
-            agenda signal
-        </button>
-        
-        <button onclick="filterSignal('Secretariat signal')" 
+        <button onclick="filterSignal('Secretariat')" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
                 bg-slate-100 text-slate-700 hover:bg-slate-200">
-            Secretariat signal
+            Secretariat
         </button>
         
         <button id="btn-show-all" onclick="toggleShowAll()" 
@@ -191,7 +178,7 @@
     
     <div id="para-1" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal", "Secretariat signal"]'
+         data-signals='["Secretariat"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -205,14 +192,8 @@
                 <div class="mt-3 flex flex-wrap gap-2">
                     
                     <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-slate-100 text-slate-700">
-                        Secretariat signal
+                        Secretariat
                     </span>
                     
                 </div>
@@ -222,9 +203,9 @@
     </div>
     
     <div id="para-2" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -233,16 +214,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Recognizes the importance of further enhancing the advisory role of the Peacebuilding Commission, and in this regard: (a) Decides, where appropriate and through its relevant agenda items, and with a view to further strengthening its engagement with the Peacebuilding Commission, to consider seeking strategic and context-specific advice from the Peacebuilding Commission, including, where relevant, through the convening of joint debates and the provision by the Commission of advice and remarks to the General Assembly, and through more regular, demand-driven interactions between the Commission and the Special Committee on Peacekeeping Operations; (b) May consider, when seeking the advice of the Peacebuilding Commission, diverse formats of engagement, as appropriate, including briefings, written submissions, informal interactive dialogues and other informal consultations; (c) Requests the Peacebuilding Commission to utilize its convening role to gather contributions from a broad range of stakeholders that may be used in the preparation of its advice, so as to provide recommendations and information to improve their coordination, to develop and share good practices in peacebuilding, and in this regard further requests the United Nations leadership in countries considered by the Commission to regularly brief the Commission, as appropriate, on the peacebuilding components of relevant mandates and activities; (d) Takes note of the intention of the Security Council to encourage stronger cooperation with the Peacebuilding Commission, including through more specific requests, early consultations and the provision of timely advice, including with the longer-term perspective required for peacebuilding and sustaining peace being reflected in the formation, review and drawdown of peace operations mandates, as well as planning and early coordination preceding transition processes;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>

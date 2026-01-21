@@ -23,7 +23,7 @@
         {% for check in checks %}
         <button onclick="filterBySignal('{{ check.signal }}')" id="btn-{{ check.signal|replace(' ', '-') }}"
                 class="check-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all bg-gray-100 text-gray-700 hover:bg-gray-200">
-            {{ check.title }} ({{ total_signal_counts.get(check.signal, 0) }})
+            {{ check.signal }} ({{ total_signal_counts.get(check.signal, 0) }})
         </button>
         {% endfor %}
     </div>
@@ -51,7 +51,7 @@
                 <th class="text-left py-3 px-4 text-sm font-medium text-gray-500">Pattern</th>
                 <th class="text-center py-3 px-4 text-sm font-medium text-gray-500">Paragraphs</th>
                 {% for check in checks %}
-                <th class="text-center py-3 px-4 text-sm font-medium text-gray-500">{{ check.title }}</th>
+                <th class="text-center py-3 px-4 text-sm font-medium text-gray-500">{{ check.signal }}</th>
                 {% endfor %}
                 <th class="text-right py-3 px-4 text-sm font-medium text-gray-500">Actions</th>
             </tr>

@@ -1,17 +1,12 @@
 checks:
-  - title: "agenda"
-    signal: "agenda signal"
+  - signal: "agenda"
     phrases:
-      - "agenda"
-      - "agenda item"
       - "decides to include"
 
-  - title: "Secretariat"
-    signal: "Secretariat signal"
+  - signal: "Secretariat"
     phrases:
       - "Secretariat"
 
-  - title: "PGA"
-    signal: "PGA signal"
+  - signal: "PGA"
     phrases:
       - "President of the General Assembly"

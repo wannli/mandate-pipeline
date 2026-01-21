@@ -14,8 +14,7 @@ def load_checks(config_path: Path) -> list[dict]:
 
     Returns:
         List of check definitions, each containing:
-        - title: Name of the check
-        - signal: Signal name to report when matched
+        - signal: Signal name (used for display and matching)
         - phrases: List of phrases to search for
     """
     config_path = Path(config_path)
@@ -48,7 +47,7 @@ def run_checks(paragraphs: dict[int, str], checks: list[dict]) -> dict[int, list
 
         for check in checks:
             phrases = check.get("phrases", [])
-            signal = check.get("signal", check.get("title", "unknown"))
+            signal = check.get("signal", "unknown")
 
             for phrase in phrases:
                 if phrase.lower() in para_lower:

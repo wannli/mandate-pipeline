@@ -67,7 +67,7 @@
     </div>
     <div class="flex items-center justify-between">
         <h1 class="text-3xl font-bold text-slate-900">A/RES/80/109</h1>
-        <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FRES%2F80%2F109/pdf/A%2FRES%2F80%2F109.pdf?OpenElement" target="_blank"
+        <a href="https://docs.un.org/en/a/res/80/109?direct=true" target="_blank"
            class="inline-flex items-center px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white font-medium rounded-lg transition-colors">
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -88,10 +88,6 @@
     
 
     
-        
-            
-        
-    
 
     
 
@@ -105,8 +101,6 @@
 
     
 
-    
-        
     
 
     
@@ -192,8 +186,6 @@
     
 
     
-        
-    
 
     
 
@@ -213,60 +205,6 @@
 
     
 
-    
-
-    
-
-    
-
-    
-
-    
-        
-    
-
-    
-
-    
-        
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        
-    
-
-    
-        
-    
-
-    
-
-    
-
-    
-
-    
-        
     
 
     
@@ -304,113 +242,7 @@
     
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
+        
     
 
     
@@ -660,42 +492,194 @@
     
 
     
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
         
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+            
         
     
 
@@ -706,7 +690,7 @@
 <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 mb-6">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-medium text-slate-700">Filter Paragraphs</h2>
-        <span class="text-xs text-slate-500">14 with signals, 279 without</span>
+        <span class="text-xs text-slate-500">6 with signals, 287 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
@@ -714,17 +698,17 @@
             Signals Only
         </button>
         
-        <button onclick="filterSignal('agenda signal')" 
+        <button onclick="filterSignal('Secretariat')" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                bg-slate-100 text-slate-700 hover:bg-slate-200">
+            Secretariat
+        </button>
+        
+        <button onclick="filterSignal('agenda')" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
                 bg-blue-100 text-blue-700 hover:bg-blue-200
                 ">
-            agenda signal
-        </button>
-        
-        <button onclick="filterSignal('Secretariat signal')" 
-                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
-                bg-slate-100 text-slate-700 hover:bg-slate-200">
-            Secretariat signal
+            agenda
         </button>
         
         <button id="btn-show-all" onclick="toggleShowAll()" 
@@ -789,9 +773,9 @@
     </div>
     
     <div id="para-4" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -800,16 +784,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Calls upon States to implement the Sustainable Development Goals outlined in the outcome document of the United Nations summit for the adoption of the post-2015 development agenda, entitled “Transforming our world: the 2030 Agenda for Sustainable Development”, as adopted by the General Assembly in its resolution 70/1, including Goal 14 to conserve and sustainably use the oceans, seas and marine resources for sustainable development, recalling that some of its targets were to be met by 2020 and that the Goals and targets are integrated and indivisible;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -918,9 +892,9 @@
     </div>
     
     <div id="para-11" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -929,16 +903,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Reaffirms its resolution 78/317 of 16 July 2024, by which it adopted the Antigua and Barbuda Agenda for Small Island Developing States: A Renewed Declaration for Resilient Prosperity, in which small island developing States sought the support of the international community to conserve and sustainably use the ocean and its resources, including in relation to sustainable fisheries, aquaculture and mariculture;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -1456,7 +1420,7 @@
     
     <div id="para-42" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["Secretariat signal"]'
+         data-signals='["Secretariat"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -1471,7 +1435,7 @@
                     
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-slate-100 text-slate-700">
-                        Secretariat signal
+                        Secretariat
                     </span>
                     
                 </div>
@@ -1482,7 +1446,7 @@
     
     <div id="para-43" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["Secretariat signal"]'
+         data-signals='["Secretariat"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -1497,7 +1461,7 @@
                     
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-slate-100 text-slate-700">
-                        Secretariat signal
+                        Secretariat
                     </span>
                     
                 </div>
@@ -1609,9 +1573,9 @@
     </div>
     
     <div id="para-50" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1620,16 +1584,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Encourages the Food and Agriculture Organization of the United Nations to continue promoting dialogue on small-scale and artisanal fisheries and aquaculture, and to consider including these issues as a standing agenda item of the Committee on Fisheries and its subcommittees, as relevant;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -1857,9 +1811,9 @@
     </div>
     
     <div id="para-64" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1868,16 +1822,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Urges States Parties to the Agreement, directly or through regional fisheries management organizations and arrangements, to take into account the special requirements of developing States, including small island developing States as highlighted in the Antigua and Barbuda Agenda for Small Island Developing States: A Renewed Declaration for Resilient Prosperity, in giving effect to the duty to cooperate in the establishment of conservation and management measures for straddling fish stocks and highly migratory fish stocks, including the need to ensure, where appropriate, in accordance with article 24, paragraph 2 (c), of the Agreement, that such measures do not transfer a disproportionate burden of conservation action onto developing States, and notes in this regard ongoing efforts to better develop a common understanding of this concept;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -1902,7 +1846,7 @@
     
     <div id="para-66" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["Secretariat signal"]'
+         data-signals='["Secretariat"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -1917,7 +1861,7 @@
                     
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-slate-100 text-slate-700">
-                        Secretariat signal
+                        Secretariat
                     </span>
                     
                 </div>
@@ -2098,7 +2042,7 @@
     
     <div id="para-77" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["Secretariat signal"]'
+         data-signals='["Secretariat"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -2113,7 +2057,7 @@
                     
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-slate-100 text-slate-700">
-                        Secretariat signal
+                        Secretariat
                     </span>
                     
                 </div>
@@ -2124,7 +2068,7 @@
     
     <div id="para-78" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["Secretariat signal"]'
+         data-signals='["Secretariat"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -2139,7 +2083,7 @@
                     
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-slate-100 text-slate-700">
-                        Secretariat signal
+                        Secretariat
                     </span>
                     
                 </div>
@@ -2200,9 +2144,9 @@
     </div>
     
     <div id="para-82" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -2211,16 +2155,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Recalls that the Committee on Fisheries, at its thirty-third session, emphasized, in the context of the 2030 Agenda for Sustainable Development, the need to ensure comparability and consistency of reporting indicators at global, regional and national levels, while minimizing the burden on its members;30</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -2312,9 +2246,9 @@
     </div>
     
     <div id="para-88" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -2323,16 +2257,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Encourages States, in this regard, to maintain their commitment in reporting on their implementation of the Code, reiterates the importance of responding to the web-based questionnaire of the Food and Agriculture Organization of the United Nations for monitoring the implementation of the Code and the international _______________ 30 See Food and Agriculture Organization of the United Nations, document C 2019/23. Sustainable fisheries, including through the 1995 Agreement for the Implementation of the Provisions of the United Nations Convention on the Law of the Sea of 10 December 1982 relating to the Conservation and Management of Straddling Fish Stocks and Highly Migratory Fish Stocks, and related instruments A/RES/80/109 23/51 25-20235 plans of action and strategies, and notes that the information collected could also be relevant to the implementation of related targets of the 2030 Agenda for Sustainable Development;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -3444,9 +3368,9 @@
     </div>
     
     <div id="para-154" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -3455,16 +3379,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Recalls that, in “The future we want”, States reaffirmed their commitment in the Johannesburg Plan of Implementation to eliminate subsidies that contribute to illegal, unreported and unregulated fishing and overcapacity, taking into account the importance of that sector to developing countries, reiterated their commitment to conclude multilateral disciplines on fisheries subsidies that would give effect to the mandates of the World Trade Organization Doha Development Agenda33 and the Hong Kong Ministerial Declaration to strengthen disciplines on subsidies in the fisheries sector, including through the prohibition of certain forms of fisheries subsidies that contribute to overcapacity and overfishing, recognizing that appropriate and effective special and differential treatment for developing and least developed countries should be an integral part of World Trade Organization fisheries subsidies negotiation, taking into account the importance of the sector to development priorities, poverty reduction and livelihood and food security concerns, and encouraged one another to further improve the transparency and reporting of existing fisheries subsidies programmes through the World Trade Organization and, given the state of fisheries resources, and without prejudicing the Doha and Hong Kong ministerial mandates on fisheries subsidies or the need to conclude those negotiations, to eliminate subsidies that contribute to overcapacity and overfishing and to refrain from introducing new such subsidies or from extending or enhancing existing ones;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -5528,9 +5442,9 @@
     </div>
     
     <div id="para-276" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -5539,16 +5453,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Acknowledges the continuous efforts of the Food and Agriculture Organization of the United Nations to provide free learning opportunities on a variety of topics, including: port State measures to combat illegal, unreported and unregulated fishing; climate change adaptation and mitigation in fisheries and aquaculture; food loss and waste in fish value chains; the fisheries performance assessment toolkit; securing sustainable small-scale fisheries; and the ecosystem approach to fisheries, with the overall goal of strengthening the capacity of countries to implement the 2030 Agenda for Sustainable Development;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -5828,7 +5732,7 @@
     
     <div id="para-293" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
+         data-signals='["agenda"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -5844,7 +5748,7 @@
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-blue-100 text-blue-700
                         ">
-                        agenda signal
+                        agenda
                     </span>
                     
                 </div>

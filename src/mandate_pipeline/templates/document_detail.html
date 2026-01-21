@@ -170,7 +170,7 @@
                             {% elif 'sg' in check.signal|lower %}bg-amber-500
                             {% elif 'follow' in check.signal|lower %}bg-rose-500
                             {% else %}bg-slate-500{% endif %}"></span>
-                        <span class="text-slate-700">{{ check.title }}</span>
+                        <span class="text-slate-700">{{ check.signal }}</span>
                     </div>
                     {% endfor %}
                 </div>

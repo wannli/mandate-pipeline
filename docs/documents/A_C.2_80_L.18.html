@@ -67,7 +67,7 @@
     </div>
     <div class="flex items-center justify-between">
         <h1 class="text-3xl font-bold text-slate-900">A/C.2/80/L.18</h1>
-        <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.2%2F80%2FL.18/pdf/A%2FC.2%2F80%2FL.18.pdf?OpenElement" target="_blank"
+        <a href="https://docs.un.org/en/a/c.2/80/l.18?direct=true" target="_blank"
            class="inline-flex items-center px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white font-medium rounded-lg transition-colors">
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -88,42 +88,6 @@
     
 
     
-        
-            
-        
-    
-
-    
-
-    
-        
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        
-            
-        
-    
 
     
 
@@ -147,56 +111,6 @@
 
     
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        
-    
-
-    
-
-    
-
-    
-        
-    
-
-    
-        
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        
     
 
     
@@ -206,6 +120,82 @@
     
 
     
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        
+            
+        
+    
+
+    
+        
+            
         
     
 
@@ -216,7 +206,7 @@
 <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 mb-6">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-medium text-slate-700">Filter Paragraphs</h2>
-        <span class="text-xs text-slate-500">9 with signals, 43 without</span>
+        <span class="text-xs text-slate-500">4 with signals, 48 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
@@ -224,24 +214,24 @@
             Signals Only
         </button>
         
-        <button onclick="filterSignal('agenda signal')" 
-                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
-                bg-blue-100 text-blue-700 hover:bg-blue-200
-                ">
-            agenda signal
-        </button>
-        
-        <button onclick="filterSignal('Secretariat signal')" 
+        <button onclick="filterSignal('Secretariat')" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
                 bg-slate-100 text-slate-700 hover:bg-slate-200">
-            Secretariat signal
+            Secretariat
         </button>
         
-        <button onclick="filterSignal('PGA signal')" 
+        <button onclick="filterSignal('PGA')" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
                 bg-purple-100 text-purple-700 hover:bg-purple-200
                 ">
-            PGA signal
+            PGA
+        </button>
+        
+        <button onclick="filterSignal('agenda')" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                bg-blue-100 text-blue-700 hover:bg-blue-200
+                ">
+            agenda
         </button>
         
         <button id="btn-show-all" onclick="toggleShowAll()" 
@@ -306,9 +296,9 @@
     </div>
     
     <div id="para-4" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -317,16 +307,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Reaffirms its commitment to the actions agreed upon by the least developed countries and development partners on science, technology and innovation, as outlined in the Doha Programme of Action for the Least Developed Countries,14 and takes note of the Doha Political Declaration, adopted during the second part of the Fifth United Nations Conference on the Least Developed Countries, held in Doha from 5 to 9 March 2023,15 as well as the Antigua and Barbuda Agenda for Small Island Developing States: A Renewed Declaration for Resilient Prosperity16 and the Awaza Programme of Action for Landlocked Developing Countries for the Decade 2024–2034;17</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -350,9 +330,9 @@
     </div>
     
     <div id="para-6" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -361,16 +341,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Underscores the need to recognize science, technology and innovation strategies as a main driver of the 2030 Agenda for Sustainable Development 18 and its Sustainable Development Goals and of national sustainable development plans and strategies, and encourages clear, specific and measurable goals, based on an assessment of national priorities and the international science, technology and innovation agenda, that help to strengthen knowledge-sharing on mutually agreed terms and collaboration and scale up investment in science, technology, engineering and mathematics education, and enhance technical, vocational and tertiary education and training;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -548,7 +518,7 @@
     
     <div id="para-17" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["Secretariat signal"]'
+         data-signals='["Secretariat"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -563,7 +533,7 @@
                     
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-slate-100 text-slate-700">
-                        Secretariat signal
+                        Secretariat
                     </span>
                     
                 </div>
@@ -862,9 +832,9 @@
     </div>
     
     <div id="para-35" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -873,16 +843,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Encourages the United Nations Conference on Trade and Development, in collaboration with relevant partners, such as the World Intellectual Property Organization, the International Telecommunication Union, the United Nations Educational, Scientific and Cultural Organization and the United Nations University, to continue to undertake science, technology and innovation policy reviews, with a view to assisting developing countries, upon request, in identifying the measures needed to integrate science, technology and innovation policies into their national development strategies and ensuring that they are supportive of national development agendas, as appropriate, and in this regard takes note of the new science, technology and innovation policy review framework developed by the United Nations Conference on Trade and Development;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -924,7 +884,7 @@
     
     <div id="para-38" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["Secretariat signal"]'
+         data-signals='["Secretariat"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -939,7 +899,7 @@
                     
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-slate-100 text-slate-700">
-                        Secretariat signal
+                        Secretariat
                     </span>
                     
                 </div>
@@ -949,9 +909,9 @@
     </div>
     
     <div id="para-39" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -960,16 +920,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Continues to encourage the United Nations inter-agency task team on science, technology and innovation for the Sustainable Development Goals to further refine and update its mapping of science, technology and innovation activities in the United Nations system with a view to guiding further efforts at collaboration and capacity-building and formulating coherent advice for Member States advancing national science, technology and innovation frameworks within the 2030 Agenda, including through scaling up the Global Pilot Programme on Science, Technology and Innovation for the Sustainable Development Goals Road Maps;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -1146,9 +1096,9 @@
     </div>
     
     <div id="para-50" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1158,23 +1108,13 @@
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Reaffirms the commitment at the very heart of the 2030 Agenda to leave no one behind and commit to taking more tangible steps to support people in vulnerable situations and the most vulnerable countries and to reach the furthest behind first;</p>
                 
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
-                
             </div>
         </div>
     </div>
     
     <div id="para-51" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["PGA signal"]'
+         data-signals='["PGA"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -1190,7 +1130,7 @@
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-purple-100 text-purple-700
                         ">
-                        PGA signal
+                        PGA
                     </span>
                     
                 </div>
@@ -1201,7 +1141,7 @@
     
     <div id="para-52" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
+         data-signals='["agenda"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -1217,7 +1157,7 @@
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-blue-100 text-blue-700
                         ">
-                        agenda signal
+                        agenda
                     </span>
                     
                 </div>

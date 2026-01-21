@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ check.title }} - Mandate Pipeline{% endblock %}
+{% block title %}{{ check.signal }} - Mandate Pipeline{% endblock %}
 
 {% block nav_index %}../index.html{% endblock %}
 {% block nav_documents %}../documents/index.html{% endblock %}
@@ -11,13 +11,13 @@
     <ol class="flex items-center gap-2 text-sm text-muted">
         <li><a href="../index.html" class="hover:text-un-blue transition-colors">Home</a></li>
         <li class="text-gray-300">/</li>
-        <li class="text-gray-900 font-medium">{{ check.title }}</li>
+        <li class="text-gray-900 font-medium">{{ check.signal }}</li>
     </ol>
 </nav>
 
 <!-- Header -->
 <div class="mb-10">
-    <h1 class="text-3xl font-bold text-gray-900 tracking-tight">{{ check.title }}</h1>
+    <h1 class="text-3xl font-bold text-gray-900 tracking-tight">{{ check.signal }}</h1>
     <p class="mt-2 text-muted">{{ total_docs }} documents contain this signal</p>
 </div>
 

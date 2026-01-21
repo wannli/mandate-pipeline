@@ -132,14 +132,11 @@ class TestChecks:
         """Load check definitions from a YAML file."""
         yaml_content = """
 checks:
-  - title: "agenda"
-    signal: "agenda signal"
+  - signal: "agenda"
     phrases:
-      - "agenda"
-      - "agenda item"
+      - "decides to include"
 
-  - title: "PGA"
-    signal: "PGA signal"
+  - signal: "PGA"
     phrases:
       - "requests the President of the General Assembly"
       - "President of the General Assembly"
@@ -150,22 +147,19 @@ checks:
         checks = load_checks(config_file)
 
         assert len(checks) == 2
-        assert checks[0]["title"] == "agenda"
-        assert checks[0]["signal"] == "agenda signal"
-        assert "agenda" in checks[0]["phrases"]
-        assert checks[1]["title"] == "PGA"
+        assert checks[0]["signal"] == "agenda"
+        assert "decides to include" in checks[0]["phrases"]
+        assert checks[1]["signal"] == "PGA"
 
     def test_run_checks_finds_signals(self):
         """Run checks against paragraphs and find matching signals."""
         checks = [
             {
-                "title": "agenda",
-                "signal": "agenda signal",
-                "phrases": ["agenda", "agenda item"],
+                "signal": "agenda",
+                "phrases": ["decides to include"],
             },
             {
-                "title": "PGA",
-                "signal": "PGA signal",
+                "signal": "PGA",
                 "phrases": ["requests the President of the General Assembly"],
             },
         ]
@@ -180,11 +174,11 @@ checks:
 
         # Should find agenda signal in paragraph 1
         assert 1 in results
-        assert "agenda signal" in results[1]
+        assert "agenda" in results[1]
 
         # Should find PGA signal in paragraph 3
         assert 3 in results
-        assert "PGA signal" in results[3]
+        assert "PGA" in results[3]
 
         # Paragraph 2 should have no signals
         assert 2 not in results or len(results[2]) == 0
@@ -193,20 +187,19 @@ checks:
         """Check matching should be case-insensitive."""
         checks = [
             {
-                "title": "agenda",
-                "signal": "agenda signal",
-                "phrases": ["agenda"],
+                "signal": "agenda",
+                "phrases": ["decides to include"],
             },
         ]
 
         paragraphs = {
-            1: "Decides to include this in the AGENDA;",
+            1: "DECIDES TO INCLUDE this in the agenda;",
         }
 
         results = run_checks(paragraphs, checks)
 
         assert 1 in results
-        assert "agenda signal" in results[1]
+        assert "agenda" in results[1]
 
     def test_run_checks_on_real_resolution(self, tmp_path):
         """Run checks against a real UN resolution."""
@@ -217,20 +210,14 @@ checks:
 
         checks = [
             {
-                "title": "agenda",
-                "signal": "agenda signal",
-                "phrases": ["agenda"],
-            },
-            {
-                "title": "Secretary-General",
-                "signal": "SG signal",
-                "phrases": ["Secretary-General"],
+                "signal": "Assembly",
+                "phrases": ["General Assembly"],
             },
         ]
 
         results = run_checks(paragraphs, checks)
 
-        # Should find at least one signal (SG is commonly mentioned)
+        # Should find at least one signal (General Assembly is commonly mentioned)
         assert len(results) > 0
 
 
@@ -477,10 +464,10 @@ class TestStaticGenerator:
                 "symbol": "A/80/L.1",
                 "filename": "A_80_L_1.pdf",
                 "paragraphs": {1: "First paragraph", 2: "Second paragraph"},
-                "signals": {1: ["agenda signal"]},
+                "signals": {1: ["agenda"]},
             }
         ]
-        checks = [{"title": "agenda", "signal": "agenda signal", "phrases": ["agenda"]}]
+        checks = [{"signal": "agenda", "phrases": ["decides to include"]}]
 
         output_dir = tmp_path / "docs"
         output_dir.mkdir()
@@ -505,7 +492,7 @@ class TestStaticGenerator:
                 "symbol": "A/80/L.1",
                 "filename": "A_80_L_1.pdf",
                 "paragraphs": {1: "Climate change action", 2: "Sustainable development"},
-                "signals": {1: ["agenda signal"]},
+                "signals": {1: ["agenda"]},
             },
             {
                 "symbol": "A/80/L.2",
@@ -538,10 +525,10 @@ class TestStaticGenerator:
             "symbol": "A/80/L.1",
             "filename": "A_80_L.1.pdf",
             "paragraphs": {1: "First paragraph about agenda", 2: "Second paragraph"},
-            "signals": {1: ["agenda signal"]},
-            "un_url": "https://documents.un.org/doc/UNDOC/LTD/N24/001/01/PDF/N2400101.pdf",
+            "signals": {1: ["agenda"]},
+            "un_url": "https://docs.un.org/en/a/80/l.1?direct=true",
         }
-        checks = [{"title": "agenda", "signal": "agenda signal", "phrases": ["agenda"]}]
+        checks = [{"signal": "agenda", "phrases": ["decides to include"]}]
 
         output_dir = tmp_path / "docs" / "documents"
         output_dir.mkdir(parents=True)
@@ -554,7 +541,7 @@ class TestStaticGenerator:
         content = html_file.read_text()
         assert "A/80/L.1" in content
         assert "First paragraph about agenda" in content
-        assert "agenda signal" in content
+        assert "agenda" in content
 
     def test_generate_signal_page(self, tmp_path):
         """Generate signal-filtered page."""
@@ -565,9 +552,9 @@ class TestStaticGenerator:
                 "symbol": "A/80/L.1",
                 "filename": "A_80_L.1.pdf",
                 "paragraphs": {1: "About agenda items"},
-                "signals": {1: ["agenda signal"]},
-                "signal_summary": {"agenda signal": 1},
-                "un_url": "https://documents.un.org/...",
+                "signals": {1: ["agenda"]},
+                "signal_summary": {"agenda": 1},
+                "un_url": "https://docs.un.org/en/a/80/l.1?direct=true",
             },
             {
                 "symbol": "A/80/L.2",
@@ -575,10 +562,10 @@ class TestStaticGenerator:
                 "paragraphs": {1: "No agenda here"},
                 "signals": {},
                 "signal_summary": {},
-                "un_url": "https://documents.un.org/...",
+                "un_url": "https://docs.un.org/en/a/80/l.2?direct=true",
             },
         ]
-        check = {"title": "agenda", "signal": "agenda signal", "phrases": ["agenda"]}
+        check = {"signal": "agenda", "phrases": ["decides to include"]}
 
         output_dir = tmp_path / "docs" / "signals"
         output_dir.mkdir(parents=True)
@@ -597,8 +584,11 @@ class TestStaticGenerator:
         from mandate_pipeline.static_generator import get_un_document_url
 
         url = get_un_document_url("A/80/L.1")
-        assert "documents.un.org" in url
-        assert "A/80/L.1" in url or "A%2F80%2FL.1" in url
+        assert url == "https://docs.un.org/en/a/80/l.1?direct=true"
+        
+        # Test resolution format
+        url_res = get_un_document_url("A/RES/80/233")
+        assert url_res == "https://docs.un.org/en/a/res/80/233?direct=true"
 
     def test_load_all_documents(self, tmp_path, mocker):
         """Load all documents from data directory."""
@@ -619,7 +609,7 @@ class TestStaticGenerator:
             return_value={1: "First operative paragraph about agenda;"},
         )
 
-        checks = [{"title": "agenda", "signal": "agenda signal", "phrases": ["agenda"]}]
+        checks = [{"signal": "agenda", "phrases": ["agenda"]}]
 
         documents = load_all_documents(tmp_path / "data", checks)
 
@@ -627,7 +617,7 @@ class TestStaticGenerator:
         assert documents[0]["symbol"] == "A/80/L.1"
         assert documents[0]["paragraphs"] == {1: "First operative paragraph about agenda;"}
         assert 1 in documents[0]["signals"]
-        assert "agenda signal" in documents[0]["signals"][1]
+        assert "agenda" in documents[0]["signals"][1]
 
     def test_generate_site_creates_all_files(self, tmp_path, mocker):
         """Full site generation creates expected file structure."""
@@ -644,8 +634,7 @@ class TestStaticGenerator:
         (config_dir / "checks.yaml").write_text(
             """
 checks:
-  - title: "agenda"
-    signal: "agenda signal"
+  - signal: "agenda"
     phrases:
       - "agenda"
 """

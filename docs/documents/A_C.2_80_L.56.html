@@ -67,7 +67,7 @@
     </div>
     <div class="flex items-center justify-between">
         <h1 class="text-3xl font-bold text-slate-900">A/C.2/80/L.56</h1>
-        <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.2%2F80%2FL.56/pdf/A%2FC.2%2F80%2FL.56.pdf?OpenElement" target="_blank"
+        <a href="https://docs.un.org/en/a/c.2/80/l.56?direct=true" target="_blank"
            class="inline-flex items-center px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white font-medium rounded-lg transition-colors">
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -94,13 +94,7 @@
     
 
     
-        
-            
-        
-    
 
-    
-        
     
 
     
@@ -110,27 +104,7 @@
     
 
     
-        
-    
 
-    
-
-    
-
-    
-
-    
-        
-    
-
-    
-
-    
-
-    
-
-    
-        
     
 
     
@@ -144,13 +118,27 @@
     
 
     
-        
+
+    
+
     
 
     
 
     
-        
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
     
 
     
@@ -177,11 +165,7 @@
 
     
         
-    
-
-    
-
-    
+            
         
     
 
@@ -192,7 +176,7 @@
 <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 mb-6">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-medium text-slate-700">Filter Paragraphs</h2>
-        <span class="text-xs text-slate-500">10 with signals, 30 without</span>
+        <span class="text-xs text-slate-500">2 with signals, 38 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
@@ -200,18 +184,18 @@
             Signals Only
         </button>
         
-        <button onclick="filterSignal('PGA signal')" 
+        <button onclick="filterSignal('PGA')" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
                 bg-purple-100 text-purple-700 hover:bg-purple-200
                 ">
-            PGA signal
+            PGA
         </button>
         
-        <button onclick="filterSignal('agenda signal')" 
+        <button onclick="filterSignal('agenda')" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
                 bg-blue-100 text-blue-700 hover:bg-blue-200
                 ">
-            agenda signal
+            agenda
         </button>
         
         <button id="btn-show-all" onclick="toggleShowAll()" 
@@ -277,7 +261,7 @@
     
     <div id="para-4" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["PGA signal"]'
+         data-signals='["PGA"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -293,7 +277,7 @@
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-purple-100 text-purple-700
                         ">
-                        PGA signal
+                        PGA
                     </span>
                     
                 </div>
@@ -303,9 +287,9 @@
     </div>
     
     <div id="para-5" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -315,24 +299,14 @@
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Recognizes the contribution of and the need to scale up and strengthen South-South and triangular cooperation as a complementary means of implementation of the 2030 Agenda and its Sustainable Development Goals, including in achieving the overarching goal of the eradication of poverty in all its forms and dimensions, including extreme poverty, and the goals of, inter alia, ending hunger, improving nutrition, reducing inequalities, within and among countries, promoting decent work as well as for the use, capacity-building and transfer of digital technologies, on mutually agreed terms, to accelerate the attainment of the Sustainable Development Goals and close the digital divides;</p>
                 
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
-                
             </div>
         </div>
     </div>
     
     <div id="para-6" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -341,16 +315,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Encourages the continuation and advancement of South-South cooperation and triangular cooperation on efforts for COVID-19 response and recovery from the socioeconomic effects of the pandemic and other multiple crises in the pursuit of the 2030 Agenda for Sustainable Development9 and its Sustainable Development Goals, and calls for continued support from the relevant United Nations development system entities in that regard, particularly in areas such as equitable and non-discriminatory access to safe, quality, effective and affordable healthcare and services and medical supplies and equipment, including diagnostics, therapeutics, medicine and other health products, vaccines, as well as digitalization, the environment, climate change, social protection and the eradication of poverty, noting that the world needs a stronger, better coordinated, inclusive and more agile global health architecture for pandemic prevention, preparedness, response and recovery to stop the severe impact of future outbreaks;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -408,9 +372,9 @@
     </div>
     
     <div id="para-10" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -419,16 +383,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Encourages Member States and all relevant stakeholders, as appropriate, to establish or strengthen coordinated mechanisms at the subnational, national, regional and global levels to leverage the expertise and other resources of multi- stakeholder partnerships to support South-South cooperation and triangular cooperation initiatives towards the attainment of the 2030 Agenda, while acknowledging that governments have the principal role of coordinating and leading development efforts;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -486,9 +440,9 @@
     </div>
     
     <div id="para-14" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -497,16 +451,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Also recalls the adoption of the Antigua and Barbuda Agenda for Small Island Developing States: A Renewed Declaration for Resilient Prosperity 10 at the Fourth International Conference on Small Island Developing States, held in Antigua and Barbuda from 27 to 30 May 2024, which commits to supporting small island developing States (SIDS), including by leveraging triangular and South-South cooperation, including SIDS-to-SIDS, to mobilize resources, as a complement to North-South cooperation, towards the realization of the Antigua and Barbuda Agenda for Small Island Developing States by 2034;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -564,9 +508,9 @@
     </div>
     
     <div id="para-18" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -575,16 +519,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Recalls the special needs of Africa and recognizes that, while economic growth has improved, there is a need to sustain the recovery to face the ongoing adverse impacts of multiple crises on development and the serious challenges that these impacts pose to the fight against poverty and hunger, which could further undermine the achievement of the internationally agreed development goals in Africa, including Agenda 2063: The Africa We Want and the Sustainable Development Goals and the unfinished business of the Millennium Development Goals, and welcomes the ongoing efforts to fully operationalize the African Continental Free Trade Area and the commencement of actual trading under the Agreement with a view to achieving the Sustainable Development Goals;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -676,9 +610,9 @@
     </div>
     
     <div id="para-24" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -687,16 +621,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Notes that, within the context of the United Nations development system, the United Nations system-wide strategy on South-South and triangular cooperation has the potential to enhance the role and impact of South-South and triangular cooperation through galvanizing the expertise of United Nations organizations to support South-South and triangular cooperation, and in this regard calls upon the United Nations development system to continue mainstreaming South-South and triangular cooperation into the United Nations Sustainable Development Cooperation Frameworks, at the country level, as appropriate, as a means to accelerate the implementation of the 2030 Agenda and its Sustainable Development Goals, and also calls upon the United Nations Office for South-South Cooperation to work in collaboration with the United Nations system organizations and the regional commissions to mainstream South-South and triangular cooperation, including through regional collaborative frameworks for South-South and triangular cooperation;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -720,9 +644,9 @@
     </div>
     
     <div id="para-26" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -731,16 +655,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Calls upon the United Nations development system entities to further integrate, as appropriate, South-South and triangular cooperation into their strategic frameworks and planning instruments, and urges them to allocate sufficient financial and non-financial resources dedicated to supporting and facilitating South-South and triangular cooperation, and encourages the United Nations resident coordinators to continue to advance the integration of South-South and triangular cooperation into the work of United Nations country teams to achieve greater system-wide results and impacts for the implementation of the 2030 Agenda and the Sustainable Development Goals;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -934,9 +848,9 @@
     </div>
     
     <div id="para-38" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -945,16 +859,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Reaffirms the commitment at the very heart of the 2030 Agenda to leave no one behind and commit to taking more tangible steps to support people in vulnerable situations and the most vulnerable countries and to reach the furthest behind first;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -979,7 +883,7 @@
     
     <div id="para-40" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
+         data-signals='["agenda"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -995,7 +899,7 @@
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-blue-100 text-blue-700
                         ">
-                        agenda signal
+                        agenda
                     </span>
                     
                 </div>

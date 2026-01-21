@@ -67,7 +67,7 @@
     </div>
     <div class="flex items-center justify-between">
         <h1 class="text-3xl font-bold text-slate-900">A/C.3/80/L.59</h1>
-        <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.3%2F80%2FL.59/pdf/A%2FC.3%2F80%2FL.59.pdf?OpenElement" target="_blank"
+        <a href="https://docs.un.org/en/a/c.3/80/l.59?direct=true" target="_blank"
            class="inline-flex items-center px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white font-medium rounded-lg transition-colors">
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -86,14 +86,6 @@
     
 
     
-        
-            
-        
-    
-
-    
-        
-    
 
     
 
@@ -142,7 +134,7 @@
     
 
     
-        
+
     
 
     
@@ -186,19 +178,12 @@
 <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 mb-6">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-medium text-slate-700">Filter Paragraphs</h2>
-        <span class="text-xs text-slate-500">3 with signals, 42 without</span>
+        <span class="text-xs text-slate-500">0 with signals, 45 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium bg-sky-600 text-white hover:bg-sky-700 transition-all">
             Signals Only
-        </button>
-        
-        <button onclick="filterSignal('agenda signal')" 
-                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
-                bg-blue-100 text-blue-700 hover:bg-blue-200
-                ">
-            agenda signal
         </button>
         
         <button id="btn-show-all" onclick="toggleShowAll()" 
@@ -246,9 +231,9 @@
     </div>
     
     <div id="para-3" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -258,24 +243,14 @@
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Also reaffirms the primary and essential role of the General Assembly and the Economic and Social Council, as well as the catalytic role of the Commission on the Status of Women, in promoting gender equality and the empowerment of all women and girls, based on the full implementation of the Beijing Declaration and Platform for Action and the outcome of the twenty-third special session, and in promoting and monitoring gender mainstreaming within the United Nations system, and encourages the Commission to contribute to the follow-up to the 2030 Agenda for Sustainable Development in order to accelerate the realization of gender equality and the empowerment of all women and girls, as well as the enjoyment of all human rights by women and girls;</p>
                 
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
-                
             </div>
         </div>
     </div>
     
     <div id="para-4" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -284,16 +259,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Calls upon Governments and all other stakeholders to systematically mainstream a gender perspective into the implementation of the 2030 Agenda in order to, inter alia, contribute to the full, effective and accelerated implementation of the Beijing Declaration and Platform for Action, and stresses in this regard the importance of ensuring synergies between the follow-up to the Beijing Declaration and Platform for Action and the gender-responsive follow-up to the 2030 Agenda;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -691,9 +656,9 @@
     </div>
     
     <div id="para-28" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -702,16 +667,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Strongly encourages Governments to continue to support the role and contribution of civil society, in particular non-governmental organizations and women’s organizations, in the full, effective and accelerated implementation of the Beijing Declaration and Platform for Action and the outcome of the twenty-third special session and in the gender-responsive implementation of the 2030 Agenda;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>

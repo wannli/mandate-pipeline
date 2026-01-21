@@ -4,7 +4,6 @@ import json
 import re
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import quote
 
 from jinja2 import Environment, FileSystemLoader
 
@@ -23,8 +22,10 @@ def get_un_document_url(symbol: str) -> str:
     Returns:
         URL to view the document on UN ODS
     """
-    encoded_symbol = quote(symbol, safe="")
-    return f"https://documents.un.org/doc/UNDOC/GEN/{encoded_symbol}/pdf/{encoded_symbol}.pdf?OpenElement"
+    # Use the new docs.un.org format with direct PDF link
+    # e.g., A/RES/80/233 -> https://docs.un.org/en/a/res/80/233?direct=true
+    symbol_lower = symbol.lower()
+    return f"https://docs.un.org/en/{symbol_lower}?direct=true"
 
 
 def symbol_to_filename(symbol: str) -> str:
@@ -281,8 +282,8 @@ def generate_signal_page(documents: list, check: dict, output_dir: Path) -> None
         total_docs=len(filtered_docs),
     )
 
-    # Use check title as filename (slug)
-    filename = check["title"].lower().replace(" ", "-") + ".html"
+    # Use check signal as filename (slug)
+    filename = check["signal"].lower().replace(" ", "-") + ".html"
     with open(output_dir / filename, "w") as f:
         f.write(html)
 
@@ -677,7 +678,7 @@ def generate_site_verbose(
     for check in checks:
         generate_signal_page(documents, check, output_dir / "signals")
         if on_generate_page:
-            on_generate_page("signal", f"signals/{check['title'].lower().replace(' ', '-')}.html")
+            on_generate_page("signal", f"signals/{check['signal'].lower().replace(' ', '-')}.html")
 
     for pattern in patterns:
         generate_pattern_page(documents, pattern, checks, output_dir / "patterns")

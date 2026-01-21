@@ -67,7 +67,7 @@
     </div>
     <div class="flex items-center justify-between">
         <h1 class="text-3xl font-bold text-slate-900">A/C.3/80/L.17</h1>
-        <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.3%2F80%2FL.17/pdf/A%2FC.3%2F80%2FL.17.pdf?OpenElement" target="_blank"
+        <a href="https://docs.un.org/en/a/c.3/80/l.17?direct=true" target="_blank"
            class="inline-flex items-center px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white font-medium rounded-lg transition-colors">
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -114,10 +114,6 @@
     
 
     
-        
-            
-        
-    
 
     
 
@@ -132,15 +128,11 @@
     
 
     
-        
+
     
 
     
-        
-    
 
-    
-        
     
 
     
@@ -148,13 +140,7 @@
     
 
     
-        
-    
 
-    
-
-    
-        
     
 
     
@@ -179,8 +165,6 @@
 
     
 
-    
-        
     
 
     
@@ -235,8 +219,6 @@
 
     
 
-    
-        
     
 
 
@@ -246,7 +228,7 @@
 <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 mb-6">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-medium text-slate-700">Filter Paragraphs</h2>
-        <span class="text-xs text-slate-500">13 with signals, 50 without</span>
+        <span class="text-xs text-slate-500">5 with signals, 58 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
@@ -254,24 +236,17 @@
             Signals Only
         </button>
         
-        <button onclick="filterSignal('Secretariat signal')" 
+        <button onclick="filterSignal('Secretariat')" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
                 bg-slate-100 text-slate-700 hover:bg-slate-200">
-            Secretariat signal
+            Secretariat
         </button>
         
-        <button onclick="filterSignal('agenda signal')" 
-                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
-                bg-blue-100 text-blue-700 hover:bg-blue-200
-                ">
-            agenda signal
-        </button>
-        
-        <button onclick="filterSignal('PGA signal')" 
+        <button onclick="filterSignal('PGA')" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
                 bg-purple-100 text-purple-700 hover:bg-purple-200
                 ">
-            PGA signal
+            PGA
         </button>
         
         <button id="btn-show-all" onclick="toggleShowAll()" 
@@ -490,7 +465,7 @@
     
     <div id="para-13" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["Secretariat signal"]'
+         data-signals='["Secretariat"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -505,7 +480,7 @@
                     
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-slate-100 text-slate-700">
-                        Secretariat signal
+                        Secretariat
                     </span>
                     
                 </div>
@@ -532,9 +507,9 @@
     </div>
     
     <div id="para-15" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -543,16 +518,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Notes the ongoing work and potential of the Local Communities and Indigenous Peoples Platform of the United Nations Framework Convention on Climate Change, emphasizing the important role of Indigenous Peoples in achieving the targets and goals set out in the United Nations Framework Convention on Climate Change,35 the Paris Agreement36 and the 2030 Agenda for Sustainable Development, and recognizes that Indigenous Peoples are among the first to face the direct consequences of climate change owing to their dependence upon and close relationship with the environment and its resources;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -661,9 +626,9 @@
     </div>
     
     <div id="para-22" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -673,24 +638,14 @@
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Encourages Member States to give due consideration to all the rights of Indigenous Peoples in fulfilling the commitments undertaken in the 2030 Agenda and in the elaboration of national action plans and programmes as well as international and regional programmes, applying the pledge to leave no one behind and to endeavour to reach the furthest behind first;</p>
                 
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
-                
             </div>
         </div>
     </div>
     
     <div id="para-23" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -700,24 +655,14 @@
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Encourages States to continue to consider including in their voluntary national reviews for the high-level political forum on sustainable development and their national and global reports information related to Indigenous Peoples on the progress made and challenges in the implementation of the 2030 Agenda, bearing in mind paragraphs 78 and 79 of the 2030 Agenda, and also encourages States to compile disaggregated data to measure progress and to ensure that no one is left behind;</p>
                 
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
-                
             </div>
         </div>
     </div>
     
     <div id="para-24" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -726,16 +671,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Also encourages States, according to their relevant national context and characteristics, to collect and disseminate data disaggregated by ethnicity, income, gender, age, race, migratory status, disability, geographic location or other factors, as appropriate, in order to monitor and improve the impact of development policies, strategies and programmes aimed at improving the well-being of Indigenous Peoples and individuals, to combat and eliminate violence and multiple and intersecting forms of discrimination against them and to support work towards the achievement of the Sustainable Development Goals and the 2030 Agenda; __________________ 37 Adopted under the UNFCCC in FCCC/CP/2015/10/Add.1, decision 1/CP.21. 38 United Nations Environment Programme, document CBD/COP/15/17, decision 15/4, annex. 39 United Nations, Treaty Series, vol. 1760, No. 30619. 40 Ibid., vol. 1954, No. 33480. 41 Ibid., vol. 1037, No. 15511. A/C.3/80/L.17 11/15 25-16913</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -776,9 +711,9 @@
     </div>
     
     <div id="para-27" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -787,16 +722,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Stresses the need to strengthen the commitment of States and the entities of the United Nations system to mainstream the promotion and protection of the rights of Indigenous Peoples into development policies and programmes at the national, regional and international levels, and encourages them to give due consideration to the rights of Indigenous Peoples in achieving the goals of the 2030 Agenda;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -820,9 +745,9 @@
     </div>
     
     <div id="para-29" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -831,16 +756,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Invites the Expert Mechanism on the Rights of Indigenous Peoples, the Permanent Forum on Indigenous Issues and the Special Rapporteur on the rights of Indigenous Peoples to give due consideration, within their mandates, to the rights of Indigenous Peoples as related to the implementation of the 2030 Agenda;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -967,7 +882,7 @@
     
     <div id="para-37" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["Secretariat signal"]'
+         data-signals='["Secretariat"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -982,7 +897,7 @@
                     
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-slate-100 text-slate-700">
-                        Secretariat signal
+                        Secretariat
                     </span>
                     
                 </div>
@@ -1026,9 +941,9 @@
     </div>
     
     <div id="para-40" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1037,16 +952,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Recognizes the importance of Indigenous languages as a driver for the achievement of the Sustainable Development Goals, and calls upon Member States to integrate the preservation, promotion and revitalization of Indigenous languages into the wider efforts to implement the 2030 Agenda;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -1292,7 +1197,7 @@
     
     <div id="para-55" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["PGA signal"]'
+         data-signals='["PGA"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -1308,7 +1213,7 @@
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-purple-100 text-purple-700
                         ">
-                        PGA signal
+                        PGA
                     </span>
                     
                 </div>
@@ -1319,7 +1224,7 @@
     
     <div id="para-56" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["PGA signal"]'
+         data-signals='["PGA"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -1335,7 +1240,7 @@
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-purple-100 text-purple-700
                         ">
-                        PGA signal
+                        PGA
                     </span>
                     
                 </div>
@@ -1397,7 +1302,7 @@
     
     <div id="para-60" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["PGA signal"]'
+         data-signals='["PGA"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -1413,7 +1318,7 @@
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-purple-100 text-purple-700
                         ">
-                        PGA signal
+                        PGA
                     </span>
                     
                 </div>
@@ -1457,9 +1362,9 @@
     </div>
     
     <div id="para-63" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1468,16 +1373,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Decides to continue its consideration of the question at its eighty-first session, under the item entitled “Rights of Indigenous Peoples”, and to maintain in the provisional agenda the sub-item entitled “Follow-up to the outcome document of the high-level plenary meeting of the General Assembly known as the World Conference on Indigenous Peoples”.</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>

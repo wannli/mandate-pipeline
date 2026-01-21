@@ -28,7 +28,7 @@
         {% for check in checks %}
         {% set count = pattern_signal_counts.get(check.signal, 0) %}
         <div class="flex items-center gap-3 px-4 py-3 rounded-lg border border-gray-200 bg-white">
-            <span class="text-sm font-medium text-gray-700">{{ check.title }}</span>
+            <span class="text-sm font-medium text-gray-700">{{ check.signal }}</span>
             <span class="text-lg font-bold {% if count > 0 %}text-un-blue{% else %}text-gray-300{% endif %}">{{ count }}</span>
         </div>
         {% endfor %}
@@ -46,7 +46,7 @@
                     <th class="text-left py-3 px-4 text-sm font-medium text-gray-500">Symbol</th>
                     <th class="text-center py-3 px-4 text-sm font-medium text-gray-500">Paragraphs</th>
                     {% for check in checks %}
-                    <th class="text-center py-3 px-4 text-sm font-medium text-gray-500">{{ check.title }}</th>
+                    <th class="text-center py-3 px-4 text-sm font-medium text-gray-500">{{ check.signal }}</th>
                     {% endfor %}
                     <th class="text-right py-3 px-4 text-sm font-medium text-gray-500">Actions</th>
                 </tr>

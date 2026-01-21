@@ -67,7 +67,7 @@
     </div>
     <div class="flex items-center justify-between">
         <h1 class="text-3xl font-bold text-slate-900">A/C.2/80/L.5</h1>
-        <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.2%2F80%2FL.5/pdf/A%2FC.2%2F80%2FL.5.pdf?OpenElement" target="_blank"
+        <a href="https://docs.un.org/en/a/c.2/80/l.5?direct=true" target="_blank"
            class="inline-flex items-center px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white font-medium rounded-lg transition-colors">
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -90,6 +90,10 @@
     
 
     
+
+    
+
+    
         
             
         
@@ -98,19 +102,9 @@
     
 
     
-        
-    
 
     
-        
-    
 
-    
-        
-    
-
-    
-        
     
 
     
@@ -118,15 +112,7 @@
     
 
     
-        
-    
 
-    
-        
-    
-
-    
-        
     
 
     
@@ -173,8 +159,6 @@
         
     
 
-    
-        
     
 
     
@@ -218,8 +202,6 @@
     
 
     
-        
-    
 
     
 
@@ -243,8 +225,6 @@
         
     
 
-    
-        
     
 
     
@@ -300,7 +280,7 @@
 <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 mb-6">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-medium text-slate-700">Filter Paragraphs</h2>
-        <span class="text-xs text-slate-500">21 with signals, 60 without</span>
+        <span class="text-xs text-slate-500">11 with signals, 70 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
@@ -308,24 +288,24 @@
             Signals Only
         </button>
         
-        <button onclick="filterSignal('agenda signal')" 
+        <button onclick="filterSignal('agenda')" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
                 bg-blue-100 text-blue-700 hover:bg-blue-200
                 ">
-            agenda signal
+            agenda
         </button>
         
-        <button onclick="filterSignal('PGA signal')" 
+        <button onclick="filterSignal('PGA')" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
                 bg-purple-100 text-purple-700 hover:bg-purple-200
                 ">
-            PGA signal
+            PGA
         </button>
         
-        <button onclick="filterSignal('Secretariat signal')" 
+        <button onclick="filterSignal('Secretariat')" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
                 bg-slate-100 text-slate-700 hover:bg-slate-200">
-            Secretariat signal
+            Secretariat
         </button>
         
         <button id="btn-show-all" onclick="toggleShowAll()" 
@@ -407,9 +387,9 @@
     </div>
     
     <div id="para-5" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -418,16 +398,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Welcomes the work of the Inter-Agency Consultative Group for Least Developed Countries, led by the Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States, notes the steps taken by the United Nations System Chief Executives Board for Coordination and the High-level Committee on Programmes in supporting the coordination and follow-up of the implementation of the Doha Programme of Action on a system-wide basis, and reiterates its invitation to the Secretary-General, in his capacity as Chair of the Chief Executives Board, to include the implementation of the Programme of Action in the agenda of the Board;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -452,7 +422,7 @@
     
     <div id="para-7" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
+         data-signals='["agenda"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -468,7 +438,7 @@
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-blue-100 text-blue-700
                         ">
-                        agenda signal
+                        agenda
                     </span>
                     
                 </div>
@@ -478,9 +448,9 @@
     </div>
     
     <div id="para-8" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -490,24 +460,14 @@
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Notes with concern the estimates that by 2030 much of the world’s poor will live in the least developed countries, which indicate that the implementation of the 2030 Agenda is not on track, stresses the need for enhanced global support for the least developed countries to achieve the Sustainable Development Goals, as well as ensuring that no one is left behind, and further recognizes the importance of enhancing good governance at all levels by strengthening democratic processes, institutions and the rule of law, increasing efficiency, coherence, transparency and participation, achieving gender equality and the empowerment of all women and girls, reducing inequalities, protecting and promoting human rights, reducing corruption and strengthening the capacity of Governments of the least developed countries to play an effective role in their economic and social development;</p>
                 
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
-                
             </div>
         </div>
     </div>
     
     <div id="para-9" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -517,24 +477,14 @@
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Welcomes the adoption of resolution 79/226 of 19 December 2024 on the quadrennial comprehensive policy review of operational activities for development of the United Nations system, and urges the United Nations development system to continue to prioritize allocations to the least developed countries, in order to support the least developed countries in their efforts to implement the 2030 Agenda in a coherent and integrated manner and ensure effective delivery of support and services to programme countries in accordance with national development policies, plans, priorities and needs and in line with the mandates of the entities of the United Nations development system, further urges the United Nations development system to continue to enhance its support for the implementation of the Doha Programme of Action, which is integral to the 2030 Agenda, and calls upon the entities of the United Nations development system to integrate and mainstream the Doha Programme of Action fully into their operational activities for development;</p>
                 
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
-                
             </div>
         </div>
     </div>
     
     <div id="para-10" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -543,16 +493,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Expresses deep concern at the devastating impacts of the COVID-19 pandemic on the least developed countries, takes note of the statement dated 28 April 2020 of the Group of Least Developed Countries on COVID-19 13 and commits to supporting its implementation, as appropriate, and invites development partners, international organizations and other stakeholders to support the least developed countries in their recovery efforts and continued implementation of the 2030 Agenda for Sustainable Development, further highlighting the need for greater collaboration and partnerships at all levels to accelerate the implementation of the 2030 Agenda, including the fulfilment of the least developed country-specific targets, the Addis Ababa Action Agenda of the Third International Conference on Financing for Development, and the Sevilla Commitment adopted at the Fourth International Conference on Financing for Development, which is an integral part of the 2030 Agenda;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -593,9 +533,9 @@
     </div>
     
     <div id="para-13" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -605,24 +545,14 @@
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Reaffirms that the least developed countries, as the most vulnerable group of countries, need enhanced global support to overcome the structural challenges, as well as recent devastating impacts of the COVID-19 pandemic, conflicts and climate change and the deteriorating situation of food security, lack of access to finance and energy, and increased poverty, that they face in implementing the 2030 Agenda, and in this regard calls upon the international community to prioritize and strengthen support from all sources to facilitate sustained recovery and rebuilding and the coordinated implementation and coherent follow-up to and monitoring of the Doha Programme of Action, the 2030 Agenda and the Addis Ababa Action Agenda in the least developed countries;</p>
                 
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
-                
             </div>
         </div>
     </div>
     
     <div id="para-14" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -632,24 +562,14 @@
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Recognizes that domestic public and private resources, including at the subnational level, supplemented by international assistance and foreign direct investment, as appropriate, will be critical for the realization of sustainable development and the achievement of the Sustainable Development Goals; and that the 2030 Agenda and the Addis Ababa Action Agenda acknowledge the centrality of domestic resources mobilization, underscored by the principle of national ownership;</p>
                 
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
-                
             </div>
         </div>
     </div>
     
     <div id="para-15" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -658,16 +578,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Welcomes the commitment of development partners to ensuring the fulfilment of their respective official development assistance commitments to the least developed countries, ensuring the alignment of aid with the least developed countries’ national priorities and increasing the alignment of aid with the least developed countries’ national systems and procedures, also welcomes the decision by the European Union by which it reaffirms its collective commitment to achieving the target of 0.7 per cent of gross national income for official development assistance within the time frame of the 2030 Agenda and to reach 0.20 per cent of gross national income for official development assistance to the least developed countries within the time frame of the 2030 Agenda, expresses concern that, according to the Organisation for Economic Co-operation and Development, official development assistance flows from official donors fell by 7.1 per cent in 2024, the first decrease in official development assistance since 2019, encourages official development assistance providers to consider setting a target to provide at least 0.20 per cent of gross national income for official development assistance to the least developed countries, is encouraged by those that are allocating at least 50 per cent of their official development assistance to the least developed countries, and calls upon the development partners A/C.2/80/L.5 7/17 25-16438 to continue their development assistance to the least developed countries in their efforts to overcome ongoing crises;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -1015,7 +925,7 @@
     
     <div id="para-36" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
+         data-signals='["agenda"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -1031,7 +941,7 @@
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-blue-100 text-blue-700
                         ">
-                        agenda signal
+                        agenda
                     </span>
                     
                 </div>
@@ -1041,9 +951,9 @@
     </div>
     
     <div id="para-37" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1052,16 +962,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Reaffirms the commitment to implementing the decision contained in the Addis Ababa Action Agenda and the 2030 Agenda to adopt and implement investment promotion regimes that encourage and facilitate foreign direct investment and sustainable economic growth in the least developed countries, welcomes the support in the Sevilla Commitment for the establishment and operationalization of an international investment support centre for the least developed countries, reiterates the decision to provide financial and technical support for project preparation and contract negotiation, advisory support for investment-related dispute resolution, access to information on investment facilities, improving enabling environments, and risk insurance and guarantees such as through the Multilateral Investment Guarantee Agency, stresses the importance of foreign direct investment as a key source of economic development and external finance, with a complementary and catalytic role vis-à-vis domestic resource mobilization and investment and development finance, and notes with concern that foreign direct investment to the least developed countries remains below 2.5 per cent of global foreign direct investment flows, despite the fact that least developed countries are home to about 15 per cent of the global population, takes note of the report of the Secretary-General on an international investment support centre for the least developed countries, and urges further progress on the elaboration of such a centre, as requested in paragraph 261 of the Doha Programme of Action, and requests the Secretary-General to carry out pilot projects in least developed countries and submit the final recommendations from the full feasibility study to the General Assembly for its consideration at its eighty-first session;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -1137,7 +1037,7 @@
     
     <div id="para-42" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["PGA signal"]'
+         data-signals='["PGA"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -1153,7 +1053,7 @@
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-purple-100 text-purple-700
                         ">
-                        PGA signal
+                        PGA
                     </span>
                     
                 </div>
@@ -1181,7 +1081,7 @@
     
     <div id="para-44" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["Secretariat signal"]'
+         data-signals='["Secretariat"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -1196,7 +1096,7 @@
                     
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-slate-100 text-slate-700">
-                        Secretariat signal
+                        Secretariat
                     </span>
                     
                 </div>
@@ -1359,9 +1259,9 @@
     </div>
     
     <div id="para-54" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1370,16 +1270,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Also decides that the scope of the midterm comprehensive global review shall be as follows: (a) To undertake a comprehensive review of the implementation of the Doha Programme of Action by the least developed countries and their development partners, share best practices and lessons learned and identify obstacles and constraints encountered and actions and initiatives needed to overcome them, as well as new challenges and emerging issues; (b) To reaffirm the global commitment to address the special needs of the least developed countries made at the Fifth United Nations Conference on the Least Developed Countries and to further strengthen the global partnership for development for least developed countries in all priority areas of the Doha Programme of Action in order to ensure the timely, effective and full implementation of the Programme of Action during the remainder of the Decade, while taking into account the 2030 Agenda for Sustainable Development as it relates to the least developed countries;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -1421,7 +1311,7 @@
     
     <div id="para-57" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["PGA signal"]'
+         data-signals='["PGA"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -1437,7 +1327,7 @@
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-purple-100 text-purple-700
                         ">
-                        PGA signal
+                        PGA
                     </span>
                     
                 </div>
@@ -1448,7 +1338,7 @@
     
     <div id="para-58" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["PGA signal"]'
+         data-signals='["PGA"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -1464,7 +1354,7 @@
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-purple-100 text-purple-700
                         ">
-                        PGA signal
+                        PGA
                     </span>
                     
                 </div>
@@ -1526,7 +1416,7 @@
     
     <div id="para-62" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["PGA signal"]'
+         data-signals='["PGA"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -1542,7 +1432,7 @@
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-purple-100 text-purple-700
                         ">
-                        PGA signal
+                        PGA
                     </span>
                     
                 </div>
@@ -1552,9 +1442,9 @@
     </div>
     
     <div id="para-63" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1563,16 +1453,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Decides that the thematic meetings will focus on identifying concrete suggestions to further strengthen the global partnership for development for least developed countries in all priority areas of the Doha Programme of Action for the Least Developed Countries in order to ensure the timely, effective and full implementation of the Programme of Action during the remainder of the decade, while taking into account synergy and coherence of the Programme of Action with global processes, including the 2030 Agenda for Sustainable Development, the Sevilla Commitment of the Fourth International Conference on Financing for Development, the Sendai Framework for Disaster Risk Reduction 2015–2030, and the Paris Agreement under the United Nations Framework Convention on Climate Change;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -1614,7 +1494,7 @@
     
     <div id="para-66" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["PGA signal"]'
+         data-signals='["PGA"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -1630,7 +1510,7 @@
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-purple-100 text-purple-700
                         ">
-                        PGA signal
+                        PGA
                     </span>
                     
                 </div>
@@ -1811,7 +1691,7 @@
     
     <div id="para-77" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["Secretariat signal", "PGA signal"]'
+         data-signals='["Secretariat", "PGA"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -1826,13 +1706,13 @@
                     
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-slate-100 text-slate-700">
-                        Secretariat signal
+                        Secretariat
                     </span>
                     
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-purple-100 text-purple-700
                         ">
-                        PGA signal
+                        PGA
                     </span>
                     
                 </div>
@@ -1877,7 +1757,7 @@
     
     <div id="para-80" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["Secretariat signal"]'
+         data-signals='["Secretariat"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -1892,7 +1772,7 @@
                     
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-slate-100 text-slate-700">
-                        Secretariat signal
+                        Secretariat
                     </span>
                     
                 </div>
@@ -1903,7 +1783,7 @@
     
     <div id="para-81" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
+         data-signals='["agenda"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -1919,7 +1799,7 @@
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-blue-100 text-blue-700
                         ">
-                        agenda signal
+                        agenda
                     </span>
                     
                 </div>

@@ -67,7 +67,7 @@
     </div>
     <div class="flex items-center justify-between">
         <h1 class="text-3xl font-bold text-slate-900">A/C.3/80/L.1</h1>
-        <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.3%2F80%2FL.1/pdf/A%2FC.3%2F80%2FL.1.pdf?OpenElement" target="_blank"
+        <a href="https://docs.un.org/en/a/c.3/80/l.1?direct=true" target="_blank"
            class="inline-flex items-center px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white font-medium rounded-lg transition-colors">
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -82,35 +82,15 @@
 
 
     
-        
-            
-        
-    
 
     
-        
+
     
 
     
 
     
-        
-    
 
-    
-        
-    
-
-    
-        
-    
-
-    
-        
-    
-
-    
-        
     
 
     
@@ -122,13 +102,13 @@
     
 
     
-        
-    
 
     
 
     
-        
+
+    
+
     
         
             
@@ -142,7 +122,7 @@
 <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 mb-6">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-medium text-slate-700">Filter Paragraphs</h2>
-        <span class="text-xs text-slate-500">9 with signals, 6 without</span>
+        <span class="text-xs text-slate-500">1 with signals, 14 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
@@ -150,17 +130,10 @@
             Signals Only
         </button>
         
-        <button onclick="filterSignal('agenda signal')" 
-                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
-                bg-blue-100 text-blue-700 hover:bg-blue-200
-                ">
-            agenda signal
-        </button>
-        
-        <button onclick="filterSignal('Secretariat signal')" 
+        <button onclick="filterSignal('Secretariat')" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
                 bg-slate-100 text-slate-700 hover:bg-slate-200">
-            Secretariat signal
+            Secretariat
         </button>
         
         <button id="btn-show-all" onclick="toggleShowAll()" 
@@ -174,9 +147,9 @@
 <div class="space-y-4" id="paragraphs">
     
     <div id="para-1" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -186,24 +159,14 @@
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">The agenda items allocated by the General Assembly to the Third Committee will be issued in document A/C.3/80/1. Background information on those items may be found in the annotations to the agenda (see A/80/100 and A/80/100/Add.1). Programme of work</p>
                 
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
-                
             </div>
         </div>
     </div>
     
     <div id="para-2" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -212,16 +175,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">The draft programme of work (see annex) has been prepared bearing in mind paragraph (b) of rule 99 of the rules of procedure of the General Assembly, Assembly decision 79/540 on the programme of work of the Third Committee for the eightieth session, the provisional agenda of the eightieth session (A/80/150) and relevant resolutions and decisions adopted by the Assembly on the rationalization of its work and that of the Committee, as well as past experience in the utilization of conference services. The modalities on the arrangements for the work of the Third Committee at the eightieth session have been revised pursuant to the proposal submitted by the Bureau, taking into account the continued limitations arising from the liquidity crisis. These arrangements are exceptional and will not constitute a precedent for the programme of work of the eighty-first or any future session, irrespective of meeting entitlements or liquidity constraints. The Bureau remains committed to exploring all options thoroughly and to restore the traditional format of general discussions on individual items or clusters, alongside interactive dialogues, in its recommendation for the programme of work of the eighty-first session. Question time and interactive dialogues</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -245,9 +198,9 @@
     </div>
     
     <div id="para-4" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -257,24 +210,14 @@
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Also pursuant to the proposal submitted by the Bureau, on an exceptional basis, the general discussion of each agenda item or cluster of agenda items will be replaced by a single general debate to be held prior to the start of the interactive dialogues. This arrangement will not establish a precedent for future sessions. Statements by delegations</p>
                 
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
-                
             </div>
         </div>
     </div>
     
     <div id="para-5" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -284,24 +227,14 @@
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">The list of speakers for the general debate on any or all agenda items allocated to the Committee will be opened on Tuesday, 16 September 2025.</p>
                 
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
-                
             </div>
         </div>
     </div>
     
     <div id="para-6" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -311,24 +244,14 @@
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Statements made during the general debate under any or all agenda items will be limited to 10 minutes for individual delegations and to 12 minutes for statements made on behalf of a group of delegations. A digital timer will be projected on the screen so that speakers can keep track of their speaking time, with microphones switched off automatically after the allotted time. Pursuant to General Assembly resolution 72/313, delegations are encouraged to adhere to the “all protocol observed” principle and to refrain from listing standard protocol expressions during their statements. In the same resolution, the Assembly recommended that speakers should be mindful of the speed of statement delivery, bearing in mind the need for accuracy of interpretation. As per past practice, the Committee will maintain a “rolling” list of speakers for the general debate, which means that delegations should be ready to deliver their statements earlier, if necessary.</p>
                 
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
-                
             </div>
         </div>
     </div>
     
     <div id="para-7" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -338,24 +261,14 @@
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">In accordance with General Assembly decision 34/401, delegations should exercise their right of reply at the end of the day whenever two meetings have been scheduled for the consideration of the relevant agenda item on that day, or at the conclusion of the consideration of the item, if that is sooner. The first statement should be limited to five minutes and the second, if any, to three minutes. Also in accordance with previous decisions of the General Assembly and the practice of the Committee, explanations of vote and points of order should be limited to three minutes. List of documents</p>
                 
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
-                
             </div>
         </div>
     </div>
     
     <div id="para-8" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -364,16 +277,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Attention is drawn to the addendum to the present note (to be issued as A/C.3/80/L.1/Add.1), which will contain a list of the documentation submitted under each agenda item expected to be allocated to the Committee. The list of documents, with any updates, will be available on iGov. Conference facilities and meeting arrangements</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -448,9 +351,9 @@
     </div>
     
     <div id="para-13" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -459,16 +362,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">In paragraph 4 (c) of the annex to General Assembly resolution 58/316, the Assembly decided that the item entitled “Report of the Economic and Social Council” should be considered in its entirety in plenary meeting. Subsequently, it was clarified that, in implementing that decision, the relevant parts of chapter I of the report of the Council that related to agenda items allocated to the Main Committees would be considered by the Committee concerned, for final action by the Assembly (see A/59/250/Add.1, para. 4). Report of the Human Rights Council</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -493,7 +386,7 @@
     
     <div id="para-15" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal", "Secretariat signal"]'
+         data-signals='["Secretariat"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -507,14 +400,8 @@
                 <div class="mt-3 flex flex-wrap gap-2">
                     
                     <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-slate-100 text-slate-700">
-                        Secretariat signal
+                        Secretariat
                     </span>
                     
                 </div>

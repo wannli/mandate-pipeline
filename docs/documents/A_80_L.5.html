@@ -67,7 +67,7 @@
     </div>
     <div class="flex items-center justify-between">
         <h1 class="text-3xl font-bold text-slate-900">A/80/L.5</h1>
-        <a href="https://documents.un.org/doc/UNDOC/GEN/A%2F80%2FL.5/pdf/A%2F80%2FL.5.pdf?OpenElement" target="_blank"
+        <a href="https://docs.un.org/en/a/80/l.5?direct=true" target="_blank"
            class="inline-flex items-center px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white font-medium rounded-lg transition-colors">
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -82,33 +82,11 @@
 
 
     
-        
-            
-        
-    
 
     
 
     
 
-    
-
-    
-
-    
-
-    
-        
-    
-
-    
-
-    
-        
-    
-
-    
-        
     
 
     
@@ -130,29 +108,7 @@
     
 
     
-        
-    
 
-    
-        
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        
     
 
     
@@ -182,7 +138,33 @@
     
 
     
-        
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
     
 
     
@@ -194,19 +176,12 @@
 <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 mb-6">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-medium text-slate-700">Filter Paragraphs</h2>
-        <span class="text-xs text-slate-500">8 with signals, 36 without</span>
+        <span class="text-xs text-slate-500">0 with signals, 44 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium bg-sky-600 text-white hover:bg-sky-700 transition-all">
             Signals Only
-        </button>
-        
-        <button onclick="filterSignal('agenda signal')" 
-                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
-                bg-blue-100 text-blue-700 hover:bg-blue-200
-                ">
-            agenda signal
         </button>
         
         <button id="btn-show-all" onclick="toggleShowAll()" 
@@ -220,9 +195,9 @@
 <div class="space-y-4" id="paragraphs">
     
     <div id="para-1" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -231,16 +206,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">We, Heads of State and Government and high representatives, have gathered in Doha from 4 to 6 November 2025 at the Second World Summit for Social Development to build a more just, inclusive, equitable and sustainable world, by addressing gaps, assessing progress and recommitting to the Copenhagen Declaration on Social Development and Programme of Action of the World Summit for Social Development1 and their implementation, and give momentum towards the implementation of the 2030 Agenda for Sustainable Development.2</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -332,9 +297,9 @@
     </div>
     
     <div id="para-7" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -343,16 +308,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">We reaffirm the full, timely and effective implementation of the 2030 Agenda and the realization of the Sustainable Development Goals, upholding all the principles enshrined in it, including the promise to leave no one behind and reach the furthest behind first, and to place people at the centre of development, with due consideration of the needs of present and future generations, and a strong commitment to safeguarding our planet.</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -376,9 +331,9 @@
     </div>
     
     <div id="para-9" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -388,24 +343,14 @@
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">We reaffirm the Addis Ababa Action Agenda of the Third International Conference on Financing for Development6 as an integral part of the 2030 Agenda. We are committed to its full implementation, which is critical for the realization of the Sustainable Development Goals and their targets.</p>
                 
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
-                
             </div>
         </div>
     </div>
     
     <div id="para-10" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -414,16 +359,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">We welcome the outcome document of the Fourth International Conference on Financing for Development, the Sevilla Commitment, 7 which renews the global financing for development framework, building on the Addis Ababa Action Agenda, and call for its timely and effective implementation.</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -583,9 +518,9 @@
     </div>
     
     <div id="para-20" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -595,24 +530,14 @@
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">We commit to support and implement the relevant development agendas, strategies and programmes of action for countries in special situations, including the Doha Programme of Action for the Least Developed Countries, 11 the Awaza Programme of Action for Landlocked Developing Countries for the Decade 2024–203412 and the Antigua and Barbuda Agenda for Small Island Developing States, 13 and reaffirm our support for the achievement of the African Union Agenda 2063. We look forward to __________________ 11 Resolution 76/258, annex. 12 Resolution 79/233, annex; see also resolution 79/279. 13 Resolution 78/317, annex. A/80/L.5 5/18 25-16021 the elaboration of a specific inter-agency, comprehensive, system-wide response plan for middle-income countries by the United Nations development system.</p>
                 
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
-                
             </div>
         </div>
     </div>
     
     <div id="para-21" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -621,16 +546,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">We are convinced that addressing today’s challenges to social development requires strengthening international solidarity, upholding human rights, building trust, and a renewed commitment to multilateral action on the attainment of social development and the implementation of the sustainable development agenda in its social, economic and environmental dimensions. We will advance innovative solutions and inclusive international cooperation to fully translate the commitments of the Copenhagen Declaration and Programme of Action and the social dimension of the 2030 Agenda into concrete actions to achieve social development for all, in particular to the benefit of developing countries.</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -756,9 +671,9 @@
     </div>
     
     <div id="para-29" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -767,16 +682,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">We will adopt a holistic approach towards the eradication of poverty in all its forms and dimensions, including through addressing the challenges of extreme poverty and multidimensional poverty, address their disproportionate impact on A/80/L.5 25-16021 6/18 countries in special situations and people in vulnerable situations and combat the feminization of poverty while ensuring that the focus is on building resilience to shocks and challenges, accelerating actions to eradicate poverty and avoiding relapsing back into it. In this regard we commit to: (a) Taking effective measures, including policies and programmes, to address the root causes of poverty and underlying causes of inequality, providing for the basic needs of all and increasing resilience for interconnected crises. These efforts should include the elimination of hunger and malnutrition; the provision of social protection, food security, education, livelihoods, employment, decent work for all, clean water and sanitation, adequate shelter and reliable health systems; and participation in social and cultural life, with special priority given to the needs and rights of women and children and persons in vulnerable situations, who often bear the greatest burden of poverty; (b) Reinforcing international development cooperation for developing countries’ capacities to achieve poverty eradication, as well as the necessary measures to close financing gaps for poverty eradication and invest in capacity-building, technical assistance and programmes; (c) Exploring opportunities to mobilize additional finance, both public and private, through official development assistance-funded activities that are responsive to country needs and focused on long-term development and poverty eradication, while ensuring that additional private finance mobilized is not a substitute for existing commitments; (d) Ensuring sustainable and equitable financing for social protection systems as one of the enablers for eradicating poverty, reducing inequality and fostering social inclusion, as well as investing in programmes for eradicating poverty, including the feminization of poverty, to address underlying causes of inequality by promoting a sustainable economy for the well-being of all; (e) Integrating quality education as a core component of poverty reduction strategies, with focused efforts on access, equity and inclusion within a lifelong learning approach; (f) Advancing the transition from the informal to the formal economy, including the formalization of micro-, small and medium-sized enterprises towards the eradication of poverty, creating decent jobs and catalysing social integration; (g) Strengthening social protection systems and reinforcing investment in measures, including social protection floors, and integrating financing of social protection systems and policies, including floors and policies in line with International Labour Organization recommendations and intergovernmental agreed standards, into country-led plans and strategies while providing support to developing countries that aim to increase social protection coverage, including those that aim to do so by at least two percentage points per year; (h) Promoting the integration of child-sensitive policies and programmes in national poverty eradication strategies, including social protection programmes that deliver an integrated package of essential services, including investments in nutrition, early childhood development and universal child benefits; (i) Developing and implementing multidimensional poverty measurements according to national plans, priorities and methodologies to better measure the various dimensions of poverty and the interactions among them, as well as to support the development of targeted national public policies, based on disaggregated data; A/80/L.5 7/18 25-16021 (j) Recognizing that persons with disabilities continue to be disproportionately affected by multidimensional poverty, and the need to enhance, inter alia, efforts to facilitate international trade in assistive technologies, in line with international trade agreements, to address inequalities experienced by persons with disabilities and to promote the local production of and capacity-building initiatives for assistive products, especially in developing countries, including through research and development, and to foster greater accessibility to, as well as affordability and efficacy of, assistive products in line with the goals of disability-inclusive development; (k) Reaffirming the commitment contained in the Pact for the Future to urgently develop a framework of measures of progress on sustainable development that complement or go beyond gross domestic product through the work of the independent high-level expert group to develop recommendations for a limited number of country-owned and universally applicable indicators of sustainable development that complement and go beyond gross domestic product and a subsequent United Nations-led intergovernmental process; (l) Fully and effectively implementing the mandate set out in General Assembly resolution 78/322 of 13 August 2024 on the multidimensional vulnerability index; (m) Strengthening investment in social development at national, as well as regional, and international levels, including through enhanced international cooperation, South-South and triangular cooperation, and ensuring predictable and sustainable resources, especially for supporting developing countries in implementing poverty eradication policies; (n) Recognizing that the social and solidarity economy can play a key role in eradicating poverty, promoting social inclusion and catalysing social transformation, thus helping to achieve the objective of leaving no one behind and to achieve the 2030 Agenda and its Sustainable Development Goals, while ensuring social development for all; (o) Strengthening an inclusive approach to international cooperation and promoting innovative solutions and initiatives for poverty eradication, such as, among others, the Global Alliance against Hunger and Poverty.</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -1004,9 +909,9 @@
     </div>
     
     <div id="para-43" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1015,16 +920,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">We reiterate our commitment to the full implementation of the social development agenda, including through improving and strengthening its framework for international and regional cooperation, as established under the Copenhagen Declaration and Programme of Action and through following up on the Doha Political Declaration of the “World Social Summit” under the title “the Second World Summit for Social Development”. In this regard we decide to: (a) Proceed to a five-year follow-up process on the Doha Political Declaration and the Copenhagen Declaration and Programme of Action, starting in 2031, to assess progress, identify gaps and renew the commitments, and convene a high-level plenary meeting under the auspices of the General Assembly, the modalities and outcome of which shall be decided no later than the eighty-fifth session of the Assembly; (b) Request the Secretary-General, in consultation with Member States, to prepare a report, in preparation of the follow-up process of the Doha Political Declaration and the Copenhagen Declaration and Programme of Action and no later than the eighty-fifth session of the General Assembly, which assesses progress and identifies gaps in social development; (c) Reaffirm that the Commission for Social Development has the primary responsibility for the follow-up and the review of the World Summit for Social Development, the outcome of the twenty-fourth special session of the General Assembly, of the Doha Summit and intergovernmental social development commitments, and to proceed to the strengthening of its role, including in contribution to the follow-up process; (d) Invite the United Nations regional commissions, within their respective mandates, to convene preparatory meetings at the regional level in advance of the follow-up, with the aim of assessing progress made, gaps and opportunities for action towards the implementation of the Doha Political Declaration and the Copenhagen Declaration and Programme of Action. The regional commissions are invited to utilize existing mechanisms and platforms to conduct the regional preparatory meetings; (e) Invite the Economic and Social Council, the funds and programmes of the United Nations development system and the relevant organizations and specialized agencies, within their respective mandates, to further integrate into their work programmes relevant intergovernmental social development commitments and to be actively involved in the follow-up process; A/80/L.5 25-16021 18/18 (f) Strengthen effective multilateralism and international cooperation, as well as foster greater inter-agency cooperation and better policy coherence within the United Nations system; (g) Encourage stronger coordination, each within their respective mandates, between the United Nations and the international financial institutions through regular and substantive dialogues, including during the sessions of the Commission for Social Development, on enhancing financing mechanisms and assistance to advance social development, particularly in developing countries; (h) Strengthen multi-stakeholder engagement and partnerships, including with parliamentarians, civil society, employers’ and workers’ organizations, youth, organizations of persons with disabilities, academia, local and regional authorities, faith-based organizations and the private sector to implement the commitments; (i) Support developing countries, particularly African countries, least developed countries, small island developing States and landlocked developing countries, in, inter alia, strengthening the capacity of national statistical offices and data systems to ensure access to high-quality, timely, reliable and disaggregated social development data.</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>

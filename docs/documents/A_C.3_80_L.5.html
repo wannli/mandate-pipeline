@@ -67,7 +67,7 @@
     </div>
     <div class="flex items-center justify-between">
         <h1 class="text-3xl font-bold text-slate-900">A/C.3/80/L.5</h1>
-        <a href="https://documents.un.org/doc/UNDOC/GEN/A%2FC.3%2F80%2FL.5/pdf/A%2FC.3%2F80%2FL.5.pdf?OpenElement" target="_blank"
+        <a href="https://docs.un.org/en/a/c.3/80/l.5?direct=true" target="_blank"
            class="inline-flex items-center px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white font-medium rounded-lg transition-colors">
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -84,10 +84,6 @@
     
 
     
-        
-            
-        
-    
 
     
 
@@ -154,37 +150,11 @@
     
 
     
-        
-    
-
-    
-        
-    
 
     
 
     
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        
     
 
     
@@ -218,17 +188,25 @@
     
 
     
-        
+
+    
+
     
 
     
 
     
-        
+
     
 
     
-        
+
+    
+
+    
+
+    
+
     
 
     
@@ -246,7 +224,11 @@
     
 
     
-        
+
+    
+
+    
+
     
 
     
@@ -258,7 +240,7 @@
 <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 mb-6">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-medium text-slate-700">Filter Paragraphs</h2>
-        <span class="text-xs text-slate-500">10 with signals, 63 without</span>
+        <span class="text-xs text-slate-500">2 with signals, 71 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
@@ -266,17 +248,10 @@
             Signals Only
         </button>
         
-        <button onclick="filterSignal('agenda signal')" 
-                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
-                bg-blue-100 text-blue-700 hover:bg-blue-200
-                ">
-            agenda signal
-        </button>
-        
-        <button onclick="filterSignal('Secretariat signal')" 
+        <button onclick="filterSignal('Secretariat')" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
                 bg-slate-100 text-slate-700 hover:bg-slate-200">
-            Secretariat signal
+            Secretariat
         </button>
         
         <button id="btn-show-all" onclick="toggleShowAll()" 
@@ -307,9 +282,9 @@
     </div>
     
     <div id="para-2" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -318,16 +293,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Calls upon all States and the international community to cooperate, support and participate in the global efforts towards an age-inclusive implementation of the 2030 Agenda for Sustainable Development and to mobilize all necessary resources and support in that regard, according to national plans and strategies, including through an integrated and multifaceted approach to improving the well- being of older persons, and in this regard encourages Member States to seize this opportunity to take into account issues of relevance to older persons in their efforts to promote the attainment of the Sustainable Development Goals;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -760,7 +725,7 @@
     
     <div id="para-28" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["Secretariat signal"]'
+         data-signals='["Secretariat"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -775,7 +740,7 @@
                     
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-slate-100 text-slate-700">
-                        Secretariat signal
+                        Secretariat
                     </span>
                     
                 </div>
@@ -853,9 +818,9 @@
     </div>
     
     <div id="para-33" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -865,24 +830,14 @@
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Recommends that Member States enhance their capacity to more effectively collect age-disaggregated data, statistics and qualitative information, disaggregated also, when necessary, by other relevant factors, including sex and disability, in order to improve assessment of the situation of older persons, recognizes that the data revolution presents new opportunities and challenges for the use of new data to help with the measurement of progress in the implementation of the 2030 Agenda, in particular its aspects of relevance to older persons, and to ensure that no one is left behind, and in this regard recalls the establishment by the Statistical Commission of the Titchfield Group on Ageing-Related Statistics and Age- Disaggregated Data and the consideration of its work; A/C.3/80/L.5 25-16619 8/12</p>
                 
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
-                
             </div>
         </div>
     </div>
     
     <div id="para-34" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -891,16 +846,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Encourages Member States to enhance the capacity of national statistical offices to identify and address existing deficits in data on ageing, to contribute to the effective follow-up on the implementation of international agreed commitments, including in the 2030 Agenda for Sustainable Development;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -1094,9 +1039,9 @@
     </div>
     
     <div id="para-46" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1105,16 +1050,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Stresses the need to close all digital divides, including, inter alia, both between and within countries, the rural-urban digital divide, the gender digital divide, and between youth and older persons, which can be experienced by older persons by providing universal and affordable access to and use of information and communications technologies, including new technologies and the meaningful use of digitally enabled services, in line with the 2030 Agenda for Sustainable Development, to people throughout their life course without discrimination based on age or other forms of discrimination, and welcomes efforts by the United Nations to assist Member States, upon their request, in achieving this;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -1376,9 +1311,9 @@
     </div>
     
     <div id="para-62" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1387,16 +1322,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Encourages the international community and the relevant agencies of the United Nations system, within their respective mandates, to support national efforts to provide funding for research and data-collection initiatives on ageing, as appropriate, in order to better understand the challenges and opportunities presented by population ageing and to provide policymakers with more accurate and more specific information with regard to a gender perspective on ageing, as well as to include indicators that provide an evidence base for the equitable delivery and effective monitoring of the implementation of the Sustainable Development Goals, the New Urban Agenda 21 and national policymaking, as well as to gain a better understanding of how to promote ageing in a way that is not adversely affected by rapid urbanization and gentrification;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -1420,9 +1345,9 @@
     </div>
     
     <div id="para-64" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1432,23 +1357,13 @@
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Takes note with appreciation of the work of the Inter-Agency Group on Ageing, a network of United Nations entities that exchange information and integrate ageing into their programmes of work on the implementation of the 2030 Agenda;</p>
                 
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
-                
             </div>
         </div>
     </div>
     
     <div id="para-65" 
          class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["Secretariat signal"]'
+         data-signals='["Secretariat"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -1463,7 +1378,7 @@
                     
                     <span class="px-2 py-0.5 rounded text-xs font-medium
                         bg-slate-100 text-slate-700">
-                        Secretariat signal
+                        Secretariat
                     </span>
                     
                 </div>
@@ -1507,9 +1422,9 @@
     </div>
     
     <div id="para-68" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1518,16 +1433,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Requests relevant entities of the United Nations system, including the United Nations Entity for Gender Equality and the Empowerment of Women (UN-Women), to ensure that the situation of older women is mainstreamed and incorporated across their work and to support, in accordance with their respective mandates, the implementation of the 2030 Agenda, in particular its aspects of relevance to older persons, including gender equality and the empowerment of all women and girls through, inter alia, the elimination of all forms of discrimination and violence against women;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
@@ -1585,9 +1490,9 @@
     </div>
     
     <div id="para-72" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
-         data-signals='["agenda signal"]'
-         data-has-signals="true">
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1596,16 +1501,6 @@
             </div>
             <div class="flex-1">
                 <p class="text-slate-800 leading-relaxed">Invites the Independent Expert to address and engage in an interactive dialogue with the General Assembly at its eighty-first session under the agenda item entitled “Social development”;</p>
-                
-                <div class="mt-3 flex flex-wrap gap-2">
-                    
-                    <span class="px-2 py-0.5 rounded text-xs font-medium
-                        bg-blue-100 text-blue-700
-                        ">
-                        agenda signal
-                    </span>
-                    
-                </div>
                 
             </div>
         </div>
