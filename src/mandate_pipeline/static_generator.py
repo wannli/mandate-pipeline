@@ -542,20 +542,42 @@ def generate_pattern_signal_page(
     docs_by_pattern = group_documents_by_pattern(documents, patterns)
     pattern_docs = docs_by_pattern.get(pattern_name, [])
     
-    # Filter to only docs with this signal
-    filtered_docs = [
-        doc for doc in pattern_docs
-        if signal in doc.get("signal_summary", {})
-    ]
+    # Filter to only docs with this signal and add signal_paragraphs
+    filtered_docs = []
+    total_paragraphs = 0
     
-    # Sort by signal count descending
-    filtered_docs.sort(key=lambda d: d.get("signal_summary", {}).get(signal, 0), reverse=True)
+    for doc in pattern_docs:
+        if signal not in doc.get("signal_summary", {}):
+            continue
+        
+        # Find paragraphs that have this signal
+        signal_paras = []
+        for para_num, para_signals in doc.get("signals", {}).items():
+            if signal in para_signals:
+                para_text = doc.get("paragraphs", {}).get(para_num, "")
+                signal_paras.append({
+                    "number": para_num,
+                    "text": para_text
+                })
+        
+        # Sort paragraphs by number
+        signal_paras.sort(key=lambda p: int(p["number"]))
+        
+        # Add to filtered docs with signal_paragraphs
+        doc_copy = doc.copy()
+        doc_copy["signal_paragraphs"] = signal_paras
+        filtered_docs.append(doc_copy)
+        total_paragraphs += len(signal_paras)
+    
+    # Sort documents naturally by symbol
+    filtered_docs.sort(key=lambda d: natural_sort_key(d["symbol"]))
 
     html = template.render(
         pattern=pattern,
         pattern_slug=pattern_slug,
         signal=signal,
         documents=filtered_docs,
+        total_paragraphs=total_paragraphs,
     )
 
     filename = f"{pattern_slug}_{signal_slug}.html"

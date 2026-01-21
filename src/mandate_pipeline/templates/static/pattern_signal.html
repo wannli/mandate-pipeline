@@ -19,47 +19,50 @@
 
 <!-- Header -->
 <div class="mb-8">
-    <h1 class="text-3xl font-bold text-gray-900 tracking-tight">{{ signal }}</h1>
-    <p class="mt-2 text-lg text-muted">{{ documents|length }} documents in {{ pattern.name }}</p>
+    <h1 class="text-3xl font-bold text-gray-900 tracking-tight">{{ signal }} in {{ pattern.name }}</h1>
+    <p class="mt-2 text-lg text-muted">{{ total_paragraphs }} paragraphs across {{ documents|length }} documents</p>
 </div>
 
-<!-- Documents Table -->
+<!-- Paragraphs grouped by document -->
 {% if documents %}
-<div class="border border-gray-200 rounded-lg overflow-hidden">
-    <table class="w-full">
-        <thead>
-            <tr class="bg-gray-50 border-b border-gray-200">
-                <th class="text-left py-3 px-4 text-sm font-medium text-gray-500">Symbol</th>
-                <th class="text-center py-3 px-4 text-sm font-medium text-gray-500">Paragraphs</th>
-                <th class="text-center py-3 px-4 text-sm font-medium text-gray-500">{{ signal }} Count</th>
-                <th class="text-right py-3 px-4 text-sm font-medium text-gray-500">Actions</th>
-            </tr>
-        </thead>
-        <tbody class="divide-y divide-gray-100">
-            {% for doc in documents %}
-            <tr class="hover:bg-gray-50 transition-colors">
-                <td class="py-3 px-4">
-                    <a href="../documents/{{ doc.symbol|replace('/', '_') }}.html" class="font-medium text-gray-900 hover:text-un-blue transition-colors">
-                        {{ doc.symbol }}
+<div class="space-y-6">
+    {% for doc in documents %}
+    {% set doc_paras = doc.signal_paragraphs %}
+    {% if doc_paras %}
+    <div class="border border-gray-200 rounded-lg overflow-hidden">
+        <!-- Document Header -->
+        <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="../documents/{{ doc.symbol|replace('/', '_') }}.html" class="font-semibold text-gray-900 hover:text-un-blue transition-colors">
+                    {{ doc.symbol }}
+                </a>
+                <span class="px-2 py-0.5 rounded-full text-xs font-medium
+                    {% if 'agenda' in signal|lower %}bg-blue-50 text-blue-700
+                    {% elif 'pga' in signal|lower %}bg-purple-50 text-purple-700
+                    {% else %}bg-gray-100 text-gray-700{% endif %}">
+                    {{ doc_paras|length }} paragraph{% if doc_paras|length != 1 %}s{% endif %}
+                </span>
+            </div>
+            <a href="{{ doc.un_url }}" target="_blank" class="text-sm text-muted hover:text-un-blue transition-colors">PDF ↗</a>
+        </div>
+        
+        <!-- Paragraphs -->
+        <div class="divide-y divide-gray-100">
+            {% for para in doc_paras %}
+            <div class="px-4 py-3 flex gap-4">
+                <div class="flex-shrink-0">
+                    <a href="../documents/{{ doc.symbol|replace('/', '_') }}.html#para-{{ para.number }}" 
+                       class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-gray-100 text-gray-700 font-medium text-sm hover:bg-un-blue hover:text-white transition-colors">
+                        {{ para.number }}
                     </a>
-                </td>
-                <td class="text-center py-3 px-4 text-sm text-muted">{{ doc.num_paragraphs }}</td>
-                <td class="text-center py-3 px-4">
-                    <span class="inline-flex items-center justify-center min-w-[1.5rem] px-2 py-0.5 rounded-full text-xs font-medium
-                        {% if 'agenda' in signal|lower %}bg-blue-50 text-blue-700
-                        {% elif 'pga' in signal|lower %}bg-purple-50 text-purple-700
-                        {% else %}bg-gray-100 text-gray-700{% endif %}">
-                        {{ doc.signal_summary.get(signal, 0) }}
-                    </span>
-                </td>
-                <td class="text-right py-3 px-4">
-                    <a href="../documents/{{ doc.symbol|replace('/', '_') }}.html" class="text-sm text-muted hover:text-un-blue transition-colors mr-3">View</a>
-                    <a href="{{ doc.un_url }}" target="_blank" class="text-sm text-muted hover:text-un-blue transition-colors">PDF ↗</a>
-                </td>
-            </tr>
+                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">{{ para.text }}</p>
+            </div>
             {% endfor %}
-        </tbody>
-    </table>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
 </div>
 {% else %}
 <div class="text-center py-12 text-muted">
