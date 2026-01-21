@@ -104,6 +104,12 @@ def extract_title(text: str) -> str:
         r"^Original:",
         r"^\[on the report of",
         r"^\[without reference to",
+        # Skip facilitator/submitter lines (end with country in parentheses)
+        r"^.*\([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*(?:\s+of\s+[A-Z][a-z]+)?\s*\)\s*$",
+        # Skip "on the basis of informal consultations" lines
+        r".*on the basis of informal consultations",
+        # Skip lines referencing other draft resolutions
+        r"^.*resolution\s+A/C\.\d+/\d+/L\.\d+",
     ]
 
     # Patterns that indicate end of title (start of document body)
@@ -166,10 +172,10 @@ def extract_title(text: str) -> str:
         if res_title_parts:
             return " ".join(res_title_parts)
 
-    # For proposals: find title after "draft resolution" line
+    # For proposals: find title after "draft resolution" or "draft decision" line
     start_at = 0
     for idx, line in enumerate(lines[:stop_at]):
-        if re.search(r"draft resolution", line, re.IGNORECASE):
+        if re.search(r"draft (resolution|decision)", line, re.IGNORECASE):
             start_at = idx + 1
             break
 
