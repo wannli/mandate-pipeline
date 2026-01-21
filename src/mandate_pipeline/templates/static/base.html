@@ -1,66 +1,72 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Mandate Pipeline{% endblock %}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
                     colors: {
-                        un: {
-                            blue: '#009edb',
-                            dark: '#1a365d',
-                        }
+                        'un-blue': '#009edb',
+                        'un-blue-dark': '#0077a8',
+                        'muted': '#64748b',
                     }
                 }
             }
         }
     </script>
     <style>
-        /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 8px; height: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f5f9; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        html { scroll-behavior: smooth; }
+        ::selection { background: rgba(0, 158, 219, 0.2); }
+        .hover-lift { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .hover-lift:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
     </style>
 </head>
-<body class="h-full bg-slate-50">
-    <div class="min-h-full">
-        <!-- Navigation -->
-        <nav class="bg-gradient-to-r from-slate-900 to-slate-800 shadow-lg">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between h-16">
-                    <div class="flex items-center space-x-8">
-                        <a href="./index.html" class="flex items-center space-x-2">
-                            <svg class="w-8 h-8 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                            </svg>
-                            <span class="text-white font-bold text-lg">Mandate Pipeline</span>
-                        </a>
-                        <div class="hidden md:flex items-center space-x-1">
-                            <a href="{% block nav_index %}./index.html{% endblock %}" class="text-slate-300 hover:text-white hover:bg-slate-700 px-3 py-2 rounded-md text-sm font-medium transition-colors">Dashboard</a>
-                            <a href="{% block nav_documents %}./documents/index.html{% endblock %}" class="text-slate-300 hover:text-white hover:bg-slate-700 px-3 py-2 rounded-md text-sm font-medium transition-colors">Documents</a>
-                        </div>
+<body class="min-h-screen bg-white text-gray-900 font-sans antialiased">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-100">
+        <div class="max-w-5xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="{% block nav_index %}./index.html{% endblock %}" class="flex items-center gap-3 group">
+                    <div class="w-9 h-9 rounded-lg bg-un-blue flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
                     </div>
-                </div>
+                    <span class="text-lg font-semibold text-gray-900 group-hover:text-un-blue transition-colors">Mandate Pipeline</span>
+                </a>
+                <nav class="flex items-center gap-8">
+                    <a href="{% block nav_documents %}./documents/index.html{% endblock %}" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Documents</a>
+                    <a href="./data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
+                </nav>
             </div>
-        </nav>
+        </div>
+    </header>
 
-        <!-- Main content -->
-        <main class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            {% block content %}{% endblock %}
-        </main>
-        
-        <!-- Footer -->
-        <footer class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500">
-            {% block footer %}
-            Generated by Mandate Pipeline
-            {% endblock %}
-        </footer>
-    </div>
+    <!-- Main content -->
+    <main class="max-w-5xl mx-auto px-6 py-10">
+        {% block content %}{% endblock %}
+    </main>
+    
+    <!-- Footer -->
+    <footer class="border-t border-gray-100 mt-20">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <p class="text-sm text-muted">
+                {% block footer %}
+                Generated by Mandate Pipeline
+                {% endblock %}
+            </p>
+        </div>
+    </footer>
 </body>
 </html>

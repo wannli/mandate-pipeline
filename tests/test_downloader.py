@@ -281,25 +281,6 @@ patterns:
 
         assert symbols == ["A/80/L.1", "A/80/L.2", "A/80/L.3"]
 
-    def test_generate_symbols_with_committee(self):
-        """Generate symbols with committee expansion."""
-        pattern = {
-            "name": "Committee L docs",
-            "template": "A/C.{committee}/{session}/L.{number}",
-            "committee": [1, 2],
-            "session": 80,
-            "start": 1,
-        }
-
-        # Generate symbols - should cycle through committees
-        symbols = list(generate_symbols(pattern, count=4))
-
-        # First should be committee 1, number 1
-        assert symbols[0] == "A/C.1/80/L.1"
-        assert symbols[1] == "A/C.2/80/L.1"
-        assert symbols[2] == "A/C.1/80/L.2"
-        assert symbols[3] == "A/C.2/80/L.2"
-
     def test_generate_symbols_resolution_pattern(self):
         """Generate resolution symbols."""
         pattern = {
@@ -371,99 +352,6 @@ class TestDiscoverDocuments:
         # Should find at least one document
         assert len(found) >= 1
         assert found[0] == "A/77/L.1"
-
-
-class TestExpandPatternByListVars:
-    """Test expand_pattern_by_list_vars function."""
-
-    def test_pattern_without_list_vars_unchanged(self):
-        """Pattern without list variables returns as-is."""
-        from mandate_pipeline.pipeline import expand_pattern_by_list_vars
-
-        pattern = {
-            "name": "L documents",
-            "template": "A/{session}/L.{number}",
-            "session": 80,
-            "start": 1,
-        }
-
-        expanded = expand_pattern_by_list_vars(pattern)
-
-        assert len(expanded) == 1
-        assert expanded[0] == pattern
-
-    def test_pattern_with_single_list_var_expands(self):
-        """Pattern with one list variable expands to multiple patterns."""
-        from mandate_pipeline.pipeline import expand_pattern_by_list_vars
-
-        pattern = {
-            "name": "Committee L docs",
-            "template": "A/C.{committee}/{session}/L.{number}",
-            "committee": [1, 2, 3],
-            "session": 80,
-            "start": 1,
-        }
-
-        expanded = expand_pattern_by_list_vars(pattern)
-
-        assert len(expanded) == 3
-        
-        # Each expanded pattern should have a scalar committee value
-        assert expanded[0]["committee"] == 1
-        assert expanded[1]["committee"] == 2
-        assert expanded[2]["committee"] == 3
-        
-        # Each should have a unique name
-        assert "committee1" in expanded[0]["name"]
-        assert "committee2" in expanded[1]["name"]
-        assert "committee3" in expanded[2]["name"]
-        
-        # Each should preserve other fields
-        assert expanded[0]["session"] == 80
-        assert expanded[0]["start"] == 1
-        assert expanded[0]["template"] == "A/C.{committee}/{session}/L.{number}"
-
-    def test_pattern_with_multiple_list_vars_expands(self):
-        """Pattern with multiple list variables expands to all combinations."""
-        from mandate_pipeline.pipeline import expand_pattern_by_list_vars
-
-        pattern = {
-            "name": "Multi-var",
-            "template": "A/C.{committee}/{session}/L.{number}",
-            "committee": [1, 2],
-            "session": [79, 80],
-            "start": 1,
-        }
-
-        expanded = expand_pattern_by_list_vars(pattern)
-
-        # 2 committees x 2 sessions = 4 patterns
-        assert len(expanded) == 4
-        
-        # Check all combinations exist
-        combos = [(p["committee"], p["session"]) for p in expanded]
-        assert (1, 79) in combos
-        assert (1, 80) in combos
-        assert (2, 79) in combos
-        assert (2, 80) in combos
-
-    def test_expanded_pattern_tracks_parent(self):
-        """Expanded patterns track their parent name."""
-        from mandate_pipeline.pipeline import expand_pattern_by_list_vars
-
-        pattern = {
-            "name": "Committee L docs",
-            "template": "A/C.{committee}/{session}/L.{number}",
-            "committee": [1, 2],
-            "session": 80,
-            "start": 1,
-        }
-
-        expanded = expand_pattern_by_list_vars(pattern)
-
-        # Each expanded pattern should track the original parent name
-        assert expanded[0]["_parent_name"] == "Committee L docs"
-        assert expanded[1]["_parent_name"] == "Committee L docs"
 
 
 class TestSyncState:

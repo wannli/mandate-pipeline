@@ -2,7 +2,6 @@
 
 import json
 from datetime import datetime, timezone
-from itertools import product
 from pathlib import Path
 from typing import Iterator
 
@@ -37,8 +36,7 @@ def generate_symbols(pattern: dict, count: int = None, start_override: int = Non
     """
     Generate document symbols from a pattern definition.
 
-    For simple patterns: generates A/80/L.1, A/80/L.2, A/80/L.3...
-    For patterns WITHOUT list variables.
+    Generates A/80/L.1, A/80/L.2, A/80/L.3...
 
     Args:
         pattern: Pattern definition with template and variables
@@ -51,100 +49,23 @@ def generate_symbols(pattern: dict, count: int = None, start_override: int = Non
     template = pattern["template"]
     start = start_override if start_override is not None else pattern.get("start", 1)
 
-    # Find list-valued variables (like committee: [1,2,3])
-    list_vars = {}
+    # Collect all scalar variables
     scalar_vars = {}
-
     for key, value in pattern.items():
         if key in ("name", "template", "start"):
             continue
-        if isinstance(value, list):
-            list_vars[key] = value
-        else:
-            scalar_vars[key] = value
+        scalar_vars[key] = value
 
     generated = 0
     number = start
 
     while count is None or generated < count:
-        if list_vars:
-            # Generate all combinations for this number
-            # NOTE: This cycles through list vars for each number
-            # For sequential processing by list var, use expand_pattern_by_list_vars
-            keys = list(list_vars.keys())
-            values = [list_vars[k] for k in keys]
+        vars_dict = scalar_vars.copy()
+        vars_dict["number"] = number
 
-            for combo in product(*values):
-                if count is not None and generated >= count:
-                    return
-
-                vars_dict = dict(zip(keys, combo))
-                vars_dict.update(scalar_vars)
-                vars_dict["number"] = number
-
-                yield template.format(**vars_dict)
-                generated += 1
-        else:
-            # Simple case: just increment number
-            vars_dict = scalar_vars.copy()
-            vars_dict["number"] = number
-
-            yield template.format(**vars_dict)
-            generated += 1
-
+        yield template.format(**vars_dict)
+        generated += 1
         number += 1
-
-
-def expand_pattern_by_list_vars(pattern: dict) -> list[dict]:
-    """
-    Expand a pattern with list variables into multiple simple patterns.
-    
-    For example, a pattern with committee: [1, 2, 3] becomes three patterns,
-    one for each committee. This allows processing each committee sequentially
-    (all docs for committee 1, then all docs for committee 2, etc.)
-    
-    Args:
-        pattern: Pattern definition that may have list variables
-        
-    Returns:
-        List of expanded patterns (each with scalar values only)
-    """
-    # Find list-valued variables
-    list_vars = {}
-    other_keys = {}
-    
-    for key, value in pattern.items():
-        if key in ("name", "template", "start"):
-            other_keys[key] = value
-        elif isinstance(value, list):
-            list_vars[key] = value
-        else:
-            other_keys[key] = value
-    
-    if not list_vars:
-        # No list variables, return as-is
-        return [pattern]
-    
-    # Generate all combinations of list variables
-    expanded = []
-    keys = list(list_vars.keys())
-    values = [list_vars[k] for k in keys]
-    
-    for combo in product(*values):
-        new_pattern = other_keys.copy()
-        combo_dict = dict(zip(keys, combo))
-        new_pattern.update(combo_dict)
-        
-        # Create a unique name for this sub-pattern
-        combo_str = "_".join(f"{k}{v}" for k, v in combo_dict.items())
-        base_name = pattern.get("name", "pattern")
-        new_pattern["name"] = f"{base_name} ({combo_str})"
-        new_pattern["_parent_name"] = base_name  # Track parent for state grouping
-        new_pattern["_combo"] = combo_dict  # Track the combination
-        
-        expanded.append(new_pattern)
-    
-    return expanded
 
 
 def document_exists(symbol: str) -> bool:
@@ -309,10 +230,6 @@ def sync_pattern(
 ) -> tuple[list[str], int]:
     """
     Sync documents for a single pattern - discover and download new ones.
-    
-    For patterns with list variables (like committee: [1,2,3]), this expands
-    them and processes each sub-pattern sequentially (all docs for committee 1,
-    then all docs for committee 2, etc.)
 
     Args:
         pattern: Pattern definition
@@ -323,34 +240,22 @@ def sync_pattern(
     Returns:
         Tuple of (list of newly downloaded symbols, new highest_found number)
     """
-    # Get the parent pattern name for output directory
-    parent_name = pattern.get("_parent_name", pattern["name"])
+    pattern_name = pattern["name"]
     
-    # Create output directory using parent name
-    output_dir = data_dir / "pdfs" / parent_name.replace(" ", "_")
+    # Create output directory
+    output_dir = data_dir / "pdfs" / pattern_name.replace(" ", "_")
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    # Expand pattern if it has list variables
-    expanded = expand_pattern_by_list_vars(pattern)
+    new_docs, highest = sync_simple_pattern(
+        pattern, state, data_dir, output_dir, max_consecutive_misses
+    )
     
-    all_new_docs = []
-    last_highest = pattern.get("start", 1) - 1
+    # Update state for this pattern
+    if pattern_name not in state["patterns"]:
+        state["patterns"][pattern_name] = {}
+    state["patterns"][pattern_name]["highest_found"] = highest
     
-    for sub_pattern in expanded:
-        new_docs, highest = sync_simple_pattern(
-            sub_pattern, state, data_dir, output_dir, max_consecutive_misses
-        )
-        all_new_docs.extend(new_docs)
-        
-        # Update state for this sub-pattern
-        sub_name = sub_pattern["name"]
-        if sub_name not in state["patterns"]:
-            state["patterns"][sub_name] = {}
-        state["patterns"][sub_name]["highest_found"] = highest
-        
-        last_highest = max(last_highest, highest)
-    
-    return all_new_docs, last_highest
+    return new_docs, highest
 
 
 def sync_all_patterns(
@@ -400,10 +305,6 @@ def sync_all_patterns_verbose(
 ) -> dict:
     """
     Sync all patterns with verbose callbacks for logging.
-    
-    For patterns with list variables (like committee: [1,2,3]), this expands
-    them and processes each sub-pattern sequentially (all docs for committee 1,
-    then all docs for committee 2, etc.)
 
     Args:
         config_dir: Directory containing patterns.yaml
@@ -427,81 +328,71 @@ def sync_all_patterns_verbose(
     results = {}
 
     for pattern in patterns:
-        parent_name = pattern["name"]
+        pattern_name = pattern["name"]
         
-        # Create output directory using parent pattern name
-        output_dir = data_dir / "pdfs" / parent_name.replace(" ", "_")
+        # Create output directory
+        output_dir = data_dir / "pdfs" / pattern_name.replace(" ", "_")
         output_dir.mkdir(parents=True, exist_ok=True)
         
-        # Expand pattern if it has list variables
-        expanded = expand_pattern_by_list_vars(pattern)
-        
-        all_new_docs = []
-        parent_start_time = time.time()
-        
-        for sub_pattern in expanded:
-            sub_name = sub_pattern["name"]
-            start_number = get_start_number(sub_pattern, state)
-            pattern_start_time = time.time()
+        start_number = get_start_number(pattern, state)
+        pattern_start_time = time.time()
 
-            if on_pattern_start:
-                on_pattern_start(sub_name, start_number)
+        if on_pattern_start:
+            on_pattern_start(pattern_name, start_number)
 
-            new_docs = []
-            highest_found = state.get("patterns", {}).get(sub_name, {}).get(
-                "highest_found", sub_pattern.get("start", 1) - 1
-            )
-            consecutive_misses = 0
-            current_number = start_number
+        new_docs = []
+        highest_found = state.get("patterns", {}).get(pattern_name, {}).get(
+            "highest_found", pattern.get("start", 1) - 1
+        )
+        consecutive_misses = 0
+        current_number = start_number
 
-            for symbol in generate_symbols(sub_pattern, start_override=start_number):
-                exists = document_exists(symbol)
+        for symbol in generate_symbols(pattern, start_override=start_number):
+            exists = document_exists(symbol)
 
-                if exists:
-                    consecutive_misses = 0
+            if exists:
+                consecutive_misses = 0
 
-                    if on_check:
-                        on_check(symbol, True, 0)
+                if on_check:
+                    on_check(symbol, True, 0)
 
-                    # Download the document
-                    try:
-                        download_start = time.time()
-                        pdf_path = download_document(symbol, output_dir=output_dir)
-                        download_duration = time.time() - download_start
-                        file_size = pdf_path.stat().st_size
+                # Download the document
+                try:
+                    download_start = time.time()
+                    pdf_path = download_document(symbol, output_dir=output_dir)
+                    download_duration = time.time() - download_start
+                    file_size = pdf_path.stat().st_size
 
-                        if on_download:
-                            on_download(symbol, pdf_path, file_size, download_duration)
+                    if on_download:
+                        on_download(symbol, pdf_path, file_size, download_duration)
 
-                        new_docs.append(symbol)
-                        highest_found = current_number
+                    new_docs.append(symbol)
+                    highest_found = current_number
 
-                    except Exception as e:
-                        if on_error:
-                            on_error(symbol, str(e))
-                else:
-                    consecutive_misses += 1
+                except Exception as e:
+                    if on_error:
+                        on_error(symbol, str(e))
+            else:
+                consecutive_misses += 1
 
-                    if on_check:
-                        on_check(symbol, False, consecutive_misses)
+                if on_check:
+                    on_check(symbol, False, consecutive_misses)
 
-                    if consecutive_misses >= max_consecutive_misses:
-                        break
+                if consecutive_misses >= max_consecutive_misses:
+                    break
 
-                current_number += 1
+            current_number += 1
 
-            # Update state for this sub-pattern
-            if sub_name not in state["patterns"]:
-                state["patterns"][sub_name] = {}
-            state["patterns"][sub_name]["highest_found"] = highest_found
+        # Update state for this pattern
+        if pattern_name not in state["patterns"]:
+            state["patterns"][pattern_name] = {}
+        state["patterns"][pattern_name]["highest_found"] = highest_found
 
-            all_new_docs.extend(new_docs)
+        results[pattern_name] = new_docs
 
-            pattern_duration = time.time() - pattern_start_time
-            if on_pattern_end:
-                on_pattern_end(sub_name, len(new_docs), pattern_duration)
-
-        results[parent_name] = all_new_docs
+        pattern_duration = time.time() - pattern_start_time
+        if on_pattern_end:
+            on_pattern_end(pattern_name, len(new_docs), pattern_duration)
 
     # Save updated state
     state["last_sync"] = datetime.now(timezone.utc).isoformat()

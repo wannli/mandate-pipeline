@@ -1,58 +1,61 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A/C.2/80/L.58 - Mandate Pipeline</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
                     colors: {
-                        un: {
-                            blue: '#009edb',
-                            dark: '#1a365d',
-                        }
+                        'un-blue': '#009edb',
+                        'un-blue-dark': '#0077a8',
+                        'muted': '#64748b',
                     }
                 }
             }
         }
     </script>
     <style>
-        /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 8px; height: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f5f9; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        html { scroll-behavior: smooth; }
+        ::selection { background: rgba(0, 158, 219, 0.2); }
+        .hover-lift { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .hover-lift:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
     </style>
 </head>
-<body class="h-full bg-slate-50">
-    <div class="min-h-full">
-        <!-- Navigation -->
-        <nav class="bg-gradient-to-r from-slate-900 to-slate-800 shadow-lg">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between h-16">
-                    <div class="flex items-center space-x-8">
-                        <a href="./index.html" class="flex items-center space-x-2">
-                            <svg class="w-8 h-8 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                            </svg>
-                            <span class="text-white font-bold text-lg">Mandate Pipeline</span>
-                        </a>
-                        <div class="hidden md:flex items-center space-x-1">
-                            <a href="../index.html" class="text-slate-300 hover:text-white hover:bg-slate-700 px-3 py-2 rounded-md text-sm font-medium transition-colors">Dashboard</a>
-                            <a href="./index.html" class="text-slate-300 hover:text-white hover:bg-slate-700 px-3 py-2 rounded-md text-sm font-medium transition-colors">Documents</a>
-                        </div>
+<body class="min-h-screen bg-white text-gray-900 font-sans antialiased">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-100">
+        <div class="max-w-5xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <div class="w-9 h-9 rounded-lg bg-un-blue flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
                     </div>
-                </div>
+                    <span class="text-lg font-semibold text-gray-900 group-hover:text-un-blue transition-colors">Mandate Pipeline</span>
+                </a>
+                <nav class="flex items-center gap-8">
+                    <a href="./index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Documents</a>
+                    <a href="./data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
+                </nav>
             </div>
-        </nav>
+        </div>
+    </header>
 
-        <!-- Main content -->
-        <main class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            
+    <!-- Main content -->
+    <main class="max-w-5xl mx-auto px-6 py-10">
+        
 <!-- Header -->
 <div class="mb-6">
     <div class="flex items-center gap-2 text-sm text-slate-500 mb-2">
@@ -75,7 +78,7 @@
     <p class="mt-2 text-slate-600">74 operative paragraphs</p>
 </div>
 
-<!-- Signal Summary -->
+<!-- Compute signal data -->
 
 
     
@@ -263,46 +266,56 @@
     
         
     
+
+
 
 
 
 <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 mb-6">
-    <h2 class="text-sm font-medium text-slate-700 mb-3">Signals Detected</h2>
+    <div class="flex items-center justify-between mb-3">
+        <h2 class="text-sm font-medium text-slate-700">Filter Paragraphs</h2>
+        <span class="text-xs text-slate-500">16 with signals, 58 without</span>
+    </div>
     <div class="flex flex-wrap gap-2">
+        <button id="btn-signals-only" onclick="showSignalsOnly()" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium bg-sky-600 text-white hover:bg-sky-700 transition-all">
+            Signals Only
+        </button>
         
-        <button onclick="highlightSignal('agenda signal')" 
+        <button onclick="filterSignal('agenda signal')" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
                 bg-blue-100 text-blue-700 hover:bg-blue-200
                 ">
             agenda signal
         </button>
         
-        <button onclick="highlightSignal('Secretariat signal')" 
+        <button onclick="filterSignal('Secretariat signal')" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
                 bg-slate-100 text-slate-700 hover:bg-slate-200">
             Secretariat signal
         </button>
         
-        <button onclick="highlightSignal('PGA signal')" 
+        <button onclick="filterSignal('PGA signal')" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
                 bg-purple-100 text-purple-700 hover:bg-purple-200
                 ">
             PGA signal
         </button>
         
-        <button onclick="highlightSignal('all')" class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium bg-slate-900 text-white">
+        <button id="btn-show-all" onclick="toggleShowAll()" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium bg-slate-200 text-slate-700 hover:bg-slate-300 transition-all">
             Show All
         </button>
     </div>
 </div>
 
-
 <!-- Paragraphs -->
 <div class="space-y-4" id="paragraphs">
     
     <div id="para-1" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -317,8 +330,9 @@
     </div>
     
     <div id="para-2" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -333,8 +347,9 @@
     </div>
     
     <div id="para-3" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='["agenda signal"]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
+         data-signals='["agenda signal"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -359,8 +374,9 @@
     </div>
     
     <div id="para-4" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -375,8 +391,9 @@
     </div>
     
     <div id="para-5" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -391,8 +408,9 @@
     </div>
     
     <div id="para-6" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -407,8 +425,9 @@
     </div>
     
     <div id="para-7" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -423,8 +442,9 @@
     </div>
     
     <div id="para-8" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -439,8 +459,9 @@
     </div>
     
     <div id="para-9" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -455,8 +476,9 @@
     </div>
     
     <div id="para-10" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='["Secretariat signal"]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
+         data-signals='["Secretariat signal"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -480,8 +502,9 @@
     </div>
     
     <div id="para-11" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='["agenda signal"]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
+         data-signals='["agenda signal"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -506,8 +529,9 @@
     </div>
     
     <div id="para-12" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -522,8 +546,9 @@
     </div>
     
     <div id="para-13" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -538,8 +563,9 @@
     </div>
     
     <div id="para-14" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -554,8 +580,9 @@
     </div>
     
     <div id="para-15" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -570,8 +597,9 @@
     </div>
     
     <div id="para-16" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -586,8 +614,9 @@
     </div>
     
     <div id="para-17" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -602,8 +631,9 @@
     </div>
     
     <div id="para-18" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -618,8 +648,9 @@
     </div>
     
     <div id="para-19" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -634,8 +665,9 @@
     </div>
     
     <div id="para-20" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -650,8 +682,9 @@
     </div>
     
     <div id="para-21" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -666,8 +699,9 @@
     </div>
     
     <div id="para-22" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='["agenda signal"]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
+         data-signals='["agenda signal"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -692,8 +726,9 @@
     </div>
     
     <div id="para-23" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -708,8 +743,9 @@
     </div>
     
     <div id="para-24" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -724,8 +760,9 @@
     </div>
     
     <div id="para-25" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -740,8 +777,9 @@
     </div>
     
     <div id="para-26" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -756,8 +794,9 @@
     </div>
     
     <div id="para-27" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -772,8 +811,9 @@
     </div>
     
     <div id="para-28" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -788,8 +828,9 @@
     </div>
     
     <div id="para-29" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -804,8 +845,9 @@
     </div>
     
     <div id="para-30" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -820,8 +862,9 @@
     </div>
     
     <div id="para-31" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -836,8 +879,9 @@
     </div>
     
     <div id="para-32" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -852,8 +896,9 @@
     </div>
     
     <div id="para-33" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -868,8 +913,9 @@
     </div>
     
     <div id="para-34" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -884,8 +930,9 @@
     </div>
     
     <div id="para-35" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='["agenda signal"]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
+         data-signals='["agenda signal"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -910,8 +957,9 @@
     </div>
     
     <div id="para-36" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -926,8 +974,9 @@
     </div>
     
     <div id="para-37" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -942,8 +991,9 @@
     </div>
     
     <div id="para-38" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='["agenda signal"]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
+         data-signals='["agenda signal"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -968,8 +1018,9 @@
     </div>
     
     <div id="para-39" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -984,8 +1035,9 @@
     </div>
     
     <div id="para-40" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1000,8 +1052,9 @@
     </div>
     
     <div id="para-41" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='["agenda signal"]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
+         data-signals='["agenda signal"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1026,8 +1079,9 @@
     </div>
     
     <div id="para-42" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='["agenda signal"]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
+         data-signals='["agenda signal"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1052,8 +1106,9 @@
     </div>
     
     <div id="para-43" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1068,8 +1123,9 @@
     </div>
     
     <div id="para-44" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1084,8 +1140,9 @@
     </div>
     
     <div id="para-45" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1100,8 +1157,9 @@
     </div>
     
     <div id="para-46" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1116,8 +1174,9 @@
     </div>
     
     <div id="para-47" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1132,8 +1191,9 @@
     </div>
     
     <div id="para-48" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='["agenda signal"]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
+         data-signals='["agenda signal"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1158,8 +1218,9 @@
     </div>
     
     <div id="para-49" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1174,8 +1235,9 @@
     </div>
     
     <div id="para-50" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1190,8 +1252,9 @@
     </div>
     
     <div id="para-51" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1206,8 +1269,9 @@
     </div>
     
     <div id="para-52" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1222,8 +1286,9 @@
     </div>
     
     <div id="para-53" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='["agenda signal"]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
+         data-signals='["agenda signal"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1248,8 +1313,9 @@
     </div>
     
     <div id="para-54" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1264,8 +1330,9 @@
     </div>
     
     <div id="para-55" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='["agenda signal"]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
+         data-signals='["agenda signal"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1290,8 +1357,9 @@
     </div>
     
     <div id="para-56" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1306,8 +1374,9 @@
     </div>
     
     <div id="para-57" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1322,8 +1391,9 @@
     </div>
     
     <div id="para-58" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1338,8 +1408,9 @@
     </div>
     
     <div id="para-59" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1354,8 +1425,9 @@
     </div>
     
     <div id="para-60" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1370,8 +1442,9 @@
     </div>
     
     <div id="para-61" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='["agenda signal"]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
+         data-signals='["agenda signal"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1396,8 +1469,9 @@
     </div>
     
     <div id="para-62" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1412,8 +1486,9 @@
     </div>
     
     <div id="para-63" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1428,8 +1503,9 @@
     </div>
     
     <div id="para-64" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='["Secretariat signal"]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
+         data-signals='["Secretariat signal"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1453,8 +1529,9 @@
     </div>
     
     <div id="para-65" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1469,8 +1546,9 @@
     </div>
     
     <div id="para-66" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='["PGA signal"]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
+         data-signals='["PGA signal"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1495,8 +1573,9 @@
     </div>
     
     <div id="para-67" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1511,8 +1590,9 @@
     </div>
     
     <div id="para-68" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1527,8 +1607,9 @@
     </div>
     
     <div id="para-69" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1543,8 +1624,9 @@
     </div>
     
     <div id="para-70" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1559,8 +1641,9 @@
     </div>
     
     <div id="para-71" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1575,8 +1658,9 @@
     </div>
     
     <div id="para-72" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='["agenda signal"]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
+         data-signals='["agenda signal"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1601,8 +1685,9 @@
     </div>
     
     <div id="para-73" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='[]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1617,8 +1702,9 @@
     </div>
     
     <div id="para-74" 
-         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all"
-         data-signals='["agenda signal"]'>
+         class="para-row bg-white rounded-xl shadow-sm border border-slate-200 p-4 transition-all "
+         data-signals='["agenda signal"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100 text-slate-700 font-bold text-sm">
@@ -1645,51 +1731,118 @@
 </div>
 
 <script>
-function highlightSignal(signal) {
+let showingAll = false;
+
+function filterSignal(signal) {
     const rows = document.querySelectorAll('.para-row');
     
     // Update button styles
     document.querySelectorAll('.signal-btn').forEach(btn => {
-        btn.classList.remove('ring-2', 'ring-offset-2', 'ring-slate-900');
+        btn.classList.remove('ring-2', 'ring-offset-2', 'ring-sky-500');
+    });
+    event.currentTarget.classList.add('ring-2', 'ring-offset-2', 'ring-sky-500');
+    
+    rows.forEach(row => {
+        const signals = JSON.parse(row.dataset.signals || '[]');
+        const hasSignals = row.dataset.hasSignals === 'true';
+        
+        if (signals.includes(signal)) {
+            row.classList.remove('hidden', 'opacity-40', 'scale-[0.98]');
+        } else if (showingAll) {
+            // When showing all, dim non-matching but keep visible
+            row.classList.remove('hidden');
+            row.classList.add('opacity-40', 'scale-[0.98]');
+        } else {
+            // When not showing all, hide non-matching
+            row.classList.add('hidden');
+        }
+    });
+}
+
+function showSignalsOnly() {
+    showingAll = false;
+    const rows = document.querySelectorAll('.para-row');
+    
+    // Update button styles
+    document.querySelectorAll('.signal-btn').forEach(btn => {
+        btn.classList.remove('ring-2', 'ring-offset-2', 'ring-sky-500');
+    });
+    document.getElementById('btn-signals-only').classList.add('ring-2', 'ring-offset-2', 'ring-sky-500');
+    document.getElementById('btn-show-all').textContent = 'Show All';
+    
+    rows.forEach(row => {
+        row.classList.remove('opacity-40', 'scale-[0.98]');
+        const hasSignals = row.dataset.hasSignals === 'true';
+        if (hasSignals) {
+            row.classList.remove('hidden');
+        } else {
+            row.classList.add('hidden');
+        }
+    });
+}
+
+function toggleShowAll() {
+    showingAll = !showingAll;
+    const rows = document.querySelectorAll('.para-row');
+    const btn = document.getElementById('btn-show-all');
+    
+    // Update button styles
+    document.querySelectorAll('.signal-btn').forEach(b => {
+        b.classList.remove('ring-2', 'ring-offset-2', 'ring-sky-500');
     });
     
-    if (signal === 'all') {
+    if (showingAll) {
+        btn.textContent = 'Hide Others';
+        btn.classList.add('ring-2', 'ring-offset-2', 'ring-sky-500');
         rows.forEach(row => {
-            row.classList.remove('opacity-40', 'scale-[0.98]');
-            row.classList.add('opacity-100');
-        });
-    } else {
-        rows.forEach(row => {
-            const signals = JSON.parse(row.dataset.signals || '[]');
-            if (signals.includes(signal)) {
-                row.classList.remove('opacity-40', 'scale-[0.98]');
-                row.classList.add('opacity-100');
-            } else {
-                row.classList.remove('opacity-100');
+            row.classList.remove('hidden');
+            const hasSignals = row.dataset.hasSignals === 'true';
+            if (!hasSignals) {
                 row.classList.add('opacity-40', 'scale-[0.98]');
+            } else {
+                row.classList.remove('opacity-40', 'scale-[0.98]');
             }
         });
+    } else {
+        btn.textContent = 'Show All';
+        showSignalsOnly();
     }
 }
+
+// Initialize: show only paragraphs with signals
+document.addEventListener('DOMContentLoaded', function() {
+    // Mark the "Signals Only" button as active by default
+    const signalsOnlyBtn = document.getElementById('btn-signals-only');
+    if (signalsOnlyBtn) {
+        signalsOnlyBtn.classList.add('ring-2', 'ring-offset-2', 'ring-sky-500');
+    }
+});
 
 // Handle anchor links
 if (window.location.hash) {
     const target = document.querySelector(window.location.hash);
     if (target) {
+        // If target is hidden, show all paragraphs first
+        if (target.classList.contains('hidden')) {
+            toggleShowAll();
+        }
         target.scrollIntoView({ behavior: 'smooth' });
         target.classList.add('ring-2', 'ring-sky-500');
     }
 }
 </script>
 
-        </main>
-        
-        <!-- Footer -->
-        <footer class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500">
-            
-            Generated by Mandate Pipeline
-            
-        </footer>
-    </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="border-t border-gray-100 mt-20">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <p class="text-sm text-muted">
+                
+                Generated by Mandate Pipeline
+                
+            </p>
+        </div>
+    </footer>
 </body>
 </html>

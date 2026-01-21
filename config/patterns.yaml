@@ -4,13 +4,43 @@ patterns:
     session: 80
     start: 1
 
-  - name: "Committee L documents"
-    template: "A/C.{committee}/{session}/L.{number}"
-    committee: [1, 2, 3, 4, 5, 6]
+  - name: "Resolutions"
+    template: "A/RES/{session}/{number}"
     session: 80
     start: 1
 
-  - name: "Resolutions"
-    template: "A/RES/{session}/{number}"
+  - name: "C.1 (Disarmament)"
+    template: "A/C.{committee}/{session}/L.{number}"
+    committee: 1
+    session: 80
+    start: 1
+
+  - name: "C.2 (Economic)"
+    template: "A/C.{committee}/{session}/L.{number}"
+    committee: 2
+    session: 80
+    start: 1
+
+  - name: "C.3 (Social)"
+    template: "A/C.{committee}/{session}/L.{number}"
+    committee: 3
+    session: 80
+    start: 1
+
+  - name: "C.4 (Special Political)"
+    template: "A/C.{committee}/{session}/L.{number}"
+    committee: 4
+    session: 80
+    start: 1
+
+  - name: "C.5 (Administrative)"
+    template: "A/C.{committee}/{session}/L.{number}"
+    committee: 5
+    session: 80
+    start: 1
+
+  - name: "C.6 (Legal)"
+    template: "A/C.{committee}/{session}/L.{number}"
+    committee: 6
     session: 80
     start: 1

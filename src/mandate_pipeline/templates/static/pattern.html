@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}{{ pattern.name }} - Mandate Pipeline{% endblock %}
+
+{% block nav_index %}../index.html{% endblock %}
+{% block nav_documents %}../documents/index.html{% endblock %}
+
+{% block content %}
+<!-- Breadcrumb -->
+<nav class="mb-8">
+    <ol class="flex items-center gap-2 text-sm text-muted">
+        <li><a href="../index.html" class="hover:text-un-blue transition-colors">Home</a></li>
+        <li class="text-gray-300">/</li>
+        <li class="text-gray-900 font-medium">{{ pattern.name }}</li>
+    </ol>
+</nav>
+
+<!-- Header -->
+<div class="mb-10">
+    <h1 class="text-3xl font-bold text-gray-900 tracking-tight">{{ pattern.name }}</h1>
+    <p class="mt-2 text-muted">{{ total_docs }} documents · Pattern: <code class="text-sm bg-gray-100 px-2 py-0.5 rounded">{{ pattern.template }}</code></p>
+</div>
+
+<!-- Signal Summary for this Pattern -->
+<div class="mb-10">
+    <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">Signals</h2>
+    <div class="flex flex-wrap gap-3">
+        {% for check in checks %}
+        {% set count = pattern_signal_counts.get(check.signal, 0) %}
+        <div class="flex items-center gap-3 px-4 py-3 rounded-lg border border-gray-200 bg-white">
+            <span class="text-sm font-medium text-gray-700">{{ check.title }}</span>
+            <span class="text-lg font-bold {% if count > 0 %}text-un-blue{% else %}text-gray-300{% endif %}">{{ count }}</span>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Documents in this pattern -->
+{% if documents %}
+<div>
+    <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">Documents</h2>
+    <div class="border border-gray-200 rounded-lg overflow-hidden">
+        <table class="w-full">
+            <thead>
+                <tr class="bg-gray-50 border-b border-gray-200">
+                    <th class="text-left py-3 px-4 text-sm font-medium text-gray-500">Symbol</th>
+                    <th class="text-center py-3 px-4 text-sm font-medium text-gray-500">Paragraphs</th>
+                    {% for check in checks %}
+                    <th class="text-center py-3 px-4 text-sm font-medium text-gray-500">{{ check.title }}</th>
+                    {% endfor %}
+                    <th class="text-right py-3 px-4 text-sm font-medium text-gray-500">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+                {% for doc in documents %}
+                <tr class="hover:bg-gray-50 transition-colors">
+                    <td class="py-3 px-4">
+                        <a href="../documents/{{ doc.symbol|replace('/', '_') }}.html" class="font-medium text-gray-900 hover:text-un-blue transition-colors">
+                            {{ doc.symbol }}
+                        </a>
+                    </td>
+                    <td class="text-center py-3 px-4 text-sm text-muted">{{ doc.num_paragraphs }}</td>
+                    {% for check in checks %}
+                    {% set count = doc.signal_summary.get(check.signal, 0) %}
+                    <td class="text-center py-3 px-4">
+                        {% if count > 0 %}
+                        <span class="inline-flex items-center justify-center min-w-[1.5rem] px-2 py-0.5 rounded-full text-xs font-medium
+                            {% if 'agenda' in check.signal|lower %}bg-blue-50 text-blue-700
+                            {% elif 'pga' in check.signal|lower %}bg-purple-50 text-purple-700
+                            {% else %}bg-gray-100 text-gray-700{% endif %}">
+                            {{ count }}
+                        </span>
+                        {% else %}
+                        <span class="text-gray-300">—</span>
+                        {% endif %}
+                    </td>
+                    {% endfor %}
+                    <td class="text-right py-3 px-4">
+                        <a href="{{ doc.un_url }}" target="_blank" class="text-sm text-muted hover:text-un-blue transition-colors">
+                            PDF ↗
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% else %}
+<div class="text-center py-16">
+    <p class="text-muted">No documents found for this pattern.</p>
+</div>
+{% endif %}
+{% endblock %}

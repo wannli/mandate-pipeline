@@ -344,6 +344,124 @@ def generate_documents_list_page(documents: list, checks: list, output_dir: Path
         f.write(html)
 
 
+def compute_matrix(documents: list, patterns: list, checks: list) -> dict:
+    """
+    Compute the pattern × signal matrix.
+
+    Args:
+        documents: All documents
+        patterns: Pattern definitions
+        checks: Check definitions
+
+    Returns:
+        Dict mapping pattern_name -> {signal_name: count}
+    """
+    # Group documents by pattern
+    docs_by_pattern = group_documents_by_pattern(documents)
+    
+    # Map pattern_dir names to pattern names from config
+    pattern_name_map = {}
+    for p in patterns:
+        # Convert pattern name to match pattern_dir format
+        dir_name = p["name"].replace(" ", "_")
+        pattern_name_map[p["name"].replace("_", " ")] = p["name"]
+    
+    matrix = {}
+    for pattern in patterns:
+        pattern_name = pattern["name"]
+        # Find docs matching this pattern (try different name formats)
+        pattern_docs = []
+        for key, docs in docs_by_pattern.items():
+            # Match by checking if pattern name is in the key
+            if pattern_name.replace(" ", "_") == key.replace(" ", "_"):
+                pattern_docs = docs
+                break
+        
+        matrix[pattern_name] = {}
+        for check in checks:
+            signal = check["signal"]
+            count = 0
+            for doc in pattern_docs:
+                if signal in doc.get("signal_summary", {}):
+                    count += doc["signal_summary"][signal]
+            matrix[pattern_name][signal] = count
+    
+    return matrix
+
+
+def compute_pattern_doc_counts(documents: list, patterns: list) -> dict:
+    """
+    Compute document counts per pattern.
+
+    Args:
+        documents: All documents
+        patterns: Pattern definitions
+
+    Returns:
+        Dict mapping pattern_name -> doc count
+    """
+    docs_by_pattern = group_documents_by_pattern(documents)
+    
+    counts = {}
+    for pattern in patterns:
+        pattern_name = pattern["name"]
+        # Find docs matching this pattern
+        for key, docs in docs_by_pattern.items():
+            if pattern_name.replace(" ", "_") == key.replace(" ", "_"):
+                counts[pattern_name] = len(docs)
+                break
+        if pattern_name not in counts:
+            counts[pattern_name] = 0
+    
+    return counts
+
+
+def generate_pattern_page(documents: list, pattern: dict, checks: list, output_dir: Path) -> None:
+    """
+    Generate individual pattern page.
+
+    Args:
+        documents: All documents
+        pattern: Pattern definition
+        checks: All check definitions
+        output_dir: Output directory (patterns/ subdirectory)
+    """
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    env = get_templates_env()
+    template = env.get_template("pattern.html")
+
+    pattern_name = pattern["name"]
+    docs_by_pattern = group_documents_by_pattern(documents)
+    
+    # Find docs matching this pattern
+    pattern_docs = []
+    for key, docs in docs_by_pattern.items():
+        if pattern_name.replace(" ", "_") == key.replace(" ", "_"):
+            pattern_docs = docs
+            break
+
+    # Calculate signal counts for this pattern
+    pattern_signal_counts = {}
+    for doc in pattern_docs:
+        for sig, count in doc.get("signal_summary", {}).items():
+            pattern_signal_counts[sig] = pattern_signal_counts.get(sig, 0) + count
+
+    html = template.render(
+        pattern=pattern,
+        documents=pattern_docs,
+        checks=checks,
+        pattern_signal_counts=pattern_signal_counts,
+        total_docs=len(pattern_docs),
+    )
+
+    # Create slug from pattern name
+    slug = pattern_name.lower().replace(" ", "_").replace(".", "").replace("(", "").replace(")", "")
+    with open(output_dir / f"{slug}.html", "w") as f:
+        f.write(html)
+
+
 def generate_index_page(documents: list, checks: list, patterns: list, output_dir: Path) -> None:
     """
     Generate main index/dashboard page.
@@ -366,10 +484,16 @@ def generate_index_page(documents: list, checks: list, patterns: list, output_di
         for sig, count in doc.get("signal_summary", {}).items():
             total_signal_counts[sig] = total_signal_counts.get(sig, 0) + count
 
+    # Compute matrix data
+    matrix = compute_matrix(documents, patterns, checks)
+    pattern_doc_counts = compute_pattern_doc_counts(documents, patterns)
+
     html = template.render(
         documents=documents,
         checks=checks,
         patterns=patterns,
+        matrix=matrix,
+        pattern_doc_counts=pattern_doc_counts,
         total_docs=len(documents),
         docs_with_signals=len([d for d in documents if d.get("signals")]),
         total_signal_counts=total_signal_counts,
@@ -404,6 +528,7 @@ def generate_site(config_dir: Path, data_dir: Path, output_dir: Path) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     (output_dir / "documents").mkdir(exist_ok=True)
     (output_dir / "signals").mkdir(exist_ok=True)
+    (output_dir / "patterns").mkdir(exist_ok=True)
 
     # Generate pages
     generate_index_page(documents, checks, patterns, output_dir)
@@ -414,6 +539,9 @@ def generate_site(config_dir: Path, data_dir: Path, output_dir: Path) -> None:
 
     for check in checks:
         generate_signal_page(documents, check, output_dir / "signals")
+
+    for pattern in patterns:
+        generate_pattern_page(documents, pattern, checks, output_dir / "patterns")
 
     # Generate data exports
     generate_data_json(documents, checks, output_dir)
@@ -530,6 +658,7 @@ def generate_site_verbose(
     output_dir.mkdir(parents=True, exist_ok=True)
     (output_dir / "documents").mkdir(exist_ok=True)
     (output_dir / "signals").mkdir(exist_ok=True)
+    (output_dir / "patterns").mkdir(exist_ok=True)
 
     # Generate pages
     generate_index_page(documents, checks, patterns, output_dir)
@@ -549,6 +678,12 @@ def generate_site_verbose(
         generate_signal_page(documents, check, output_dir / "signals")
         if on_generate_page:
             on_generate_page("signal", f"signals/{check['title'].lower().replace(' ', '-')}.html")
+
+    for pattern in patterns:
+        generate_pattern_page(documents, pattern, checks, output_dir / "patterns")
+        slug = pattern["name"].lower().replace(" ", "_").replace(".", "").replace("(", "").replace(")", "")
+        if on_generate_page:
+            on_generate_page("pattern", f"patterns/{slug}.html")
 
     # Generate data exports
     generate_data_json(documents, checks, output_dir)
