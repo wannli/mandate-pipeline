@@ -19,6 +19,14 @@
 <div class="mb-8">
     <h1 class="text-3xl font-bold text-gray-900 tracking-tight">{{ check.signal }}</h1>
     <p class="mt-2 text-muted">{{ total_docs }} documents contain this signal</p>
+    {% if adopted_hidden_count > 0 %}
+    <p class="mt-1 text-xs text-muted">{{ adopted_hidden_count }} adopted drafts hidden</p>
+    <div class="mt-3">
+        <button id="toggle-adopted-btn" class="px-3 py-1.5 text-sm font-medium rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
+            Show adopted drafts ({{ adopted_hidden_count }})
+        </button>
+    </div>
+    {% endif %}
 </div>
 
 <!-- Matching Phrases -->
@@ -39,7 +47,10 @@
     <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">Documents</h2>
     <div class="space-y-6">
         {% for doc in documents %}
-        <div class="border border-gray-200 rounded-lg overflow-hidden">
+        {% set is_adopted = doc.is_adopted_draft %}
+        <div class="border border-gray-200 rounded-lg overflow-hidden"
+             data-adopted="{{ 'true' if is_adopted else 'false' }}"
+             {% if is_adopted %}style="display: none;"{% endif %}>
             <!-- Document Header -->
             <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-gray-50">
                 <div class="flex items-center gap-4">
@@ -50,6 +61,14 @@
                     <span class="text-sm text-muted">
                         {{ doc.signal_paragraphs|length }} match{% if doc.signal_paragraphs|length != 1 %}es{% endif %}
                     </span>
+                    {% if is_adopted and doc.adopted_by %}
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/{{ doc.adopted_by|replace('/', '_') }}.html" class="hover:text-un-blue transition-colors">
+                            {{ doc.adopted_by }}
+                        </a>
+                    </span>
+                    {% endif %}
                 </div>
                 <div class="flex items-center gap-4">
                     <a href="../documents/{{ doc.symbol|replace('/', '_') }}.html" 
@@ -91,4 +110,37 @@
     <p class="text-muted">No documents found with this signal.</p>
 </div>
 {% endif %}
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleAdoptedBtn = document.getElementById('toggle-adopted-btn');
+    const adoptedDocs = document.querySelectorAll('[data-adopted="true"]');
+    let showAdopted = false;
+
+    function applyAdoptedVisibility() {
+        adoptedDocs.forEach(doc => {
+            if (showAdopted) {
+                doc.style.display = 'block';
+                doc.style.opacity = '0.6';
+            } else {
+                doc.style.display = 'none';
+            }
+        });
+    }
+
+    function toggleAdopted() {
+        showAdopted = !showAdopted;
+        if (toggleAdoptedBtn) {
+            toggleAdoptedBtn.textContent = showAdopted
+                ? 'Hide adopted drafts'
+                : 'Show adopted drafts ({{ adopted_hidden_count }})';
+        }
+        applyAdoptedVisibility();
+    }
+
+    if (toggleAdoptedBtn) {
+        toggleAdoptedBtn.addEventListener('click', toggleAdopted);
+    }
+});
+</script>
 {% endblock %}

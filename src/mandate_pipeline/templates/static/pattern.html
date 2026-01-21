@@ -18,6 +18,9 @@
 <!-- Header -->
 <div class="mb-8">
     <h1 class="text-3xl font-bold text-gray-900 tracking-tight">{{ pattern.name }}</h1>
+    {% if adopted_hidden_count > 0 %}
+    <p class="mt-1 text-xs text-muted">{{ adopted_hidden_count }} adopted drafts hidden</p>
+    {% endif %}
     <p class="mt-2 text-muted">{{ total_docs }} documents · Pattern: <code class="text-sm bg-gray-100 px-2 py-0.5 rounded">{{ pattern.template }}</code></p>
 </div>
 
@@ -54,13 +57,22 @@
             <button id="show-all-btn" class="px-3 py-1.5 text-sm font-medium rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
                 Show All
             </button>
+            {% if adopted_hidden_count > 0 %}
+            <button id="toggle-adopted-btn" class="px-3 py-1.5 text-sm font-medium rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
+                Show adopted drafts ({{ adopted_hidden_count }})
+            </button>
+            {% endif %}
         </div>
     </div>
     
     <div class="space-y-6">
         {% for doc in documents %}
         {% set has_signals = doc.signal_paragraphs|length > 0 %}
-        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card {% if not has_signals %}no-signals{% endif %}" data-has-signals="{{ has_signals|lower }}">
+        {% set is_adopted = doc.is_adopted_draft %}
+        <div class="border border-gray-200 rounded-lg overflow-hidden doc-card {% if not has_signals %}no-signals{% endif %}"
+             data-has-signals="{{ has_signals|lower }}"
+             data-adopted="{{ 'true' if is_adopted else 'false' }}"
+             {% if is_adopted %}style="display: none;"{% endif %}>
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -68,6 +80,14 @@
                         {{ doc.symbol }}
                     </a>
                     <span class="text-sm text-muted">{{ doc.num_paragraphs }} paragraphs</span>
+                    {% if is_adopted and doc.adopted_by %}
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/{{ doc.adopted_by|replace('/', '_') }}.html" class="hover:text-un-blue transition-colors">
+                            {{ doc.adopted_by }}
+                        </a>
+                    </span>
+                    {% endif %}
                     {% for check in checks %}
                     {% set count = doc.signal_summary.get(check.signal, 0) %}
                     {% if count > 0 %}
@@ -120,25 +140,61 @@
 document.addEventListener('DOMContentLoaded', function() {
     const signalsOnlyBtn = document.getElementById('signals-only-btn');
     const showAllBtn = document.getElementById('show-all-btn');
+    const toggleAdoptedBtn = document.getElementById('toggle-adopted-btn');
     const noSignalDocs = document.querySelectorAll('.doc-card.no-signals');
+    const adoptedDocs = document.querySelectorAll('.doc-card[data-adopted="true"]');
+    let showAdopted = false;
+    let signalsOnlyMode = true;
     
     function setSignalsOnly() {
+        signalsOnlyMode = true;
         signalsOnlyBtn.className = 'px-3 py-1.5 text-sm font-medium rounded-lg bg-un-blue text-white';
         showAllBtn.className = 'px-3 py-1.5 text-sm font-medium rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors';
         noSignalDocs.forEach(doc => doc.style.display = 'none');
+        applyAdoptedVisibility();
     }
     
     function setShowAll() {
+        signalsOnlyMode = false;
         showAllBtn.className = 'px-3 py-1.5 text-sm font-medium rounded-lg bg-un-blue text-white';
         signalsOnlyBtn.className = 'px-3 py-1.5 text-sm font-medium rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors';
         noSignalDocs.forEach(doc => {
             doc.style.display = 'block';
             doc.style.opacity = '0.6';
         });
+        applyAdoptedVisibility();
+    }
+
+    function applyAdoptedVisibility() {
+        adoptedDocs.forEach(doc => {
+            if (!showAdopted) {
+                doc.style.display = 'none';
+                return;
+            }
+            if (signalsOnlyMode && doc.classList.contains('no-signals')) {
+                doc.style.display = 'none';
+                return;
+            }
+            doc.style.display = 'block';
+            doc.style.opacity = '0.6';
+        });
+    }
+
+    function toggleAdopted() {
+        showAdopted = !showAdopted;
+        if (toggleAdoptedBtn) {
+            toggleAdoptedBtn.textContent = showAdopted
+                ? 'Hide adopted drafts'
+                : 'Show adopted drafts ({{ adopted_hidden_count }})';
+        }
+        applyAdoptedVisibility();
     }
     
     signalsOnlyBtn.addEventListener('click', setSignalsOnly);
     showAllBtn.addEventListener('click', setShowAll);
+    if (toggleAdoptedBtn) {
+        toggleAdoptedBtn.addEventListener('click', toggleAdopted);
+    }
     
     // Default: signals only
     setSignalsOnly();

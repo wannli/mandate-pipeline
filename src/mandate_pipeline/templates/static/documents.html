@@ -9,7 +9,10 @@
 <!-- Header -->
 <div class="mb-8">
     <h1 class="text-3xl font-bold text-gray-900 tracking-tight">All Documents</h1>
-    <p class="mt-2 text-muted">{{ total_docs }} documents analyzed</p>
+    <p class="mt-2 text-muted">
+        {{ total_docs }} documents analyzed
+        {% if adopted_hidden_count > 0 %}· {{ adopted_hidden_count }} adopted drafts hidden{% endif %}
+    </p>
 </div>
 
 <!-- Filters -->
@@ -34,6 +37,11 @@
         <button onclick="toggleAllSections()" id="toggle-all-btn" class="text-sm text-un-blue hover:underline">
             Collapse All
         </button>
+        {% if adopted_hidden_count > 0 %}
+        <button onclick="toggleAdopted()" id="toggle-adopted-btn" class="text-sm text-un-blue hover:underline">
+            Show adopted drafts ({{ adopted_hidden_count }})
+        </button>
+        {% endif %}
         <div class="relative">
             <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -49,6 +57,7 @@
 <!-- Documents grouped by pattern -->
 {% for pattern in patterns %}
 {% set pattern_docs = docs_by_pattern.get(pattern.name, []) %}
+{% set pattern_docs_visible = docs_by_pattern_visible.get(pattern.name, []) %}
 {% set pattern_slug = pattern.name|lower|replace(' ', '_')|replace('.', '')|replace('(', '')|replace(')', '') %}
 {% if pattern_docs %}
 <div class="pattern-section mb-4" data-pattern="{{ pattern.name }}">
@@ -60,12 +69,12 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
             <span class="font-semibold text-gray-900">{{ pattern.name }}</span>
-            <span class="text-sm text-muted">(<span class="pattern-count" data-pattern="{{ pattern.name }}">{{ pattern_docs|length }}</span> documents)</span>
+            <span class="text-sm text-muted">(<span class="pattern-count" data-pattern="{{ pattern.name }}">{{ pattern_docs_visible|length }}</span> documents)</span>
         </div>
         <div class="flex items-center gap-2">
             {% for check in checks %}
             {% set sig_count = 0 %}
-            {% for doc in pattern_docs %}
+            {% for doc in pattern_docs_visible %}
             {% set sig_count = sig_count + doc.signal_summary.get(check.signal, 0) %}
             {% endfor %}
             {% if sig_count > 0 %}
@@ -95,7 +104,10 @@
             </thead>
             <tbody class="divide-y divide-gray-100">
                 {% for doc in pattern_docs %}
+                {% set is_adopted = doc.is_adopted_draft %}
                 <tr class="doc-row hover:bg-gray-50 transition-colors"
+                    data-adopted="{{ 'true' if is_adopted else 'false' }}"
+                    {% if is_adopted %}style="display: none;"{% endif %}
                     data-symbol="{{ doc.symbol|lower }}"
                     data-pattern="{{ pattern.name }}"
                     data-signals='{{ doc.signal_summary|tojson }}'>
@@ -103,6 +115,14 @@
                         <a href="./{{ doc.symbol|replace('/', '_') }}.html" class="font-medium text-gray-900 hover:text-un-blue transition-colors">
                             {{ doc.symbol }}
                         </a>
+                        {% if is_adopted and doc.adopted_by %}
+                        <div class="text-xs text-muted mt-1">
+                            Adopted by
+                            <a href="./{{ doc.adopted_by|replace('/', '_') }}.html" class="hover:text-un-blue transition-colors">
+                                {{ doc.adopted_by }}
+                            </a>
+                        </div>
+                        {% endif %}
                     </td>
                     <td class="text-center py-2 px-4 text-sm text-muted">{{ doc.num_paragraphs }}</td>
                     {% for check in checks %}
@@ -136,6 +156,7 @@
 <script>
 let currentFilter = 'all';
 let allExpanded = true;
+let showAdopted = false;
 
 function toggleSection(slug) {
     const section = document.getElementById(`section-${slug}`);
@@ -208,9 +229,10 @@ function applyFilters() {
         const symbol = row.dataset.symbol;
         const pattern = row.dataset.pattern;
         const signals = JSON.parse(row.dataset.signals || '{}');
+        const isAdopted = row.dataset.adopted === 'true';
         
         let show = true;
-        
+
         // Signal filter
         if (currentFilter !== 'all' && !signals[currentFilter]) {
             show = false;
@@ -220,8 +242,17 @@ function applyFilters() {
         if (show && searchTerm && !symbol.includes(searchTerm)) {
             show = false;
         }
+
+        if (show && isAdopted && !showAdopted) {
+            show = false;
+        }
         
         row.style.display = show ? '' : 'none';
+        if (show && isAdopted && showAdopted) {
+            row.classList.add('opacity-60');
+        } else {
+            row.classList.remove('opacity-60');
+        }
         if (show) {
             visible++;
             patternCounts[pattern] = (patternCounts[pattern] || 0) + 1;
@@ -241,6 +272,17 @@ function applyFilters() {
         }
         section.style.display = count > 0 ? '' : 'none';
     });
+}
+
+function toggleAdopted() {
+    showAdopted = !showAdopted;
+    const btn = document.getElementById('toggle-adopted-btn');
+    if (btn) {
+        btn.textContent = showAdopted
+            ? 'Hide adopted drafts'
+            : 'Show adopted drafts ({{ adopted_hidden_count }})';
+    }
+    applyFilters();
 }
 
 // Initialize

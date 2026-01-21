@@ -30,6 +30,27 @@
     <p class="mt-2 text-muted">{{ paragraphs|length }} operative paragraphs</p>
 </div>
 
+{% if doc.doc_type == "resolution" %}
+{% set lineage = doc.lineage_proposals or [] %}
+<div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
+    <div class="flex items-center justify-between">
+        <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Lineage</h2>
+        <span class="text-sm text-muted">{{ lineage|length }} linked draft{% if lineage|length != 1 %}s{% endif %}</span>
+    </div>
+    {% if lineage %}
+    <div class="mt-3 space-y-2">
+        {% for item in lineage %}
+        <a href="./{{ item.filename }}" class="block px-3 py-2 rounded-lg border border-gray-200 hover:border-un-blue hover:bg-blue-50 transition-colors">
+            <span class="font-medium text-gray-900">{{ item.symbol }}</span>
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="mt-3 text-sm text-muted">No linked base drafts yet.</p>
+    {% endif %}
+</div>
+{% endif %}
+
 <!-- Compute signal data -->
 {% set all_signals = [] %}
 {% for para in paragraphs %}

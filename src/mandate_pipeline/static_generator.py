@@ -192,6 +192,22 @@ def is_proposal(symbol: str) -> bool:
     return "/L." in symbol
 
 
+def is_excluded_draft_symbol(symbol: str) -> bool:
+    """Return True if symbol is a revision/addendum/corrigendum draft."""
+    upper_symbol = symbol.upper()
+    return any(token in upper_symbol for token in ("/REV.", "/ADD.", "/CORR."))
+
+
+def is_base_proposal_doc(doc: dict) -> bool:
+    """Return True if doc is a base draft proposal (not a revision/amendment)."""
+    symbol = doc.get("symbol", "")
+    if doc.get("doc_type") != "proposal":
+        return False
+    if is_excluded_draft_symbol(symbol):
+        return False
+    return is_proposal(symbol)
+
+
 def link_documents(documents: list[dict]) -> None:
     """
     Link resolutions to proposals using explicit references and fuzzy matching.
@@ -280,6 +296,34 @@ def link_documents(documents: list[dict]) -> None:
                 best_match["linked_resolution_symbol"] = doc["symbol"]
                 best_match["link_method"] = "title_agenda_fuzzy"
                 best_match["link_confidence"] = best_confidence
+
+
+def annotate_lineage(documents: list[dict]) -> None:
+    """Annotate documents with adopted draft status and lineage metadata."""
+    base_proposals = {doc["symbol"]: doc for doc in documents if is_base_proposal_doc(doc)}
+
+    for doc in documents:
+        doc["is_adopted_draft"] = False
+        doc["adopted_by"] = None
+        doc["lineage_proposals"] = []
+
+    for proposal in base_proposals.values():
+        linked_resolution = proposal.get("linked_resolution_symbol")
+        if linked_resolution:
+            proposal["is_adopted_draft"] = True
+            proposal["adopted_by"] = linked_resolution
+
+    for doc in documents:
+        if not is_resolution(doc.get("symbol", "")):
+            continue
+        linked = [
+            symbol for symbol in doc.get("linked_proposal_symbols", [])
+            if symbol in base_proposals
+        ]
+        doc["lineage_proposals"] = [
+            {"symbol": symbol, "filename": symbol_to_filename(symbol) + ".html"}
+            for symbol in linked
+        ]
 
 
 def generate_data_json(documents: list, checks: list, output_dir: Path) -> None:
@@ -469,7 +513,13 @@ def generate_document_page(doc: dict, checks: list, output_dir: Path) -> None:
         f.write(html)
 
 
-def generate_signal_page(documents: list, check: dict, checks: list, output_dir: Path) -> None:
+def generate_signal_page(
+    documents: list,
+    visible_documents: list,
+    check: dict,
+    checks: list,
+    output_dir: Path
+) -> None:
     """
     Generate signal-filtered HTML page.
 
@@ -489,6 +539,7 @@ def generate_signal_page(documents: list, check: dict, checks: list, output_dir:
 
     # Filter documents that have this signal
     filtered_docs = []
+    visible_filtered_docs = []
     for doc in documents:
         if signal in doc.get("signal_summary", {}):
             # Get paragraphs with this signal
@@ -500,16 +551,20 @@ def generate_signal_page(documents: list, check: dict, checks: list, output_dir:
                         "text": doc.get("paragraphs", {}).get(para_num, ""),
                     })
 
-            filtered_docs.append({
+            enriched = {
                 **doc,
                 "signal_paragraphs": signal_paras,
-            })
+            }
+            filtered_docs.append(enriched)
+            if not doc.get("is_adopted_draft"):
+                visible_filtered_docs.append(enriched)
 
     html = template.render(
         check=check,
         signal=signal,
         documents=filtered_docs,
-        total_docs=len(filtered_docs),
+        total_docs=len(visible_filtered_docs),
+        adopted_hidden_count=len(filtered_docs) - len(visible_filtered_docs),
     )
 
     # Use check signal as filename (slug)
@@ -599,7 +654,13 @@ def natural_sort_key(symbol: str) -> list:
     return [int(p) if p.isdigit() else p.lower() for p in parts]
 
 
-def generate_documents_list_page(documents: list, checks: list, patterns: list, output_dir: Path) -> None:
+def generate_documents_list_page(
+    documents: list,
+    visible_documents: list,
+    checks: list,
+    patterns: list,
+    output_dir: Path
+) -> None:
     """
     Generate documents list page (documents/index.html).
 
@@ -617,24 +678,29 @@ def generate_documents_list_page(documents: list, checks: list, patterns: list, 
 
     # Calculate stats
     total_signal_counts = {}
-    for doc in documents:
+    for doc in visible_documents:
         for sig, count in doc.get("signal_summary", {}).items():
             total_signal_counts[sig] = total_signal_counts.get(sig, 0) + count
 
     # Group documents by pattern and sort naturally within each group
     docs_by_pattern = group_documents_by_pattern(documents, patterns)
+    docs_by_pattern_visible = group_documents_by_pattern(visible_documents, patterns)
     
     # Sort documents within each pattern group using natural sort
     for pattern_name in docs_by_pattern:
         docs_by_pattern[pattern_name].sort(key=lambda d: natural_sort_key(d["symbol"]))
+    for pattern_name in docs_by_pattern_visible:
+        docs_by_pattern_visible[pattern_name].sort(key=lambda d: natural_sort_key(d["symbol"]))
 
     html = template.render(
         documents=documents,
         checks=checks,
         patterns=patterns,
         docs_by_pattern=docs_by_pattern,
-        total_docs=len(documents),
-        docs_with_signals=len([d for d in documents if d.get("signals")]),
+        docs_by_pattern_visible=docs_by_pattern_visible,
+        total_docs=len(visible_documents),
+        visible_docs=len(visible_documents),
+        adopted_hidden_count=len(documents) - len(visible_documents),
         total_signal_counts=total_signal_counts,
     )
 
@@ -695,7 +761,14 @@ def compute_pattern_doc_counts(documents: list, patterns: list) -> dict:
     return counts
 
 
-def generate_pattern_page(documents: list, pattern: dict, checks: list, patterns: list, output_dir: Path) -> None:
+def generate_pattern_page(
+    documents: list,
+    visible_documents: list,
+    pattern: dict,
+    checks: list,
+    patterns: list,
+    output_dir: Path
+) -> None:
     """
     Generate individual pattern page.
 
@@ -714,11 +787,13 @@ def generate_pattern_page(documents: list, pattern: dict, checks: list, patterns
 
     pattern_name = pattern["name"]
     docs_by_pattern = group_documents_by_pattern(documents, patterns)
+    docs_by_pattern_visible = group_documents_by_pattern(visible_documents, patterns)
     pattern_docs = docs_by_pattern.get(pattern_name, [])
+    pattern_docs_visible = docs_by_pattern_visible.get(pattern_name, [])
 
     # Calculate signal counts for this pattern
     pattern_signal_counts = {}
-    for doc in pattern_docs:
+    for doc in pattern_docs_visible:
         for sig, count in doc.get("signal_summary", {}).items():
             pattern_signal_counts[sig] = pattern_signal_counts.get(sig, 0) + count
 
@@ -755,7 +830,8 @@ def generate_pattern_page(documents: list, pattern: dict, checks: list, patterns
         documents=enriched_docs,
         checks=checks,
         pattern_signal_counts=pattern_signal_counts,
-        total_docs=len(enriched_docs),
+        total_docs=len(pattern_docs_visible),
+        adopted_hidden_count=len(pattern_docs) - len(pattern_docs_visible),
     )
     with open(output_dir / f"{pattern_slug}.html", "w") as f:
         f.write(html)
@@ -773,6 +849,7 @@ def get_signal_slug(signal: str) -> str:
 
 def generate_pattern_signal_page(
     documents: list,
+    visible_documents: list,
     pattern: dict,
     signal: str,
     checks: list,
@@ -802,11 +879,14 @@ def generate_pattern_signal_page(
 
     # Get documents matching this pattern that have this signal
     docs_by_pattern = group_documents_by_pattern(documents, patterns)
+    docs_by_pattern_visible = group_documents_by_pattern(visible_documents, patterns)
     pattern_docs = docs_by_pattern.get(pattern_name, [])
+    pattern_docs_visible = docs_by_pattern_visible.get(pattern_name, [])
     
     # Filter to only docs with this signal and add signal_paragraphs
     filtered_docs = []
     total_paragraphs = 0
+    visible_paragraphs = 0
     
     for doc in pattern_docs:
         if signal not in doc.get("signal_summary", {}):
@@ -830,6 +910,9 @@ def generate_pattern_signal_page(
         doc_copy["signal_paragraphs"] = signal_paras
         filtered_docs.append(doc_copy)
         total_paragraphs += len(signal_paras)
+
+        if not doc.get("is_adopted_draft"):
+            visible_paragraphs += len(signal_paras)
     
     # Sort documents naturally by symbol
     filtered_docs.sort(key=lambda d: natural_sort_key(d["symbol"]))
@@ -839,7 +922,9 @@ def generate_pattern_signal_page(
         pattern_slug=pattern_slug,
         signal=signal,
         documents=filtered_docs,
-        total_paragraphs=total_paragraphs,
+        total_paragraphs=visible_paragraphs,
+        total_docs=len([doc for doc in pattern_docs_visible if signal in doc.get("signal_summary", {})]),
+        adopted_hidden_count=len([doc for doc in pattern_docs if signal in doc.get("signal_summary", {})]) - len([doc for doc in pattern_docs_visible if signal in doc.get("signal_summary", {})]),
     )
 
     filename = f"{pattern_slug}_{signal_slug}.html"
@@ -909,6 +994,8 @@ def generate_site(config_dir: Path, data_dir: Path, output_dir: Path) -> None:
     # Load all documents
     documents = load_all_documents(data_dir, checks)
     link_documents(documents)
+    annotate_lineage(documents)
+    visible_documents = [doc for doc in documents if not doc.get("is_adopted_draft")]
 
     # Create output directories
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -918,26 +1005,26 @@ def generate_site(config_dir: Path, data_dir: Path, output_dir: Path) -> None:
     (output_dir / "matrix").mkdir(exist_ok=True)
 
     # Generate pages
-    generate_index_page(documents, checks, patterns, output_dir)
-    generate_documents_list_page(documents, checks, patterns, output_dir / "documents")
+    generate_index_page(visible_documents, checks, patterns, output_dir)
+    generate_documents_list_page(documents, visible_documents, checks, patterns, output_dir / "documents")
 
     for doc in documents:
         generate_document_page(doc, checks, output_dir / "documents")
 
     for check in checks:
-        generate_signal_page(documents, check, checks, output_dir / "signals")
+        generate_signal_page(documents, visible_documents, check, checks, output_dir / "signals")
 
     for pattern in patterns:
-        generate_pattern_page(documents, pattern, checks, patterns, output_dir / "patterns")
+        generate_pattern_page(documents, visible_documents, pattern, checks, patterns, output_dir / "patterns")
         # Generate pattern+signal pages
         for check in checks:
-            generate_pattern_signal_page(documents, pattern, check["signal"], checks, patterns, output_dir / "matrix")
+            generate_pattern_signal_page(documents, visible_documents, pattern, check["signal"], checks, patterns, output_dir / "matrix")
 
     # Generate data exports
-    generate_data_json(documents, checks, output_dir)
-    generate_search_index(documents, output_dir)
+    generate_data_json(visible_documents, checks, output_dir)
+    generate_search_index(visible_documents, output_dir)
 
-    print(f"Generated static site with {len(documents)} documents in {output_dir}")
+    print(f"Generated static site with {len(visible_documents)} documents in {output_dir}")
 
 
 def generate_site_verbose(
@@ -1045,6 +1132,8 @@ def generate_site_verbose(
     documents.sort(key=sort_key)
 
     link_documents(documents)
+    annotate_lineage(documents)
+    visible_documents = [doc for doc in documents if not doc.get("is_adopted_draft")]
 
     load_duration = time.time() - load_start_time
     if on_load_end:
@@ -1064,11 +1153,11 @@ def generate_site_verbose(
     (output_dir / "matrix").mkdir(exist_ok=True)
 
     # Generate pages
-    generate_index_page(documents, checks, patterns, output_dir)
+    generate_index_page(visible_documents, checks, patterns, output_dir)
     if on_generate_page:
         on_generate_page("index", "index.html")
 
-    generate_documents_list_page(documents, checks, patterns, output_dir / "documents")
+    generate_documents_list_page(documents, visible_documents, checks, patterns, output_dir / "documents")
     if on_generate_page:
         on_generate_page("documents_list", "documents/index.html")
 
@@ -1078,28 +1167,28 @@ def generate_site_verbose(
             on_generate_page("document", f"documents/{symbol_to_filename(doc['symbol'])}.html")
 
     for check in checks:
-        generate_signal_page(documents, check, checks, output_dir / "signals")
+        generate_signal_page(documents, visible_documents, check, checks, output_dir / "signals")
         if on_generate_page:
             on_generate_page("signal", f"signals/{check['signal'].lower().replace(' ', '-')}.html")
 
     for pattern in patterns:
-        generate_pattern_page(documents, pattern, checks, patterns, output_dir / "patterns")
+        generate_pattern_page(documents, visible_documents, pattern, checks, patterns, output_dir / "patterns")
         pattern_slug = get_pattern_slug(pattern["name"])
         if on_generate_page:
             on_generate_page("pattern", f"patterns/{pattern_slug}.html")
         # Generate pattern+signal pages
         for check in checks:
-            generate_pattern_signal_page(documents, pattern, check["signal"], checks, patterns, output_dir / "matrix")
+            generate_pattern_signal_page(documents, visible_documents, pattern, check["signal"], checks, patterns, output_dir / "matrix")
             signal_slug = get_signal_slug(check["signal"])
             if on_generate_page:
                 on_generate_page("matrix", f"matrix/{pattern_slug}_{signal_slug}.html")
 
     # Generate data exports
-    generate_data_json(documents, checks, output_dir)
+    generate_data_json(visible_documents, checks, output_dir)
     if on_generate_page:
         on_generate_page("data", "data.json")
 
-    generate_search_index(documents, output_dir)
+    generate_search_index(visible_documents, output_dir)
     if on_generate_page:
         on_generate_page("search", "search-index.json")
 
@@ -1109,13 +1198,13 @@ def generate_site_verbose(
 
     # Calculate stats
     total_signal_counts = {}
-    for doc in documents:
+    for doc in visible_documents:
         for sig, count in doc.get("signal_summary", {}).items():
             total_signal_counts[sig] = total_signal_counts.get(sig, 0) + count
 
     return {
-        "total_documents": len(documents),
-        "documents_with_signals": len([d for d in documents if d.get("signals")]),
+        "total_documents": len(visible_documents),
+        "documents_with_signals": len([d for d in visible_documents if d.get("signals")]),
         "document_pages": len(documents),
         "signal_pages": len(checks),
         "signal_counts": total_signal_counts,
