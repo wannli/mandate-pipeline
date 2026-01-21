@@ -1,4 +1,4 @@
-# UN Docs Downloader
+# Mandate Pipeline
 
 from .downloader import download_document
 from .extractor import extract_text, extract_operative_paragraphs

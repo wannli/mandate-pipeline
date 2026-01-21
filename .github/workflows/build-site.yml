@@ -61,11 +61,11 @@ jobs:
 
       - name: Discover new documents
         run: |
-          python -m un_docs_downloader.cli discover --verbose --config ./config --data ./data
+          python -m mandate_pipeline.cli discover --verbose --config ./config --data ./data
 
       - name: Generate static site
         run: |
-          python -m un_docs_downloader.cli generate --verbose --config ./config --data ./data --output ./docs
+          python -m mandate_pipeline.cli generate --verbose --config ./config --data ./data --output ./docs
 
       - name: Show generation stats
         run: |

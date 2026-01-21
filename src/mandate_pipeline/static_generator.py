@@ -1,4 +1,4 @@
-"""Static site generator for UN Docs Downloader."""
+"""Static site generator for Mandate Pipeline."""
 
 import json
 import re

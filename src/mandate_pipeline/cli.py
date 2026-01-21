@@ -1,4 +1,4 @@
-"""Command-line interface for UN Docs Downloader."""
+"""Command-line interface for Mandate Pipeline."""
 
 import argparse
 import json
@@ -74,8 +74,8 @@ def format_duration(seconds: float) -> str:
 def main():
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
-        prog="un-docs",
-        description="UN Document System downloader and analyzer",
+        prog="mandate",
+        description="Mandate Pipeline - UN document downloader and analyzer",
     )
     parser.add_argument(
         "--verbose", "-v",
@@ -354,7 +354,7 @@ def cmd_build(args):
     verbose = args.verbose or is_github_actions()
     
     print("=" * 60)
-    print("  UN DOCS BUILD PIPELINE")
+    print("  MANDATE PIPELINE BUILD")
     print("=" * 60)
     print()
     
