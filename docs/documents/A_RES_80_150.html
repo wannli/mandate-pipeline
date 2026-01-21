@@ -164,6 +164,10 @@
     
         
     
+        
+            
+        
+    
 
     
 
@@ -296,6 +300,12 @@
                 bg-blue-50 text-blue-700 hover:bg-blue-100
                 ">
             agenda
+        </button>
+        
+        <button onclick="filterSignal('reporting_mandate')" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                bg-gray-100 text-gray-700 hover:bg-gray-200">
+            reporting_mandate
         </button>
         
         <button onclick="filterSignal('PGA')" 
@@ -962,7 +972,7 @@
     
     <div id="para-38" 
          class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["agenda"]'
+         data-signals='["agenda", "reporting_mandate"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -971,7 +981,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Supports the Technology Bank for the Least Developed Countries as a focal point for the least developed countries to strengthen their science, technology and innovation capacity towards building sustainable productive capacities and promoting structural economic transformation, also supports the Technology Bank in strengthening the science, technology and innovation capacity of least developed countries for structural transformation and productive capacity development, invites Member States, as well as international organizations, foundations and the private sector, to provide voluntary financial and in-kind resources to the Technology Bank in order to enhance its capacity and effectiveness, and to fulfil its mandate and decides to strengthen collaboration among Governments, the private sector and academia to advance science, technology and innovation research and development, build inclusive digital economies and bridge the digital divide, including by facilitating technology transfer on mutually agreed terms; encourages least developed countries to engage with development partners through the Technology Bank, including by utilizing the technology needs assessments; and takes note of the report of the Secretary-General on the work of the Technology Bank for the Least Developed Countries 20 and also <mark class="bg-yellow-200 px-0.5 rounded">decides to include</mark> the topic “Report on the work of the Technology Bank for the Least Developed Countries” under the sub-item entitled “Follow-up to the Fifth United Nations Conference on the Least Developed Countries” at its eighty-first session, and requests the Secretary-General to submit a report for its consideration;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Supports the Technology Bank for the Least Developed Countries as a focal point for the least developed countries to strengthen their science, technology and innovation capacity towards building sustainable productive capacities and promoting structural economic transformation, also supports the Technology Bank in strengthening the science, technology and innovation capacity of least developed countries for structural transformation and productive capacity development, invites Member States, as well as international organizations, foundations and the private sector, to provide voluntary financial and in-kind resources to the Technology Bank in order to enhance its capacity and effectiveness, and to fulfil its mandate and decides to strengthen collaboration among Governments, the private sector and academia to advance science, technology and innovation research and development, build inclusive digital economies and bridge the digital divide, including by facilitating technology transfer on mutually agreed terms; encourages least developed countries to engage with development partners through the Technology Bank, including by utilizing the technology needs assessments; and takes note of the report of the Secretary-General on the work of the Technology Bank for the Least Developed Countries 20 and also <mark class="bg-yellow-200 px-0.5 rounded">decides to include</mark> the topic “Report on the work of the Technology Bank for the Least Developed Countries” under the sub-item entitled “Follow-up to the Fifth United Nations Conference on the Least Developed Countries” at its eighty-first session, and requests the <mark class="bg-yellow-200 px-0.5 rounded">Secretary-General to submit</mark> a report for its consideration;</p>
                 
                 <div class="mt-2 flex flex-wrap gap-1">
                     
@@ -979,6 +989,11 @@
                         bg-blue-50 text-blue-700
                         ">
                         agenda
+                    </span>
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
                     </span>
                     
                 </div>

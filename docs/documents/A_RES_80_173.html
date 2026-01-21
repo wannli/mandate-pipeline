@@ -254,7 +254,9 @@
     
 
     
-
+        
+            
+        
     
 
     
@@ -329,6 +331,10 @@
 
     
 
+    
+
+    
+        
     
 
     
@@ -345,12 +351,18 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">0 with signals, 127 without</span>
+        <span class="text-sm text-muted">2 with signals, 125 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium bg-un-blue text-white transition-all">
             Signals Only
+        </button>
+        
+        <button onclick="filterSignal('reporting_mandate')" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                bg-gray-100 text-gray-700 hover:bg-gray-200">
+            reporting_mandate
         </button>
         
         <button id="btn-show-all" onclick="toggleShowAll()" 
@@ -1809,9 +1821,9 @@
     </div>
     
     <div id="para-86" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -1819,7 +1831,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">We call upon the Inter-Agency Working Group on Artificial Intelligence, in consultation with the action line facilitators, to map existing United Nations system-wide capacity-building initiatives, identify potential gaps and address them, inter alia, through establishing an artificial intelligence capacity-building fellowship for government officials and research programmes, leveraging existing United Nations system-wide capacities, with a particular focus on developing countries, and to report thereon at the inaugural Global Dialogue on Artificial Intelligence Governance, in 2026.</p>
+                <p class="text-gray-700 leading-relaxed text-sm">We call upon the Inter-Agency Working Group on Artificial Intelligence, in consultation with the action line facilitators, to map existing United Nations system-wide capacity-building initiatives, identify potential gaps and address them, inter alia, through establishing an artificial intelligence capacity-building fellowship for government officials and research programmes, leveraging existing United Nations system-wide capacities, with a particular focus on developing countries, and to <mark class="bg-yellow-200 px-0.5 rounded">report thereon</mark> at the inaugural Global Dialogue on Artificial Intelligence Governance, in 2026.</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>
@@ -2455,9 +2476,9 @@
     </div>
     
     <div id="para-124" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -2465,7 +2486,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">We request the Secretary-General to submit, through the Commission on Science and Technology for Development, a biennial report on progress in the implementation of and follow-up to the outcomes of the World Summit on the Information Society, incorporating updates on the recommendations contained in the present resolution, and request that the Commission on Science and Technology for Development and the Economic and Social Council consider the report in line with this biennial cycle.</p>
+                <p class="text-gray-700 leading-relaxed text-sm">We request the <mark class="bg-yellow-200 px-0.5 rounded">Secretary-General to submit</mark>, through the Commission on Science and Technology for Development, a biennial report on progress in the implementation of and follow-up to the outcomes of the World Summit on the Information Society, incorporating updates on the recommendations contained in the present resolution, and request that the Commission on Science and Technology for Development and the Economic and Social Council consider the report in line with this biennial cycle.</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>

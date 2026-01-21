@@ -114,7 +114,13 @@
     
 
     
+        
+            
+        
+    
 
+    
+        
     
 
     
@@ -131,7 +137,7 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">3 with signals, 12 without</span>
+        <span class="text-sm text-muted">5 with signals, 10 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
@@ -144,6 +150,12 @@
                 bg-purple-50 text-purple-700 hover:bg-purple-100
                 ">
             PGA
+        </button>
+        
+        <button onclick="filterSignal('reporting_mandate')" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                bg-gray-100 text-gray-700 hover:bg-gray-200">
+            reporting_mandate
         </button>
         
         <button onclick="filterSignal('agenda')" 
@@ -388,9 +400,9 @@
     </div>
     
     <div id="para-13" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -398,16 +410,25 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to seek the views of Member States with regard to achieving the objective of the total elimination of nuclear weapons, in particular on effective nuclear disarmament measures, including elements of a comprehensive convention on nuclear weapons, and to submit a report thereon to the General Assembly at its eighty-first session, and also to transmit the report to the Conference on Disarmament;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to seek the views of Member States with regard to achieving the objective of the total elimination of nuclear weapons, in particular on effective nuclear disarmament measures, including elements of a comprehensive convention on nuclear weapons, and to <mark class="bg-yellow-200 px-0.5 rounded">submit a report</mark> thereon to the General Assembly at its eighty-first session, and also to transmit the report to the Conference on Disarmament;</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>
     </div>
     
     <div id="para-14" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -415,7 +436,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Also requests the Secretary-General to report on the implementation of the present resolution to the General Assembly at its eighty-first session;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Also requests the <mark class="bg-yellow-200 px-0.5 rounded">Secretary-General to report</mark> on the implementation of the present resolution to the General Assembly at its eighty-first session;</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>

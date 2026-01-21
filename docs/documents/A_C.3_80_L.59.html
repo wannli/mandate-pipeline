@@ -168,9 +168,17 @@
     
 
     
-
+        
+            
+        
     
 
+    
+        
+    
+
+    
+        
     
 
 
@@ -181,12 +189,18 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">0 with signals, 45 without</span>
+        <span class="text-sm text-muted">3 with signals, 42 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium bg-un-blue text-white transition-all">
             Signals Only
+        </button>
+        
+        <button onclick="filterSignal('reporting_mandate')" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                bg-gray-100 text-gray-700 hover:bg-gray-200">
+            reporting_mandate
         </button>
         
         <button id="btn-show-all" onclick="toggleShowAll()" 
@@ -914,9 +928,9 @@
     </div>
     
     <div id="para-43" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -924,16 +938,25 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to provide an oral report to the Commission on the Status of Women at its seventieth and seventy-first sessions and to report to the General Assembly at its eighty-second session on the improvement in the status of women in the United Nations system and on progress made and obstacles encountered in achieving gender balance, under the item entitled “Advancement of women”;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to provide an oral report to the Commission on the Status of Women at its seventieth and seventy-first sessions and to <mark class="bg-yellow-200 px-0.5 rounded">report to the General Assembly</mark> at its eighty-second session on the improvement in the status of women in the United Nations system and on progress made and obstacles encountered in achieving gender balance, under the item entitled “Advancement of women”;</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>
     </div>
     
     <div id="para-44" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -941,16 +964,25 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Also requests the Secretary-General to report to the General Assembly at its eighty-second session on the role, focus, resources and capacities of national machineries for the advancement of women, so as to provide a synthesized assessment of their effectiveness in supporting the full, effective and accelerated implementation of the 12 critical areas of concern of the Beijing Declaration and Platform for Action, within the existing report on measures taken and progress achieved in follow-up to and implementation of the Beijing Declaration and Platform for Action and the outcome of the twenty-third special session of the General Assembly;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Also requests the Secretary-General to <mark class="bg-yellow-200 px-0.5 rounded">report to the General Assembly</mark> at its eighty-second session on the role, focus, resources and capacities of national machineries for the advancement of women, so as to provide a synthesized assessment of their effectiveness in supporting the full, effective and accelerated implementation of the 12 critical areas of concern of the Beijing Declaration and Platform for Action, within the existing report on measures taken and progress achieved in follow-up to and implementation of the Beijing Declaration and Platform for Action and the outcome of the twenty-third special session of the General Assembly;</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>
     </div>
     
     <div id="para-45" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -958,7 +990,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Further requests the Secretary-General to report to the General Assembly at its eighty-second session, under the item entitled “Advancement of women”, on the follow-up to and progress made in the implementation of the Beijing Declaration and Platform for Action and the outcome of the twenty-third special session.</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Further requests the Secretary-General to <mark class="bg-yellow-200 px-0.5 rounded">report to the General Assembly</mark> at its eighty-second session, under the item entitled “Advancement of women”, on the follow-up to and progress made in the implementation of the Beijing Declaration and Platform for Action and the outcome of the twenty-third special session.</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>

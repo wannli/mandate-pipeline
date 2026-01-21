@@ -88,7 +88,25 @@
     
 
     
+        
+            
+        
+    
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        
     
 
     
@@ -108,17 +126,7 @@
     
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
+        
     
 
     
@@ -135,12 +143,18 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">1 with signals, 19 without</span>
+        <span class="text-sm text-muted">4 with signals, 16 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium bg-un-blue text-white transition-all">
             Signals Only
+        </button>
+        
+        <button onclick="filterSignal('reporting_mandate')" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                bg-gray-100 text-gray-700 hover:bg-gray-200">
+            reporting_mandate
         </button>
         
         <button onclick="filterSignal('agenda')" 
@@ -195,9 +209,9 @@
     </div>
     
     <div id="para-3" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -205,7 +219,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Requests the Special Committee, at its session in 2026, in accordance with paragraph 5 of General Assembly resolution 50/52 of 11 December 1995: (a) To continue its consideration of all proposals concerning the question of the maintenance of international peace and security in all its aspects in order to strengthen the role of the United Nations and, in this context, to consider other proposals relating to the maintenance of international peace and security already __________________ 2 Ibid., Sixty-first Session, Supplement No. 33 (A/61/33), para. 72. 3 A/80/210. 4 Resolution 60/1. 5 Official Records of the General Assembly, Sixtieth Session, Supplement No. 33 (A/60/33), para. 77. 6 Ibid., Eightieth Session, Supplement No. 33 (A/80/33). A/C.6/80/L.17 3/5 25-18462 submitted or which may be submitted to the Special Committee at its session in 2026, including strengthening the relationship and cooperation between the United Nations and regional organizations or arrangements in the peaceful settlement of disputes; (b) To consider, in accordance with paragraph 2 of the annex to resolution 71/146 of 13 December 2016, in an appropriate, substantive manner and framework, the question of the implementation of the provisions of the Charter of the United Nations relating to assistance to third States affected by the application of sanctions (Article 50 of the Charter) based on all of the related reports of the Secretary-General7 and the proposals submitted on the question, and requests the Secretary-General to submit the next report on this issue to the General Assembly at its eighty-second session; (c) To keep on its agenda the question of the peaceful settlement of disputes between States; (d) To consider, as appropriate, any proposal referred to it by the General Assembly in the implementation of the decisions of the high-level plenary meeting of the sixtieth session of the Assembly in September 2005 that concern the Charter and any amendments thereto; (e) To continue to consider, on a priority basis, ways and means of improving its working methods and enhancing its efficiency and utilization of resources with a view to identifying widely acceptable measures for future implementation;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Requests the Special Committee, at its session in 2026, in accordance with paragraph 5 of General Assembly resolution 50/52 of 11 December 1995: (a) To continue its consideration of all proposals concerning the question of the maintenance of international peace and security in all its aspects in order to strengthen the role of the United Nations and, in this context, to consider other proposals relating to the maintenance of international peace and security already __________________ 2 Ibid., Sixty-first Session, Supplement No. 33 (A/61/33), para. 72. 3 A/80/210. 4 Resolution 60/1. 5 Official Records of the General Assembly, Sixtieth Session, Supplement No. 33 (A/60/33), para. 77. 6 Ibid., Eightieth Session, Supplement No. 33 (A/80/33). A/C.6/80/L.17 3/5 25-18462 submitted or which may be submitted to the Special Committee at its session in 2026, including strengthening the relationship and cooperation between the United Nations and regional organizations or arrangements in the peaceful settlement of disputes; (b) To consider, in accordance with paragraph 2 of the annex to resolution 71/146 of 13 December 2016, in an appropriate, substantive manner and framework, the question of the implementation of the provisions of the Charter of the United Nations relating to assistance to third States affected by the application of sanctions (Article 50 of the Charter) based on all of the related reports of the Secretary-General7 and the proposals submitted on the question, and requests the <mark class="bg-yellow-200 px-0.5 rounded">Secretary-General to submit</mark> the next report on this issue to the General Assembly at its eighty-second session; (c) To keep on its agenda the question of the peaceful settlement of disputes between States; (d) To consider, as appropriate, any proposal referred to it by the General Assembly in the implementation of the decisions of the high-level plenary meeting of the sixtieth session of the Assembly in September 2005 that concern the Charter and any amendments thereto; (e) To continue to consider, on a priority basis, ways and means of improving its working methods and enhancing its efficiency and utilization of resources with a view to identifying widely acceptable measures for future implementation;</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>
@@ -314,9 +337,9 @@
     </div>
     
     <div id="para-10" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -324,7 +347,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Requests the Special Committee to submit a report on its work to the General Assembly at its eighty-first session;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Requests the Special Committee to <mark class="bg-yellow-200 px-0.5 rounded">submit a report</mark> on its work to the General Assembly at its eighty-first session;</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>
@@ -467,9 +499,9 @@
     </div>
     
     <div id="para-19" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -477,7 +509,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to submit to the General Assembly at its eighty-first session a report on both the Repertory and the Repertoire;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Requests the <mark class="bg-yellow-200 px-0.5 rounded">Secretary-General to submit</mark> to the General Assembly at its eighty-first session a report on both the Repertory and the Repertoire;</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>

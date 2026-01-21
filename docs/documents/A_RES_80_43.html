@@ -100,7 +100,9 @@
     
 
     
-
+        
+            
+        
     
 
     
@@ -113,6 +115,10 @@
 
     
 
+    
+
+    
+        
     
 
     
@@ -129,12 +135,18 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">1 with signals, 16 without</span>
+        <span class="text-sm text-muted">3 with signals, 14 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium bg-un-blue text-white transition-all">
             Signals Only
+        </button>
+        
+        <button onclick="filterSignal('reporting_mandate')" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                bg-gray-100 text-gray-700 hover:bg-gray-200">
+            reporting_mandate
         </button>
         
         <button onclick="filterSignal('agenda')" 
@@ -291,9 +303,9 @@
     </div>
     
     <div id="para-9" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -301,7 +313,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Recalls its decision to establish a new standing dedicated fellowship training programme on through-life conventional ammunition management in order to strengthen the technical and practical knowledge and expertise of government officials directly responsible for the implementation of the Global Framework for Through-life Conventional Ammunition Management, particularly in developing countries, to be substantively developed and designed in 2025 and implemented annually starting in 2026 for a duration of four weeks in person in four regions, respectively, preceded by a preparatory self-paced online course, with the participation of 15 fellows from each of the four regions, Africa, Asia-Pacific, Latin America and the Caribbean and other regions, ensuring the full, equal, meaningful and effective participation of women and equitable geographical representation, and _______________ 14 See A/78/111. Through-life conventional ammunition management A/RES/80/43 5/5 25-19834 reiterates its request to the Secretary-General to operationalize this decision and to report thereon to the General Assembly at its eighty-first session, and periodically thereafter for follow-up;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Recalls its decision to establish a new standing dedicated fellowship training programme on through-life conventional ammunition management in order to strengthen the technical and practical knowledge and expertise of government officials directly responsible for the implementation of the Global Framework for Through-life Conventional Ammunition Management, particularly in developing countries, to be substantively developed and designed in 2025 and implemented annually starting in 2026 for a duration of four weeks in person in four regions, respectively, preceded by a preparatory self-paced online course, with the participation of 15 fellows from each of the four regions, Africa, Asia-Pacific, Latin America and the Caribbean and other regions, ensuring the full, equal, meaningful and effective participation of women and equitable geographical representation, and _______________ 14 See A/78/111. Through-life conventional ammunition management A/RES/80/43 5/5 25-19834 reiterates its request to the Secretary-General to operationalize this decision and to <mark class="bg-yellow-200 px-0.5 rounded">report thereon</mark> to the General Assembly at its eighty-first session, and periodically thereafter for follow-up;</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>
@@ -410,9 +431,9 @@
     </div>
     
     <div id="para-16" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -420,7 +441,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to report to the General Assembly at its eighty-second session and subsequently on a biennial basis on the implementation of the present resolution, including on the implementation of the Global Framework;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to <mark class="bg-yellow-200 px-0.5 rounded">report to the General Assembly</mark> at its eighty-second session and subsequently on a biennial basis on the implementation of the present resolution, including on the implementation of the Global Framework;</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>

@@ -122,7 +122,9 @@
     
 
     
-
+        
+            
+        
     
 
     
@@ -167,6 +169,10 @@
 
     
 
+    
+
+    
+        
     
 
     
@@ -183,7 +189,7 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">2 with signals, 38 without</span>
+        <span class="text-sm text-muted">4 with signals, 36 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
@@ -202,6 +208,12 @@
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
                 bg-gray-100 text-gray-700 hover:bg-gray-200">
             processes
+        </button>
+        
+        <button onclick="filterSignal('reporting_mandate')" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                bg-gray-100 text-gray-700 hover:bg-gray-200">
+            reporting_mandate
         </button>
         
         <button onclick="filterSignal('agenda')" 
@@ -492,9 +504,9 @@
     </div>
     
     <div id="para-16" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -502,7 +514,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Recalls the organization of the eleventh Global South-South Development Expo in Bangkok from 12 to 14 September 2022, encourages Member States to host future Global South-South Development Expos, which can serve as important knowledge-sharing platforms, and requests the United Nations Office for South-South Cooperation to actively engage with Member States, including by their expressions of interest to host future Expos, and to include the progress in its report to the General Assembly at its eighty-first session;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Recalls the organization of the eleventh Global South-South Development Expo in Bangkok from 12 to 14 September 2022, encourages Member States to host future Global South-South Development Expos, which can serve as important knowledge-sharing platforms, and requests the United Nations Office for South-South Cooperation to actively engage with Member States, including by their expressions of interest to host future Expos, and to include the progress in its <mark class="bg-yellow-200 px-0.5 rounded">report to the General Assembly</mark> at its eighty-first session;</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>
@@ -883,9 +904,9 @@
     </div>
     
     <div id="para-39" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -893,7 +914,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to submit to the General Assembly at its eighty-first session a comprehensive report on the state of South-South cooperation, including the implementation of the outcome document of the second High-level Conference; A/RES/80/156 South-South cooperation 25-20753 10/10</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Requests the <mark class="bg-yellow-200 px-0.5 rounded">Secretary-General to submit</mark> to the General Assembly at its eighty-first session a comprehensive report on the state of South-South cooperation, including the implementation of the outcome document of the second High-level Conference; A/RES/80/156 South-South cooperation 25-20753 10/10</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>

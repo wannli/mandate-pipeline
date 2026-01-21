@@ -102,7 +102,9 @@
     
 
     
-
+        
+            
+        
     
 
     
@@ -165,6 +167,10 @@
 
     
 
+    
+
+    
+        
     
 
     
@@ -189,12 +195,18 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">0 with signals, 49 without</span>
+        <span class="text-sm text-muted">2 with signals, 47 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium bg-un-blue text-white transition-all">
             Signals Only
+        </button>
+        
+        <button onclick="filterSignal('reporting_mandate')" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                bg-gray-100 text-gray-700 hover:bg-gray-200">
+            reporting_mandate
         </button>
         
         <button id="btn-show-all" onclick="toggleShowAll()" 
@@ -361,9 +373,9 @@
     </div>
     
     <div id="para-10" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -371,7 +383,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Recognizes the critical contribution the Agency can make in implementing the New York Declaration, the Arab-Islamic Early Recovery, Reconstruction and Development Plan for Gaza, and other major international initiatives, including the ceasefire agreement, as it serves as a pillar for regional stability, including through the scaling-up of humanitarian assistance, restoration of education, health, water, sanitation and other basic services, and support for Palestinian capacity-building, and requests the Secretary-General to inform the General Assembly as soon as possible of how the Agency can concretely contribute in this regard;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Recognizes the critical contribution the Agency can make in implementing the New York Declaration, the Arab-Islamic Early Recovery, Reconstruction and Development Plan for Gaza, and other major international initiatives, including the ceasefire agreement, as it serves as a pillar for regional stability, including through the scaling-up of humanitarian assistance, restoration of education, health, water, sanitation and other basic services, and support for Palestinian capacity-building, and requests the Secretary-General to <mark class="bg-yellow-200 px-0.5 rounded">inform the General Assembly</mark> as soon as possible of how the Agency can concretely contribute in this regard;</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>
@@ -905,9 +926,9 @@
     </div>
     
     <div id="para-42" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -915,7 +936,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to submit a proposal for funding requirements in the context of the proposed programme budget for 2027, in support of international staff requirements, in accordance with resolution 3331 B (XXIX) of 17 December 1974;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Requests the <mark class="bg-yellow-200 px-0.5 rounded">Secretary-General to submit</mark> a proposal for funding requirements in the context of the proposed programme budget for 2027, in support of international staff requirements, in accordance with resolution 3331 B (XXIX) of 17 December 1974;</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>

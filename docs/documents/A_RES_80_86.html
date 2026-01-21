@@ -106,13 +106,19 @@
     
 
     
-
+        
+            
+        
     
 
     
 
     
 
+    
+
+    
+        
     
 
 
@@ -123,12 +129,18 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">0 with signals, 16 without</span>
+        <span class="text-sm text-muted">2 with signals, 14 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium bg-un-blue text-white transition-all">
             Signals Only
+        </button>
+        
+        <button onclick="filterSignal('reporting_mandate')" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                bg-gray-100 text-gray-700 hover:bg-gray-200">
+            reporting_mandate
         </button>
         
         <button id="btn-show-all" onclick="toggleShowAll()" 
@@ -329,9 +341,9 @@
     </div>
     
     <div id="para-12" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -339,7 +351,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Encourages the specialized agencies and other organizations of the United Nations system and regional organizations to continue to provide assistance to the Non-Self-Governing Territories affected by hurricanes, natural phenomena or other A/RES/80/86 Economic and other activities which affect the interests of the peoples of the Non-Self-Governing Territories 25-20073 4/4 extreme weather events and to formulate appropriate programmes to support emergency response and recovery and rebuilding efforts, and requests the Secretary- General to report to the General Assembly on this matter;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Encourages the specialized agencies and other organizations of the United Nations system and regional organizations to continue to provide assistance to the Non-Self-Governing Territories affected by hurricanes, natural phenomena or other A/RES/80/86 Economic and other activities which affect the interests of the peoples of the Non-Self-Governing Territories 25-20073 4/4 extreme weather events and to formulate appropriate programmes to support emergency response and recovery and rebuilding efforts, and requests the Secretary- General to <mark class="bg-yellow-200 px-0.5 rounded">report to the General Assembly</mark> on this matter;</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>
@@ -397,9 +418,9 @@
     </div>
     
     <div id="para-16" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -407,7 +428,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Requests the Special Committee on the Situation with regard to the Implementation of the Declaration on the Granting of Independence to Colonial Countries and Peoples to continue to examine this question and to report thereon to the General Assembly at its eighty-first session. 55th plenary meeting 5 December 2025</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Requests the Special Committee on the Situation with regard to the Implementation of the Declaration on the Granting of Independence to Colonial Countries and Peoples to continue to examine this question and to <mark class="bg-yellow-200 px-0.5 rounded">report thereon</mark> to the General Assembly at its eighty-first session. 55th plenary meeting 5 December 2025</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>

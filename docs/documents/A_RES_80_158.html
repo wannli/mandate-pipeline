@@ -112,6 +112,10 @@
             
         
     
+        
+            
+        
+    
 
 
 
@@ -134,6 +138,12 @@
                 bg-blue-50 text-blue-700 hover:bg-blue-100
                 ">
             agenda
+        </button>
+        
+        <button onclick="filterSignal('reporting_mandate')" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                bg-gray-100 text-gray-700 hover:bg-gray-200">
+            reporting_mandate
         </button>
         
         <button id="btn-show-all" onclick="toggleShowAll()" 
@@ -352,7 +362,7 @@
     
     <div id="para-13" 
          class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["agenda"]'
+         data-signals='["agenda", "reporting_mandate"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -361,7 +371,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to report to the General Assembly at its eighty-first session on the implementation of the present resolution, including with regard to the cumulative impact of the exploitation, damage and depletion by Israel of natural resources in the Occupied Palestinian Territory, including East Jerusalem, and in the occupied Syrian Golan, and with regard to the impact of such practices on the promotion of the Sustainable Development Goals,11 and <mark class="bg-yellow-200 px-0.5 rounded">decides to include</mark> in the provisional agenda of its eighty-first session the item entitled “Permanent sovereignty of the Palestinian people in the Occupied Palestinian Territory, including East Jerusalem, and of the Arab population in the occupied Syrian Golan over their natural resources”. 64th plenary meeting 15 December 2025 _______________ 11 See resolution 70/1.</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to <mark class="bg-yellow-200 px-0.5 rounded">report to the General Assembly</mark> at its eighty-first session on the implementation of the present resolution, including with regard to the cumulative impact of the exploitation, damage and depletion by Israel of natural resources in the Occupied Palestinian Territory, including East Jerusalem, and in the occupied Syrian Golan, and with regard to the impact of such practices on the promotion of the Sustainable Development Goals,11 and <mark class="bg-yellow-200 px-0.5 rounded">decides to include</mark> in the provisional agenda of its eighty-first session the item entitled “Permanent sovereignty of the Palestinian people in the Occupied Palestinian Territory, including East Jerusalem, and of the Arab population in the occupied Syrian Golan over their natural resources”. 64th plenary meeting 15 December 2025 _______________ 11 See resolution 70/1.</p>
                 
                 <div class="mt-2 flex flex-wrap gap-1">
                     
@@ -369,6 +379,11 @@
                         bg-blue-50 text-blue-700
                         ">
                         agenda
+                    </span>
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
                     </span>
                     
                 </div>

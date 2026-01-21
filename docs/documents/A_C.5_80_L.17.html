@@ -112,6 +112,10 @@
     
 
     
+        
+            
+        
+    
 
 
 
@@ -121,12 +125,18 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">0 with signals, 15 without</span>
+        <span class="text-sm text-muted">1 with signals, 14 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium bg-un-blue text-white transition-all">
             Signals Only
+        </button>
+        
+        <button onclick="filterSignal('reporting_mandate')" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                bg-gray-100 text-gray-700 hover:bg-gray-200">
+            reporting_mandate
         </button>
         
         <button id="btn-show-all" onclick="toggleShowAll()" 
@@ -378,9 +388,9 @@
     </div>
     
     <div id="para-15" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -388,7 +398,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Encourages the organizations of the United Nations common system to use non-financial incentives and administrative measures, including career development opportunities, recognition, and strengthened organizational culture, and requests the Office of Human Resources of the Department of Management Strategy, Policy and Compliance to support these efforts; I Conditions of service applicable to both categories of staff Approves, with effect from 1 January 2026, the revised standards of conduct for the international civil service, contained in annex XIII to the report of the Commission, and requests the Commission, in line with the established procedure, to incorporate into the revised version of the standards of conduct comprehensive guidance, including preventing conflicts of interest, promoting a culture of efficiency, economical, responsible and efficient use of resources as well as strengthening financial discipline and oversight, and report thereon to the General Assembly in its next report; II Conditions of service of staff in the Professional and higher categories Confirms that teleworking is not a right or an entitlement but a measure of flexibility that organizations have the option to provide to staff according to the organizations’ needs, and requests the Commission to introduce a common framework for adjustments to compensation-related elements after a period of 60 cumulative working days, taking into account exceptional circumstances, and report thereon in the context of its next annual report at the main part of the eighty-first session; A. Base/floor salary scale Recalling its resolution 44/198, by which it established a floor net salary level for staff in the Professional and higher categories by reference to the corresponding A/C.5/80/L.17 25-21098 4/4 base net salary levels of officials in comparable positions serving at the base city of the comparator civil service (the United States federal civil service), Approves, with effect from 1 January 2026, as recommended by the Commission in paragraph 156 of its report, the revised unified base/floor scale and updated pay protection points for staff in the Professional and higher categories, as contained in annex VIII to the report; B. Evolution of the United Nations/United States net remuneration margin Recalling section I.B of its resolution 51/216 and the standing mandate from the General Assembly, in which the Commission is requested to continue its review of the relationship between the net remuneration of the United Nations staff in the Professional and higher categories in New York and that of the comparator civil service (the United States federal civil service) employees in comparable positions in Washington, D.C. (referred to as “the margin”),</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Encourages the organizations of the United Nations common system to use non-financial incentives and administrative measures, including career development opportunities, recognition, and strengthened organizational culture, and requests the Office of Human Resources of the Department of Management Strategy, Policy and Compliance to support these efforts; I Conditions of service applicable to both categories of staff Approves, with effect from 1 January 2026, the revised standards of conduct for the international civil service, contained in annex XIII to the report of the Commission, and requests the Commission, in line with the established procedure, to incorporate into the revised version of the standards of conduct comprehensive guidance, including preventing conflicts of interest, promoting a culture of efficiency, economical, responsible and efficient use of resources as well as strengthening financial discipline and oversight, and <mark class="bg-yellow-200 px-0.5 rounded">report thereon</mark> to the General Assembly in its next report; II Conditions of service of staff in the Professional and higher categories Confirms that teleworking is not a right or an entitlement but a measure of flexibility that organizations have the option to provide to staff according to the organizations’ needs, and requests the Commission to introduce a common framework for adjustments to compensation-related elements after a period of 60 cumulative working days, taking into account exceptional circumstances, and <mark class="bg-yellow-200 px-0.5 rounded">report thereon</mark> in the context of its next annual report at the main part of the eighty-first session; A. Base/floor salary scale Recalling its resolution 44/198, by which it established a floor net salary level for staff in the Professional and higher categories by reference to the corresponding A/C.5/80/L.17 25-21098 4/4 base net salary levels of officials in comparable positions serving at the base city of the comparator civil service (the United States federal civil service), Approves, with effect from 1 January 2026, as recommended by the Commission in paragraph 156 of its report, the revised unified base/floor scale and updated pay protection points for staff in the Professional and higher categories, as contained in annex VIII to the report; B. Evolution of the United Nations/United States net remuneration margin Recalling section I.B of its resolution 51/216 and the standing mandate from the General Assembly, in which the Commission is requested to continue its review of the relationship between the net remuneration of the United Nations staff in the Professional and higher categories in New York and that of the comparator civil service (the United States federal civil service) employees in comparable positions in Washington, D.C. (referred to as “the margin”),</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>

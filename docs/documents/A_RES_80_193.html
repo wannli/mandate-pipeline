@@ -106,7 +106,9 @@
     
 
     
-
+        
+            
+        
     
 
     
@@ -140,11 +142,17 @@
     
 
     
+        
+    
+
+    
 
     
 
     
 
+    
+        
     
 
     
@@ -216,6 +224,8 @@
     
 
     
+        
+    
 
     
         
@@ -231,12 +241,18 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">3 with signals, 63 without</span>
+        <span class="text-sm text-muted">7 with signals, 59 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium bg-un-blue text-white transition-all">
             Signals Only
+        </button>
+        
+        <button onclick="filterSignal('reporting_mandate')" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                bg-gray-100 text-gray-700 hover:bg-gray-200">
+            reporting_mandate
         </button>
         
         <button onclick="filterSignal('PGA')" 
@@ -444,9 +460,9 @@
     </div>
     
     <div id="para-12" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -454,7 +470,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Requests the Chair-Rapporteur of the Ad Hoc Committee to present a progress report to the General Assembly at its eighty-first session and carry out consultations with New York-based delegations and stakeholders in order to continue progress in the elaboration of complementary standards to the International Convention on the Elimination of All Forms of Racial Discrimination; II Implementation of the Durban Declaration and Programme of Action</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Requests the Chair-Rapporteur of the Ad Hoc Committee to present a progress <mark class="bg-yellow-200 px-0.5 rounded">report to the General Assembly</mark> at its eighty-first session and carry out consultations with New York-based delegations and stakeholders in order to continue progress in the elaboration of complementary standards to the International Convention on the Elimination of All Forms of Racial Discrimination; II Implementation of the Durban Declaration and Programme of Action</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>
@@ -716,9 +741,9 @@
     </div>
     
     <div id="para-28" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -726,7 +751,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Welcomes the request made by the Human Rights Council in its resolution 60/16 of 7 October 2025 for the Office of the United Nations High Commissioner for Human Rights to invite the submission of written contributions in order to propose recommendations on the modalities of the Permanent Forum, and to prepare a report thereon, and further complete an evaluation, and requests their submission to the General Assembly at its eighty-first session, in accordance with Assembly resolution 75/314, in which the Assembly decided that after four annual sessions of the Permanent Forum, an evaluation of the Forum’s modalities was to be carried out by the Assembly on the basis of an evaluation made by the Human Rights Council in the light of the experience gained;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Welcomes the request made by the Human Rights Council in its resolution 60/16 of 7 October 2025 for the Office of the United Nations High Commissioner for Human Rights to invite the submission of written contributions in order to propose recommendations on the modalities of the Permanent Forum, and to prepare a <mark class="bg-yellow-200 px-0.5 rounded">report thereon</mark>, and further complete an evaluation, and requests their submission to the General Assembly at its eighty-first session, in accordance with Assembly resolution 75/314, in which the Assembly decided that after four annual sessions of the Permanent Forum, an evaluation of the Forum’s modalities was to be carried out by the Assembly on the basis of an evaluation made by the Human Rights Council in the light of the experience gained;</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>
@@ -784,9 +818,9 @@
     </div>
     
     <div id="para-32" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -794,7 +828,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Takes note of the report of the Working Group of Experts on People of African Descent, 16 invites the Human Rights Council, through the Chair of the Working Group, to continue to submit a report on the work of the Working Group to the General Assembly, and in this regard invites the Chair of the Working Group to engage in an interactive dialogue with the Assembly under the item entitled “Elimination of racism, racial discrimination, xenophobia and related intolerance” at its eighty-first session;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Takes note of the report of the Working Group of Experts on People of African Descent, 16 invites the Human Rights Council, through the Chair of the Working Group, to continue to <mark class="bg-yellow-200 px-0.5 rounded">submit a report</mark> on the work of the Working Group to the General Assembly, and in this regard invites the Chair of the Working Group to engage in an interactive dialogue with the Assembly under the item entitled “Elimination of racism, racial discrimination, xenophobia and related intolerance” at its eighty-first session;</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>
@@ -1348,9 +1391,9 @@
     </div>
     
     <div id="para-64" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -1358,7 +1401,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to submit to the General Assembly at its eighty-first session a report on the implementation of the present resolution;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Requests the <mark class="bg-yellow-200 px-0.5 rounded">Secretary-General to submit</mark> to the General Assembly at its eighty-first session a report on the implementation of the present resolution;</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>

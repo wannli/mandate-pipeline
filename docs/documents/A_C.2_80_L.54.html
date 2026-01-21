@@ -174,6 +174,10 @@
     
         
     
+        
+            
+        
+    
 
 
 
@@ -196,6 +200,12 @@
                 bg-blue-50 text-blue-700 hover:bg-blue-100
                 ">
             agenda
+        </button>
+        
+        <button onclick="filterSignal('reporting_mandate')" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                bg-gray-100 text-gray-700 hover:bg-gray-200">
+            reporting_mandate
         </button>
         
         <button id="btn-show-all" onclick="toggleShowAll()" 
@@ -934,7 +944,7 @@
     
     <div id="para-43" 
          class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["agenda"]'
+         data-signals='["agenda", "reporting_mandate"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -943,7 +953,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to submit to the General Assembly, at its eighty-first session, a report on the implementation of the present resolution, and <mark class="bg-yellow-200 px-0.5 rounded">decides to include</mark> in the provisional agenda of its eighty-first session, under the item entitled “Sustainable development”, the sub-item entitled “Implementation of the United Nations Convention to Combat Desertification in Those Countries Experiencing Serious Drought and/or Desertification, Particularly in Africa”.</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Requests the <mark class="bg-yellow-200 px-0.5 rounded">Secretary-General to submit</mark> to the General Assembly, at its eighty-first session, a report on the implementation of the present resolution, and <mark class="bg-yellow-200 px-0.5 rounded">decides to include</mark> in the provisional agenda of its eighty-first session, under the item entitled “Sustainable development”, the sub-item entitled “Implementation of the United Nations Convention to Combat Desertification in Those Countries Experiencing Serious Drought and/or Desertification, Particularly in Africa”.</p>
                 
                 <div class="mt-2 flex flex-wrap gap-1">
                     
@@ -951,6 +961,11 @@
                         bg-blue-50 text-blue-700
                         ">
                         agenda
+                    </span>
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
                     </span>
                     
                 </div>

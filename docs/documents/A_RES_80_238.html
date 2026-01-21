@@ -102,9 +102,15 @@
     
 
     
+        
+            
+        
+    
 
     
 
+    
+        
     
 
     
@@ -141,12 +147,18 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">0 with signals, 25 without</span>
+        <span class="text-sm text-muted">2 with signals, 23 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium bg-un-blue text-white transition-all">
             Signals Only
+        </button>
+        
+        <button onclick="filterSignal('reporting_mandate')" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                bg-gray-100 text-gray-700 hover:bg-gray-200">
+            reporting_mandate
         </button>
         
         <button id="btn-show-all" onclick="toggleShowAll()" 
@@ -313,9 +325,9 @@
     </div>
     
     <div id="para-10" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -323,7 +335,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Also recalls paragraph 23 of the report of the Advisory Committee, and requests the Secretary-General to intensify his efforts to implement multilingualism within the system of administration of justice, and also requests the Secretary-General to report on his efforts to continue to promote multilingualism in the system of administration of justice in the context of his future reports;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Also recalls paragraph 23 of the report of the Advisory Committee, and requests the Secretary-General to intensify his efforts to implement multilingualism within the system of administration of justice, and also requests the <mark class="bg-yellow-200 px-0.5 rounded">Secretary-General to report</mark> on his efforts to continue to promote multilingualism in the system of administration of justice in the context of his future reports;</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>
@@ -347,9 +368,9 @@
     </div>
     
     <div id="para-12" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -357,7 +378,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Recalls that, in section XII, paragraph 9, of its resolution 78/253 of 22 December 2023 and paragraph 17 of its resolution 79/254, it requested the collection of comprehensive and reliable data regarding racism and racial discrimination and their trends, which do not include workforce composition, and the Secretary-General to report on remedial actions taken, and decides that, should the Secretary-General begin to collect race-related data from staff members, it shall only be on a voluntary basis and be used only in anonymized and aggregated form and for the sole purpose of taking remedial actions to reverse patterns of racism and racial discrimination and their trends and shall not be used to make decisions regarding benchmarks or staff recruitment, selection, promotion, retention, performance assessment or separation from service for individuals;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Recalls that, in section XII, paragraph 9, of its resolution 78/253 of 22 December 2023 and paragraph 17 of its resolution 79/254, it requested the collection of comprehensive and reliable data regarding racism and racial discrimination and their trends, which do not include workforce composition, and the <mark class="bg-yellow-200 px-0.5 rounded">Secretary-General to report</mark> on remedial actions taken, and decides that, should the Secretary-General begin to collect race-related data from staff members, it shall only be on a voluntary basis and be used only in anonymized and aggregated form and for the sole purpose of taking remedial actions to reverse patterns of racism and racial discrimination and their trends and shall not be used to make decisions regarding benchmarks or staff recruitment, selection, promotion, retention, performance assessment or separation from service for individuals;</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>

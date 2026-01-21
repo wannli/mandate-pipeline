@@ -180,6 +180,10 @@
     
 
     
+        
+            
+        
+    
 
     
         
@@ -195,12 +199,18 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">1 with signals, 49 without</span>
+        <span class="text-sm text-muted">2 with signals, 48 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium bg-un-blue text-white transition-all">
             Signals Only
+        </button>
+        
+        <button onclick="filterSignal('reporting_mandate')" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                bg-gray-100 text-gray-700 hover:bg-gray-200">
+            reporting_mandate
         </button>
         
         <button onclick="filterSignal('agenda')" 
@@ -1037,9 +1047,9 @@
     </div>
     
     <div id="para-49" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -1047,7 +1057,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General, in collaboration with the secretariat of the United Nations Conference on Trade and Development, to inform the General Assembly at its eighty-first session of the implementation of the present resolution, based on their ongoing research, through a dedicated section of the World Investment Report, with a special focus on promoting investments for sustainable development A/C.2/80/L.24 13/13 25-16745 as well as concrete recommendations, including on strategic sectors to invest for the implementation of the 2030 Agenda, and looks forward to the continuing consideration of these issues in the forthcoming reports of the Inter-Agency Task Force on Financing for Development;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General, in collaboration with the secretariat of the United Nations Conference on Trade and Development, to <mark class="bg-yellow-200 px-0.5 rounded">inform the General Assembly</mark> at its eighty-first session of the implementation of the present resolution, based on their ongoing research, through a dedicated section of the World Investment Report, with a special focus on promoting investments for sustainable development A/C.2/80/L.24 13/13 25-16745 as well as concrete recommendations, including on strategic sectors to invest for the implementation of the 2030 Agenda, and looks forward to the continuing consideration of these issues in the forthcoming reports of the Inter-Agency Task Force on Financing for Development;</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>

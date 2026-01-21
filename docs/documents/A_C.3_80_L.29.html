@@ -138,6 +138,10 @@
     
 
     
+        
+            
+        
+    
 
 
 
@@ -147,12 +151,18 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">0 with signals, 28 without</span>
+        <span class="text-sm text-muted">1 with signals, 27 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium bg-un-blue text-white transition-all">
             Signals Only
+        </button>
+        
+        <button onclick="filterSignal('reporting_mandate')" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                bg-gray-100 text-gray-700 hover:bg-gray-200">
+            reporting_mandate
         </button>
         
         <button id="btn-show-all" onclick="toggleShowAll()" 
@@ -625,9 +635,9 @@
     </div>
     
     <div id="para-28" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -635,7 +645,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Decides to continue its examination of the situation of human rights in the Democratic People’s Republic of Korea at its eighty-first session, and to this end requests the Secretary-General to submit a comprehensive report on the situation of human rights in the Democratic People’s Republic of Korea, and requests the Special Rapporteur to continue to report her findings and recommendations, as well as to report on the follow-up to the implementation of the recommendations of the commission of inquiry.</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Decides to continue its examination of the situation of human rights in the Democratic People’s Republic of Korea at its eighty-first session, and to this end requests the <mark class="bg-yellow-200 px-0.5 rounded">Secretary-General to submit</mark> a comprehensive report on the situation of human rights in the Democratic People’s Republic of Korea, and requests the Special Rapporteur to continue to report her findings and recommendations, as well as to report on the follow-up to the implementation of the recommendations of the commission of inquiry.</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>

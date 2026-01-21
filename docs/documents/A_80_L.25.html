@@ -266,11 +266,17 @@
     
 
     
-
+        
+            
+        
     
 
     
 
+    
+
+    
+        
     
 
 
@@ -281,12 +287,18 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">0 with signals, 95 without</span>
+        <span class="text-sm text-muted">2 with signals, 93 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium bg-un-blue text-white transition-all">
             Signals Only
+        </button>
+        
+        <button onclick="filterSignal('reporting_mandate')" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                bg-gray-100 text-gray-700 hover:bg-gray-200">
+            reporting_mandate
         </button>
         
         <button id="btn-show-all" onclick="toggleShowAll()" 
@@ -1847,9 +1859,9 @@
     </div>
     
     <div id="para-92" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -1857,7 +1869,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to report on actions taken to enable the United Nations to continue to strengthen its ability to recruit and deploy staff quickly, effectively and flexibly, to procure emergency relief materials and services rapidly, cost-effectively and locally, where applicable, and to quickly disburse funds in order to support Governments and United Nations country teams in the coordination of international humanitarian assistance;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Requests the <mark class="bg-yellow-200 px-0.5 rounded">Secretary-General to report</mark> on actions taken to enable the United Nations to continue to strengthen its ability to recruit and deploy staff quickly, effectively and flexibly, to procure emergency relief materials and services rapidly, cost-effectively and locally, where applicable, and to quickly disburse funds in order to support Governments and United Nations country teams in the coordination of international humanitarian assistance;</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>
@@ -1898,9 +1919,9 @@
     </div>
     
     <div id="para-95" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -1908,7 +1929,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to report to the General Assembly at its eighty-first session, through the Economic and Social Council at its 2026 session, on progress made in strengthening the coordination of emergency humanitarian assistance of the United Nations, including the humanitarian reset initiative and the relevant efforts under the UN80 Initiative, and to submit a report to the Assembly on the detailed use of the Central Emergency Response Fund. __________________ 22 Resolution 70/1.</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to <mark class="bg-yellow-200 px-0.5 rounded">report to the General Assembly</mark> at its eighty-first session, through the Economic and Social Council at its 2026 session, on progress made in strengthening the coordination of emergency humanitarian assistance of the United Nations, including the humanitarian reset initiative and the relevant efforts under the UN80 Initiative, and to <mark class="bg-yellow-200 px-0.5 rounded">submit a report</mark> to the Assembly on the detailed use of the Central Emergency Response Fund. __________________ 22 Resolution 70/1.</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>

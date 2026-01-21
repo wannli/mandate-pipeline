@@ -148,6 +148,10 @@
             
         
     
+        
+            
+        
+    
 
 
 
@@ -170,6 +174,12 @@
                 bg-blue-50 text-blue-700 hover:bg-blue-100
                 ">
             agenda
+        </button>
+        
+        <button onclick="filterSignal('reporting_mandate')" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                bg-gray-100 text-gray-700 hover:bg-gray-200">
+            reporting_mandate
         </button>
         
         <button id="btn-show-all" onclick="toggleShowAll()" 
@@ -694,7 +704,7 @@
     
     <div id="para-31" 
          class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["agenda"]'
+         data-signals='["agenda", "reporting_mandate"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -703,7 +713,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to submit to the General Assembly at its eighty-second session, within existing resources, an action-oriented report that examines the current technological trends and key advances in agricultural technologies, provides illustrative examples of the transformative use of technologies A/RES/80/133 Agricultural technology for sustainable development 25-20748 12/12 at scale and includes recommendations that assist Member States in accelerating their efforts to bridge the gap in the elimination of hunger and all forms of malnutrition and implement the relevant goals and targets of the 2030 Agenda, and <mark class="bg-yellow-200 px-0.5 rounded">decides to include</mark> in the provisional agenda of its eighty-second session the item entitled “Sustainable development”. 64th plenary meeting 15 December 2025</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Requests the <mark class="bg-yellow-200 px-0.5 rounded">Secretary-General to submit</mark> to the General Assembly at its eighty-second session, within existing resources, an action-oriented report that examines the current technological trends and key advances in agricultural technologies, provides illustrative examples of the transformative use of technologies A/RES/80/133 Agricultural technology for sustainable development 25-20748 12/12 at scale and includes recommendations that assist Member States in accelerating their efforts to bridge the gap in the elimination of hunger and all forms of malnutrition and implement the relevant goals and targets of the 2030 Agenda, and <mark class="bg-yellow-200 px-0.5 rounded">decides to include</mark> in the provisional agenda of its eighty-second session the item entitled “Sustainable development”. 64th plenary meeting 15 December 2025</p>
                 
                 <div class="mt-2 flex flex-wrap gap-1">
                     
@@ -711,6 +721,11 @@
                         bg-blue-50 text-blue-700
                         ">
                         agenda
+                    </span>
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
                     </span>
                     
                 </div>

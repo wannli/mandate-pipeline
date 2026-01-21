@@ -96,6 +96,10 @@
     
 
     
+        
+            
+        
+    
 
     
 
@@ -129,12 +133,18 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">0 with signals, 19 without</span>
+        <span class="text-sm text-muted">1 with signals, 18 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium bg-un-blue text-white transition-all">
             Signals Only
+        </button>
+        
+        <button onclick="filterSignal('reporting_mandate')" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                bg-gray-100 text-gray-700 hover:bg-gray-200">
+            reporting_mandate
         </button>
         
         <button id="btn-show-all" onclick="toggleShowAll()" 
@@ -250,9 +260,9 @@
     </div>
     
     <div id="para-7" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["reporting_mandate"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -260,7 +270,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Requests the Special Committee to continue to seek suitable means for the immediate and full implementation of the Declaration and to carry out the actions approved by the General Assembly regarding the International Decades for the Eradication of Colonialism in all Territories that have not yet exercised their right to self-determination, including independence, and in particular: (a) To formulate specific proposals to bring about an end to colonialism and to report thereon to the General Assembly at its eighty-first session; (b) To continue to examine the implementation by Member States of resolution 1514 (XV) and other relevant resolutions on decolonization; (c) To continue to examine the political, economic and social situation in the Non-Self-Governing Territories, and to recommend to the General Assembly, as appropriate, the most suitable steps to be taken to enable the populations of those Territories to exercise their right to self-determination, including independence, in accordance with the relevant resolutions on decolonization, including resolutions on specific Territories; (d) To develop and finalize, as soon as possible and in cooperation with the administering Power and the Territory in question, a constructive programme of work on a case-by-case basis for the Non-Self-Governing Territories, to facilitate the implementation of the mandate of the Special Committee and the relevant resolutions on decolonization, including resolutions on specific Territories; (e) To continue to dispatch visiting and special missions to the Non-Self- Governing Territories in accordance with the relevant resolutions on decolonization, including resolutions on specific Territories; (f) To conduct seminars, as appropriate, for the purpose of receiving and disseminating information on the work of the Special Committee, and to facilitate participation by the peoples of the Non-Self-Governing Territories in those seminars; (g) To take all steps necessary to enlist worldwide support among Governments, as well as national and international organizations, for the achievement of the objectives of the Declaration and the implementation of the relevant resolutions of the United Nations; (h) To observe annually the Week of Solidarity with the Peoples of Non-Self- Governing Territories;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Requests the Special Committee to continue to seek suitable means for the immediate and full implementation of the Declaration and to carry out the actions approved by the General Assembly regarding the International Decades for the Eradication of Colonialism in all Territories that have not yet exercised their right to self-determination, including independence, and in particular: (a) To formulate specific proposals to bring about an end to colonialism and to <mark class="bg-yellow-200 px-0.5 rounded">report thereon</mark> to the General Assembly at its eighty-first session; (b) To continue to examine the implementation by Member States of resolution 1514 (XV) and other relevant resolutions on decolonization; (c) To continue to examine the political, economic and social situation in the Non-Self-Governing Territories, and to recommend to the General Assembly, as appropriate, the most suitable steps to be taken to enable the populations of those Territories to exercise their right to self-determination, including independence, in accordance with the relevant resolutions on decolonization, including resolutions on specific Territories; (d) To develop and finalize, as soon as possible and in cooperation with the administering Power and the Territory in question, a constructive programme of work on a case-by-case basis for the Non-Self-Governing Territories, to facilitate the implementation of the mandate of the Special Committee and the relevant resolutions on decolonization, including resolutions on specific Territories; (e) To continue to dispatch visiting and special missions to the Non-Self- Governing Territories in accordance with the relevant resolutions on decolonization, including resolutions on specific Territories; (f) To conduct seminars, as appropriate, for the purpose of receiving and disseminating information on the work of the Special Committee, and to facilitate participation by the peoples of the Non-Self-Governing Territories in those seminars; (g) To take all steps necessary to enlist worldwide support among Governments, as well as national and international organizations, for the achievement of the objectives of the Declaration and the implementation of the relevant resolutions of the United Nations; (h) To observe annually the Week of Solidarity with the Peoples of Non-Self- Governing Territories;</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-gray-100 text-gray-700">
+                        reporting_mandate
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>
