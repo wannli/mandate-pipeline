@@ -6,6 +6,14 @@ from pathlib import Path
 import pymupdf
 
 
+# Pattern: number at start of line, followed by period and text
+# The paragraph continues until the next numbered paragraph or end
+OPERATIVE_PARAGRAPH_PATTERN = re.compile(
+    r"^\s*(\d+)\.\s+(.+?)(?=^\s*\d+\.\s+|\Z)",
+    re.MULTILINE | re.DOTALL
+)
+
+
 def extract_text(pdf_path: Path) -> str:
     """
     Extract full text from a PDF file.
@@ -46,11 +54,7 @@ def extract_operative_paragraphs(text: str) -> dict[int, str]:
     """
     paragraphs = {}
 
-    # Pattern: number at start of line, followed by period and text
-    # The paragraph continues until the next numbered paragraph or end
-    pattern = r"^\s*(\d+)\.\s+(.+?)(?=^\s*\d+\.\s+|\Z)"
-
-    matches = re.findall(pattern, text, re.MULTILINE | re.DOTALL)
+    matches = OPERATIVE_PARAGRAPH_PATTERN.findall(text)
 
     for num_str, content in matches:
         num = int(num_str)
@@ -59,6 +63,63 @@ def extract_operative_paragraphs(text: str) -> dict[int, str]:
         paragraphs[num] = cleaned
 
     return paragraphs
+
+
+# Patterns to skip when looking for title
+SKIP_PREFIXES = (
+    "Distr.",
+)
+
+SKIP_REGEXES = [
+    r"^United Nations$",
+    r"^General Assembly$",
+    r"^Security Council$",
+    r"^[A-Z]{1,2}/[A-Z0-9./-]+$",
+    r"^Agenda item",
+    r"^Item\s+\d+",
+    r"^\d{1,2}\s+\w+\s+\d{4}$",
+    r"^\d{2}-\d{5}\s+\(E\).*$",
+    r"^\*?\d{6,}\*?$",
+    r"^Resolution adopted by",
+    r"^\w+ session$",
+    r"^(First|Second|Third|Fourth|Fifth|Sixth) Committee$",
+    r"^A/RES",
+    r"^Original:",
+    r"^\[on the report of",
+    r"^\[without reference to",
+    # Skip facilitator/submitter lines (end with country in parentheses)
+    r"^.*\([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*(?:\s+of\s+[A-Z][a-z]+)?\s*\)\s*$",
+    # Skip "on the basis of informal consultations" lines
+    r".*on the basis of informal consultations",
+    # Skip lines referencing other draft resolutions
+    r"^.*resolution\s+A/C\.\d+/\d+/L\.\d+",
+]
+
+# Compile the skip regexes into a single pattern
+SKIP_COMBINED_PATTERN = re.compile("|".join(f"(?:{p})" for p in SKIP_REGEXES))
+
+# Patterns that indicate end of title (start of document body)
+TITLE_END_PATTERNS = [
+    r"^The General Assembly",
+    r"^The Security Council",
+    r"^Recalling",
+    r"^Reaffirming",
+    r"^Noting",
+    r"^Recognizing",
+    r"^Welcoming",
+    r"^Expressing",
+    r"^Bearing in mind",
+    r"^Having",
+    r"^Mindful",
+    r"^Concerned",
+    r"^Convinced",
+    r"^Guided by",
+    r"^Taking note",
+    r"^Pursuant to",
+]
+
+# Compile the end regexes into a single pattern
+TITLE_END_COMBINED_PATTERN = re.compile("|".join(f"(?:{p})" for p in TITLE_END_PATTERNS))
 
 
 def extract_title(text: str) -> str:
@@ -84,63 +145,13 @@ def extract_title(text: str) -> str:
 
     stop_at = min(stop_indices) if stop_indices else len(lines)
 
-    skip_prefixes = (
-        "Distr.",
-    )
-    skip_regexes = [
-        r"^United Nations$",
-        r"^General Assembly$",
-        r"^Security Council$",
-        r"^[A-Z]{1,2}/[A-Z0-9./-]+$",
-        r"^Agenda item",
-        r"^Item\s+\d+",
-        r"^\d{1,2}\s+\w+\s+\d{4}$",
-        r"^\d{2}-\d{5}\s+\(E\).*$",
-        r"^\*?\d{6,}\*?$",
-        r"^Resolution adopted by",
-        r"^\w+ session$",
-        r"^(First|Second|Third|Fourth|Fifth|Sixth) Committee$",
-        r"^A/RES",
-        r"^Original:",
-        r"^\[on the report of",
-        r"^\[without reference to",
-        # Skip facilitator/submitter lines (end with country in parentheses)
-        r"^.*\([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*(?:\s+of\s+[A-Z][a-z]+)?\s*\)\s*$",
-        # Skip "on the basis of informal consultations" lines
-        r".*on the basis of informal consultations",
-        # Skip lines referencing other draft resolutions
-        r"^.*resolution\s+A/C\.\d+/\d+/L\.\d+",
-    ]
-
-    # Patterns that indicate end of title (start of document body)
-    title_end_patterns = [
-        r"^The General Assembly",
-        r"^The Security Council",
-        r"^Recalling",
-        r"^Reaffirming",
-        r"^Noting",
-        r"^Recognizing",
-        r"^Welcoming",
-        r"^Expressing",
-        r"^Bearing in mind",
-        r"^Having",
-        r"^Mindful",
-        r"^Concerned",
-        r"^Convinced",
-        r"^Guided by",
-        r"^Taking note",
-        r"^Pursuant to",
-    ]
-
     def is_skip_line(candidate: str) -> bool:
-        if candidate.startswith(skip_prefixes):
+        if candidate.startswith(SKIP_PREFIXES):
             return True
-        if any(re.match(pattern, candidate) for pattern in skip_regexes):
-            return True
-        return False
+        return bool(SKIP_COMBINED_PATTERN.match(candidate))
 
     def is_title_end(candidate: str) -> bool:
-        return any(re.match(pattern, candidate) for pattern in title_end_patterns)
+        return bool(TITLE_END_COMBINED_PATTERN.match(candidate))
 
     # For resolutions: find title after "Resolution adopted by" line
     # The title format is "80/1. Title..." and may span multiple lines
