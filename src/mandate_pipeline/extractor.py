@@ -289,6 +289,125 @@ def extract_title(text: str) -> str:
     return ""
 
 
+def extract_amendment_text(text: str) -> dict[int, str]:
+    """
+    Extract text content from amendment documents.
+
+    Amendments don't have standard numbered operative paragraphs.
+    This function extracts the body text after the header and before
+    any footer markers, returning it as a single paragraph for signal detection.
+
+    Args:
+        text: Full text of the amendment document
+
+    Returns:
+        Dictionary with paragraph 1 containing the body text, or empty dict if no content
+    """
+    lines = text.splitlines()
+
+    # Patterns that indicate end of header / start of body
+    body_start_patterns = [
+        r"^The General Assembly",
+        r"^The Security Council",
+        r"^Recalling",
+        r"^Reaffirming",
+        r"^Noting",
+        r"^Recognizing",
+        r"^Welcoming",
+        r"^Expressing",
+        r"^Bearing in mind",
+        r"^Having",
+        r"^Mindful",
+        r"^Concerned",
+        r"^Convinced",
+        r"^Guided by",
+        r"^Taking note",
+        r"^Pursuant to",
+        r"^In operative paragraph",
+        r"^In paragraph",
+        r"^Insert",
+        r"^Replace",
+        r"^Delete",
+        r"^Add",
+        r"^After",
+        r"^Before",
+    ]
+
+    # Patterns that indicate footer / end of body
+    footer_patterns = [
+        r"^\d{2}-\d{5}",  # Document ID like 24-12345
+        r"^\*\d{6,}\*",  # Barcode pattern
+        r"^GE\.\d{2}-\d+",  # Geneva ID
+    ]
+
+    # Header patterns to skip
+    header_patterns = [
+        r"^United Nations$",
+        r"^General Assembly$",
+        r"^Security Council$",
+        r"^[A-Z]{1,2}/[A-Z0-9./-]+$",
+        r"^Agenda item",
+        r"^Item\s+\d+",
+        r"^\d{1,2}\s+\w+\s+\d{4}$",
+        r"^Distr\.",
+        r"^Original:",
+        r"^\w+ session$",
+        r"^(First|Second|Third|Fourth|Fifth|Sixth) Committee$",
+    ]
+
+    def is_header_line(line: str) -> bool:
+        return any(re.match(p, line) for p in header_patterns)
+
+    def is_body_start(line: str) -> bool:
+        return any(re.match(p, line, re.IGNORECASE) for p in body_start_patterns)
+
+    def is_footer_line(line: str) -> bool:
+        return any(re.match(p, line) for p in footer_patterns)
+
+    # Find body start
+    body_start_idx = 0
+    for idx, line in enumerate(lines):
+        stripped = line.strip()
+        if not stripped:
+            continue
+        if is_header_line(stripped):
+            body_start_idx = idx + 1
+            continue
+        if is_body_start(stripped):
+            body_start_idx = idx
+            break
+
+    # Find body end (footer start)
+    body_end_idx = len(lines)
+    for idx in range(len(lines) - 1, body_start_idx, -1):
+        stripped = lines[idx].strip()
+        if not stripped:
+            continue
+        if is_footer_line(stripped):
+            body_end_idx = idx
+        else:
+            break
+
+    # Extract body text
+    body_lines = []
+    for line in lines[body_start_idx:body_end_idx]:
+        stripped = line.strip()
+        if stripped:
+            body_lines.append(stripped)
+
+    if not body_lines:
+        return {}
+
+    # Join and clean the body text
+    body_text = " ".join(body_lines)
+    body_text = " ".join(body_text.split())  # Normalize whitespace
+
+    if len(body_text) < 20:  # Too short to be meaningful
+        return {}
+
+    return {1: body_text}
+
+
 def extract_agenda_items(text: str) -> list[str]:
     """
     Extract agenda item references from document text.

@@ -12,6 +12,8 @@ from .detection import load_checks, run_checks
 from .extractor import (
     extract_text,
     extract_operative_paragraphs,
+    extract_lettered_paragraphs,
+    extract_amendment_text,
     extract_title,
     extract_agenda_items,
     find_symbol_references,
@@ -113,6 +115,17 @@ def load_all_documents(data_dir: Path, checks: list) -> list[dict]:
             agenda_items = extract_agenda_items(text)
             symbol_references = find_symbol_references(text)
             doc_type = classify_doc_type(symbol, text)
+
+            # For amendments without numbered paragraphs, try alternative extraction
+            if doc_type == "amendment" and not paragraphs:
+                # Try lettered paragraphs first
+                lettered = extract_lettered_paragraphs(text)
+                if lettered:
+                    # Convert letter keys to numeric for consistency
+                    paragraphs = {i + 1: v for i, (k, v) in enumerate(sorted(lettered.items()))}
+                else:
+                    # Fall back to body text extraction
+                    paragraphs = extract_amendment_text(text)
 
             # Run checks
             signals = run_checks(paragraphs, checks) if checks else {}
@@ -1380,6 +1393,18 @@ def generate_site_verbose(
             agenda_items = extract_agenda_items(text)
             symbol_references = find_symbol_references(text)
             doc_type = classify_doc_type(symbol, text)
+
+            # For amendments without numbered paragraphs, try alternative extraction
+            if doc_type == "amendment" and not paragraphs:
+                # Try lettered paragraphs first
+                lettered = extract_lettered_paragraphs(text)
+                if lettered:
+                    # Convert letter keys to numeric for consistency
+                    paragraphs = {i + 1: v for i, (k, v) in enumerate(sorted(lettered.items()))}
+                else:
+                    # Fall back to body text extraction
+                    paragraphs = extract_amendment_text(text)
+
             signals = run_checks(paragraphs, checks) if checks else {}
 
             # Build signal summary
