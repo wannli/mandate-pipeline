@@ -278,6 +278,8 @@
     
 
     
+        
+    
 
     
 
@@ -309,7 +311,7 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">3 with signals, 92 without</span>
+        <span class="text-sm text-muted">4 with signals, 91 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
@@ -1813,9 +1815,9 @@
     </div>
     
     <div id="para-87" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["PGA"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -1823,7 +1825,17 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Notes with appreciation the report of the Secretary-General’s High-level Panel on Internal Displacement, acknowledges that increased efforts on addressing the root causes as well as prevention, protection and improved assistance to internally displaced persons and durable solutions for internal displacement are critically important, and encourages the Secretary-General to work with Member States, the United Nations system and relevant actors, as appropriate, on these efforts, and recognizes the importance of the Secretary-General’s follow-up Action Agenda on Internal Displacement;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Notes with appreciation the report of the Secretary-General’s <mark class="bg-yellow-200 px-0.5 rounded">High-level Panel</mark> on Internal Displacement, acknowledges that increased efforts on addressing the root causes as well as prevention, protection and improved assistance to internally displaced persons and durable solutions for internal displacement are critically important, and encourages the Secretary-General to work with Member States, the United Nations system and relevant actors, as appropriate, on these efforts, and recognizes the importance of the Secretary-General’s follow-up Action Agenda on Internal Displacement;</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-purple-50 text-purple-700
+                        ">
+                        PGA
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>

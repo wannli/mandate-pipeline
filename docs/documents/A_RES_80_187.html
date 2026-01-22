@@ -135,6 +135,10 @@
     
 
     
+        
+            
+        
+    
 
     
 
@@ -310,12 +314,19 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">0 with signals, 92 without</span>
+        <span class="text-sm text-muted">1 with signals, 91 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium bg-un-blue text-white transition-all">
             Signals Only
+        </button>
+        
+        <button onclick="filterSignal('PGA')" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                bg-purple-50 text-purple-700 hover:bg-purple-100
+                ">
+            PGA
         </button>
         
         <button id="btn-show-all" onclick="toggleShowAll()" 
@@ -465,9 +476,9 @@
     </div>
     
     <div id="para-9" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
-         data-signals='[]'
-         data-has-signals="false">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
+         data-signals='["PGA"]'
+         data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -475,7 +486,17 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Re-emphasizes that prevention and reduction of statelessness are primarily the responsibility of States, in appropriate cooperation with the international community, recognizes the achievements of the I Belong campaign to end statelessness, including through the implementation by States of pledges made at the high-level segment that took place at the start of the seventieth plenary session of the Executive Committee, welcomes the high-level segment on statelessness that took place at the seventy-fifth plenary session of the Executive Committee, which marked the launch of the Global Alliance to End Statelessness and provided an opportunity to renew collective commitments, and encourages all States to consider actions they may take to further accelerate the prevention and reduction of statelessness;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Re-emphasizes that prevention and reduction of statelessness are primarily the responsibility of States, in appropriate cooperation with the international community, recognizes the achievements of the I Belong campaign to end statelessness, including through the implementation by States of pledges made at the <mark class="bg-yellow-200 px-0.5 rounded">high-level segment</mark> that took place at the start of the seventieth plenary session of the Executive Committee, welcomes the <mark class="bg-yellow-200 px-0.5 rounded">high-level segment</mark> on statelessness that took place at the seventy-fifth plenary session of the Executive Committee, which marked the launch of the Global Alliance to End Statelessness and provided an opportunity to renew collective commitments, and encourages all States to consider actions they may take to further accelerate the prevention and reduction of statelessness;</p>
+                
+                <div class="mt-2 flex flex-wrap gap-1">
+                    
+                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                        bg-purple-50 text-purple-700
+                        ">
+                        PGA
+                    </span>
+                    
+                </div>
                 
             </div>
         </div>

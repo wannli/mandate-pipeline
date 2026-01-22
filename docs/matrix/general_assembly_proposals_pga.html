@@ -86,12 +86,12 @@
 <!-- Header -->
 <div class="mb-8">
     <h1 class="text-3xl font-bold text-gray-900 tracking-tight">PGA in General Assembly proposals</h1>
-    <p class="mt-2 text-muted">2 paragraphs across 2 documents</p>
+    <p class="mt-2 text-muted">3 paragraphs across 2 documents</p>
     
-    <p class="mt-1 text-xs text-muted">9 adopted drafts hidden</p>
+    <p class="mt-1 text-xs text-muted">10 adopted drafts hidden</p>
     <div class="mt-3">
         <button id="toggle-adopted-btn" class="px-3 py-1.5 text-sm font-medium rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
-            Show adopted drafts (9)
+            Show adopted drafts (10)
         </button>
     </div>
     
@@ -190,6 +190,52 @@
                     </a>
                 </div>
                 <p class="text-gray-700 leading-relaxed text-sm">Requests the <mark class="bg-yellow-200 px-0.5 rounded">President of the General Assembly</mark> to convene, within existing resources, on 24 April 2026, a special commemorative meeting of the Assembly in observance of the fortieth anniversary of the Chernobyl disaster;</p>
+            </div>
+            
+        </div>
+    </div>
+    
+    
+    
+    
+    
+    <div class="border border-gray-200 rounded-lg overflow-hidden"
+         data-adopted="true"
+         style="display: none;">
+        <!-- Document Header -->
+        <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="../documents/A_80_L.4.html" class="font-semibold text-gray-900 hover:text-un-blue transition-colors">
+                    A/80/L.4
+                </a>
+                <span class="px-2 py-0.5 rounded-full text-xs font-medium
+                    bg-purple-50 text-purple-700
+                    ">
+                    1 paragraph
+                </span>
+                
+                <span class="text-xs text-muted">
+                    Adopted by
+                    <a href="../documents/A_RES_80_3.html" class="hover:text-un-blue transition-colors">
+                        A/RES/80/3
+                    </a>
+                </span>
+                
+            </div>
+            <a href="https://docs.un.org/en/a/80/l.4?direct=true" target="_blank" class="text-sm text-muted hover:text-un-blue transition-colors">PDF ↗</a>
+        </div>
+        
+        <!-- Paragraphs -->
+        <div class="divide-y divide-gray-100">
+            
+            <div class="px-4 py-3 flex gap-4">
+                <div class="flex-shrink-0">
+                    <a href="../documents/A_80_L.4.html#para-14" 
+                       class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-gray-100 text-gray-700 font-medium text-sm hover:bg-un-blue hover:text-white transition-colors">
+                        14
+                    </a>
+                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">We reaffirm our commitment to advancing the concrete deliverables outlined in the Awaza Programme of Action, with respect to establishing regional agriculture research hubs, based on interest expressed by some countries; creating a <mark class="bg-yellow-200 px-0.5 rounded">high-level panel</mark> of experts on freedom of transit for landlocked developing countries; and exploring the establishment of an infrastructure investment finance facility for landlocked developing countries.</p>
             </div>
             
         </div>
@@ -441,7 +487,7 @@
                 <span class="px-2 py-0.5 rounded-full text-xs font-medium
                     bg-purple-50 text-purple-700
                     ">
-                    1 paragraph
+                    2 paragraphs
                 </span>
                 
             </div>
@@ -459,6 +505,16 @@
                     </a>
                 </div>
                 <p class="text-gray-700 leading-relaxed text-sm">Calls upon Member States, the United Nations and humanitarian organizations and relevant stakeholders to scale up systematic prevention, preparedness and response to health emergencies in humanitarian contexts, and to draw on lessons learned from the COVID‑19 pandemic, including as it relates to the strengthening of national, regional and multilateral approaches and international cooperation, and takes note of the political declarations on pandemic prevention, preparedness and response, on universal health coverage and on the fight against tuberculosis adopted at the respective <mark class="bg-yellow-200 px-0.5 rounded">high-level meeting</mark>s of the General Assembly held in New York in September 2023, as well as General Assembly resolutions on the control and elimination of malaria;</p>
+            </div>
+            
+            <div class="px-4 py-3 flex gap-4">
+                <div class="flex-shrink-0">
+                    <a href="../documents/A_80_L.25.html#para-87" 
+                       class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-gray-100 text-gray-700 font-medium text-sm hover:bg-un-blue hover:text-white transition-colors">
+                        87
+                    </a>
+                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Notes with appreciation the report of the Secretary-General’s <mark class="bg-yellow-200 px-0.5 rounded">High-level Panel</mark> on Internal Displacement, acknowledges that increased efforts on addressing the root causes as well as prevention, protection and improved assistance to internally displaced persons and durable solutions for internal displacement are critically important, and encourages the Secretary-General to work with Member States, the United Nations system and relevant actors, as appropriate, on these efforts, and recognizes the importance of the Secretary-General’s follow-up Action Agenda on Internal Displacement;</p>
             </div>
             
         </div>
@@ -692,7 +748,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (toggleAdoptedBtn) {
             toggleAdoptedBtn.textContent = showAdopted
                 ? 'Hide adopted drafts'
-                : 'Show adopted drafts (9)';
+                : 'Show adopted drafts (10)';
         }
         applyAdoptedVisibility();
     }
