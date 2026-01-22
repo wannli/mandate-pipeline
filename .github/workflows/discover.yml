@@ -1,4 +1,4 @@
-name: Fetch Documents
+name: Discover Documents
 
 on:
   schedule:
@@ -11,11 +11,11 @@ permissions:
   contents: write
 
 concurrency:
-  group: "data-fetch"
+  group: "discover"
   cancel-in-progress: false
 
 jobs:
-  fetch:
+  discover:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -48,7 +48,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git commit -m "chore: fetch documents $(date -I)"
+          git commit -m "chore: discover $(date -I)"
           # Pull any changes that happened during the build, then push
           git pull --rebase origin main || true
           git push
