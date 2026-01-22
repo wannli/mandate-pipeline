@@ -186,8 +186,6 @@ def link_documents(documents: list[dict], use_undl_metadata: bool = True) -> Non
     for doc in documents:
         doc.setdefault("linked_resolution_symbol", None)
         doc.setdefault("linked_proposal_symbols", [])
-        doc.setdefault("link_method", None)
-        doc.setdefault("link_confidence", None)
 
     # Pass 0: UN Digital Library metadata lookup (authoritative source)
     if use_undl_metadata:
@@ -208,29 +206,12 @@ def link_documents(documents: list[dict], use_undl_metadata: bool = True) -> Non
 
             if linked:
                 doc["linked_proposal_symbols"] = linked
-                doc["link_method"] = "undl_metadata"
-                doc["link_confidence"] = 1.0
-                if doc.get("base_proposal_symbol") is None:
-                    doc["base_proposal_symbol"] = linked[0]
 
                 # Mark the proposals as linked to this resolution
                 for ref in linked:
                     proposal = proposals_by_symbol.get(ref)
                     if proposal and proposal.get("linked_resolution_symbol") is None:
                         proposal["linked_resolution_symbol"] = doc["symbol"]
-                        proposal["link_method"] = "undl_metadata"
-                        proposal["link_confidence"] = 1.0
-            elif draft_symbols:
-                # Store the base proposal even if we don't have the PDF locally
-                # This helps identify which drafts we should consider downloading
-                doc["base_proposal_symbol"] = draft_symbols[0]
-                doc["link_method"] = "undl_metadata"
-                doc["link_confidence"] = 1.0
-                logger.info(
-                    "UNDL metadata found draft %s for %s (not in local collection)",
-                    draft_symbols[0],
-                    doc["symbol"],
-                )
 
     # Pass 1: Symbol references from PDF text
     for doc in documents:
@@ -244,18 +225,12 @@ def link_documents(documents: list[dict], use_undl_metadata: bool = True) -> Non
         if not linked:
             continue
         doc["linked_proposal_symbols"] = linked
-        doc["link_method"] = "symbol_reference"
-        doc["link_confidence"] = 1.0
-        if doc.get("base_proposal_symbol") is None:
-            doc["base_proposal_symbol"] = linked[0]
         for ref in linked:
             proposal = proposals_by_symbol.get(ref)
             if proposal is None:
                 continue
             if proposal.get("linked_resolution_symbol") is None:
                 proposal["linked_resolution_symbol"] = doc["symbol"]
-                proposal["link_method"] = "symbol_reference"
-                proposal["link_confidence"] = 1.0
 
     # Pass 2: Fuzzy title matching with agenda overlap
     for doc in documents:
@@ -271,7 +246,6 @@ def link_documents(documents: list[dict], use_undl_metadata: bool = True) -> Non
 
         best_match = None
         best_score = 0.0
-        best_confidence = 0.0
 
         for proposal in proposals:
             if proposal.get("linked_resolution_symbol") not in (None, doc["symbol"]):
@@ -289,30 +263,18 @@ def link_documents(documents: list[dict], use_undl_metadata: bool = True) -> Non
             if similarity < 85:
                 continue
 
-            confidence = similarity / 100.0
-            if agenda_items and proposal_agenda:
-                confidence = min(confidence + 0.05, 1.0)
-
             if similarity > best_score:
                 best_score = similarity
                 best_match = proposal
-                best_confidence = confidence
 
         if best_match:
             doc["linked_proposal_symbols"] = [best_match["symbol"]]
-            doc["link_method"] = "title_agenda_fuzzy"
-            doc["link_confidence"] = best_confidence
-            if doc.get("base_proposal_symbol") is None:
-                doc["base_proposal_symbol"] = best_match["symbol"]
-
             if best_match.get("linked_resolution_symbol") is None:
                 best_match["linked_resolution_symbol"] = doc["symbol"]
-                best_match["link_method"] = "title_agenda_fuzzy"
-                best_match["link_confidence"] = best_confidence
 
 
 def annotate_linkage(documents: list[dict]) -> None:
-    """Annotate documents with adopted draft status and lineage metadata."""
+    """Annotate documents with adopted draft status and linked proposals."""
     base_proposals = {doc["symbol"]: doc for doc in documents if is_base_proposal_doc(doc)}
 
     for doc in documents:
@@ -337,3 +299,8 @@ def annotate_linkage(documents: list[dict]) -> None:
             {"symbol": symbol, "filename": symbol_to_filename(symbol) + ".html"}
             for symbol in linked
         ]
+
+    # Clean up intermediate fields
+    for doc in documents:
+        doc.pop("linked_resolution_symbol", None)
+        doc.pop("linked_proposal_symbols", None)

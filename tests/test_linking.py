@@ -221,13 +221,8 @@ class TestLinkDocumentsWithUndl:
         resolution = documents[0]
         proposal = documents[1]
 
-        assert resolution["link_method"] == "undl_metadata"
-        assert resolution["link_confidence"] == 1.0
-        assert resolution["base_proposal_symbol"] == "A/C.2/80/L.35/Rev.1"
         assert "A/C.2/80/L.35/Rev.1" in resolution["linked_proposal_symbols"]
-
         assert proposal["linked_resolution_symbol"] == "A/RES/80/142"
-        assert proposal["link_method"] == "undl_metadata"
 
     def test_link_fallback_to_symbol_reference(self, mocker):
         """Fall back to symbol reference when UNDL has no draft."""
@@ -252,8 +247,7 @@ class TestLinkDocumentsWithUndl:
         resolution = documents[0]
 
         # Should fall back to Pass 1 (symbol_reference)
-        assert resolution["link_method"] == "symbol_reference"
-        assert resolution["base_proposal_symbol"] == "A/80/L.99"
+        assert "A/80/L.99" in resolution["linked_proposal_symbols"]
 
     def test_link_undl_disabled(self, mocker):
         """Skip UNDL lookup when disabled."""
@@ -273,33 +267,9 @@ class TestLinkDocumentsWithUndl:
         # Should not have called the API
         mock_get.assert_not_called()
 
-        # Should use symbol_reference method
+        # Should still link via symbol_reference
         resolution = documents[0]
-        assert resolution["link_method"] == "symbol_reference"
-
-    def test_link_undl_draft_not_in_local_collection(self, mocker):
-        """Store base_proposal even when draft not in local collection."""
-        mock_response = mocker.Mock()
-        mock_response.status_code = 200
-        mock_response.text = SAMPLE_MARC_XML
-        mock_response.raise_for_status = mocker.Mock()
-
-        mocker.patch("mandate_pipeline.linking.requests.get", return_value=mock_response)
-
-        # Only resolution, no local copy of the draft
-        documents = [
-            {"symbol": "A/RES/80/142", "title": "Test Resolution"},
-        ]
-
-        link_documents(documents, use_undl_metadata=True)
-
-        resolution = documents[0]
-
-        # Should still record the base_proposal from UNDL
-        assert resolution["base_proposal_symbol"] == "A/C.2/80/L.35/Rev.1"
-        assert resolution["link_method"] == "undl_metadata"
-        # But linked_proposal_symbols should be empty (not in local collection)
-        assert resolution["linked_proposal_symbols"] == []
+        assert "A/80/L.50" in resolution["linked_proposal_symbols"]
 
     def test_link_skip_already_linked(self, mocker):
         """Skip UNDL lookup for already-linked documents."""
@@ -566,10 +536,7 @@ class TestLinkDocuments:
         proposal = documents[1]
 
         assert resolution["linked_proposal_symbols"] == ["A/80/L.1"]
-        assert resolution["link_method"] == "symbol_reference"
-        assert resolution["link_confidence"] == 1.0
         assert proposal["linked_resolution_symbol"] == "A/RES/80/1"
-        assert proposal["link_method"] == "symbol_reference"
 
     def test_link_multiple_proposals(self):
         """Link resolution to multiple proposals."""
@@ -623,8 +590,6 @@ class TestLinkDocuments:
         proposal = documents[1]
 
         assert resolution["linked_proposal_symbols"] == ["A/80/L.1"]
-        assert resolution["link_method"] == "title_agenda_fuzzy"
-        assert resolution["link_confidence"] >= 0.85
         assert proposal["linked_resolution_symbol"] == "A/RES/80/1"
 
     def test_fuzzy_link_requires_agenda_overlap(self):
@@ -746,36 +711,6 @@ class TestLinkDocuments:
         resolution = documents[0]
         # Should link to L.5 (symbol reference) not L.1 (title match)
         assert resolution["linked_proposal_symbols"] == ["A/80/L.5"]
-        assert resolution["link_method"] == "symbol_reference"
-
-    def test_sets_base_proposal_symbol(self):
-        """Sets base_proposal_symbol on resolution."""
-        documents = [
-            {
-                "symbol": "A/RES/80/1",
-                "title": "Climate Action",
-                "agenda_items": ["Item 68"],
-                "symbol_references": ["A/80/L.1", "A/80/L.5"],
-            },
-            {
-                "symbol": "A/80/L.1",
-                "title": "Climate Action",
-                "agenda_items": ["Item 68"],
-                "symbol_references": [],
-            },
-            {
-                "symbol": "A/80/L.5",
-                "title": "Related",
-                "agenda_items": ["Item 68"],
-                "symbol_references": [],
-            },
-        ]
-
-        link_documents(documents, use_undl_metadata=False)
-
-        resolution = documents[0]
-        # base_proposal_symbol should be first linked proposal
-        assert resolution["base_proposal_symbol"] == "A/80/L.1"
 
     def test_default_fields_initialized(self):
         """All link-related fields are initialized."""
@@ -793,8 +728,6 @@ class TestLinkDocuments:
         doc = documents[0]
         assert "linked_resolution_symbol" in doc
         assert "linked_proposal_symbols" in doc
-        assert "link_method" in doc
-        assert "link_confidence" in doc
 
     def test_empty_documents_list(self):
         """Empty documents list handled gracefully."""
@@ -1069,11 +1002,10 @@ class TestDataQualityLinkage:
         link_documents(documents, use_undl_metadata=False)
         annotate_linkage(documents)
 
-        # All documents should have link fields
+        # All documents should have final linkage fields
         for doc in documents:
-            assert "linked_resolution_symbol" in doc
-            assert "linked_proposal_symbols" in doc
             assert "is_adopted_draft" in doc
+            assert "adopted_by" in doc
             assert "linked_proposals" in doc
 
     def test_fuzzy_title_matching_quality(self):
@@ -1165,15 +1097,15 @@ class TestLinkageIntegration:
         link_documents(documents, use_undl_metadata=False)
         annotate_linkage(documents)
 
-        # Verify RES/80/1 linked to L.1 via symbol
+        # Verify RES/80/1 has linked_proposals
         res1 = next(d for d in documents if d["symbol"] == "A/RES/80/1")
-        assert res1["linked_proposal_symbols"] == ["A/80/L.1"]
-        assert res1["link_method"] == "symbol_reference"
+        assert len(res1["linked_proposals"]) == 1
+        assert res1["linked_proposals"][0]["symbol"] == "A/80/L.1"
 
-        # Verify RES/80/2 linked to L.5 via fuzzy
+        # Verify RES/80/2 has linked_proposals
         res2 = next(d for d in documents if d["symbol"] == "A/RES/80/2")
-        assert res2["linked_proposal_symbols"] == ["A/80/L.5"]
-        assert res2["link_method"] == "title_agenda_fuzzy"
+        assert len(res2["linked_proposals"]) == 1
+        assert res2["linked_proposals"][0]["symbol"] == "A/80/L.5"
 
         # Verify L.1 is adopted
         l1 = next(d for d in documents if d["symbol"] == "A/80/L.1")
@@ -1192,4 +1124,3 @@ class TestLinkageIntegration:
         # Verify unrelated proposal is not adopted
         l10 = next(d for d in documents if d["symbol"] == "A/80/L.10")
         assert l10["is_adopted_draft"] is False
-        assert l10["linked_resolution_symbol"] is None

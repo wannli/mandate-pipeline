@@ -76,27 +76,6 @@ def classify_doc_type(symbol: str, text: str) -> str:
     return "other"
 
 
-def infer_base_proposal_symbol(symbol: str, doc_type: str, text: str) -> str | None:
-    """Infer the base proposal symbol for proposals or amendments."""
-    # Heuristic trade-offs:
-    # - We scan a short front-matter window to keep it fast, but
-    #   amendments can reference targets later in the document.
-    # - The regex is conservative, so unknown formats fall back to None.
-    # - We now capture optional /Rev.X suffixes found in draft symbols.
-    if doc_type == "proposal":
-        return symbol
-    if doc_type == "amendment":
-        front_matter = text.split("\f", 2)[0:2]
-        front_matter_text = "\f".join(front_matter)[:4000]
-        symbol_match = re.search(
-            r"\bA/\d+/(?:L\.\d+|C\.\d+/\d+/L\.\d+|C\.\d+/L\.\d+)(?:/Rev\.\d+)?\b",
-            front_matter_text,
-        )
-        if symbol_match:
-            return symbol_match.group(0)
-    return None
-
-
 def load_all_documents(data_dir: Path, checks: list) -> list[dict]:
     """
     Load all documents from the data directory.
@@ -128,7 +107,6 @@ def load_all_documents(data_dir: Path, checks: list) -> list[dict]:
             agenda_items = extract_agenda_items(text)
             symbol_references = find_symbol_references(text)
             doc_type = classify_doc_type(symbol, text)
-            base_proposal_symbol = infer_base_proposal_symbol(symbol, doc_type, text)
 
             # Run checks
             signals = run_checks(paragraphs, checks) if checks else {}
@@ -143,7 +121,6 @@ def load_all_documents(data_dir: Path, checks: list) -> list[dict]:
                 "symbol": symbol,
                 "filename": pdf_file.name,
                 "doc_type": doc_type,
-                "base_proposal_symbol": base_proposal_symbol,
                 "paragraphs": paragraphs,
                 "title": title,
                 "agenda_items": agenda_items,
@@ -929,7 +906,6 @@ def generate_site_verbose(
                 agenda_items = extract_agenda_items(text)
                 symbol_references = find_symbol_references(text)
                 doc_type = classify_doc_type(symbol, text)
-                base_proposal_symbol = infer_base_proposal_symbol(symbol, doc_type, text)
                 signals = run_checks(paragraphs, checks) if checks else {}
 
                 # Build signal summary
@@ -942,7 +918,6 @@ def generate_site_verbose(
                     "symbol": symbol,
                     "filename": pdf_file.name,
                     "doc_type": doc_type,
-                    "base_proposal_symbol": base_proposal_symbol,
                     "paragraphs": paragraphs,
                     "title": title,
                     "agenda_items": agenda_items,
