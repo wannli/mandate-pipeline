@@ -3,6 +3,7 @@
 {% block title %}Mandate Pipeline{% endblock %}
 
 {% block nav_index %}./index.html{% endblock %}
+{% block nav_signals %}./signals.html{% endblock %}
 {% block nav_documents %}./documents/index.html{% endblock %}
 
 {% block content %}
@@ -14,38 +15,51 @@
     </p>
 </div>
 
-<!-- Matrix: Patterns × Signals -->
-<div>
-    <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">Signal Matrix</h2>
+<!-- Signal Source Matrix (Origin × Signal) -->
+<div class="mb-12">
+    <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">Signal Source Matrix</h2>
     <div class="overflow-x-auto">
         <table class="w-full">
             <thead>
                 <tr>
-                    <th class="text-left py-3 px-4 text-sm font-medium text-gray-500 bg-gray-50 rounded-tl-lg">Pattern</th>
+                    <th class="text-left py-3 px-4 text-sm font-medium text-gray-500 bg-gray-50 rounded-tl-lg">Source</th>
                     {% for check in checks %}
-                    <th class="text-center py-3 px-4 text-sm font-medium text-gray-500 bg-gray-50 {% if loop.last %}rounded-tr-lg{% endif %}">
-                        <a href="./signals/{{ check.signal|lower|replace(' ', '-') }}.html" class="hover:text-un-blue transition-colors">
+                    <th class="text-center py-3 px-4 text-sm font-medium text-gray-500 bg-gray-50">
+                        <a href="./signals.html?signal={{ check.signal|urlencode }}" class="hover:text-un-blue transition-colors">
                             {{ check.signal }}
                         </a>
                     </th>
                     {% endfor %}
+                    <th class="text-center py-3 px-4 text-sm font-medium text-gray-500 bg-gray-50 rounded-tr-lg">Total</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-100">
-                {% for pattern in patterns %}
-                {% set pattern_slug = pattern.name|lower|replace(' ', '_')|replace('.', '')|replace('(', '')|replace(')', '') %}
+                {% for origin_code in origin_order %}
+                {% set origin_data = origin_matrix.get(origin_code, {}) %}
                 <tr class="hover:bg-gray-50 transition-colors">
                     <td class="py-4 px-4">
-                        <a href="./patterns/{{ pattern_slug }}.html" class="font-medium text-gray-900 hover:text-un-blue transition-colors">
-                            {{ pattern.name }}
+                        <a href="./signals.html?source={{ origin_code|urlencode }}" class="flex items-center gap-2">
+                            <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg text-xs font-bold
+                                {% if origin_code == 'Plenary' %}bg-amber-50 text-amber-700
+                                {% elif origin_code == 'C1' %}bg-red-50 text-red-700
+                                {% elif origin_code == 'C2' %}bg-green-50 text-green-700
+                                {% elif origin_code == 'C3' %}bg-blue-50 text-blue-700
+                                {% elif origin_code == 'C4' %}bg-purple-50 text-purple-700
+                                {% elif origin_code == 'C5' %}bg-orange-50 text-orange-700
+                                {% elif origin_code == 'C6' %}bg-teal-50 text-teal-700
+                                {% else %}bg-gray-100 text-gray-700{% endif %}">
+                                {{ origin_code[:2] }}
+                            </span>
+                            <span class="font-medium text-gray-900 hover:text-un-blue transition-colors">
+                                {{ origin_names.get(origin_code, origin_code) }}
+                            </span>
                         </a>
                     </td>
                     {% for check in checks %}
-                    {% set count = matrix.get(pattern.name, {}).get(check.signal, 0) %}
-                    {% set signal_slug = check.signal|lower|replace(' ', '-') %}
+                    {% set count = origin_data.get(check.signal, 0) %}
                     <td class="text-center py-4 px-4">
                         {% if count > 0 %}
-                        <a href="./matrix/{{ pattern_slug }}_{{ signal_slug }}.html" 
+                        <a href="./signals.html?source={{ origin_code|urlencode }}&signal={{ check.signal|urlencode }}"
                            class="inline-flex items-center justify-center min-w-[2rem] px-2 py-1 rounded-full text-sm font-medium transition-all hover:scale-110
                             {% if 'agenda' in check.signal|lower %}bg-blue-50 text-blue-700 hover:bg-blue-100
                             {% elif 'pga' in check.signal|lower %}bg-purple-50 text-purple-700 hover:bg-purple-100
@@ -53,17 +67,43 @@
                             {{ count }}
                         </a>
                         {% else %}
-                        <span class="text-gray-300">—</span>
+                        <span class="text-gray-300">&mdash;</span>
                         {% endif %}
                     </td>
                     {% endfor %}
+                    <td class="text-center py-4 px-4">
+                        <span class="inline-flex items-center justify-center min-w-[2rem] px-2 py-1 rounded-full text-sm font-bold bg-gray-200 text-gray-800">
+                            {{ origin_totals.get(origin_code, 0) }}
+                        </span>
+                    </td>
                 </tr>
                 {% endfor %}
+                <!-- Totals Row -->
+                <tr class="bg-gray-50 font-medium">
+                    <td class="py-4 px-4 text-gray-700">Total</td>
+                    {% for check in checks %}
+                    {% set total = signal_totals.get(check.signal, 0) %}
+                    <td class="text-center py-4 px-4">
+                        <a href="./signals.html?signal={{ check.signal|urlencode }}"
+                           class="inline-flex items-center justify-center min-w-[2rem] px-2 py-1 rounded-full text-sm font-bold
+                            {% if 'agenda' in check.signal|lower %}bg-blue-100 text-blue-800
+                            {% elif 'pga' in check.signal|lower %}bg-purple-100 text-purple-800
+                            {% else %}bg-gray-200 text-gray-800{% endif %}">
+                            {{ total }}
+                        </a>
+                    </td>
+                    {% endfor %}
+                    <td class="text-center py-4 px-4">
+                        <a href="./signals.html"
+                           class="inline-flex items-center justify-center min-w-[2rem] px-2 py-1 rounded-full text-sm font-bold bg-gray-300 text-gray-900">
+                            {{ grand_total }}
+                        </a>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
 </div>
-
 
 {% endblock %}
 

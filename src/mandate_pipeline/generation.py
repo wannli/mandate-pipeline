@@ -783,6 +783,25 @@ def generate_index_page(documents: list, checks: list, patterns: list, output_di
     matrix = compute_matrix(documents, patterns, checks)
     pattern_doc_counts = compute_pattern_doc_counts(documents, patterns)
 
+    # Compute origin matrix data for signal source matrix
+    resolutions = [doc for doc in documents if is_resolution(doc.get("symbol", ""))]
+    origin_order = ["Plenary", "C1", "C2", "C3", "C4", "C5", "C6", "Unknown"]
+    origin_matrix = {code: {} for code in origin_order}
+    origin_totals = {code: 0 for code in origin_order}
+    signal_totals = {check["signal"]: 0 for check in checks}
+
+    for res in resolutions:
+        origin = derive_resolution_origin(res)
+        for check in checks:
+            signal = check["signal"]
+            count = res.get("signal_summary", {}).get(signal, 0)
+            origin_matrix[origin][signal] = origin_matrix[origin].get(signal, 0) + count
+            if count > 0:
+                signal_totals[signal] += count
+                origin_totals[origin] += count
+
+    grand_total = sum(origin_totals.values())
+
     html = template.render(
         documents=documents,
         checks=checks,
@@ -792,6 +811,13 @@ def generate_index_page(documents: list, checks: list, patterns: list, output_di
         total_docs=len(documents),
         docs_with_signals=len([d for d in documents if d.get("signals")]),
         total_signal_counts=total_signal_counts,
+        # Origin matrix data for signal source matrix
+        origin_matrix=origin_matrix,
+        origin_order=origin_order,
+        origin_names=COMMITTEE_NAMES,
+        origin_totals=origin_totals,
+        signal_totals=signal_totals,
+        grand_total=grand_total,
         generated_at=datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
     )
 
@@ -925,6 +951,84 @@ def generate_origin_matrix_page(
     )
 
     with open(output_dir / "origin_matrix.html", "w") as f:
+        f.write(html)
+
+
+def generate_unified_signals_page(
+    documents: list,
+    checks: list,
+    output_dir: Path
+) -> None:
+    """
+    Generate the unified signals browser page with filtering and document embed.
+
+    Args:
+        documents: All documents
+        checks: All check definitions
+        output_dir: Root output directory
+    """
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    env = get_templates_env(checks)
+    template = env.get_template("signals_unified.html")
+
+    # Get resolutions with signals only
+    resolutions = [doc for doc in documents if is_resolution(doc.get("symbol", ""))]
+
+    origin_order = ["Plenary", "C1", "C2", "C3", "C4", "C5", "C6", "Unknown"]
+
+    # Prepare document data with origin and signal paragraphs
+    docs_with_signals = []
+    total_paragraphs = 0
+
+    for res in resolutions:
+        if not res.get("signal_summary"):
+            continue
+
+        origin = derive_resolution_origin(res)
+
+        # Find all paragraphs that have any signal
+        signal_paras = []
+        for para_num, para_signals in res.get("signals", {}).items():
+            if para_signals:
+                para_text = res.get("paragraphs", {}).get(para_num, "")
+                signal_paras.append({
+                    "number": para_num,
+                    "text": para_text,
+                    "signals": para_signals
+                })
+
+        if not signal_paras:
+            continue
+
+        # Sort paragraphs by number
+        signal_paras.sort(key=lambda p: int(p["number"]))
+        total_paragraphs += len(signal_paras)
+
+        docs_with_signals.append({
+            "symbol": res["symbol"],
+            "title": res.get("title", ""),
+            "origin": origin,
+            "un_url": res.get("un_url", get_un_document_url(res["symbol"])),
+            "signal_summary": res.get("signal_summary", {}),
+            "signal_paragraphs": signal_paras,
+        })
+
+    # Sort documents naturally by symbol
+    docs_with_signals.sort(key=lambda d: natural_sort_key(d["symbol"]))
+
+    html = template.render(
+        documents=docs_with_signals,
+        checks=checks,
+        origin_order=origin_order,
+        origin_names=COMMITTEE_NAMES,
+        total_docs=len(docs_with_signals),
+        total_paragraphs=total_paragraphs,
+        generated_at=datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
+    )
+
+    with open(output_dir / "signals.html", "w") as f:
         f.write(html)
 
 
@@ -1156,6 +1260,7 @@ def generate_site(config_dir: Path, data_dir: Path, output_dir: Path) -> None:
     # Generate new UI pages
     generate_provenance_page(documents, checks, output_dir / "provenance")
     generate_origin_matrix_page(documents, checks, output_dir)
+    generate_unified_signals_page(documents, checks, output_dir)
     generate_debug_pages(documents, checks, output_dir / "debug")
 
     # Generate data exports
@@ -1338,6 +1443,10 @@ def generate_site_verbose(
     generate_origin_matrix_page(documents, checks, output_dir)
     if on_generate_page:
         on_generate_page("origin_matrix", "origin_matrix.html")
+
+    generate_unified_signals_page(documents, checks, output_dir)
+    if on_generate_page:
+        on_generate_page("signals_unified", "signals.html")
 
     if not skip_debug:
         generate_debug_pages(documents, checks, output_dir / "debug")
