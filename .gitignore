@@ -39,9 +39,3 @@ htmlcov/
 # OS
 .DS_Store
 Thumbs.db
-
-# Project specific
-# Keep PDFs in data/pdfs/ (they're part of the cache)
-# Ignore docs/ (generated static site output)
-data/cache/
-docs/
