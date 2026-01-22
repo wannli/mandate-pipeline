@@ -19,6 +19,8 @@ checks:
       - "shall be held"
       - "interactive dialogue"
       - "multistakeholder"
+      - "high-level panel"
+      - "high-level segment"
 
   - signal: "process"
     phrases:
