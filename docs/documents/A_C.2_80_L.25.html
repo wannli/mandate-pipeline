@@ -47,8 +47,8 @@
                 </a>
                 <nav class="flex items-center gap-6">
                     <a href="./index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Documents</a>
-                    <a href="./provenance/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Origins</a>
-                    <a href="./origin_matrix.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Matrix</a>
+                    <a href="../provenance/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Origins</a>
+                    <a href="../origin_matrix.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Matrix</a>
                     <div class="relative group">
                         <button class="text-muted hover:text-un-blue transition-colors text-sm font-medium flex items-center gap-1">
                             Debug
@@ -57,14 +57,14 @@
                             </svg>
                         </button>
                         <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
-                            <a href="./debug/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-t-lg">Overview</a>
-                            <a href="./debug/linking.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Linking Audit</a>
-                            <a href="./debug/orphans.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Unlinked</a>
-                            <a href="./debug/fuzzy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Fuzzy Matches</a>
-                            <a href="./debug/extraction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-b-lg">Extraction</a>
+                            <a href="../debug/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-t-lg">Overview</a>
+                            <a href="../debug/linking.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Linking Audit</a>
+                            <a href="../debug/orphans.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Unlinked</a>
+                            <a href="../debug/fuzzy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Fuzzy Matches</a>
+                            <a href="../debug/extraction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-b-lg">Extraction</a>
                         </div>
                     </div>
-                    <a href="./data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
+                    <a href="../data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
                 </nav>
             </div>
         </div>
@@ -113,6 +113,24 @@
     
 
     
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
         
             
         
@@ -121,35 +139,9 @@
     
 
     
-        
-    
-
-    
-        
-    
 
     
 
-    
-
-    
-
-    
-
-    
-
-    
-        
-    
-
-    
-
-    
-
-    
-
-    
-        
     
 
     
@@ -178,7 +170,7 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">7 with signals, 17 without</span>
+        <span class="text-sm text-muted">3 with signals, 21 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
@@ -302,9 +294,9 @@
     </div>
     
     <div id="para-6" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -312,17 +304,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Welcomes the outcome document of the Fourth International <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Financing for Development, the Sevilla Commitment, and calls for its timely and effective implementation; __________________ 13 A/80/411. 14 Launched by the Secretary-General of the United Nations and the Prime Minister of Antigua and Barbuda on 28 May 2024 in Antigua and Barbuda. A/C.2/80/L.25 25-16741 4/6</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Welcomes the outcome document of the Fourth International Conference on Financing for Development, the Sevilla Commitment, and calls for its timely and effective implementation; __________________ 13 A/80/411. 14 Launched by the Secretary-General of the United Nations and the Prime Minister of Antigua and Barbuda on 28 May 2024 in Antigua and Barbuda. A/C.2/80/L.25 25-16741 4/6</p>
                 
             </div>
         </div>
@@ -346,9 +328,9 @@
     </div>
     
     <div id="para-8" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -356,26 +338,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Underlines the need to give due consideration to the issues and concerns of small island developing States in all relevant major United Nations <mark class="bg-yellow-200 px-0.5 rounded">conference</mark>s and processes and the relevant work of the United Nations development system, and calls for the elaboration of information specific to small island developing States in a disaggregated manner in all major United Nations reports, where appropriate;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Underlines the need to give due consideration to the issues and concerns of small island developing States in all relevant major United Nations conferences and processes and the relevant work of the United Nations development system, and calls for the elaboration of information specific to small island developing States in a disaggregated manner in all major United Nations reports, where appropriate;</p>
                 
             </div>
         </div>
     </div>
     
     <div id="para-9" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -383,17 +355,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Notes the adoption of the political declaration at the 2025 United Nations <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> to Support the Implementation of Sustainable Development Goal 14: Conserve and sustainably use the oceans, seas and marine resources for sustainable development, held in Nice, France, from 9 to 13 June 2025;15</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Notes the adoption of the political declaration at the 2025 United Nations Conference to Support the Implementation of Sustainable Development Goal 14: Conserve and sustainably use the oceans, seas and marine resources for sustainable development, held in Nice, France, from 9 to 13 June 2025;15</p>
                 
             </div>
         </div>
@@ -563,9 +525,9 @@
     </div>
     
     <div id="para-19" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -573,17 +535,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Notes with appreciation the partnership initiative between the Development Assistance Committee of the Organisation for Economic Co-operation and Development and the Alliance of Small Island States launched at the Fourth International <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Small Island Developing States aimed at delivering solutions to some priority areas for small island developing States, and encourages other new, innovative and bold approaches to partnership to support the implementation of the Antigua and Barbuda Agenda for Small Island Developing States;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Notes with appreciation the partnership initiative between the Development Assistance Committee of the Organisation for Economic Co-operation and Development and the Alliance of Small Island States launched at the Fourth International Conference on Small Island Developing States aimed at delivering solutions to some priority areas for small island developing States, and encourages other new, innovative and bold approaches to partnership to support the implementation of the Antigua and Barbuda Agenda for Small Island Developing States;</p>
                 
             </div>
         </div>

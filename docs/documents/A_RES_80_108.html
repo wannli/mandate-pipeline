@@ -47,8 +47,8 @@
                 </a>
                 <nav class="flex items-center gap-6">
                     <a href="./index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Documents</a>
-                    <a href="./provenance/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Origins</a>
-                    <a href="./origin_matrix.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Matrix</a>
+                    <a href="../provenance/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Origins</a>
+                    <a href="../origin_matrix.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Matrix</a>
                     <div class="relative group">
                         <button class="text-muted hover:text-un-blue transition-colors text-sm font-medium flex items-center gap-1">
                             Debug
@@ -57,14 +57,14 @@
                             </svg>
                         </button>
                         <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
-                            <a href="./debug/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-t-lg">Overview</a>
-                            <a href="./debug/linking.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Linking Audit</a>
-                            <a href="./debug/orphans.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Unlinked</a>
-                            <a href="./debug/fuzzy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Fuzzy Matches</a>
-                            <a href="./debug/extraction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-b-lg">Extraction</a>
+                            <a href="../debug/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-t-lg">Overview</a>
+                            <a href="../debug/linking.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Linking Audit</a>
+                            <a href="../debug/orphans.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Unlinked</a>
+                            <a href="../debug/fuzzy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Fuzzy Matches</a>
+                            <a href="../debug/extraction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-b-lg">Extraction</a>
                         </div>
                     </div>
-                    <a href="./data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
+                    <a href="../data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
                 </nav>
             </div>
         </div>
@@ -126,18 +126,12 @@
     
 
     
-        
-    
 
-    
-        
     
 
     
         
             
-        
-    
         
     
 
@@ -151,7 +145,7 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">4 with signals, 1 without</span>
+        <span class="text-sm text-muted">2 with signals, 3 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
@@ -194,7 +188,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm"><mark class="bg-yellow-200 px-0.5 rounded">Decides to convene</mark> the high-level 2028 United Nations <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> to Support the Implementation of Sustainable Development Goal 14: Conserve and sustainably use the oceans, seas and marine resources for sustainable development in the Republic of Korea, in June 2028, to support the implementation of Sustainable Development Goal 14;</p>
+                <p class="text-gray-700 leading-relaxed text-sm"><mark class="bg-yellow-200 px-0.5 rounded">Decides to convene</mark> the high-level 2028 United Nations Conference to Support the Implementation of Sustainable Development Goal 14: Conserve and sustainably use the oceans, seas and marine resources for sustainable development in the Republic of Korea, in June 2028, to support the implementation of Sustainable Development Goal 14;</p>
                 
                 <div class="mt-2 flex flex-wrap gap-1">
                     
@@ -211,9 +205,9 @@
     </div>
     
     <div id="para-2" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -221,26 +215,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Also decides that all costs relating to the <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> and its preparation shall be financed through extrabudgetary resources;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Also decides that all costs relating to the Conference and its preparation shall be financed through extrabudgetary resources;</p>
                 
             </div>
         </div>
     </div>
     
     <div id="para-3" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -248,17 +232,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Welcomes the generous offer by the Governments of Chile and the Republic of Korea to co-host and assume the costs of the <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark>;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Welcomes the generous offer by the Governments of Chile and the Republic of Korea to co-host and assume the costs of the Conference;</p>
                 
             </div>
         </div>
@@ -266,7 +240,7 @@
     
     <div id="para-4" 
          class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["agenda", "PGA"]'
+         data-signals='["agenda"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -275,7 +249,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm"><mark class="bg-yellow-200 px-0.5 rounded">Decides to consider</mark>, before the end of the eightieth session of the General Assembly, the modalities of the <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> in the most efficient and effective manner possible;</p>
+                <p class="text-gray-700 leading-relaxed text-sm"><mark class="bg-yellow-200 px-0.5 rounded">Decides to consider</mark>, before the end of the eightieth session of the General Assembly, the modalities of the Conference in the most efficient and effective manner possible;</p>
                 
                 <div class="mt-2 flex flex-wrap gap-1">
                     
@@ -283,12 +257,6 @@
                         bg-blue-50 text-blue-700
                         ">
                         agenda
-                    </span>
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
                     </span>
                     
                 </div>

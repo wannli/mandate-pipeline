@@ -47,8 +47,8 @@
                 </a>
                 <nav class="flex items-center gap-6">
                     <a href="./index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Documents</a>
-                    <a href="./provenance/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Origins</a>
-                    <a href="./origin_matrix.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Matrix</a>
+                    <a href="../provenance/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Origins</a>
+                    <a href="../origin_matrix.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Matrix</a>
                     <div class="relative group">
                         <button class="text-muted hover:text-un-blue transition-colors text-sm font-medium flex items-center gap-1">
                             Debug
@@ -57,14 +57,14 @@
                             </svg>
                         </button>
                         <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
-                            <a href="./debug/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-t-lg">Overview</a>
-                            <a href="./debug/linking.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Linking Audit</a>
-                            <a href="./debug/orphans.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Unlinked</a>
-                            <a href="./debug/fuzzy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Fuzzy Matches</a>
-                            <a href="./debug/extraction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-b-lg">Extraction</a>
+                            <a href="../debug/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-t-lg">Overview</a>
+                            <a href="../debug/linking.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Linking Audit</a>
+                            <a href="../debug/orphans.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Unlinked</a>
+                            <a href="../debug/fuzzy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Fuzzy Matches</a>
+                            <a href="../debug/extraction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-b-lg">Extraction</a>
                         </div>
                     </div>
-                    <a href="./data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
+                    <a href="../data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
                 </nav>
             </div>
         </div>
@@ -107,136 +107,130 @@
     
 
     
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
         
             
-        
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
         
     
 
@@ -288,7 +282,7 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">9 with signals, 65 without</span>
+        <span class="text-sm text-muted">6 with signals, 68 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
@@ -367,9 +361,9 @@
     </div>
     
     <div id="para-3" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -377,17 +371,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Recognizes the potential of information and communications technologies and digital transformation to achieve the 2030 Agenda for Sustainable Development 19 and other internationally agreed development goals, noting that they can accelerate __________________ 18 United Nations Educational, Scientific and Cultural Organization, Records of the General <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark>, Forty-first Session, Paris, 9–24 November 2021, vol. 1, Resolutions, annex VII. 19 Resolution 70/1. A/C.2/80/L.58 9/18 25-18777 progress across all 17 Sustainable Development Goals, accordingly urges all Governments, the private sector, civil society, international organizations, the technical and academic communities and all other relevant stakeholders to integrate information and communications technologies and digital solutions into their approaches to implementing the Goals, and requests United Nations system entities facilitating the World Summit on the Information Society action lines to review their reporting and workplans to support the implementation of the 2030 Agenda;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Recognizes the potential of information and communications technologies and digital transformation to achieve the 2030 Agenda for Sustainable Development 19 and other internationally agreed development goals, noting that they can accelerate __________________ 18 United Nations Educational, Scientific and Cultural Organization, Records of the General Conference, Forty-first Session, Paris, 9–24 November 2021, vol. 1, Resolutions, annex VII. 19 Resolution 70/1. A/C.2/80/L.58 9/18 25-18777 progress across all 17 Sustainable Development Goals, accordingly urges all Governments, the private sector, civil society, international organizations, the technical and academic communities and all other relevant stakeholders to integrate information and communications technologies and digital solutions into their approaches to implementing the Goals, and requests United Nations system entities facilitating the World Summit on the Information Society action lines to review their reporting and workplans to support the implementation of the 2030 Agenda;</p>
                 
             </div>
         </div>
@@ -649,9 +633,9 @@
     </div>
     
     <div id="para-19" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -659,17 +643,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Urges a continued focus on maximizing development gains from e-commerce, through initiatives such as eTrade for All and the e-trade readiness A/C.2/80/L.58 11/18 25-18777 assessments and implementation tools launched by the United Nations <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Trade and Development, with a focus on providing technical assistance and building capacity for adopting and scaling e-commerce;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Urges a continued focus on maximizing development gains from e-commerce, through initiatives such as eTrade for All and the e-trade readiness A/C.2/80/L.58 11/18 25-18777 assessments and implementation tools launched by the United Nations Conference on Trade and Development, with a focus on providing technical assistance and building capacity for adopting and scaling e-commerce;</p>
                 
             </div>
         </div>
@@ -1152,9 +1126,9 @@
     </div>
     
     <div id="para-48" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -1162,17 +1136,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Recognizes the need to harness the potential of information and communications technologies as critical enablers of sustainable development and to overcome digital divides, and stresses that capacity-building for the productive use of such technologies should be given due consideration in the implementation of the 2030 Agenda, the Addis Ababa Action Agenda of the Third International <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> A/C.2/80/L.58 15/18 25-18777 on Financing for Development and the Sevilla Commitment of the Fourth International <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Financing for Development; 23</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Recognizes the need to harness the potential of information and communications technologies as critical enablers of sustainable development and to overcome digital divides, and stresses that capacity-building for the productive use of such technologies should be given due consideration in the implementation of the 2030 Agenda, the Addis Ababa Action Agenda of the Third International Conference A/C.2/80/L.58 15/18 25-18777 on Financing for Development and the Sevilla Commitment of the Fourth International Conference on Financing for Development; 23</p>
                 
             </div>
         </div>
@@ -1444,7 +1408,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Notes the report prepared by the secretariat of the United Nations <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Trade and Development entitled Implementing World Summit on the Information Society Outcomes: A Twenty-Year Review, which was the basis for the substantive discussion at the twenty-eighth session of the Commission and an important input to the preparatory process of the <mark class="bg-yellow-200 px-0.5 rounded">high-level meeting</mark> of the General Assembly;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Notes the report prepared by the secretariat of the United Nations Conference on Trade and Development entitled Implementing World Summit on the Information Society Outcomes: A Twenty-Year Review, which was the basis for the substantive discussion at the twenty-eighth session of the Commission and an important input to the preparatory process of the <mark class="bg-yellow-200 px-0.5 rounded">high-level meeting</mark> of the General Assembly;</p>
                 
                 <div class="mt-2 flex flex-wrap gap-1">
                     

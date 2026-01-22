@@ -47,8 +47,8 @@
                 </a>
                 <nav class="flex items-center gap-6">
                     <a href="./index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Documents</a>
-                    <a href="./provenance/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Origins</a>
-                    <a href="./origin_matrix.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Matrix</a>
+                    <a href="../provenance/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Origins</a>
+                    <a href="../origin_matrix.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Matrix</a>
                     <div class="relative group">
                         <button class="text-muted hover:text-un-blue transition-colors text-sm font-medium flex items-center gap-1">
                             Debug
@@ -57,14 +57,14 @@
                             </svg>
                         </button>
                         <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
-                            <a href="./debug/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-t-lg">Overview</a>
-                            <a href="./debug/linking.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Linking Audit</a>
-                            <a href="./debug/orphans.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Unlinked</a>
-                            <a href="./debug/fuzzy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Fuzzy Matches</a>
-                            <a href="./debug/extraction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-b-lg">Extraction</a>
+                            <a href="../debug/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-t-lg">Overview</a>
+                            <a href="../debug/linking.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Linking Audit</a>
+                            <a href="../debug/orphans.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Unlinked</a>
+                            <a href="../debug/fuzzy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Fuzzy Matches</a>
+                            <a href="../debug/extraction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-b-lg">Extraction</a>
                         </div>
                     </div>
-                    <a href="./data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
+                    <a href="../data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
                 </nav>
             </div>
         </div>
@@ -109,118 +109,114 @@
     
 
     
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
         
             
         
     
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        
-    
-
-    
         
     
 
@@ -238,8 +234,6 @@
 
     
 
-    
-        
     
 
 
@@ -250,7 +244,7 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">6 with signals, 57 without</span>
+        <span class="text-sm text-muted">3 with signals, 60 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
@@ -327,9 +321,9 @@
     </div>
     
     <div id="para-4" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -337,17 +331,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Underscores the importance of implementing the outcome document of the high-level plenary meeting of the General Assembly known as the World <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Indigenous Peoples, and reiterates the commitment of Member States to cooperating with Indigenous Peoples, through their own representative institutions, to develop and implement national action plans, strategies or other measures, where relevant, to achieve the ends of the United Nations Declaration on the Rights of Indigenous Peoples, and acknowledges the positive development that several States have developed, or are in the process of developing, national action plans and domestic legislation for their implementation with the coordination of Indigenous Peoples;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Underscores the importance of implementing the outcome document of the high-level plenary meeting of the General Assembly known as the World Conference on Indigenous Peoples, and reiterates the commitment of Member States to cooperating with Indigenous Peoples, through their own representative institutions, to develop and implement national action plans, strategies or other measures, where relevant, to achieve the ends of the United Nations Declaration on the Rights of Indigenous Peoples, and acknowledges the positive development that several States have developed, or are in the process of developing, national action plans and domestic legislation for their implementation with the coordination of Indigenous Peoples;</p>
                 
             </div>
         </div>
@@ -490,9 +474,9 @@
     </div>
     
     <div id="para-13" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -500,17 +484,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Also recalls the expansion of the mandate of the United Nations Voluntary Fund for Indigenous Peoples so that it can assist representatives of Indigenous Peoples’ organizations and communities in participating, whether in person or alternatively by electronic means, in other mechanisms and negotiations such as the Forum on Business and Human Rights and in the <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> of the Parties to the United Nations Framework Convention on Climate Change, including in its preparatory sessions and in the meetings of the Local Communities and Indigenous Peoples Platform Facilitative Working Group organized by the secretariat of the Convention, in accordance with their respective rules and regulations;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Also recalls the expansion of the mandate of the United Nations Voluntary Fund for Indigenous Peoples so that it can assist representatives of Indigenous Peoples’ organizations and communities in participating, whether in person or alternatively by electronic means, in other mechanisms and negotiations such as the Forum on Business and Human Rights and in the Conference of the Parties to the United Nations Framework Convention on Climate Change, including in its preparatory sessions and in the meetings of the Local Communities and Indigenous Peoples Platform Facilitative Working Group organized by the secretariat of the Convention, in accordance with their respective rules and regulations;</p>
                 
             </div>
         </div>
@@ -1251,7 +1225,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Congratulates the <mark class="bg-yellow-200 px-0.5 rounded">President of the General Assembly</mark> for convening a successful and productive high-level event to commemorate the tenth anniversary of the adoption of the outcome document of the high-level plenary meeting of the General Assembly known as the World <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Indigenous Peoples in order to raise awareness of the importance of pursuing its objectives;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Congratulates the <mark class="bg-yellow-200 px-0.5 rounded">President of the General Assembly</mark> for convening a successful and productive high-level event to commemorate the tenth anniversary of the adoption of the outcome document of the high-level plenary meeting of the General Assembly known as the World Conference on Indigenous Peoples in order to raise awareness of the importance of pursuing its objectives;</p>
                 
                 <div class="mt-2 flex flex-wrap gap-1">
                     
@@ -1329,7 +1303,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Decides to initiate, at the high-level panel, a discussion on the organization of the Second World <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Indigenous Peoples, to be held in 2028, and invites the <mark class="bg-yellow-200 px-0.5 rounded">President of the General Assembly</mark>, at its eighty-first session, to conduct open-ended consultations with Member States and representatives of Indigenous Peoples within the framework of the Permanent Forum on Indigenous Issues, as well as with the Expert Mechanism on the Rights of Indigenous Peoples and the Special Rapporteur, in order to determine the modalities for the meeting, including the participation of Indigenous Peoples in the <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark>;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Decides to initiate, at the high-level panel, a discussion on the organization of the Second World Conference on Indigenous Peoples, to be held in 2028, and invites the <mark class="bg-yellow-200 px-0.5 rounded">President of the General Assembly</mark>, at its eighty-first session, to conduct open-ended consultations with Member States and representatives of Indigenous Peoples within the framework of the Permanent Forum on Indigenous Issues, as well as with the Expert Mechanism on the Rights of Indigenous Peoples and the Special Rapporteur, in order to determine the modalities for the meeting, including the participation of Indigenous Peoples in the Conference;</p>
                 
                 <div class="mt-2 flex flex-wrap gap-1">
                     
@@ -1380,9 +1354,9 @@
     </div>
     
     <div id="para-63" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -1390,17 +1364,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Decides to continue its consideration of the question at its eighty-first session, under the item entitled “Rights of Indigenous Peoples”, and to maintain in the provisional agenda the sub-item entitled “Follow-up to the outcome document of the high-level plenary meeting of the General Assembly known as the World <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Indigenous Peoples”.</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Decides to continue its consideration of the question at its eighty-first session, under the item entitled “Rights of Indigenous Peoples”, and to maintain in the provisional agenda the sub-item entitled “Follow-up to the outcome document of the high-level plenary meeting of the General Assembly known as the World Conference on Indigenous Peoples”.</p>
                 
             </div>
         </div>

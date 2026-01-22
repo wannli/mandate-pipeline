@@ -47,8 +47,8 @@
                 </a>
                 <nav class="flex items-center gap-6">
                     <a href="./index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Documents</a>
-                    <a href="./provenance/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Origins</a>
-                    <a href="./origin_matrix.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Matrix</a>
+                    <a href="../provenance/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Origins</a>
+                    <a href="../origin_matrix.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Matrix</a>
                     <div class="relative group">
                         <button class="text-muted hover:text-un-blue transition-colors text-sm font-medium flex items-center gap-1">
                             Debug
@@ -57,14 +57,14 @@
                             </svg>
                         </button>
                         <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
-                            <a href="./debug/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-t-lg">Overview</a>
-                            <a href="./debug/linking.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Linking Audit</a>
-                            <a href="./debug/orphans.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Unlinked</a>
-                            <a href="./debug/fuzzy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Fuzzy Matches</a>
-                            <a href="./debug/extraction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-b-lg">Extraction</a>
+                            <a href="../debug/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-t-lg">Overview</a>
+                            <a href="../debug/linking.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Linking Audit</a>
+                            <a href="../debug/orphans.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Unlinked</a>
+                            <a href="../debug/fuzzy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Fuzzy Matches</a>
+                            <a href="../debug/extraction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-b-lg">Extraction</a>
                         </div>
                     </div>
-                    <a href="./data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
+                    <a href="../data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
                 </nav>
             </div>
         </div>
@@ -113,28 +113,6 @@
     
 
     
-        
-            
-        
-    
-
-    
-
-    
-        
-    
-
-    
-
-    
-
-    
-
-    
-        
-            
-        
-    
 
     
 
@@ -146,92 +124,6 @@
 
     
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        
-    
-
-    
-
-    
-
-    
-
-    
-        
-    
-        
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        
-    
-
-    
-        
     
         
             
@@ -243,11 +135,109 @@
     
 
     
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        
+    
+
+    
+
+    
+
+    
+
+    
+        
+            
+        
+    
+        
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
         
     
 
     
         
+    
+        
+            
+        
+    
+
+    
+
+    
+
+    
+
     
 
     
@@ -276,7 +266,7 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">12 with signals, 54 without</span>
+        <span class="text-sm text-muted">7 with signals, 59 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
@@ -284,17 +274,17 @@
             Signals Only
         </button>
         
+        <button onclick="filterSignal('report')" 
+                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
+                bg-gray-100 text-gray-700 hover:bg-gray-200">
+            report
+        </button>
+        
         <button onclick="filterSignal('PGA')" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
                 bg-purple-50 text-purple-700 hover:bg-purple-100
                 ">
             PGA
-        </button>
-        
-        <button onclick="filterSignal('report')" 
-                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
-                bg-gray-100 text-gray-700 hover:bg-gray-200">
-            report
         </button>
         
         <button onclick="filterSignal('process')" 
@@ -399,9 +389,9 @@
     </div>
     
     <div id="para-6" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -409,17 +399,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Notes the work undertaken by the Committee on the Elimination of Racial Discrimination to recommend legal and policy measures, through its general recommendations, to address racism and racial discrimination, in particular on the follow-up on the World <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> against Racism, Racial Discrimination, Xenophobia and Related Intolerance and, recently, on equality and freedom from racial discrimination in the enjoyment of the right to health;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Notes the work undertaken by the Committee on the Elimination of Racial Discrimination to recommend legal and policy measures, through its general recommendations, to address racism and racial discrimination, in particular on the follow-up on the World Conference against Racism, Racial Discrimination, Xenophobia and Related Intolerance and, recently, on equality and freedom from racial discrimination in the enjoyment of the right to health;</p>
                 
             </div>
         </div>
@@ -443,9 +423,9 @@
     </div>
     
     <div id="para-8" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -453,17 +433,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Underlines that the provisions of the Convention do not respond effectively to contemporary manifestations of racial discrimination, in particular in relation to xenophobia and related intolerance, which is recognized as the rationale behind the convening of the World <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> against Racism, Racial Discrimination, Xenophobia and Related Intolerance in 2001;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Underlines that the provisions of the Convention do not respond effectively to contemporary manifestations of racial discrimination, in particular in relation to xenophobia and related intolerance, which is recognized as the rationale behind the convening of the World Conference against Racism, Racial Discrimination, Xenophobia and Related Intolerance in 2001;</p>
                 
             </div>
         </div>
@@ -1132,9 +1102,9 @@
     </div>
     
     <div id="para-46" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -1142,17 +1112,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to include, in his report on the implementation of the present resolution to the General Assembly at its eighty-first session, a section outlining the progress in the implementation of paragraph 18 of its resolution 68/151 of 18 December 2013 regarding the revitalization of the trust fund for the purpose of ensuring the successful implementation of the activities of the Second International Decade for People of African Descent and enhancing the effectiveness of the comprehensive follow-up to the World <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> against Racism, Racial Discrimination, Xenophobia and Related Intolerance and the effective implementation of the Durban Declaration and Programme of Action;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to include, in his report on the implementation of the present resolution to the General Assembly at its eighty-first session, a section outlining the progress in the implementation of paragraph 18 of its resolution 68/151 of 18 December 2013 regarding the revitalization of the trust fund for the purpose of ensuring the successful implementation of the activities of the Second International Decade for People of African Descent and enhancing the effectiveness of the comprehensive follow-up to the World Conference against Racism, Racial Discrimination, Xenophobia and Related Intolerance and the effective implementation of the Durban Declaration and Programme of Action;</p>
                 
             </div>
         </div>
@@ -1371,9 +1331,9 @@
     </div>
     
     <div id="para-58" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -1381,26 +1341,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Expresses its appreciation for the continuing work of the mechanisms mandated to follow up on the World <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> and the Durban Review <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark>; IX Follow-up and implementation activities</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Expresses its appreciation for the continuing work of the mechanisms mandated to follow up on the World Conference and the Durban Review Conference; IX Follow-up and implementation activities</p>
                 
             </div>
         </div>
     </div>
     
     <div id="para-59" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -1408,17 +1358,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Acknowledges the guidance and leadership role of the Human Rights Council, including through its resolution 60/16, and encourages it to continue to oversee the implementation of the Durban Declaration and Programme of Action and the outcome documents of the Durban Review <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark>s;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Acknowledges the guidance and leadership role of the Human Rights Council, including through its resolution 60/16, and encourages it to continue to oversee the implementation of the Durban Declaration and Programme of Action and the outcome documents of the Durban Review Conferences;</p>
                 
             </div>
         </div>

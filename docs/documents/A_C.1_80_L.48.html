@@ -47,8 +47,8 @@
                 </a>
                 <nav class="flex items-center gap-6">
                     <a href="./index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Documents</a>
-                    <a href="./provenance/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Origins</a>
-                    <a href="./origin_matrix.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Matrix</a>
+                    <a href="../provenance/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Origins</a>
+                    <a href="../origin_matrix.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Matrix</a>
                     <div class="relative group">
                         <button class="text-muted hover:text-un-blue transition-colors text-sm font-medium flex items-center gap-1">
                             Debug
@@ -57,14 +57,14 @@
                             </svg>
                         </button>
                         <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
-                            <a href="./debug/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-t-lg">Overview</a>
-                            <a href="./debug/linking.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Linking Audit</a>
-                            <a href="./debug/orphans.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Unlinked</a>
-                            <a href="./debug/fuzzy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Fuzzy Matches</a>
-                            <a href="./debug/extraction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-b-lg">Extraction</a>
+                            <a href="../debug/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-t-lg">Overview</a>
+                            <a href="../debug/linking.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Linking Audit</a>
+                            <a href="../debug/orphans.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Unlinked</a>
+                            <a href="../debug/fuzzy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Fuzzy Matches</a>
+                            <a href="../debug/extraction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-b-lg">Extraction</a>
                         </div>
                     </div>
-                    <a href="./data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
+                    <a href="../data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
                 </nav>
             </div>
         </div>
@@ -105,10 +105,6 @@
     
 
     
-        
-            
-        
-    
 
     
 
@@ -125,15 +121,9 @@
             
         
     
-        
-            
-        
-    
 
     
 
-    
-        
     
 
     
@@ -152,25 +142,12 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">4 with signals, 8 without</span>
+        <span class="text-sm text-muted">2 with signals, 10 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium bg-un-blue text-white transition-all">
             Signals Only
-        </button>
-        
-        <button onclick="filterSignal('PGA')" 
-                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
-                bg-purple-50 text-purple-700 hover:bg-purple-100
-                ">
-            PGA
-        </button>
-        
-        <button onclick="filterSignal('process')" 
-                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
-                bg-gray-100 text-gray-700 hover:bg-gray-200">
-            process
         </button>
         
         <button onclick="filterSignal('report')" 
@@ -214,9 +191,9 @@
     </div>
     
     <div id="para-2" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -224,17 +201,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Reaffirms the importance of further enhancing the dialogue and cooperation among the First Committee, the Disarmament Commission and the <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Disarmament;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Reaffirms the importance of further enhancing the dialogue and cooperation among the First Committee, the Disarmament Commission and the Conference on Disarmament;</p>
                 
             </div>
         </div>
@@ -327,7 +294,7 @@
     
     <div id="para-8" 
          class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["process", "report"]'
+         data-signals='["report"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -336,14 +303,9 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Requests the Disarmament Commission to hold a substantive session for a period not exceeding three weeks during 2026, namely from 6 to 24 April, and an organizational session at the beginning of 2026 before the substantive session, to elect its <mark class="bg-yellow-200 px-0.5 rounded">Bureau</mark> and address other outstanding organizational matters, and to submit a substantive <mark class="bg-yellow-200 px-0.5 rounded">report to the General Assembly</mark> at its eighty-first session, and stresses that the report of the Commission should contain a summary by the Chair of the proceedings to reflect different views or positions if no agreement can be reached on the specific agenda item deliberated on, as provided for in paragraph 3.4 of the __________________ 3 Resolution S-10/2. A/C.1/80/L.48 3/3 25-16740 adopted “Ways and means to enhance the functioning of the Disarmament Commission”;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Requests the Disarmament Commission to hold a substantive session for a period not exceeding three weeks during 2026, namely from 6 to 24 April, and an organizational session at the beginning of 2026 before the substantive session, to elect its Bureau and address other outstanding organizational matters, and to submit a substantive <mark class="bg-yellow-200 px-0.5 rounded">report to the General Assembly</mark> at its eighty-first session, and stresses that the report of the Commission should contain a summary by the Chair of the proceedings to reflect different views or positions if no agreement can be reached on the specific agenda item deliberated on, as provided for in paragraph 3.4 of the __________________ 3 Resolution S-10/2. A/C.1/80/L.48 3/3 25-16740 adopted “Ways and means to enhance the functioning of the Disarmament Commission”;</p>
                 
                 <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-gray-100 text-gray-700">
-                        process
-                    </span>
                     
                     <span class="px-1.5 py-0.5 rounded text-xs font-medium
                         bg-gray-100 text-gray-700">
@@ -374,9 +336,9 @@
     </div>
     
     <div id="para-10" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -384,17 +346,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to ensure full provision to the Disarmament Commission and its subsidiary bodies of interpretation and translation facilities in the official languages and to assign, as a matter of priority, all the resources and services necessary, including verbatim records, to that end, and also requests the Secretary-General to transmit to the Commission the annual report of the <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Disarmament on its 2025 session,4 together with all the official records of the eightieth session of the General Assembly relating to disarmament matters, and to render all assistance that the Commission may require for implementing the present resolution;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to ensure full provision to the Disarmament Commission and its subsidiary bodies of interpretation and translation facilities in the official languages and to assign, as a matter of priority, all the resources and services necessary, including verbatim records, to that end, and also requests the Secretary-General to transmit to the Commission the annual report of the Conference on Disarmament on its 2025 session,4 together with all the official records of the eightieth session of the General Assembly relating to disarmament matters, and to render all assistance that the Commission may require for implementing the present resolution;</p>
                 
             </div>
         </div>

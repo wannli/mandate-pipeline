@@ -47,8 +47,8 @@
                 </a>
                 <nav class="flex items-center gap-6">
                     <a href="./index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Documents</a>
-                    <a href="./provenance/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Origins</a>
-                    <a href="./origin_matrix.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Matrix</a>
+                    <a href="../provenance/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Origins</a>
+                    <a href="../origin_matrix.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Matrix</a>
                     <div class="relative group">
                         <button class="text-muted hover:text-un-blue transition-colors text-sm font-medium flex items-center gap-1">
                             Debug
@@ -57,14 +57,14 @@
                             </svg>
                         </button>
                         <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
-                            <a href="./debug/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-t-lg">Overview</a>
-                            <a href="./debug/linking.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Linking Audit</a>
-                            <a href="./debug/orphans.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Unlinked</a>
-                            <a href="./debug/fuzzy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Fuzzy Matches</a>
-                            <a href="./debug/extraction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-b-lg">Extraction</a>
+                            <a href="../debug/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-t-lg">Overview</a>
+                            <a href="../debug/linking.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Linking Audit</a>
+                            <a href="../debug/orphans.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Unlinked</a>
+                            <a href="../debug/fuzzy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Fuzzy Matches</a>
+                            <a href="../debug/extraction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-b-lg">Extraction</a>
                         </div>
                     </div>
-                    <a href="./data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
+                    <a href="../data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
                 </nav>
             </div>
         </div>
@@ -120,6 +120,16 @@
 
 
     
+
+    
+
+    
+
+    
+
+    
+
+    
         
             
         
@@ -130,15 +140,9 @@
     
 
     
-        
-    
 
     
 
-    
-        
-            
-        
     
 
     
@@ -152,7 +156,7 @@
     
 
     
-        
+
     
 
     
@@ -176,31 +180,7 @@
     
 
     
-        
-    
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        
-    
-
-    
-
-    
-
-    
-
-    
-        
     
 
     
@@ -218,31 +198,7 @@
     
 
     
-        
-    
 
-    
-
-    
-
-    
-
-    
-
-    
-        
-    
-
-    
-        
-    
-
-    
-
-    
-
-    
-        
     
 
     
@@ -276,7 +232,27 @@
     
 
     
-        
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
     
 
     
@@ -294,8 +270,6 @@
     
         
             
-        
-    
         
     
         
@@ -309,19 +283,12 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">15 with signals, 56 without</span>
+        <span class="text-sm text-muted">4 with signals, 67 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium bg-un-blue text-white transition-all">
             Signals Only
-        </button>
-        
-        <button onclick="filterSignal('PGA')" 
-                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
-                bg-purple-50 text-purple-700 hover:bg-purple-100
-                ">
-            PGA
         </button>
         
         <button onclick="filterSignal('report')" 
@@ -348,9 +315,9 @@
 <div class="space-y-4" id="paragraphs">
     
     <div id="para-1" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -358,17 +325,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Takes note of the report of the Secretary-General on the follow-up to the Third United Nations <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Landlocked Developing Countries; 10</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Takes note of the report of the Secretary-General on the follow-up to the Third United Nations Conference on Landlocked Developing Countries; 10</p>
                 
             </div>
         </div>
@@ -409,9 +366,9 @@
     </div>
     
     <div id="para-4" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -419,17 +376,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Recognizes that landlocked developing countries face major structural impediments to sustainable development, including weak productive and supply capacities, limited economic diversification and concentration in low value-added activities, including in the services sector, which constrain their ability to foster _______________ 10 A/80/336. 11 E/HLS/2025/1. Follow-up to the Third United Nations <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Landlocked Developing Countries A/RES/80/151 5/12 25-20779 technology spillovers, diversify their economies and create productive and sustainable employment opportunities;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Recognizes that landlocked developing countries face major structural impediments to sustainable development, including weak productive and supply capacities, limited economic diversification and concentration in low value-added activities, including in the services sector, which constrain their ability to foster _______________ 10 A/80/336. 11 E/HLS/2025/1. Follow-up to the Third United Nations Conference on Landlocked Developing Countries A/RES/80/151 5/12 25-20779 technology spillovers, diversify their economies and create productive and sustainable employment opportunities;</p>
                 
             </div>
         </div>
@@ -564,9 +511,9 @@
     </div>
     
     <div id="para-12" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -574,17 +521,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Calls for the promotion of investments from all sources in affordable, inclusive and reliable digital infrastructure and digital literacy and skills, and the establishment of regional and national research and innovation centres, including _______________ 12 A/80/293. 13 Resolution 79/233, annex; see also resolution 79/279. A/RES/80/151 Follow-up to the Third United Nations <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Landlocked Developing Countries 25-20779 6/12 through strengthened partnerships under the Technology Facilitation Mechanism and the Broadband Commission for Sustainable Development;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Calls for the promotion of investments from all sources in affordable, inclusive and reliable digital infrastructure and digital literacy and skills, and the establishment of regional and national research and innovation centres, including _______________ 12 A/80/293. 13 Resolution 79/233, annex; see also resolution 79/279. A/RES/80/151 Follow-up to the Third United Nations Conference on Landlocked Developing Countries 25-20779 6/12 through strengthened partnerships under the Technology Facilitation Mechanism and the Broadband Commission for Sustainable Development;</p>
                 
             </div>
         </div>
@@ -761,9 +698,9 @@
     </div>
     
     <div id="para-23" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -771,17 +708,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Urges all relevant organizations, including the United Nations <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Trade and Development, the World Bank, the World Trade Organization, the World Follow-up to the Third United Nations <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Landlocked Developing Countries A/RES/80/151 7/12 25-20779 Customs Organization, and the International Trade Centre, to provide specific support commensurate with their relative competencies to the landlocked and transit developing countries, including for export promotion, trade fairs, trade facilitation, e- commerce and the design and implementation of inclusive trade policies with specific consideration of the interests of women, youth and people in vulnerable situations;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Urges all relevant organizations, including the United Nations Conference on Trade and Development, the World Bank, the World Trade Organization, the World Follow-up to the Third United Nations Conference on Landlocked Developing Countries A/RES/80/151 7/12 25-20779 Customs Organization, and the International Trade Centre, to provide specific support commensurate with their relative competencies to the landlocked and transit developing countries, including for export promotion, trade fairs, trade facilitation, e- commerce and the design and implementation of inclusive trade policies with specific consideration of the interests of women, youth and people in vulnerable situations;</p>
                 
             </div>
         </div>
@@ -873,9 +800,9 @@
     </div>
     
     <div id="para-29" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -883,17 +810,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Recalls the decision of the Twelfth Ministerial <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> of the World Trade Organization for the Trade Facilitation Committee to hold a dedicated session on transit issues annually until the next review of the Trade Facilitation Agreement is completed and call for the strengthening and continuation of these sessions;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Recalls the decision of the Twelfth Ministerial Conference of the World Trade Organization for the Trade Facilitation Committee to hold a dedicated session on transit issues annually until the next review of the Trade Facilitation Agreement is completed and call for the strengthening and continuation of these sessions;</p>
                 
             </div>
         </div>
@@ -951,9 +868,9 @@
     </div>
     
     <div id="para-33" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -961,17 +878,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Recommits to supporting the strengthening and deepening of regional and subregional integration arrangements, and their effective implementation, in the areas of trade, transport and transit facilitation, including through joint projects on transport, communication, digital and energy networks, the harmonization of regional policies and the sharing of best practices, and to supporting the alignment of development assistance, and in particular regional Aid for Trade; _______________ 14 Including the Customs Convention on Containers (Geneva, 2 December 1972), the Customs Convention on the Temporary Importation of Commercial Road Vehicles (Geneva, 18 May 1956), the Customs Convention on the International Transport of Goods under Cover of TIR Carnets (Geneva, 14 November 1975), the International Convention on the Harmonization of Frontier Controls of Goods (Geneva, 21 October 1982) and the World Trade Organization Agreement on Trade Facilitation (2013). A/RES/80/151 Follow-up to the Third United Nations <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Landlocked Developing Countries 25-20779 8/12</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Recommits to supporting the strengthening and deepening of regional and subregional integration arrangements, and their effective implementation, in the areas of trade, transport and transit facilitation, including through joint projects on transport, communication, digital and energy networks, the harmonization of regional policies and the sharing of best practices, and to supporting the alignment of development assistance, and in particular regional Aid for Trade; _______________ 14 Including the Customs Convention on Containers (Geneva, 2 December 1972), the Customs Convention on the Temporary Importation of Commercial Road Vehicles (Geneva, 18 May 1956), the Customs Convention on the International Transport of Goods under Cover of TIR Carnets (Geneva, 14 November 1975), the International Convention on the Harmonization of Frontier Controls of Goods (Geneva, 21 October 1982) and the World Trade Organization Agreement on Trade Facilitation (2013). A/RES/80/151 Follow-up to the Third United Nations Conference on Landlocked Developing Countries 25-20779 8/12</p>
                 
             </div>
         </div>
@@ -1097,9 +1004,9 @@
     </div>
     
     <div id="para-41" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -1107,17 +1014,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Also recognizes the importance of sound infrastructure governance over the life cycle of projects to ensure the long-term cost-effectiveness, economic efficiency, accountability, transparency and integrity of infrastructure investment, including through an open procurement process, stresses that the magnitude of the resources required to invest in quality, reliable, sustainable and resilient infrastructure development and maintenance remains a major challenge that requires the forging of international, regional, subregional and bilateral cooperation on infrastructure projects, the allocation of more resources from national budgets, the effective Follow-up to the Third United Nations <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Landlocked Developing Countries A/RES/80/151 9/12 25-20779 deployment of international development assistance and multilateral financing in the development and maintenance of infrastructure and the reinforcement of the role of the private sector;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Also recognizes the importance of sound infrastructure governance over the life cycle of projects to ensure the long-term cost-effectiveness, economic efficiency, accountability, transparency and integrity of infrastructure investment, including through an open procurement process, stresses that the magnitude of the resources required to invest in quality, reliable, sustainable and resilient infrastructure development and maintenance remains a major challenge that requires the forging of international, regional, subregional and bilateral cooperation on infrastructure projects, the allocation of more resources from national budgets, the effective Follow-up to the Third United Nations Conference on Landlocked Developing Countries A/RES/80/151 9/12 25-20779 deployment of international development assistance and multilateral financing in the development and maintenance of infrastructure and the reinforcement of the role of the private sector;</p>
                 
             </div>
         </div>
@@ -1218,9 +1115,9 @@
     </div>
     
     <div id="para-47" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -1228,17 +1125,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Reaffirms that the landlocked developing countries remain vulnerable to and are negatively affected by the adverse impacts of climate change and that they have limited institutional, technical and financial capacities to tackle the challenges arising from the adverse impacts of climate change; _______________ 15 See resolution 78/148. A/RES/80/151 Follow-up to the Third United Nations <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Landlocked Developing Countries 25-20779 10/12</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Reaffirms that the landlocked developing countries remain vulnerable to and are negatively affected by the adverse impacts of climate change and that they have limited institutional, technical and financial capacities to tackle the challenges arising from the adverse impacts of climate change; _______________ 15 See resolution 78/148. A/RES/80/151 Follow-up to the Third United Nations Conference on Landlocked Developing Countries 25-20779 10/12</p>
                 
             </div>
         </div>
@@ -1279,9 +1166,9 @@
     </div>
     
     <div id="para-50" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -1289,17 +1176,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Welcomes the convening of the twenty-ninth session of the <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> of the Parties to the United Nations Framework Convention on Climate Change, the nineteenth session of the <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> of the Parties serving as the Meeting of the Parties to the Kyoto Protocol and the sixth session of the <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> of the Parties serving as the Meeting of the Parties to the Paris Agreement in Baku in November 2024, as the first session of the <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> of the Parties held in a landlocked developing country, and the adoption of their decisions by Parties;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Welcomes the convening of the twenty-ninth session of the Conference of the Parties to the United Nations Framework Convention on Climate Change, the nineteenth session of the Conference of the Parties serving as the Meeting of the Parties to the Kyoto Protocol and the sixth session of the Conference of the Parties serving as the Meeting of the Parties to the Paris Agreement in Baku in November 2024, as the first session of the Conference of the Parties held in a landlocked developing country, and the adoption of their decisions by Parties;</p>
                 
             </div>
         </div>
@@ -1408,9 +1285,9 @@
     </div>
     
     <div id="para-57" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -1418,17 +1295,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Recognizes that domestic resource mobilization is a critical aspect of economic development for all countries, including landlocked developing countries, and notes that an efficient and effective tax administration and strengthened Follow-up to the Third United Nations <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Landlocked Developing Countries A/RES/80/151 11/12 25-20779 institutional capacity of the landlocked developing countries can contribute to increasing their domestic resource mobilization;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Recognizes that domestic resource mobilization is a critical aspect of economic development for all countries, including landlocked developing countries, and notes that an efficient and effective tax administration and strengthened Follow-up to the Third United Nations Conference on Landlocked Developing Countries A/RES/80/151 11/12 25-20779 institutional capacity of the landlocked developing countries can contribute to increasing their domestic resource mobilization;</p>
                 
             </div>
         </div>
@@ -1554,9 +1421,9 @@
     </div>
     
     <div id="para-65" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -1564,17 +1431,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to ensure the full mobilization of all relevant parts of the United Nations system to facilitate coordinated implementation A/RES/80/151 Follow-up to the Third United Nations <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Landlocked Developing Countries 25-20779 12/12 and coherence in the follow-up to and monitoring of the Awaza Programme of Action at the national, subregional, regional and global levels;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to ensure the full mobilization of all relevant parts of the United Nations system to facilitate coordinated implementation A/RES/80/151 Follow-up to the Third United Nations Conference on Landlocked Developing Countries 25-20779 12/12 and coherence in the follow-up to and monitoring of the Awaza Programme of Action at the national, subregional, regional and global levels;</p>
                 
             </div>
         </div>
@@ -1676,7 +1533,7 @@
     
     <div id="para-71" 
          class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["agenda", "PGA", "report"]'
+         data-signals='["agenda", "report"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -1685,7 +1542,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to <mark class="bg-yellow-200 px-0.5 rounded">submit to the General Assembly</mark> at its eighty-first session a report on the follow-up to the Third United Nations <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Landlocked Developing Countries, and <mark class="bg-yellow-200 px-0.5 rounded">decides to include</mark> in the provisional agenda of its eighty-first session, under the item entitled “Groups of countries in special situations”, the sub-item entitled “Follow-up to the Third United Nations <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Landlocked Developing Countries”. 64th plenary meeting 15 December 2025</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to <mark class="bg-yellow-200 px-0.5 rounded">submit to the General Assembly</mark> at its eighty-first session a report on the follow-up to the Third United Nations Conference on Landlocked Developing Countries, and <mark class="bg-yellow-200 px-0.5 rounded">decides to include</mark> in the provisional agenda of its eighty-first session, under the item entitled “Groups of countries in special situations”, the sub-item entitled “Follow-up to the Third United Nations Conference on Landlocked Developing Countries”. 64th plenary meeting 15 December 2025</p>
                 
                 <div class="mt-2 flex flex-wrap gap-1">
                     
@@ -1693,12 +1550,6 @@
                         bg-blue-50 text-blue-700
                         ">
                         agenda
-                    </span>
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
                     </span>
                     
                     <span class="px-1.5 py-0.5 rounded text-xs font-medium

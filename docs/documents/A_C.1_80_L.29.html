@@ -47,8 +47,8 @@
                 </a>
                 <nav class="flex items-center gap-6">
                     <a href="./index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Documents</a>
-                    <a href="./provenance/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Origins</a>
-                    <a href="./origin_matrix.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Matrix</a>
+                    <a href="../provenance/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Origins</a>
+                    <a href="../origin_matrix.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Matrix</a>
                     <div class="relative group">
                         <button class="text-muted hover:text-un-blue transition-colors text-sm font-medium flex items-center gap-1">
                             Debug
@@ -57,14 +57,14 @@
                             </svg>
                         </button>
                         <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
-                            <a href="./debug/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-t-lg">Overview</a>
-                            <a href="./debug/linking.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Linking Audit</a>
-                            <a href="./debug/orphans.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Unlinked</a>
-                            <a href="./debug/fuzzy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Fuzzy Matches</a>
-                            <a href="./debug/extraction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-b-lg">Extraction</a>
+                            <a href="../debug/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-t-lg">Overview</a>
+                            <a href="../debug/linking.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Linking Audit</a>
+                            <a href="../debug/orphans.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Unlinked</a>
+                            <a href="../debug/fuzzy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Fuzzy Matches</a>
+                            <a href="../debug/extraction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-b-lg">Extraction</a>
                         </div>
                     </div>
-                    <a href="./data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
+                    <a href="../data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
                 </nav>
             </div>
         </div>
@@ -111,9 +111,11 @@
     
 
     
-        
-            
-        
+
+    
+
+    
+
     
 
     
@@ -121,23 +123,9 @@
     
 
     
-        
-    
 
     
 
-    
-        
-    
-
-    
-        
-    
-
-    
-
-    
-        
     
 
     
@@ -160,19 +148,12 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">7 with signals, 8 without</span>
+        <span class="text-sm text-muted">2 with signals, 13 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium bg-un-blue text-white transition-all">
             Signals Only
-        </button>
-        
-        <button onclick="filterSignal('PGA')" 
-                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
-                bg-purple-50 text-purple-700 hover:bg-purple-100
-                ">
-            PGA
         </button>
         
         <button onclick="filterSignal('report')" 
@@ -267,9 +248,9 @@
     </div>
     
     <div id="para-5" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -277,17 +258,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Acknowledges the continued efforts of the Secretary-General, as depositary of the Convention and the Protocols thereto, and of the respective office holders of the <mark class="bg-yellow-200 px-0.5 rounded">conference</mark>s of the High Contracting Parties to the Convention, Protocol V and Amended Protocol II, on behalf of the High Contracting Parties, to achieve the goal of universality;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Acknowledges the continued efforts of the Secretary-General, as depositary of the Convention and the Protocols thereto, and of the respective office holders of the conferences of the High Contracting Parties to the Convention, Protocol V and Amended Protocol II, on behalf of the High Contracting Parties, to achieve the goal of universality;</p>
                 
             </div>
         </div>
@@ -328,9 +299,9 @@
     </div>
     
     <div id="para-8" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -338,17 +309,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Recalls the following decisions by the Sixth Review <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> and the conclusions and recommendations of the Meeting of the High Contracting Parties to the Convention, held in Geneva from 13 to 15 November 2024: (a) To continue the work of the open-ended Group of Governmental Experts on Emerging Technologies in the Area of Lethal Autonomous Weapons Systems, established in decision 1 of the Fifth Review <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> of the High Contracting Parties to the Convention,11 adhering to the agreed recommendations contained in document CCW/CONF.V/2 in line with decision 1 of the Sixth Review <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark>,12 to strengthen the Convention; (b) To adopt the consolidated financial measures contained in annex III to document CCW/CONF.VI/11, which may be reviewed by the meetings of the High Contracting Parties during the review cycle of 2022–2026; (c) To continue the Sponsorship Programme; (d) To organize in 2025, in an in-person format, in accordance with the regular practice under the Convention, and subject to available resources, the following Convention-related activities: (i) The Meeting of Experts of the High Contracting Parties to Protocol V, on 8 September 2025, in accordance with the relevant decisions taken by the Eighteenth Annual <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> of the High Contracting Parties to Protocol V; (ii) The Meeting of the Group of Experts of the High Contracting Parties to Amended Protocol II, on 9 and 10 September 2025, in accordance with the relevant decisions taken by the Twenty-sixth Annual <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> of the High Contracting Parties to Amended Protocol II; (iii) The open-ended Group of Governmental Experts on Emerging Technologies in the Area of Lethal Autonomous Weapons Systems, for a duration of 10 days, from 3 to 7 March and from 1 to 5 September 2025, and to adopt its estimated costs;13 (iv) The Nineteenth Annual <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> of the High Contracting Parties to Protocol V, on 10 November 2025, in accordance with the relevant decisions taken by the Eighteenth Annual <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> of the High Contracting Parties to Protocol V;14 (v) The Twenty-seventh Annual <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> of the High Contracting Parties to Amended Protocol II, on 11 November 2025, in accordance with the relevant decisions taken by the Twenty-sixth Annual <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> of the High Contracting Parties to Amended Protocol II;15 (vi) The Meeting of the High Contracting Parties to the Convention, from 12 to 14 November 2025, and to adopt its estimated costs;16</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Recalls the following decisions by the Sixth Review Conference and the conclusions and recommendations of the Meeting of the High Contracting Parties to the Convention, held in Geneva from 13 to 15 November 2024: (a) To continue the work of the open-ended Group of Governmental Experts on Emerging Technologies in the Area of Lethal Autonomous Weapons Systems, established in decision 1 of the Fifth Review Conference of the High Contracting Parties to the Convention,11 adhering to the agreed recommendations contained in document CCW/CONF.V/2 in line with decision 1 of the Sixth Review Conference,12 to strengthen the Convention; (b) To adopt the consolidated financial measures contained in annex III to document CCW/CONF.VI/11, which may be reviewed by the meetings of the High Contracting Parties during the review cycle of 2022–2026; (c) To continue the Sponsorship Programme; (d) To organize in 2025, in an in-person format, in accordance with the regular practice under the Convention, and subject to available resources, the following Convention-related activities: (i) The Meeting of Experts of the High Contracting Parties to Protocol V, on 8 September 2025, in accordance with the relevant decisions taken by the Eighteenth Annual Conference of the High Contracting Parties to Protocol V; (ii) The Meeting of the Group of Experts of the High Contracting Parties to Amended Protocol II, on 9 and 10 September 2025, in accordance with the relevant decisions taken by the Twenty-sixth Annual Conference of the High Contracting Parties to Amended Protocol II; (iii) The open-ended Group of Governmental Experts on Emerging Technologies in the Area of Lethal Autonomous Weapons Systems, for a duration of 10 days, from 3 to 7 March and from 1 to 5 September 2025, and to adopt its estimated costs;13 (iv) The Nineteenth Annual Conference of the High Contracting Parties to Protocol V, on 10 November 2025, in accordance with the relevant decisions taken by the Eighteenth Annual Conference of the High Contracting Parties to Protocol V;14 (v) The Twenty-seventh Annual Conference of the High Contracting Parties to Amended Protocol II, on 11 November 2025, in accordance with the relevant decisions taken by the Twenty-sixth Annual Conference of the High Contracting Parties to Amended Protocol II;15 (vi) The Meeting of the High Contracting Parties to the Convention, from 12 to 14 November 2025, and to adopt its estimated costs;16</p>
                 
             </div>
         </div>
@@ -372,9 +333,9 @@
     </div>
     
     <div id="para-10" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -382,26 +343,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Also welcomes the commitment of the High Contracting Parties to Protocol V to the effective and efficient implementation of the Protocol and the implementation of the decisions of the First and Second <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark>s of the High Contracting Parties to the Protocol establishing a comprehensive framework for the exchange of information and cooperation;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Also welcomes the commitment of the High Contracting Parties to Protocol V to the effective and efficient implementation of the Protocol and the implementation of the decisions of the First and Second Conferences of the High Contracting Parties to the Protocol establishing a comprehensive framework for the exchange of information and cooperation;</p>
                 
             </div>
         </div>
     </div>
     
     <div id="para-11" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -409,17 +360,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Notes that, in conformity with article 8 of the Convention, <mark class="bg-yellow-200 px-0.5 rounded">conference</mark>s may be convened to examine amendments to the Convention or to any of the Protocols thereto, to examine additional protocols concerning other categories of conventional weapons not covered by existing Protocols or to review the scope and application of the Convention and the Protocols thereto and to examine any proposed amendments or additional protocols;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Notes that, in conformity with article 8 of the Convention, conferences may be convened to examine amendments to the Convention or to any of the Protocols thereto, to examine additional protocols concerning other categories of conventional weapons not covered by existing Protocols or to review the scope and application of the Convention and the Protocols thereto and to examine any proposed amendments or additional protocols;</p>
                 
             </div>
         </div>
@@ -443,9 +384,9 @@
     </div>
     
     <div id="para-13" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -453,17 +394,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to render the assistance necessary and to provide such services as may be required for the annual <mark class="bg-yellow-200 px-0.5 rounded">conference</mark>s and expert meetings of the High Contracting Parties to the Convention and of the High Contracting Parties to Amended Protocol II and Protocol V, as well as for any continuation of the work after the meetings;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to render the assistance necessary and to provide such services as may be required for the annual conferences and expert meetings of the High Contracting Parties to the Convention and of the High Contracting Parties to Amended Protocol II and Protocol V, as well as for any continuation of the work after the meetings;</p>
                 
             </div>
         </div>

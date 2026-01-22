@@ -47,8 +47,8 @@
                 </a>
                 <nav class="flex items-center gap-6">
                     <a href="./index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Documents</a>
-                    <a href="./provenance/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Origins</a>
-                    <a href="./origin_matrix.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Matrix</a>
+                    <a href="../provenance/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Origins</a>
+                    <a href="../origin_matrix.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Matrix</a>
                     <div class="relative group">
                         <button class="text-muted hover:text-un-blue transition-colors text-sm font-medium flex items-center gap-1">
                             Debug
@@ -57,14 +57,14 @@
                             </svg>
                         </button>
                         <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
-                            <a href="./debug/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-t-lg">Overview</a>
-                            <a href="./debug/linking.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Linking Audit</a>
-                            <a href="./debug/orphans.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Unlinked</a>
-                            <a href="./debug/fuzzy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Fuzzy Matches</a>
-                            <a href="./debug/extraction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-b-lg">Extraction</a>
+                            <a href="../debug/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-t-lg">Overview</a>
+                            <a href="../debug/linking.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Linking Audit</a>
+                            <a href="../debug/orphans.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Unlinked</a>
+                            <a href="../debug/fuzzy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Fuzzy Matches</a>
+                            <a href="../debug/extraction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-b-lg">Extraction</a>
                         </div>
                     </div>
-                    <a href="./data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
+                    <a href="../data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
                 </nav>
             </div>
         </div>
@@ -268,8 +268,6 @@
     
 
     
-        
-    
 
     
 
@@ -279,8 +277,6 @@
 
     
 
-    
-        
     
 
     
@@ -378,8 +374,6 @@
     
 
     
-        
-    
 
     
         
@@ -435,7 +429,7 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">25 with signals, 102 without</span>
+        <span class="text-sm text-muted">22 with signals, 105 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
@@ -1645,9 +1639,9 @@
     </div>
     
     <div id="para-65" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -1655,17 +1649,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">We reaffirm the call in the outcome document of the Fourth International <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Financing for Development, the Sevilla Commitment, adopted by the General Assembly in its resolution 79/323 of 25 August 2025, for the development of financing plans and coordination of investment in digital infrastructure, including digital public infrastructure and digital public goods, and for international collaboration between national Governments, development finance institutions, multilateral development banks and relevant international organizations and private sector actors, to support countries in their design of digital infrastructure, its financing models and impact measurement.</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">We reaffirm the call in the outcome document of the Fourth International Conference on Financing for Development, the Sevilla Commitment, adopted by the General Assembly in its resolution 79/323 of 25 August 2025, for the development of financing plans and coordination of investment in digital infrastructure, including digital public infrastructure and digital public goods, and for international collaboration between national Governments, development finance institutions, multilateral development banks and relevant international organizations and private sector actors, to support countries in their design of digital infrastructure, its financing models and impact measurement.</p>
                 
             </div>
         </div>
@@ -1733,9 +1717,9 @@
     </div>
     
     <div id="para-69" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -1743,17 +1727,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">We reaffirm our commitment to the universality, indivisibility, interdependence and interrelation of all human rights and fundamental freedoms, including the right to development, as enshrined in the Vienna Declaration and Programme of Action of the World <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Human Rights, 9 and to the framework of rights set out in the Universal Declaration of Human Rights and other relevant human rights treaties. We reaffirm that democracy, sustainable development and respect for human rights and fundamental freedoms, as well as good governance at all levels, are interdependent and mutually reinforcing.</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">We reaffirm our commitment to the universality, indivisibility, interdependence and interrelation of all human rights and fundamental freedoms, including the right to development, as enshrined in the Vienna Declaration and Programme of Action of the World Conference on Human Rights, 9 and to the framework of rights set out in the Universal Declaration of Human Rights and other relevant human rights treaties. We reaffirm that democracy, sustainable development and respect for human rights and fundamental freedoms, as well as good governance at all levels, are interdependent and mutually reinforcing.</p>
                 
             </div>
         </div>
@@ -2088,7 +2062,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">We note the establishment within the United Nations of the work that is under way to establish a multidisciplinary Independent International Scientific Panel on Artificial Intelligence to promote scientific understanding through evidence-based impact, risk and opportunity assessments, drawing on existing national, regional and _______________ 12 United Nations, Treaty Series, vol. 1577, No. 27531. Outcome document of the <mark class="bg-yellow-200 px-0.5 rounded">high-level meeting</mark> of the General Assembly on the overall review of the implementation of the outcomes of the World Summit on the Information Society A/RES/80/173 15/20 25-20874 international initiatives and research networks. We also welcome the initiation of a Global Dialogue on Artificial Intelligence Governance, involving Governments and all relevant stakeholders, which will take place on the margins of existing relevant United Nations <mark class="bg-yellow-200 px-0.5 rounded">conference</mark>s and meetings. Internet governance</p>
+                <p class="text-gray-700 leading-relaxed text-sm">We note the establishment within the United Nations of the work that is under way to establish a multidisciplinary Independent International Scientific Panel on Artificial Intelligence to promote scientific understanding through evidence-based impact, risk and opportunity assessments, drawing on existing national, regional and _______________ 12 United Nations, Treaty Series, vol. 1577, No. 27531. Outcome document of the <mark class="bg-yellow-200 px-0.5 rounded">high-level meeting</mark> of the General Assembly on the overall review of the implementation of the outcomes of the World Summit on the Information Society A/RES/80/173 15/20 25-20874 international initiatives and research networks. We also welcome the initiation of a Global Dialogue on Artificial Intelligence Governance, involving Governments and all relevant stakeholders, which will take place on the margins of existing relevant United Nations conferences and meetings. Internet governance</p>
                 
                 <div class="mt-2 flex flex-wrap gap-1">
                     
@@ -2499,9 +2473,9 @@
     </div>
     
     <div id="para-110" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -2509,17 +2483,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">We acknowledge the work of the International Telecommunication Union in collaboration with the United Nations Educational, Scientific and Cultural Organization, the United Nations <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Trade and Development and the United Nations Development Programme to establish the annual World Summit on the Information Society Forum, which has become an important platform for the sharing of information and best practice and for multi-stakeholder dialogue and collaboration and for developing networks and coordinating initiatives to implement the World Summit vision. We call for the Forum to continue to be held on an annual basis.</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">We acknowledge the work of the International Telecommunication Union in collaboration with the United Nations Educational, Scientific and Cultural Organization, the United Nations Conference on Trade and Development and the United Nations Development Programme to establish the annual World Summit on the Information Society Forum, which has become an important platform for the sharing of information and best practice and for multi-stakeholder dialogue and collaboration and for developing networks and coordinating initiatives to implement the World Summit vision. We call for the Forum to continue to be held on an annual basis.</p>
                 
             </div>
         </div>

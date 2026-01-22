@@ -47,8 +47,8 @@
                 </a>
                 <nav class="flex items-center gap-6">
                     <a href="./index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Documents</a>
-                    <a href="./provenance/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Origins</a>
-                    <a href="./origin_matrix.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Matrix</a>
+                    <a href="../provenance/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Origins</a>
+                    <a href="../origin_matrix.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Matrix</a>
                     <div class="relative group">
                         <button class="text-muted hover:text-un-blue transition-colors text-sm font-medium flex items-center gap-1">
                             Debug
@@ -57,14 +57,14 @@
                             </svg>
                         </button>
                         <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
-                            <a href="./debug/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-t-lg">Overview</a>
-                            <a href="./debug/linking.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Linking Audit</a>
-                            <a href="./debug/orphans.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Unlinked</a>
-                            <a href="./debug/fuzzy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Fuzzy Matches</a>
-                            <a href="./debug/extraction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-b-lg">Extraction</a>
+                            <a href="../debug/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-t-lg">Overview</a>
+                            <a href="../debug/linking.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Linking Audit</a>
+                            <a href="../debug/orphans.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Unlinked</a>
+                            <a href="../debug/fuzzy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Fuzzy Matches</a>
+                            <a href="../debug/extraction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-b-lg">Extraction</a>
                         </div>
                     </div>
-                    <a href="./data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
+                    <a href="../data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
                 </nav>
             </div>
         </div>
@@ -115,24 +115,6 @@
     
 
     
-        
-    
-
-    
-        
-    
-
-    
-        
-    
-
-    
-
-    
-
-    
-        
-    
 
     
         
@@ -143,7 +125,19 @@
     
 
     
+
+    
         
+    
+
+    
+        
+    
+
+    
+
+    
+
     
         
             
@@ -170,7 +164,7 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">10 with signals, 5 without</span>
+        <span class="text-sm text-muted">8 with signals, 7 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
@@ -280,9 +274,9 @@
     </div>
     
     <div id="para-4" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -290,17 +284,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Calls for the urgent commencement of negotiations in the <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Disarmament on effective nuclear disarmament measures to achieve the total elimination of nuclear weapons, including, in particular, on a comprehensive convention on nuclear weapons;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Calls for the urgent commencement of negotiations in the Conference on Disarmament on effective nuclear disarmament measures to achieve the total elimination of nuclear weapons, including, in particular, on a comprehensive convention on nuclear weapons;</p>
                 
             </div>
         </div>
@@ -317,7 +301,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm"><mark class="bg-yellow-200 px-0.5 rounded">Decides to convene</mark>, in New York, on a date to be decided later, a United Nations high-level international <mark class="bg-yellow-200 px-0.5 rounded">conference</mark> on nuclear disarmament to review the progress made in this regard;</p>
+                <p class="text-gray-700 leading-relaxed text-sm"><mark class="bg-yellow-200 px-0.5 rounded">Decides to convene</mark>, in New York, on a date to be decided later, a United Nations high-level international conference on nuclear disarmament to review the progress made in this regard;</p>
                 
                 <div class="mt-2 flex flex-wrap gap-1">
                     
@@ -334,9 +318,9 @@
     </div>
     
     <div id="para-6" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -344,17 +328,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Takes note of the views provided by Member States with regard to achieving the objective of the total elimination of nuclear weapons, in particular on the elements of a comprehensive convention on nuclear weapons, as reflected in the report submitted by the Secretary-General pursuant to resolution 79/47, and requests the Secretary-General to forward this report to the <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Disarmament and the Disarmament Commission for their early consideration;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Takes note of the views provided by Member States with regard to achieving the objective of the total elimination of nuclear weapons, in particular on the elements of a comprehensive convention on nuclear weapons, as reflected in the report submitted by the Secretary-General pursuant to resolution 79/47, and requests the Secretary-General to forward this report to the Conference on Disarmament and the Disarmament Commission for their early consideration;</p>
                 
             </div>
         </div>
@@ -432,7 +406,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Decides that the aforementioned high-level plenary meeting shall be held with the participation of Member and observer States, represented at the highest possible level, as well as with the participation of the <mark class="bg-yellow-200 px-0.5 rounded">President of the General Assembly</mark> and the Secretary-General;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Decides that the aforementioned high-level plenary meeting <mark class="bg-yellow-200 px-0.5 rounded">shall be held</mark> with the participation of Member and observer States, represented at the highest possible level, as well as with the participation of the <mark class="bg-yellow-200 px-0.5 rounded">President of the General Assembly</mark> and the Secretary-General;</p>
                 
                 <div class="mt-2 flex flex-wrap gap-1">
                     
@@ -484,7 +458,7 @@
     
     <div id="para-13" 
          class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA", "report"]'
+         data-signals='["report"]'
          data-has-signals="true">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
@@ -493,15 +467,9 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to seek the views of Member States with regard to achieving the objective of the total elimination of nuclear weapons, in particular on effective nuclear disarmament measures, including elements of a comprehensive convention on nuclear weapons, and to <mark class="bg-yellow-200 px-0.5 rounded">submit a report</mark> thereon to the General Assembly at its eighty-first session, and also to transmit the report to the <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Disarmament;</p>
+                <p class="text-gray-700 leading-relaxed text-sm">Requests the Secretary-General to seek the views of Member States with regard to achieving the objective of the total elimination of nuclear weapons, in particular on effective nuclear disarmament measures, including elements of a comprehensive convention on nuclear weapons, and to <mark class="bg-yellow-200 px-0.5 rounded">submit a report</mark> thereon to the General Assembly at its eighty-first session, and also to transmit the report to the Conference on Disarmament;</p>
                 
                 <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
                     
                     <span class="px-1.5 py-0.5 rounded text-xs font-medium
                         bg-gray-100 text-gray-700">

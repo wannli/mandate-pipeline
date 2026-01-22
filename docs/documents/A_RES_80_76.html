@@ -47,8 +47,8 @@
                 </a>
                 <nav class="flex items-center gap-6">
                     <a href="./index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Documents</a>
-                    <a href="./provenance/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Origins</a>
-                    <a href="./origin_matrix.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Matrix</a>
+                    <a href="../provenance/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Origins</a>
+                    <a href="../origin_matrix.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Matrix</a>
                     <div class="relative group">
                         <button class="text-muted hover:text-un-blue transition-colors text-sm font-medium flex items-center gap-1">
                             Debug
@@ -57,14 +57,14 @@
                             </svg>
                         </button>
                         <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
-                            <a href="./debug/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-t-lg">Overview</a>
-                            <a href="./debug/linking.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Linking Audit</a>
-                            <a href="./debug/orphans.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Unlinked</a>
-                            <a href="./debug/fuzzy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Fuzzy Matches</a>
-                            <a href="./debug/extraction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-b-lg">Extraction</a>
+                            <a href="../debug/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-t-lg">Overview</a>
+                            <a href="../debug/linking.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Linking Audit</a>
+                            <a href="../debug/orphans.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Unlinked</a>
+                            <a href="../debug/fuzzy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Fuzzy Matches</a>
+                            <a href="../debug/extraction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-b-lg">Extraction</a>
                         </div>
                     </div>
-                    <a href="./data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
+                    <a href="../data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
                 </nav>
             </div>
         </div>
@@ -124,10 +124,6 @@
     
 
     
-        
-            
-        
-    
 
     
 
@@ -167,12 +163,6 @@
 
     
         
-    
-
-    
-
-    
-        
             
         
     
@@ -196,11 +186,7 @@
     
 
     
-        
-    
 
-    
-        
     
 
     
@@ -208,15 +194,11 @@
     
 
     
-        
+
     
 
     
-        
-    
 
-    
-        
     
 
     
@@ -232,7 +214,7 @@
     
 
     
-        
+
     
 
     
@@ -251,19 +233,12 @@
 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-8">
     <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Filter Paragraphs</h2>
-        <span class="text-sm text-muted">10 with signals, 39 without</span>
+        <span class="text-sm text-muted">2 with signals, 47 without</span>
     </div>
     <div class="flex flex-wrap gap-2">
         <button id="btn-signals-only" onclick="showSignalsOnly()" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium bg-un-blue text-white transition-all">
             Signals Only
-        </button>
-        
-        <button onclick="filterSignal('PGA')" 
-                class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
-                bg-purple-50 text-purple-700 hover:bg-purple-100
-                ">
-            PGA
         </button>
         
         <button onclick="filterSignal('report')" 
@@ -272,10 +247,11 @@
             report
         </button>
         
-        <button onclick="filterSignal('process')" 
+        <button onclick="filterSignal('PGA')" 
                 class="signal-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all
-                bg-gray-100 text-gray-700 hover:bg-gray-200">
-            process
+                bg-purple-50 text-purple-700 hover:bg-purple-100
+                ">
+            PGA
         </button>
         
         <button id="btn-show-all" onclick="toggleShowAll()" 
@@ -323,9 +299,9 @@
     </div>
     
     <div id="para-3" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -333,17 +309,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Encourages the Committee to further consult on the proposal to hold a fourth United Nations <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on the Peaceful Exploration of Outer Space (UNISPACE IV) in 2027;11</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Encourages the Committee to further consult on the proposal to hold a fourth United Nations Conference on the Peaceful Exploration of Outer Space (UNISPACE IV) in 2027;11</p>
                 
             </div>
         </div>
@@ -675,9 +641,9 @@
     </div>
     
     <div id="para-22" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["process"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -685,16 +651,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Notes with satisfaction the establishment of the Action Team on Lunar Activities Consultation of the Committee to facilitate international consultations to ensure that lunar activities are conducted in a safe, peaceful and transparent manner, and welcomes the establishment of the <mark class="bg-yellow-200 px-0.5 rounded">Bureau</mark> and the endorsement of the workplan of the Action Team;25</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-gray-100 text-gray-700">
-                        process
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Notes with satisfaction the establishment of the Action Team on Lunar Activities Consultation of the Committee to facilitate international consultations to ensure that lunar activities are conducted in a safe, peaceful and transparent manner, and welcomes the establishment of the Bureau and the endorsement of the workplan of the Action Team;25</p>
                 
             </div>
         </div>
@@ -854,9 +811,9 @@
     </div>
     
     <div id="para-32" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -864,26 +821,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Emphasizes that regional and interregional cooperation in the field of space activities is essential to strengthen the peaceful uses of outer space, assist Member States in the development of their space capabilities and contribute to the implementation of the 2030 Agenda for Sustainable Development, to that end requests relevant regional organizations and their groups of experts to offer the assistance necessary so that countries can carry out the recommendations of regional <mark class="bg-yellow-200 px-0.5 rounded">conference</mark>s, and in that regard notes the importance of the equal participation of women in all fields of science and technology; _______________ 27 See resolution 61/110. 28 Resolution 69/283, annex II. A/RES/80/76 International cooperation in the peaceful uses of outer space 25-20091 8/10</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Emphasizes that regional and interregional cooperation in the field of space activities is essential to strengthen the peaceful uses of outer space, assist Member States in the development of their space capabilities and contribute to the implementation of the 2030 Agenda for Sustainable Development, to that end requests relevant regional organizations and their groups of experts to offer the assistance necessary so that countries can carry out the recommendations of regional conferences, and in that regard notes the importance of the equal participation of women in all fields of science and technology; _______________ 27 See resolution 61/110. 28 Resolution 69/283, annex II. A/RES/80/76 International cooperation in the peaceful uses of outer space 25-20091 8/10</p>
                 
             </div>
         </div>
     </div>
     
     <div id="para-33" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -891,17 +838,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Recognizes, in that regard, the important role played by such organizations as the Asia-Pacific Space Cooperation Organization and the European Space Agency and by <mark class="bg-yellow-200 px-0.5 rounded">conference</mark>s and other mechanisms, such as the African Leadership <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> on Space Science and Technology for Sustainable Development, the Asia-Pacific Regional Space Agency Forum and the Space <mark class="bg-yellow-200 px-0.5 rounded">Conference</mark> of the Americas, in strengthening regional and international cooperation among States;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Recognizes, in that regard, the important role played by such organizations as the Asia-Pacific Space Cooperation Organization and the European Space Agency and by conferences and other mechanisms, such as the African Leadership Conference on Space Science and Technology for Sustainable Development, the Asia-Pacific Regional Space Agency Forum and the Space Conference of the Americas, in strengthening regional and international cooperation among States;</p>
                 
             </div>
         </div>
@@ -942,9 +879,9 @@
     </div>
     
     <div id="para-36" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -952,26 +889,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Reiterates the need to promote the benefits of space technology and its applications in the major United Nations <mark class="bg-yellow-200 px-0.5 rounded">conference</mark>s and summits for economic, social and cultural development and related fields, and recognizes that the fundamental significance of space science and technology and their applications for global, regional, national and local sustainable development processes should be promoted in the formulation of policies and programmes of action and their implementation, including through efforts towards achieving the objectives of those <mark class="bg-yellow-200 px-0.5 rounded">conference</mark>s and summits and in implementing the 2030 Agenda for Sustainable Development;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Reiterates the need to promote the benefits of space technology and its applications in the major United Nations conferences and summits for economic, social and cultural development and related fields, and recognizes that the fundamental significance of space science and technology and their applications for global, regional, national and local sustainable development processes should be promoted in the formulation of policies and programmes of action and their implementation, including through efforts towards achieving the objectives of those conferences and summits and in implementing the 2030 Agenda for Sustainable Development;</p>
                 
             </div>
         </div>
     </div>
     
     <div id="para-37" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -979,26 +906,16 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Encourages Member States, to that end, to promote the inclusion in those <mark class="bg-yellow-200 px-0.5 rounded">conference</mark>s, summits and processes of the relevance of space science and technology applications and the use of space-derived geospatial data, and in general, space-based data and infrastructures, with the involvement of the Office;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Encourages Member States, to that end, to promote the inclusion in those conferences, summits and processes of the relevance of space science and technology applications and the use of space-derived geospatial data, and in general, space-based data and infrastructures, with the involvement of the Office;</p>
                 
             </div>
         </div>
     </div>
     
     <div id="para-38" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["PGA"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -1006,17 +923,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Encourages the Office to take active part in those <mark class="bg-yellow-200 px-0.5 rounded">conference</mark>s, summits and processes and other activities in support of their objectives, as appropriate, and to conduct capacity-building activities, hold lectures and participate in academic and research activities to foster international cooperation in the peaceful uses of outer space;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-purple-50 text-purple-700
-                        ">
-                        PGA
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Encourages the Office to take active part in those conferences, summits and processes and other activities in support of their objectives, as appropriate, and to conduct capacity-building activities, hold lectures and participate in academic and research activities to foster international cooperation in the peaceful uses of outer space;</p>
                 
             </div>
         </div>
@@ -1125,9 +1032,9 @@
     </div>
     
     <div id="para-45" 
-         class="para-row border border-gray-200 rounded-lg p-4 transition-all "
-         data-signals='["process"]'
-         data-has-signals="true">
+         class="para-row border border-gray-200 rounded-lg p-4 transition-all no-signals hidden"
+         data-signals='[]'
+         data-has-signals="false">
         <div class="flex items-start gap-4">
             <div class="flex-shrink-0">
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-gray-700 font-bold text-sm">
@@ -1135,16 +1042,7 @@
                 </span>
             </div>
             <div class="flex-1">
-                <p class="text-gray-700 leading-relaxed text-sm">Reiterates, with regard to the composition of the <mark class="bg-yellow-200 px-0.5 rounded">bureau</mark>x of the Committee and its subcommittees for the period 2026–2027, 32 that the Committee and its subcommittees should elect their officers at their respective sessions in 2026 in accordance with that composition;</p>
-                
-                <div class="mt-2 flex flex-wrap gap-1">
-                    
-                    <span class="px-1.5 py-0.5 rounded text-xs font-medium
-                        bg-gray-100 text-gray-700">
-                        process
-                    </span>
-                    
-                </div>
+                <p class="text-gray-700 leading-relaxed text-sm">Reiterates, with regard to the composition of the bureaux of the Committee and its subcommittees for the period 2026–2027, 32 that the Committee and its subcommittees should elect their officers at their respective sessions in 2026 in accordance with that composition;</p>
                 
             </div>
         </div>

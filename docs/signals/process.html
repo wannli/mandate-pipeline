@@ -47,8 +47,8 @@
                 </a>
                 <nav class="flex items-center gap-6">
                     <a href="../documents/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Documents</a>
-                    <a href="./provenance/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Origins</a>
-                    <a href="./origin_matrix.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Matrix</a>
+                    <a href="../provenance/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Origins</a>
+                    <a href="../origin_matrix.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Matrix</a>
                     <div class="relative group">
                         <button class="text-muted hover:text-un-blue transition-colors text-sm font-medium flex items-center gap-1">
                             Debug
@@ -57,14 +57,14 @@
                             </svg>
                         </button>
                         <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
-                            <a href="./debug/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-t-lg">Overview</a>
-                            <a href="./debug/linking.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Linking Audit</a>
-                            <a href="./debug/orphans.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Unlinked</a>
-                            <a href="./debug/fuzzy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Fuzzy Matches</a>
-                            <a href="./debug/extraction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-b-lg">Extraction</a>
+                            <a href="../debug/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-t-lg">Overview</a>
+                            <a href="../debug/linking.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Linking Audit</a>
+                            <a href="../debug/orphans.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Unlinked</a>
+                            <a href="../debug/fuzzy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Fuzzy Matches</a>
+                            <a href="../debug/extraction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-b-lg">Extraction</a>
                         </div>
                     </div>
-                    <a href="./data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
+                    <a href="../data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
                 </nav>
             </div>
         </div>
@@ -85,12 +85,12 @@
 <!-- Header -->
 <div class="mb-8">
     <h1 class="text-3xl font-bold text-gray-900 tracking-tight">process</h1>
-    <p class="mt-2 text-muted">23 documents contain this signal</p>
+    <p class="mt-2 text-muted">16 documents contain this signal</p>
     
-    <p class="mt-1 text-xs text-muted">19 adopted drafts hidden</p>
+    <p class="mt-1 text-xs text-muted">14 adopted drafts hidden</p>
     <div class="mt-3">
         <button id="toggle-adopted-btn" class="px-3 py-1.5 text-sm font-medium rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
-            Show adopted drafts (19)
+            Show adopted drafts (14)
         </button>
     </div>
     
@@ -111,10 +111,6 @@
         
         <span class="px-3 py-1.5 rounded-lg text-sm bg-gray-100 text-gray-700 font-mono">
             "co-conveners"
-        </span>
-        
-        <span class="px-3 py-1.5 rounded-lg text-sm bg-gray-100 text-gray-700 font-mono">
-            "bureau"
         </span>
         
         <span class="px-3 py-1.5 rounded-lg text-sm bg-gray-100 text-gray-700 font-mono">
@@ -238,59 +234,6 @@
         
         
         <div class="border border-gray-200 rounded-lg overflow-hidden"
-             data-adopted="true"
-             style="display: none;">
-            <!-- Document Header -->
-            <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-gray-50">
-                <div class="flex items-center gap-4">
-                    <a href="../documents/A_C.1_80_L.48.html" 
-                       class="font-semibold text-lg text-gray-900 hover:text-un-blue transition-colors">
-                        A/C.1/80/L.48
-                    </a>
-                    <span class="text-sm text-muted">
-                        1 match
-                    </span>
-                    
-                    <span class="text-xs text-muted">
-                        Adopted by
-                        <a href="../documents/A_RES_80_66.html" class="hover:text-un-blue transition-colors">
-                            A/RES/80/66
-                        </a>
-                    </span>
-                    
-                </div>
-                <div class="flex items-center gap-4">
-                    <a href="../documents/A_C.1_80_L.48.html" 
-                       class="text-sm font-medium text-un-blue hover:text-un-blue-dark transition-colors">
-                        View document
-                    </a>
-                    <a href="https://docs.un.org/en/a/c.1/80/l.48?direct=true" target="_blank"
-                       class="text-sm text-muted hover:text-un-blue transition-colors">
-                        PDF ↗
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Matching Paragraphs -->
-            <div class="p-5 space-y-4">
-                
-                <div class="flex gap-4">
-                    <a href="../documents/A_C.1_80_L.48.html#para-8"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        8
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        Requests the Disarmament Commission to hold a substantive session for a period not exceeding three weeks during 2026, namely from 6 to 24 April, and an organizational session at the beginning of 2026 before the substantive session, to elect its <mark class="bg-yellow-200 px-0.5 rounded">Bureau</mark> and address other outstanding organizational matters, and to submit a substantive report to the General Assembly at its eighty-first session, and stresses that the report of the Commission should contain a summary by the Chair of the proceedings to reflect different views or positions if no agreement can be reached on the specific agenda item deliberated on, as provided for in paragraph 3.4 of the __________________ 3 Resolution S-10/2. A/C.1/80/L.48 3/3 25-16740 adopted “Ways and means to enhance the functioning of the Disarmament Commission”;
-                    </p>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="border border-gray-200 rounded-lg overflow-hidden"
              data-adopted="false"
              >
             <!-- Document Header -->
@@ -301,7 +244,7 @@
                         A/C.2/80/L.1
                     </a>
                     <span class="text-sm text-muted">
-                        4 matches
+                        2 matches
                     </span>
                     
                 </div>
@@ -319,30 +262,6 @@
             
             <!-- Matching Paragraphs -->
             <div class="p-5 space-y-4">
-                
-                <div class="flex gap-4">
-                    <a href="../documents/A_C.2_80_L.1.html#para-2"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        2
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        The draft programme of work (see annex) has been prepared bearing in mind paragraph (b) of rule 99 of the rules of procedure of the General Assembly, Assembly decision 79/545 on the programme of work of the Second Committee for the eightieth session of the Assembly, by which the Assembly invited the <mark class="bg-yellow-200 px-0.5 rounded">Bureau</mark> of the Second Committee to take into account the provisional timetable of the Committee as contained in conference room paper A/C.2/79/CRP.1, the provisional agenda of the eightieth session of the Assembly (A/80/150) and the availability of documentation. The number of meetings suggested for the general discussion of the agenda items allocated to the Second Committee is based on past experience. List of documents
-                    </p>
-                </div>
-                
-                <div class="flex gap-4">
-                    <a href="../documents/A_C.2_80_L.1.html#para-4"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        4
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        In accordance with General Assembly decision 78/534 on the revitalization of the work of the Second Committee and following consultations with the membership of the Committee, the <mark class="bg-yellow-200 px-0.5 rounded">Bureau</mark> proposed the theme “Five years to 2030: multilateral solutions for sustainable development” for the general debate, taking into account the theme agreed by the Assembly for the 2026 session of the Economic and Social Council and the 2026 high-level political forum on sustainable development. A/C.2/80/L.1 25-14596 2/8
-                    </p>
-                </div>
                 
                 <div class="flex gap-4">
                     <a href="../documents/A_C.2_80_L.1.html#para-10"
@@ -364,7 +283,7 @@
                         11
                     </a>
                     <p class="text-sm text-gray-700 leading-relaxed">
-                        In accordance with established practice, <mark class="bg-yellow-200 px-0.5 rounded">informal consultations</mark> will be used for expressing general observations on the proposals and for agreeing on them ad referendum. All drafting will be done at the level of informal <mark class="bg-yellow-200 px-0.5 rounded">informal consultations</mark> (without interpretation or other services) and will be conducted by the appointed facilitators. The <mark class="bg-yellow-200 px-0.5 rounded">Bureau</mark> will coordinate a comprehensive calendar of <mark class="bg-yellow-200 px-0.5 rounded">informal consultations</mark>, within regular meeting hours, while limiting parallel negotiations to the extent possible. Report of the Economic and Social Council
+                        In accordance with established practice, <mark class="bg-yellow-200 px-0.5 rounded">informal consultations</mark> will be used for expressing general observations on the proposals and for agreeing on them ad referendum. All drafting will be done at the level of informal <mark class="bg-yellow-200 px-0.5 rounded">informal consultations</mark> (without interpretation or other services) and will be conducted by the appointed facilitators. The Bureau will coordinate a comprehensive calendar of <mark class="bg-yellow-200 px-0.5 rounded">informal consultations</mark>, within regular meeting hours, while limiting parallel negotiations to the extent possible. Report of the Economic and Social Council
                     </p>
                 </div>
                 
@@ -773,170 +692,6 @@
         
         
         <div class="border border-gray-200 rounded-lg overflow-hidden"
-             data-adopted="false"
-             >
-            <!-- Document Header -->
-            <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-gray-50">
-                <div class="flex items-center gap-4">
-                    <a href="../documents/A_C.3_80_L.1.html" 
-                       class="font-semibold text-lg text-gray-900 hover:text-un-blue transition-colors">
-                        A/C.3/80/L.1
-                    </a>
-                    <span class="text-sm text-muted">
-                        2 matches
-                    </span>
-                    
-                </div>
-                <div class="flex items-center gap-4">
-                    <a href="../documents/A_C.3_80_L.1.html" 
-                       class="text-sm font-medium text-un-blue hover:text-un-blue-dark transition-colors">
-                        View document
-                    </a>
-                    <a href="https://docs.un.org/en/a/c.3/80/l.1?direct=true" target="_blank"
-                       class="text-sm text-muted hover:text-un-blue transition-colors">
-                        PDF ↗
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Matching Paragraphs -->
-            <div class="p-5 space-y-4">
-                
-                <div class="flex gap-4">
-                    <a href="../documents/A_C.3_80_L.1.html#para-2"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        2
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        The draft programme of work (see annex) has been prepared bearing in mind paragraph (b) of rule 99 of the rules of procedure of the General Assembly, Assembly decision 79/540 on the programme of work of the Third Committee for the eightieth session, the provisional agenda of the eightieth session (A/80/150) and relevant resolutions and decisions adopted by the Assembly on the rationalization of its work and that of the Committee, as well as past experience in the utilization of conference services. The modalities on the arrangements for the work of the Third Committee at the eightieth session have been revised pursuant to the proposal submitted by the <mark class="bg-yellow-200 px-0.5 rounded">Bureau</mark>, taking into account the continued limitations arising from the liquidity crisis. These arrangements are exceptional and will not constitute a precedent for the programme of work of the eighty-first or any future session, irrespective of meeting entitlements or liquidity constraints. The <mark class="bg-yellow-200 px-0.5 rounded">Bureau</mark> remains committed to exploring all options thoroughly and to restore the traditional format of general discussions on individual items or clusters, alongside interactive dialogues, in its recommendation for the programme of work of the eighty-first session. Question time and interactive dialogues
-                    </p>
-                </div>
-                
-                <div class="flex gap-4">
-                    <a href="../documents/A_C.3_80_L.1.html#para-4"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        4
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        Also pursuant to the proposal submitted by the <mark class="bg-yellow-200 px-0.5 rounded">Bureau</mark>, on an exceptional basis, the general discussion of each agenda item or cluster of agenda items will be replaced by a single general debate to be held prior to the start of the interactive dialogues. This arrangement will not establish a precedent for future sessions. Statements by delegations
-                    </p>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="border border-gray-200 rounded-lg overflow-hidden"
-             data-adopted="true"
-             style="display: none;">
-            <!-- Document Header -->
-            <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-gray-50">
-                <div class="flex items-center gap-4">
-                    <a href="../documents/A_C.3_80_L.7.html" 
-                       class="font-semibold text-lg text-gray-900 hover:text-un-blue transition-colors">
-                        A/C.3/80/L.7
-                    </a>
-                    <span class="text-sm text-muted">
-                        1 match
-                    </span>
-                    
-                    <span class="text-xs text-muted">
-                        Adopted by
-                        <a href="../documents/A_RES_80_225.html" class="hover:text-un-blue transition-colors">
-                            A/RES/80/225
-                        </a>
-                    </span>
-                    
-                </div>
-                <div class="flex items-center gap-4">
-                    <a href="../documents/A_C.3_80_L.7.html" 
-                       class="text-sm font-medium text-un-blue hover:text-un-blue-dark transition-colors">
-                        View document
-                    </a>
-                    <a href="https://docs.un.org/en/a/c.3/80/l.7?direct=true" target="_blank"
-                       class="text-sm text-muted hover:text-un-blue transition-colors">
-                        PDF ↗
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Matching Paragraphs -->
-            <div class="p-5 space-y-4">
-                
-                <div class="flex gap-4">
-                    <a href="../documents/A_C.3_80_L.7.html#para-9"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        9
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        Welcomes the plan for the documentation for the Fifteenth Congress, prepared by the Secretary-General in consultation with the extended <mark class="bg-yellow-200 px-0.5 rounded">Bureau</mark> of the Commission on Crime Prevention and Criminal Justice; __________________ 3 A/CONF.241/RPM.1/2, A/CONF.241/RPM.2/2, A/CONF.241/RPM.3/2, A/CONF.241/RPM.4/2 and A/CONF.241/RPM.5/2. A/C.3/80/L.7 25-16866 4/4
-                    </p>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="border border-gray-200 rounded-lg overflow-hidden"
-             data-adopted="true"
-             style="display: none;">
-            <!-- Document Header -->
-            <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-gray-50">
-                <div class="flex items-center gap-4">
-                    <a href="../documents/A_C.3_80_L.37.html" 
-                       class="font-semibold text-lg text-gray-900 hover:text-un-blue transition-colors">
-                        A/C.3/80/L.37
-                    </a>
-                    <span class="text-sm text-muted">
-                        1 match
-                    </span>
-                    
-                    <span class="text-xs text-muted">
-                        Adopted by
-                        <a href="../documents/A_RES_80_206.html" class="hover:text-un-blue transition-colors">
-                            A/RES/80/206
-                        </a>
-                    </span>
-                    
-                </div>
-                <div class="flex items-center gap-4">
-                    <a href="../documents/A_C.3_80_L.37.html" 
-                       class="text-sm font-medium text-un-blue hover:text-un-blue-dark transition-colors">
-                        View document
-                    </a>
-                    <a href="https://docs.un.org/en/a/c.3/80/l.37?direct=true" target="_blank"
-                       class="text-sm text-muted hover:text-un-blue transition-colors">
-                        PDF ↗
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Matching Paragraphs -->
-            <div class="p-5 space-y-4">
-                
-                <div class="flex gap-4">
-                    <a href="../documents/A_C.3_80_L.37.html#para-2"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        2
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        Urges the States Parties to the United Nations human rights instruments, including the <mark class="bg-yellow-200 px-0.5 rounded">bureau</mark> members, to include this matter in the agenda of each meeting and/or conference of States Parties to those instruments in order to initiate a debate on ways and means to ensure equitable geographical distribution in the membership of the human rights treaty bodies, based on previous recommendations of the former Commission on Human Rights and the Economic and Social Council and the provisions of the present resolution;
-                    </p>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="border border-gray-200 rounded-lg overflow-hidden"
              data-adopted="true"
              style="display: none;">
             <!-- Document Header -->
@@ -995,130 +750,12 @@
             <!-- Document Header -->
             <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-gray-50">
                 <div class="flex items-center gap-4">
-                    <a href="../documents/A_C.4_80_L.8.html" 
-                       class="font-semibold text-lg text-gray-900 hover:text-un-blue transition-colors">
-                        A/C.4/80/L.8
-                    </a>
-                    <span class="text-sm text-muted">
-                        2 matches
-                    </span>
-                    
-                    <span class="text-xs text-muted">
-                        Adopted by
-                        <a href="../documents/A_RES_80_76.html" class="hover:text-un-blue transition-colors">
-                            A/RES/80/76
-                        </a>
-                    </span>
-                    
-                </div>
-                <div class="flex items-center gap-4">
-                    <a href="../documents/A_C.4_80_L.8.html" 
-                       class="text-sm font-medium text-un-blue hover:text-un-blue-dark transition-colors">
-                        View document
-                    </a>
-                    <a href="https://docs.un.org/en/a/c.4/80/l.8?direct=true" target="_blank"
-                       class="text-sm text-muted hover:text-un-blue transition-colors">
-                        PDF ↗
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Matching Paragraphs -->
-            <div class="p-5 space-y-4">
-                
-                <div class="flex gap-4">
-                    <a href="../documents/A_C.4_80_L.8.html#para-22"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        22
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        Notes with satisfaction the establishment of the Action Team on Lunar Activities Consultation of the Committee to facilitate international consultations to ensure that lunar activities are conducted in a safe, peaceful and transparent manner, and welcomes the establishment of the <mark class="bg-yellow-200 px-0.5 rounded">Bureau</mark> and the endorsement of the workplan of the Action Team;25
-                    </p>
-                </div>
-                
-                <div class="flex gap-4">
-                    <a href="../documents/A_C.4_80_L.8.html#para-45"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        45
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        Reiterates, with regard to the composition of the <mark class="bg-yellow-200 px-0.5 rounded">bureau</mark>x of the Committee and its subcommittees for the period 2026–2027,32 that the Committee and its subcommittees should elect their officers at their respective sessions in 2026 in accordance with that composition;
-                    </p>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="border border-gray-200 rounded-lg overflow-hidden"
-             data-adopted="true"
-             style="display: none;">
-            <!-- Document Header -->
-            <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-gray-50">
-                <div class="flex items-center gap-4">
-                    <a href="../documents/A_C.5_80_L.18.html" 
-                       class="font-semibold text-lg text-gray-900 hover:text-un-blue transition-colors">
-                        A/C.5/80/L.18
-                    </a>
-                    <span class="text-sm text-muted">
-                        1 match
-                    </span>
-                    
-                    <span class="text-xs text-muted">
-                        Adopted by
-                        <a href="../documents/A_RES_80_237.html" class="hover:text-un-blue transition-colors">
-                            A/RES/80/237
-                        </a>
-                    </span>
-                    
-                </div>
-                <div class="flex items-center gap-4">
-                    <a href="../documents/A_C.5_80_L.18.html" 
-                       class="text-sm font-medium text-un-blue hover:text-un-blue-dark transition-colors">
-                        View document
-                    </a>
-                    <a href="https://docs.un.org/en/a/c.5/80/l.18?direct=true" target="_blank"
-                       class="text-sm text-muted hover:text-un-blue transition-colors">
-                        PDF ↗
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Matching Paragraphs -->
-            <div class="p-5 space-y-4">
-                
-                <div class="flex gap-4">
-                    <a href="../documents/A_C.5_80_L.18.html#para-19"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        19
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        Further notes that there are accepted recommendations that are beyond their targeted date for implementation, also notes that administrative <mark class="bg-yellow-200 px-0.5 rounded">bureau</mark>cracy should not slow progress in this regard, and encourages the Office to continue to make recommendations more actionable and to work with the Organization, where appropriate, to ensure the long-term effectiveness and unselective and full implementation of the accepted recommendations;
-                    </p>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="border border-gray-200 rounded-lg overflow-hidden"
-             data-adopted="true"
-             style="display: none;">
-            <!-- Document Header -->
-            <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-gray-50">
-                <div class="flex items-center gap-4">
                     <a href="../documents/A_C.5_80_L.19.html" 
                        class="font-semibold text-lg text-gray-900 hover:text-un-blue transition-colors">
                         A/C.5/80/L.19
                     </a>
                     <span class="text-sm text-muted">
-                        3 matches
+                        1 match
                     </span>
                     
                     <span class="text-xs text-muted">
@@ -1143,30 +780,6 @@
             
             <!-- Matching Paragraphs -->
             <div class="p-5 space-y-4">
-                
-                <div class="flex gap-4">
-                    <a href="../documents/A_C.5_80_L.19.html#para-20"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        20
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        Recognizes that late starts and unplanned early endings seriously affect the interpretation utilization factor of those bodies, invites the secretariats and <mark class="bg-yellow-200 px-0.5 rounded">bureau</mark>x of the bodies to pay adequate attention in this regard, and welcomes their efforts to inform the Secretariat in a timely manner of any such changes in order to allow conference services to be smoothly redeployed to other meetings;
-                    </p>
-                </div>
-                
-                <div class="flex gap-4">
-                    <a href="../documents/A_C.5_80_L.19.html#para-23"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        23
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        Urges the secretariats and <mark class="bg-yellow-200 px-0.5 rounded">bureau</mark>x of bodies that underutilize their conference-servicing resources to work more closely with the Department for General __________________ 4 ST/AI/2019/4. A/C.5/80/L.19 25-21131 4/12 Assembly and Conference Management and to consider changes to their programmes of work, as appropriate, including adjustments based on previous patterns of recurring agenda items, with a view to making improvements in their interpretation utilization factors;
-                    </p>
-                </div>
                 
                 <div class="flex gap-4">
                     <a href="../documents/A_C.5_80_L.19.html#para-59"
@@ -1195,7 +808,7 @@
                         A/C.6/80/L.1
                     </a>
                     <span class="text-sm text-muted">
-                        4 matches
+                        2 matches
                     </span>
                     
                 </div>
@@ -1213,18 +826,6 @@
             
             <!-- Matching Paragraphs -->
             <div class="p-5 space-y-4">
-                
-                <div class="flex gap-4">
-                    <a href="../documents/A_C.6_80_L.1.html#para-7"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        7
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        The <mark class="bg-yellow-200 px-0.5 rounded">Bureau</mark> of the Committee has considered the provisional programme of work as contained in decision 79/524 and has taken into account the allocation of additional items (requests for observer status in the General Assembly) to the Committee by the General Assembly, as well as the reduction of the length of the report of the International Law Commission on the work of its seventy-sixth session (as a consequence of the reduction of the length of the Commission’s session) and the anticipated workload at the present session. The programme has been prepared accordingly. Approximate dates of consideration Sixth Committee (organization of work) 6 October Revitalization of the work of the General Assembly [121] 6 October Measures to eliminate international terrorism [109] 6 and 7 October Programme planning [137] 8 October The rule of law at the national and international levels [84] 8 and 9 October Criminal accountability of United Nations officials and experts on mission [77] 9 and 10 October Responsibility of States for internationally wrongful acts [76] 10 and 13 October Crimes against humanity [81] 13 and 14 October Protection of persons in the event of disasters [86] 14 October Observer status for the International Centre for Integrated Mountain Development in the General Assembly [171] 15 October Observer status for the Islamic Organization for Food Security in the General Assembly [172] 15 October Observer status for the African Export-Import Bank in the General Assembly [173] 15 October Observer status for the International Tropical Timber Organization in the General Assembly [174] 15 October Observer status for the Brazilian-Argentine Agency for Accounting and Control of Nuclear Materials in the General Assembly [175] 15 October A/C.6/80/L.1 7/10 25-14774 Approximate dates of consideration Observer status for the Climate Vulnerable Forum in the General Assembly [176] 15 October Strengthening and promoting the international treaty framework [87] 15 October Report of the Special Committee on the Charter of the United Nations and on the Strengthening of the Role of the Organization [83] 16 October Report of the United Nations Commission on International Trade Law on the work of its fifty-eighth session [78] 20 and 21 October Administration of justice at the United Nations [146] 21 October The scope and application of the principle of universal jurisdiction [85] 21 and 22 October Diplomatic protection [82] 23 October United Nations Programme of Assistance in the Teaching, Study, Dissemination and Wider Appreciation of International Law [79] 23 October Report of the International Law Commission on the work of its seventy- sixth session [80] 27 to 31 October Report of the Committee on Relations with the Host Country [160] 7 November Observer status for the Cooperation Council of Turkic-speaking States in the General Assembly [161] 14 November Observer status for the Eurasian Economic Union in the General Assembly [162] 14 November Observer status for the Community of Democracies in the General Assembly [163] 14 November Observer status for the Ramsar Convention on Wetlands Secretariat in the General Assembly [164] 14 November Observer status for the Global Environment Facility in the General Assembly [165] 14 November Observer status for the International Organization of Employers in the General Assembly [166] 14 November Observer status for the International Trade Union Confederation in the General Assembly [167] 14 November Observer status for the Boao Forum for Asia in the General Assembly [168] 14 November Observer status for the International Parliamentarians’ Congress in the General Assembly [169] 14 November Observer status for the Regional Anti-Corruption Initiative in the General Assembly [170] 14 November A/C.6/80/L.1 25-14774 8/10 Approximate dates of consideration Revitalization of the work of the General Assembly (continued) [121] 14 November Election of the officers of the Main Committees [5] 21 November In reserve 24 October and 3 November Establishment of working groups and holding of consultations
-                    </p>
-                </div>
                 
                 <div class="flex gap-4">
                     <a href="../documents/A_C.6_80_L.1.html#para-11"
@@ -1250,18 +851,6 @@
                     </p>
                 </div>
                 
-                <div class="flex gap-4">
-                    <a href="../documents/A_C.6_80_L.1.html#para-18"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        18
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        All delegations wishing to sponsor a proposal for a draft resolution, where applicable, are encouraged to do so electronically through the eSponsorship module, rather than during the formal proceedings of the Committee. This is without prejudice to the possibility of delegations sponsoring a proposal for a draft resolution at the time of the Committee’s action on the latter during a plenary meeting. Sponsorship should take place at the level of the Sixth Committee, given that, once the Committee has adopted a proposal for a draft resolution and recommended its adoption by the General Assembly, its sponsorship can no longer be altered by Member States. Proposals for draft resolutions submitted on behalf of the <mark class="bg-yellow-200 px-0.5 rounded">Bureau</mark> are not subject to sponsorship.
-                    </p>
-                </div>
-                
             </div>
         </div>
         
@@ -1277,7 +866,7 @@
                         A/C.6/80/L.21
                     </a>
                     <span class="text-sm text-muted">
-                        2 matches
+                        1 match
                     </span>
                     
                     <span class="text-xs text-muted">
@@ -1302,18 +891,6 @@
             
             <!-- Matching Paragraphs -->
             <div class="p-5 space-y-4">
-                
-                <div class="flex gap-4">
-                    <a href="../documents/A_C.6_80_L.21.html#para-22"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        22
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        Decides, without prejudice to the budgetary prerogatives of the Fifth Committee and to the authority of the Secretary-General, that no exceptional measures affecting the duration of the seventy-seventh session of the International Law Commission shall be taken by the Secretariat without consultation with the <mark class="bg-yellow-200 px-0.5 rounded">Bureau</mark> of the Sixth Committee, which shall inform the Sixth Committee;
-                    </p>
-                </div>
                 
                 <div class="flex gap-4">
                     <a href="../documents/A_C.6_80_L.21.html#para-23"
@@ -1434,7 +1011,7 @@
                         6
                     </a>
                     <p class="text-sm text-gray-700 leading-relaxed">
-                        Requests the Secretary-General to convene the first meeting of the Conference of the Parties to the Agreement for at least 10 working days by 17 January 2027, on dates and for a duration to be determined in consultation with the <mark class="bg-yellow-200 px-0.5 rounded">Co-Chairs</mark> and the <mark class="bg-yellow-200 px-0.5 rounded">Bureau</mark> of the Preparatory Commission, with full conference services, including documentation, provision for parallel meetings and overtime, webcast and press and meeting coverage;
+                        Requests the Secretary-General to convene the first meeting of the Conference of the Parties to the Agreement for at least 10 working days by 17 January 2027, on dates and for a duration to be determined in consultation with the <mark class="bg-yellow-200 px-0.5 rounded">Co-Chairs</mark> and the Bureau of the Preparatory Commission, with full conference services, including documentation, provision for parallel meetings and overtime, webcast and press and meeting coverage;
                     </p>
                 </div>
                 
@@ -1778,7 +1355,7 @@
                         A/80/L.22
                     </a>
                     <span class="text-sm text-muted">
-                        6 matches
+                        4 matches
                     </span>
                     
                     <span class="text-xs text-muted">
@@ -1805,18 +1382,6 @@
             <div class="p-5 space-y-4">
                 
                 <div class="flex gap-4">
-                    <a href="../documents/A_80_L.22.html#para-129"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        129
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        Remains concerned about piracy and armed robbery at sea in the Gulf of Guinea, with crew members kidnapped, but welcomes the decline in incidents of piracy and armed robbery at sea in that region since 2020, 67 notes the adoption by the Security Council of resolutions 2018 (2011) of 31 October 2011, 2039 (2012) of 29 February 2012 and 2634 (2022) of 31 May 2022 and the statement by the President of the Council of 25 April 2016,68 supports the efforts to address this problem at the global and regional levels, including the adoption by the Maritime Safety Committee of the International Maritime Organization of a resolution on recommended action to address piracy and armed robbery in the Gulf of Guinea,69 recalls the primary role of States in the region to counter the threat and address the underlying causes of piracy and armed robbery at sea in the Gulf of Guinea, welcomes the adoption in Yaoundé on 25 June 2013 of the Code of Conduct concerning the Repression of Piracy, Armed Robbery against Ships and Illicit Maritime Activity in West and Central Africa, and calls upon States in the region to continue to strengthen implementation of the Code of Conduct as soon as possible and consistent with international law, in particular the Convention; __________________ 66 See International Chamber of Commerce-International Maritime <mark class="bg-yellow-200 px-0.5 rounded">Bureau</mark>, “Piracy and Armed Robbery against Ships Report”, January–March 2023. 67 Ibid. 68 S/PRST/2016/4; see Resolutions and Decisions of the Security Council, 1 August 2015– 31 December 2016 (S/INF/71). 69 International Maritime Organization, resolution MSC.489(103) (document MSC 103/21/Add.1, annex 9). A/80/L.22 23/55 25-19446
-                    </p>
-                </div>
-                
-                <div class="flex gap-4">
                     <a href="../documents/A_80_L.22.html#para-199"
                        class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
                        bg-gray-100 text-gray-700
@@ -1825,18 +1390,6 @@
                     </a>
                     <p class="text-sm text-gray-700 leading-relaxed">
                         Notes, in this regard, the decision at the twenty-seventh session of the Conference of the Parties to the United Nations Framework Convention on Climate Change that ocean and climate change dialogues will, from 2023, be facilitated by two <mark class="bg-yellow-200 px-0.5 rounded">co-facilitators</mark>, selected by Parties biennially, who will be responsible for deciding the topics for and conducting the dialogue, in consultation with Parties and observers, and preparing an informal summary report for consideration at the subsequent session of the Conference of the Parties;
-                    </p>
-                </div>
-                
-                <div class="flex gap-4">
-                    <a href="../documents/A_80_L.22.html#para-314"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        314
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        Also recognizes with appreciation the important role and guidance of the <mark class="bg-yellow-200 px-0.5 rounded">Bureau</mark> of the Ad Hoc Working Group of the Whole during the third cycle and the support provided by the secretariat of the Regular Process;
                     </p>
                 </div>
                 
@@ -1932,52 +1485,6 @@
             <!-- Document Header -->
             <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-gray-50">
                 <div class="flex items-center gap-4">
-                    <a href="../documents/A_RES_80_66.html" 
-                       class="font-semibold text-lg text-gray-900 hover:text-un-blue transition-colors">
-                        A/RES/80/66
-                    </a>
-                    <span class="text-sm text-muted">
-                        1 match
-                    </span>
-                    
-                </div>
-                <div class="flex items-center gap-4">
-                    <a href="../documents/A_RES_80_66.html" 
-                       class="text-sm font-medium text-un-blue hover:text-un-blue-dark transition-colors">
-                        View document
-                    </a>
-                    <a href="https://docs.un.org/en/a/res/80/66?direct=true" target="_blank"
-                       class="text-sm text-muted hover:text-un-blue transition-colors">
-                        PDF ↗
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Matching Paragraphs -->
-            <div class="p-5 space-y-4">
-                
-                <div class="flex gap-4">
-                    <a href="../documents/A_RES_80_66.html#para-8"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        8
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        Requests the Disarmament Commission to hold a substantive session for a period not exceeding three weeks during 2026, namely from 6 to 24 April, and an organizational session at the beginning of 2026 before the substantive session, to elect _______________ 2 Resolution 44/119 C, annex. 3 Resolution S‑10/2. Report of the Disarmament Commission A/RES/80/66 3/3 25-20004 its <mark class="bg-yellow-200 px-0.5 rounded">Bureau</mark> and address other outstanding organizational matters, and to submit a substantive report to the General Assembly at its eighty-first session, and stresses that the report of the Commission should contain a summary by the Chair of the proceedings to reflect different views or positions if no agreement can be reached on the specific agenda item deliberated on, as provided for in paragraph 3.4 of the adopted “Ways and means to enhance the functioning of the Disarmament Commission”;
-                    </p>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="border border-gray-200 rounded-lg overflow-hidden"
-             data-adopted="false"
-             >
-            <!-- Document Header -->
-            <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-gray-50">
-                <div class="flex items-center gap-4">
                     <a href="../documents/A_RES_80_72.html" 
                        class="font-semibold text-lg text-gray-900 hover:text-un-blue transition-colors">
                         A/RES/80/72
@@ -2011,110 +1518,6 @@
                     </a>
                     <p class="text-sm text-gray-700 leading-relaxed">
                         Welcomes the convening of the High-level International Conference for the Peaceful Settlement of the Question of Palestine and the Implementation of the Two-State _______________ 7 A/66/371-S/2011/592, annex I. 8 See S/PV.9609. 9 A/67/738. 10 A/56/1026-S/2002/932, annex II, resolution 14/221. Peaceful settlement of the question of Palestine A/RES/80/72 5/7 25-19847 Solution, held at the ministerial level in July 2025 and at the summit level in September 2025, and the endorsement by the General Assembly, in its decision 80/506 of 12 September 2025, of the New York Declaration on the Peaceful Settlement of the Question of Palestine and the Implementation of the Two-State Solution,11 and mandates the <mark class="bg-yellow-200 px-0.5 rounded">Co-Chairs</mark> of the Conference, in consultation with the <mark class="bg-yellow-200 px-0.5 rounded">Co-Chairs</mark> of the working groups, to follow up on the objectives of the Conference and the commitments made therein, including, if necessary, by reconvening the Conference, in New York or elsewhere, or by convening follow-up meetings, or through the Global Alliance for the Implementation of the Two-State Solution;
-                    </p>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="border border-gray-200 rounded-lg overflow-hidden"
-             data-adopted="false"
-             >
-            <!-- Document Header -->
-            <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-gray-50">
-                <div class="flex items-center gap-4">
-                    <a href="../documents/A_RES_80_76.html" 
-                       class="font-semibold text-lg text-gray-900 hover:text-un-blue transition-colors">
-                        A/RES/80/76
-                    </a>
-                    <span class="text-sm text-muted">
-                        2 matches
-                    </span>
-                    
-                </div>
-                <div class="flex items-center gap-4">
-                    <a href="../documents/A_RES_80_76.html" 
-                       class="text-sm font-medium text-un-blue hover:text-un-blue-dark transition-colors">
-                        View document
-                    </a>
-                    <a href="https://docs.un.org/en/a/res/80/76?direct=true" target="_blank"
-                       class="text-sm text-muted hover:text-un-blue transition-colors">
-                        PDF ↗
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Matching Paragraphs -->
-            <div class="p-5 space-y-4">
-                
-                <div class="flex gap-4">
-                    <a href="../documents/A_RES_80_76.html#para-22"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        22
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        Notes with satisfaction the establishment of the Action Team on Lunar Activities Consultation of the Committee to facilitate international consultations to ensure that lunar activities are conducted in a safe, peaceful and transparent manner, and welcomes the establishment of the <mark class="bg-yellow-200 px-0.5 rounded">Bureau</mark> and the endorsement of the workplan of the Action Team;25
-                    </p>
-                </div>
-                
-                <div class="flex gap-4">
-                    <a href="../documents/A_RES_80_76.html#para-45"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        45
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        Reiterates, with regard to the composition of the <mark class="bg-yellow-200 px-0.5 rounded">bureau</mark>x of the Committee and its subcommittees for the period 2026–2027, 32 that the Committee and its subcommittees should elect their officers at their respective sessions in 2026 in accordance with that composition;
-                    </p>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="border border-gray-200 rounded-lg overflow-hidden"
-             data-adopted="false"
-             >
-            <!-- Document Header -->
-            <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-gray-50">
-                <div class="flex items-center gap-4">
-                    <a href="../documents/A_RES_80_105.html" 
-                       class="font-semibold text-lg text-gray-900 hover:text-un-blue transition-colors">
-                        A/RES/80/105
-                    </a>
-                    <span class="text-sm text-muted">
-                        1 match
-                    </span>
-                    
-                </div>
-                <div class="flex items-center gap-4">
-                    <a href="../documents/A_RES_80_105.html" 
-                       class="text-sm font-medium text-un-blue hover:text-un-blue-dark transition-colors">
-                        View document
-                    </a>
-                    <a href="https://docs.un.org/en/a/res/80/105?direct=true" target="_blank"
-                       class="text-sm text-muted hover:text-un-blue transition-colors">
-                        PDF ↗
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Matching Paragraphs -->
-            <div class="p-5 space-y-4">
-                
-                <div class="flex gap-4">
-                    <a href="../documents/A_RES_80_105.html#para-17"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        17
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        Requests the Secretary-General, President pro tempore of the Special Committee, to meet informally at least once a year with the Chair and the <mark class="bg-yellow-200 px-0.5 rounded">Bureau</mark> of the Committee during the intersessional period, in order to explore innovative ways of using his good offices to help to advance the decolonization agenda on a case-by- case basis;
                     </p>
                 </div>
                 
@@ -2172,7 +1575,7 @@
                         6
                     </a>
                     <p class="text-sm text-gray-700 leading-relaxed">
-                        Requests the Secretary-General to convene the first meeting of the Conference of the Parties to the Agreement for at least 10 working days by 17 January 2027, on dates and for a duration to be determined in consultation with the <mark class="bg-yellow-200 px-0.5 rounded">Co-Chairs</mark> and the <mark class="bg-yellow-200 px-0.5 rounded">Bureau</mark> of the Preparatory Commission, with full conference services, including documentation, provision for parallel meetings and overtime, webcast and press and meeting coverage;
+                        Requests the Secretary-General to convene the first meeting of the Conference of the Parties to the Agreement for at least 10 working days by 17 January 2027, on dates and for a duration to be determined in consultation with the <mark class="bg-yellow-200 px-0.5 rounded">Co-Chairs</mark> and the Bureau of the Preparatory Commission, with full conference services, including documentation, provision for parallel meetings and overtime, webcast and press and meeting coverage;
                     </p>
                 </div>
                 
@@ -2357,7 +1760,7 @@
                         A/RES/80/110
                     </a>
                     <span class="text-sm text-muted">
-                        6 matches
+                        4 matches
                     </span>
                     
                 </div>
@@ -2377,18 +1780,6 @@
             <div class="p-5 space-y-4">
                 
                 <div class="flex gap-4">
-                    <a href="../documents/A_RES_80_110.html#para-129"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        129
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        Remains concerned about piracy and armed robbery at sea in the Gulf of Guinea, with crew members kidnapped, but welcomes the decline in incidents of piracy and armed robbery at sea in that region since 2020,67 notes the adoption by the Security Council of resolutions 2018 (2011) of 31 October 2011, 2039 (2012) of 29 February 2012 and 2634 (2022) of 31 May 2022 and the statement by the President of the Council of 25 April 2016,68 supports the efforts to address this problem at the global and regional levels, including the adoption by the Maritime Safety Committee of the International Maritime Organization of a resolution on recommended action to _______________ 66 See International Chamber of Commerce-International Maritime <mark class="bg-yellow-200 px-0.5 rounded">Bureau</mark>, “Piracy and Armed Robbery against Ships Report”, January–March 2023. 67 Ibid. 68 S/PRST/2016/4; see Resolutions and Decisions of the Security Council, 1 August 2015– 31 December 2016 (S/INF/71). Oceans and the law of the sea A/RES/80/110 23/56 25-20236 address piracy and armed robbery in the Gulf of Guinea,69 recalls the primary role of States in the region to counter the threat and address the underlying causes of piracy and armed robbery at sea in the Gulf of Guinea, welcomes the adoption in Yaoundé on 25 June 2013 of the Code of Conduct concerning the Repression of Piracy, Armed Robbery against Ships and Illicit Maritime Activity in West and Central Africa, and calls upon States in the region to continue to strengthen implementation of the Code of Conduct as soon as possible and consistent with international law, in particular the Convention;
-                    </p>
-                </div>
-                
-                <div class="flex gap-4">
                     <a href="../documents/A_RES_80_110.html#para-199"
                        class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
                        bg-gray-100 text-gray-700
@@ -2397,18 +1788,6 @@
                     </a>
                     <p class="text-sm text-gray-700 leading-relaxed">
                         Notes, in this regard, the decision at the twenty-seventh session of the Conference of the Parties to the United Nations Framework Convention on Climate Change that ocean and climate change dialogues will, from 2023, be facilitated by two <mark class="bg-yellow-200 px-0.5 rounded">co-facilitators</mark>, selected by Parties biennially, who will be responsible for deciding the topics for and conducting the dialogue, in consultation with Parties and observers, and preparing an informal summary report for consideration at the subsequent session of the Conference of the Parties;
-                    </p>
-                </div>
-                
-                <div class="flex gap-4">
-                    <a href="../documents/A_RES_80_110.html#para-314"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        314
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        Also recognizes with appreciation the important role and guidance of the <mark class="bg-yellow-200 px-0.5 rounded">Bureau</mark> of the Ad Hoc Working Group of the Whole during the third cycle and the support provided by the secretariat of the Regular Process;
                     </p>
                 </div>
                 
@@ -2649,7 +2028,7 @@
                         A/RES/80/164
                     </a>
                     <span class="text-sm text-muted">
-                        2 matches
+                        1 match
                     </span>
                     
                 </div>
@@ -2667,18 +2046,6 @@
             
             <!-- Matching Paragraphs -->
             <div class="p-5 space-y-4">
-                
-                <div class="flex gap-4">
-                    <a href="../documents/A_RES_80_164.html#para-22"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        22
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        Decides, without prejudice to the budgetary prerogatives of the Fifth Committee and to the authority of the Secretary-General, that no exceptional measures affecting the duration of the seventy-seventh session of the International Law Commission shall be taken by the Secretariat without consultation with the <mark class="bg-yellow-200 px-0.5 rounded">Bureau</mark> of the Sixth Committee, which shall inform the Sixth Committee; Report of the International Law Commission on the work of its seventy-sixth session A/RES/80/164 5/7 25-20858
-                    </p>
-                </div>
                 
                 <div class="flex gap-4">
                     <a href="../documents/A_RES_80_164.html#para-23"
@@ -2702,104 +2069,12 @@
             <!-- Document Header -->
             <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-gray-50">
                 <div class="flex items-center gap-4">
-                    <a href="../documents/A_RES_80_206.html" 
-                       class="font-semibold text-lg text-gray-900 hover:text-un-blue transition-colors">
-                        A/RES/80/206
-                    </a>
-                    <span class="text-sm text-muted">
-                        1 match
-                    </span>
-                    
-                </div>
-                <div class="flex items-center gap-4">
-                    <a href="../documents/A_RES_80_206.html" 
-                       class="text-sm font-medium text-un-blue hover:text-un-blue-dark transition-colors">
-                        View document
-                    </a>
-                    <a href="https://docs.un.org/en/a/res/80/206?direct=true" target="_blank"
-                       class="text-sm text-muted hover:text-un-blue transition-colors">
-                        PDF ↗
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Matching Paragraphs -->
-            <div class="p-5 space-y-4">
-                
-                <div class="flex gap-4">
-                    <a href="../documents/A_RES_80_206.html#para-2"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        2
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        Urges the States Parties to the United Nations human rights instruments, including the <mark class="bg-yellow-200 px-0.5 rounded">bureau</mark> members, to include this matter in the agenda of each meeting and/or conference of States Parties to those instruments in order to initiate a debate on ways and means to ensure equitable geographical distribution in the membership of the human rights treaty bodies, based on previous recommendations of the former Commission on Human Rights and the Economic and Social Council and the provisions of the present resolution; _______________ 1 A/CONF.157/24 (Part I), chap. III. 2 A/80/299. Promotion of equitable geographical distribution in the membership of the human rights treaty bodies A/RES/80/206 3/3 25-20960
-                    </p>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="border border-gray-200 rounded-lg overflow-hidden"
-             data-adopted="false"
-             >
-            <!-- Document Header -->
-            <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-gray-50">
-                <div class="flex items-center gap-4">
-                    <a href="../documents/A_RES_80_225.html" 
-                       class="font-semibold text-lg text-gray-900 hover:text-un-blue transition-colors">
-                        A/RES/80/225
-                    </a>
-                    <span class="text-sm text-muted">
-                        1 match
-                    </span>
-                    
-                </div>
-                <div class="flex items-center gap-4">
-                    <a href="../documents/A_RES_80_225.html" 
-                       class="text-sm font-medium text-un-blue hover:text-un-blue-dark transition-colors">
-                        View document
-                    </a>
-                    <a href="https://docs.un.org/en/a/res/80/225?direct=true" target="_blank"
-                       class="text-sm text-muted hover:text-un-blue transition-colors">
-                        PDF ↗
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Matching Paragraphs -->
-            <div class="p-5 space-y-4">
-                
-                <div class="flex gap-4">
-                    <a href="../documents/A_RES_80_225.html#para-9"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        9
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        Welcomes the plan for the documentation for the Fifteenth Congress, prepared by the Secretary-General in consultation with the extended <mark class="bg-yellow-200 px-0.5 rounded">Bureau</mark> of the Commission on Crime Prevention and Criminal Justice;
-                    </p>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="border border-gray-200 rounded-lg overflow-hidden"
-             data-adopted="false"
-             >
-            <!-- Document Header -->
-            <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-gray-50">
-                <div class="flex items-center gap-4">
                     <a href="../documents/A_RES_80_234.html" 
                        class="font-semibold text-lg text-gray-900 hover:text-un-blue transition-colors">
                         A/RES/80/234
                     </a>
                     <span class="text-sm text-muted">
-                        3 matches
+                        1 match
                     </span>
                     
                 </div>
@@ -2819,30 +2094,6 @@
             <div class="p-5 space-y-4">
                 
                 <div class="flex gap-4">
-                    <a href="../documents/A_RES_80_234.html#para-20"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        20
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        Recognizes that late starts and unplanned early endings seriously affect the interpretation utilization factor of those bodies, invites the secretariats and <mark class="bg-yellow-200 px-0.5 rounded">bureau</mark>x of the bodies to pay adequate attention in this regard, and welcomes their efforts to inform the Secretariat in a timely manner of any such changes in order to allow conference services to be smoothly redeployed to other meetings;
-                    </p>
-                </div>
-                
-                <div class="flex gap-4">
-                    <a href="../documents/A_RES_80_234.html#para-23"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        23
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        Urges the secretariats and <mark class="bg-yellow-200 px-0.5 rounded">bureau</mark>x of bodies that underutilize their conference-servicing resources to work more closely with the Department for General Assembly and Conference Management and to consider changes to their programmes of work, as appropriate, including adjustments based on previous patterns of recurring agenda items, with a view to making improvements in their interpretation utilization factors;
-                    </p>
-                </div>
-                
-                <div class="flex gap-4">
                     <a href="../documents/A_RES_80_234.html#para-59"
                        class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
                        bg-gray-100 text-gray-700
@@ -2851,52 +2102,6 @@
                     </a>
                     <p class="text-sm text-gray-700 leading-relaxed">
                         Notes that accurate, timely and consistent information provided by the Secretariat to the Fifth Committee during its <mark class="bg-yellow-200 px-0.5 rounded">informal consultations</mark> facilitates the decision-making process in the Committee;
-                    </p>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="border border-gray-200 rounded-lg overflow-hidden"
-             data-adopted="false"
-             >
-            <!-- Document Header -->
-            <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-gray-50">
-                <div class="flex items-center gap-4">
-                    <a href="../documents/A_RES_80_237.html" 
-                       class="font-semibold text-lg text-gray-900 hover:text-un-blue transition-colors">
-                        A/RES/80/237
-                    </a>
-                    <span class="text-sm text-muted">
-                        1 match
-                    </span>
-                    
-                </div>
-                <div class="flex items-center gap-4">
-                    <a href="../documents/A_RES_80_237.html" 
-                       class="text-sm font-medium text-un-blue hover:text-un-blue-dark transition-colors">
-                        View document
-                    </a>
-                    <a href="https://docs.un.org/en/a/res/80/237?direct=true" target="_blank"
-                       class="text-sm text-muted hover:text-un-blue transition-colors">
-                        PDF ↗
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Matching Paragraphs -->
-            <div class="p-5 space-y-4">
-                
-                <div class="flex gap-4">
-                    <a href="../documents/A_RES_80_237.html#para-19"
-                       class="flex-shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold 
-                       bg-gray-100 text-gray-700
-                       hover:opacity-80 transition-opacity">
-                        19
-                    </a>
-                    <p class="text-sm text-gray-700 leading-relaxed">
-                        Further notes that there are accepted recommendations that are beyond their targeted date for implementation, also notes that administrative <mark class="bg-yellow-200 px-0.5 rounded">bureau</mark>cracy should not slow progress in this regard, and encourages the Office to continue to make recommendations more actionable and to work with the Organization, where appropriate, to ensure the long-term effectiveness and unselective and full implementation of the accepted recommendations;
                     </p>
                 </div>
                 
@@ -2930,7 +2135,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (toggleAdoptedBtn) {
             toggleAdoptedBtn.textContent = showAdopted
                 ? 'Hide adopted drafts'
-                : 'Show adopted drafts (19)';
+                : 'Show adopted drafts (14)';
         }
         applyAdoptedVisibility();
     }
