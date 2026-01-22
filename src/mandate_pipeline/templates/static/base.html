@@ -46,9 +46,8 @@
                     <span class="text-lg font-semibold text-gray-900 group-hover:text-un-blue transition-colors">Mandate Pipeline</span>
                 </a>
                 <nav class="flex items-center gap-6">
+                    <a href="{% block nav_signals %}./signals.html{% endblock %}" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Signals</a>
                     <a href="{% block nav_documents %}./documents/index.html{% endblock %}" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Documents</a>
-                    <a href="{% block nav_provenance %}./provenance/index.html{% endblock %}" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Origins</a>
-                    <a href="{% block nav_origin_matrix %}./origin_matrix.html{% endblock %}" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Matrix</a>
                     <div class="relative group">
                         <button class="text-muted hover:text-un-blue transition-colors text-sm font-medium flex items-center gap-1">
                             Debug

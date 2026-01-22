@@ -1,0 +1,299 @@
+{% extends "base.html" %}
+
+{% block title %}Signals - Mandate Pipeline{% endblock %}
+
+{% block nav_index %}./index.html{% endblock %}
+{% block nav_signals %}./signals.html{% endblock %}
+{% block nav_documents %}./documents/index.html{% endblock %}
+
+{% block content %}
+<!-- Header -->
+<div class="mb-8">
+    <h1 class="text-3xl font-bold text-gray-900 tracking-tight">Signal Browser</h1>
+    <p class="mt-2 text-muted" id="stats-text">
+        {{ total_paragraphs }} paragraphs across {{ total_docs }} resolutions
+    </p>
+</div>
+
+<!-- Filter Controls -->
+<div class="mb-8 flex flex-wrap gap-4 items-end">
+    <div class="flex-1 min-w-[200px]">
+        <label for="source-filter" class="block text-sm font-medium text-gray-700 mb-1">Source</label>
+        <select id="source-filter" class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-sm focus:outline-none focus:ring-2 focus:ring-un-blue focus:border-transparent">
+            <option value="">All Sources</option>
+            {% for origin_code in origin_order %}
+            <option value="{{ origin_code }}">{{ origin_names.get(origin_code, origin_code) }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="flex-1 min-w-[200px]">
+        <label for="signal-filter" class="block text-sm font-medium text-gray-700 mb-1">Signal Type</label>
+        <select id="signal-filter" class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-sm focus:outline-none focus:ring-2 focus:ring-un-blue focus:border-transparent">
+            <option value="">All Signals</option>
+            {% for check in checks %}
+            <option value="{{ check.signal }}">{{ check.signal }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button id="clear-filters" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">
+        Clear filters
+    </button>
+</div>
+
+<!-- Main Content Area with Split View -->
+<div class="flex gap-6" id="main-content">
+    <!-- Document List -->
+    <div class="flex-1 min-w-0" id="document-list">
+        <div class="space-y-4" id="documents-container">
+            {% for doc in documents %}
+            <div class="border border-gray-200 rounded-lg overflow-hidden document-card hover:border-gray-300 transition-colors"
+                 data-symbol="{{ doc.symbol }}"
+                 data-source="{{ doc.origin }}"
+                 data-signals="{{ doc.signal_summary.keys()|list|join(',') }}"
+                 data-un-url="{{ doc.un_url }}">
+                <!-- Document Header -->
+                <div class="bg-gray-50 px-4 py-3 border-b border-gray-200">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center gap-3 mb-1">
+                                <button class="view-doc-btn font-semibold text-gray-900 hover:text-un-blue transition-colors text-left"
+                                        data-symbol="{{ doc.symbol }}"
+                                        data-un-url="{{ doc.un_url }}">
+                                    {{ doc.symbol }}
+                                </button>
+                                <span class="inline-flex items-center justify-center w-6 h-6 rounded text-xs font-bold flex-shrink-0
+                                    {% if doc.origin == 'Plenary' %}bg-amber-50 text-amber-700
+                                    {% elif doc.origin == 'C1' %}bg-red-50 text-red-700
+                                    {% elif doc.origin == 'C2' %}bg-green-50 text-green-700
+                                    {% elif doc.origin == 'C3' %}bg-blue-50 text-blue-700
+                                    {% elif doc.origin == 'C4' %}bg-purple-50 text-purple-700
+                                    {% elif doc.origin == 'C5' %}bg-orange-50 text-orange-700
+                                    {% elif doc.origin == 'C6' %}bg-teal-50 text-teal-700
+                                    {% else %}bg-gray-100 text-gray-700{% endif %}">
+                                    {{ doc.origin[:2] }}
+                                </span>
+                                <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+                                    {{ doc.signal_paragraphs|length }} paragraph{% if doc.signal_paragraphs|length != 1 %}s{% endif %}
+                                </span>
+                            </div>
+                            {% if doc.title %}
+                            <p class="text-sm text-gray-600 truncate" title="{{ doc.title }}">{{ doc.title }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="flex items-center gap-2 flex-shrink-0">
+                            <a href="./documents/{{ doc.symbol|replace('/', '_') }}.html"
+                               class="text-xs text-muted hover:text-un-blue transition-colors">
+                                Details
+                            </a>
+                            <a href="{{ doc.un_url }}" target="_blank"
+                               class="text-xs text-muted hover:text-un-blue transition-colors">
+                                PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paragraphs -->
+                <div class="divide-y divide-gray-100">
+                    {% for para in doc.signal_paragraphs %}
+                    <div class="px-4 py-3 flex gap-4 paragraph-item" data-signals="{{ para.signals|join(',') }}">
+                        <div class="flex-shrink-0">
+                            <a href="./documents/{{ doc.symbol|replace('/', '_') }}.html#para-{{ para.number }}"
+                               class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-gray-100 text-gray-700 font-medium text-sm hover:bg-un-blue hover:text-white transition-colors">
+                                {{ para.number }}
+                            </a>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-wrap gap-1 mb-2">
+                                {% for signal in para.signals %}
+                                <span class="px-2 py-0.5 rounded text-xs font-medium signal-tag
+                                    {% if 'agenda' in signal|lower %}bg-blue-50 text-blue-700
+                                    {% elif 'pga' in signal|lower %}bg-purple-50 text-purple-700
+                                    {% else %}bg-gray-100 text-gray-600{% endif %}">
+                                    {{ signal }}
+                                </span>
+                                {% endfor %}
+                            </div>
+                            <p class="text-gray-700 leading-relaxed text-sm">{{ para.text|highlight_signals(para.signals) }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="hidden text-center py-16">
+            <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+            <p class="text-muted">No documents match the selected filters.</p>
+        </div>
+    </div>
+
+    <!-- Document Embed Panel -->
+    <div id="embed-panel" class="hidden w-[500px] flex-shrink-0 sticky top-24 h-[calc(100vh-8rem)]">
+        <div class="border border-gray-200 rounded-lg overflow-hidden h-full flex flex-col bg-white shadow-lg">
+            <div class="px-4 py-3 border-b border-gray-200 bg-gray-50 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <span id="embed-symbol" class="font-semibold text-gray-900"></span>
+                    <a id="embed-external-link" href="#" target="_blank" class="text-xs text-muted hover:text-un-blue">
+                        Open in new tab
+                    </a>
+                </div>
+                <button id="close-embed" class="p-1 text-gray-400 hover:text-gray-600 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="flex-1 bg-gray-100">
+                <iframe id="embed-iframe" class="w-full h-full border-0" src="about:blank"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const sourceFilter = document.getElementById('source-filter');
+    const signalFilter = document.getElementById('signal-filter');
+    const clearFiltersBtn = document.getElementById('clear-filters');
+    const documentsContainer = document.getElementById('documents-container');
+    const documentCards = document.querySelectorAll('.document-card');
+    const emptyState = document.getElementById('empty-state');
+    const statsText = document.getElementById('stats-text');
+    const embedPanel = document.getElementById('embed-panel');
+    const embedIframe = document.getElementById('embed-iframe');
+    const embedSymbol = document.getElementById('embed-symbol');
+    const embedExternalLink = document.getElementById('embed-external-link');
+    const closeEmbedBtn = document.getElementById('close-embed');
+    const mainContent = document.getElementById('main-content');
+
+    // Parse URL params and set initial filter state
+    function initFromUrl() {
+        const params = new URLSearchParams(window.location.search);
+        const source = params.get('source');
+        const signal = params.get('signal');
+
+        if (source) sourceFilter.value = source;
+        if (signal) signalFilter.value = signal;
+
+        applyFilters();
+    }
+
+    // Update URL without reloading
+    function updateUrl() {
+        const params = new URLSearchParams();
+        if (sourceFilter.value) params.set('source', sourceFilter.value);
+        if (signalFilter.value) params.set('signal', signalFilter.value);
+
+        const newUrl = params.toString()
+            ? `${window.location.pathname}?${params.toString()}`
+            : window.location.pathname;
+        history.replaceState(null, '', newUrl);
+    }
+
+    function applyFilters() {
+        const selectedSource = sourceFilter.value;
+        const selectedSignal = signalFilter.value;
+        let visibleCount = 0;
+        let paragraphCount = 0;
+
+        documentCards.forEach(card => {
+            const cardSource = card.dataset.source;
+            const cardSignals = card.dataset.signals.split(',').filter(s => s);
+
+            // Check source filter
+            const sourceMatch = !selectedSource || cardSource === selectedSource;
+
+            // Check signal filter
+            const signalMatch = !selectedSignal || cardSignals.includes(selectedSignal);
+
+            if (sourceMatch && signalMatch) {
+                card.classList.remove('hidden');
+                visibleCount++;
+
+                // Filter paragraphs within the card if signal filter is active
+                const paragraphs = card.querySelectorAll('.paragraph-item');
+                paragraphs.forEach(para => {
+                    const paraSignals = para.dataset.signals.split(',').filter(s => s);
+                    if (!selectedSignal || paraSignals.includes(selectedSignal)) {
+                        para.classList.remove('hidden');
+                        paragraphCount++;
+                    } else {
+                        para.classList.add('hidden');
+                    }
+                });
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+
+        // Show/hide empty state
+        if (visibleCount === 0) {
+            emptyState.classList.remove('hidden');
+            documentsContainer.classList.add('hidden');
+        } else {
+            emptyState.classList.add('hidden');
+            documentsContainer.classList.remove('hidden');
+        }
+
+        // Update stats
+        statsText.textContent = `${paragraphCount} paragraphs across ${visibleCount} resolutions`;
+
+        updateUrl();
+    }
+
+    // Document embed functionality
+    function showEmbed(symbol, url) {
+        embedSymbol.textContent = symbol;
+        embedExternalLink.href = url;
+        embedIframe.src = url;
+        embedPanel.classList.remove('hidden');
+        mainContent.classList.add('embed-open');
+    }
+
+    function hideEmbed() {
+        embedPanel.classList.add('hidden');
+        embedIframe.src = 'about:blank';
+        mainContent.classList.remove('embed-open');
+    }
+
+    // Event listeners
+    sourceFilter.addEventListener('change', applyFilters);
+    signalFilter.addEventListener('change', applyFilters);
+
+    clearFiltersBtn.addEventListener('click', function() {
+        sourceFilter.value = '';
+        signalFilter.value = '';
+        applyFilters();
+    });
+
+    closeEmbedBtn.addEventListener('click', hideEmbed);
+
+    // View document button clicks
+    document.querySelectorAll('.view-doc-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const symbol = this.dataset.symbol;
+            const url = this.dataset.unUrl;
+            showEmbed(symbol, url);
+        });
+    });
+
+    // Initialize from URL
+    initFromUrl();
+});
+</script>
+
+<style>
+.embed-open #document-list {
+    max-width: calc(100% - 520px);
+}
+</style>
+{% endblock %}
+
+{% block footer %}
+Generated {{ generated_at }} · <a href="./data.json" class="text-un-blue hover:underline">JSON API</a>
+{% endblock %}

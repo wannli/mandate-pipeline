@@ -37,7 +37,7 @@
     <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-100">
         <div class="max-w-5xl mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <a href="../../index.html" class="flex items-center gap-3 group">
+                <a href="../index.html" class="flex items-center gap-3 group">
                     <div class="w-9 h-9 rounded-lg bg-un-blue flex items-center justify-center">
                         <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -46,9 +46,8 @@
                     <span class="text-lg font-semibold text-gray-900 group-hover:text-un-blue transition-colors">Mandate Pipeline</span>
                 </a>
                 <nav class="flex items-center gap-6">
-                    <a href="../../documents/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Documents</a>
-                    <a href="./provenance/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Origins</a>
-                    <a href="./origin_matrix.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Matrix</a>
+                    <a href="../signals.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Signals</a>
+                    <a href="../documents/index.html" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">Documents</a>
                     <div class="relative group">
                         <button class="text-muted hover:text-un-blue transition-colors text-sm font-medium flex items-center gap-1">
                             Debug
@@ -57,14 +56,14 @@
                             </svg>
                         </button>
                         <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
-                            <a href="./debug/index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-t-lg">Overview</a>
-                            <a href="./debug/linking.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Linking Audit</a>
-                            <a href="./debug/orphans.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Unlinked</a>
-                            <a href="./debug/fuzzy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Fuzzy Matches</a>
-                            <a href="./debug/extraction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-b-lg">Extraction</a>
+                            <a href="./index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-t-lg">Overview</a>
+                            <a href="./linking.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Linking Audit</a>
+                            <a href="./orphans.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Unlinked</a>
+                            <a href="./fuzzy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue">Fuzzy Matches</a>
+                            <a href="./extraction.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-un-blue rounded-b-lg">Extraction</a>
                         </div>
                     </div>
-                    <a href="./data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
+                    <a href="../data.json" class="text-muted hover:text-un-blue transition-colors text-sm font-medium">API</a>
                 </nav>
             </div>
         </div>
@@ -76,7 +75,7 @@
 <!-- Breadcrumb -->
 <nav class="mb-8">
     <ol class="flex items-center gap-2 text-sm text-muted">
-        <li><a href="../../index.html" class="hover:text-un-blue transition-colors">Home</a></li>
+        <li><a href="../index.html" class="hover:text-un-blue transition-colors">Home</a></li>
         <li class="text-gray-300">/</li>
         <li><a href="./index.html" class="hover:text-un-blue transition-colors">Debug</a></li>
         <li class="text-gray-300">/</li>
@@ -117,7 +116,7 @@
     <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">Linking Methods Used</h2>
     <div class="grid grid-cols-3 gap-4">
         <div class="text-center">
-            <div class="text-xl font-bold text-green-600">178</div>
+            <div class="text-xl font-bold text-green-600">176</div>
             <div class="text-sm text-muted">UNDL Metadata</div>
             <div class="text-xs text-gray-400">(authoritative)</div>
         </div>
@@ -127,7 +126,7 @@
             <div class="text-xs text-gray-400">(from PDF text)</div>
         </div>
         <div class="text-center">
-            <div class="text-xl font-bold text-amber-600">44</div>
+            <div class="text-xl font-bold text-amber-600">46</div>
             <div class="text-sm text-muted">Fuzzy Title Match</div>
             <div class="text-xs text-gray-400">(similarity-based)</div>
         </div>
@@ -138,7 +137,7 @@
 <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-8">
     <div class="flex items-center justify-between mb-4">
         <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide">UNDL Metadata Cache</h2>
-        <span class="text-xs text-muted">242 entries | 44.88 KB</span>
+        <span class="text-xs text-muted">241 entries | 44.69 KB</span>
     </div>
     
     <div class="max-h-48 overflow-y-auto">
@@ -276,7 +275,7 @@
         </table>
     </div>
     
-    <p class="text-xs text-muted mt-2">Showing 20 of 242 entries</p>
+    <p class="text-xs text-muted mt-2">Showing 20 of 241 entries</p>
     
     
 </div>
@@ -15872,9 +15871,8 @@
                 <span class="font-mono font-medium text-gray-900">A/RES/80/161</span>
                 
                 <span class="px-2 py-0.5 rounded text-xs font-medium
-                    bg-green-100 text-green-700
-                    ">
-                    undl
+                    bg-amber-100 text-amber-700">
+                    fuzzy
                 </span>
                 <span class="text-xs text-muted">100% confidence</span>
                 
@@ -15894,14 +15892,13 @@
             <div class="mb-4">
                 <div class="flex items-center gap-2 mb-2">
                     
-                    <span class="text-green-500">&#10004;</span>
+                    <span class="text-red-500">&#10008;</span>
                     
                     <span class="text-sm font-medium text-gray-700">Pass 0: UNDL Metadata</span>
                 </div>
                 <div class="ml-6 text-xs text-muted">
                     
-                    Found refs: A/C.6/80/L.10<br>
-                    Linked locally: A/C.6/80/L.10
+                    No cross-references found in UNDL metadata
                     
                 </div>
             </div>
@@ -15910,7 +15907,7 @@
             <div class="mb-4">
                 <div class="flex items-center gap-2 mb-2">
                     
-                    <span class="text-gray-400">&#9679;</span>
+                    <span class="text-red-500">&#10008;</span>
                     
                     <span class="text-sm font-medium text-gray-700">Pass 1: Symbol References</span>
                 </div>
@@ -15919,7 +15916,7 @@
                     No L. symbol references found in PDF text<br>
                     
                     
-                    Skipped (already linked)
+                    No matching local proposals found
                     
                 </div>
             </div>
@@ -15928,7 +15925,7 @@
             <div class="mb-4">
                 <div class="flex items-center gap-2 mb-2">
                     
-                    <span class="text-gray-400">&#9679;</span>
+                    <span class="text-green-500">&#10004;</span>
                     
                     <span class="text-sm font-medium text-gray-700">Pass 2: Fuzzy Title Match</span>
                 </div>
@@ -15937,8 +15934,18 @@
                     Normalized title: "report of the united nations commission on international trade law on the work of its fifty eighth session"<br>
                     
                     
-                    Skipped (already linked)<br>
+                    Best match: A/C.6/80/L.10 (100%)
+                     + agenda overlap<br>
                     
+                    
+                    <details class="mt-2">
+                        <summary class="cursor-pointer text-un-blue hover:underline">View candidates (1)</summary>
+                        <ul class="mt-1 ml-2 space-y-1">
+                            
+                            <li>A/C.6/80/L.10: 100% (agenda match)</li>
+                            
+                        </ul>
+                    </details>
                     
                 </div>
             </div>
@@ -20066,9 +20073,8 @@
                 <span class="font-mono font-medium text-gray-900">A/RES/80/203</span>
                 
                 <span class="px-2 py-0.5 rounded text-xs font-medium
-                    bg-green-100 text-green-700
-                    ">
-                    undl
+                    bg-amber-100 text-amber-700">
+                    fuzzy
                 </span>
                 <span class="text-xs text-muted">100% confidence</span>
                 
@@ -20088,14 +20094,13 @@
             <div class="mb-4">
                 <div class="flex items-center gap-2 mb-2">
                     
-                    <span class="text-green-500">&#10004;</span>
+                    <span class="text-red-500">&#10008;</span>
                     
                     <span class="text-sm font-medium text-gray-700">Pass 0: UNDL Metadata</span>
                 </div>
                 <div class="ml-6 text-xs text-muted">
                     
-                    Found refs: A/C.3/80/L.34<br>
-                    Linked locally: A/C.3/80/L.34
+                    No cross-references found in UNDL metadata
                     
                 </div>
             </div>
@@ -20104,7 +20109,7 @@
             <div class="mb-4">
                 <div class="flex items-center gap-2 mb-2">
                     
-                    <span class="text-gray-400">&#9679;</span>
+                    <span class="text-red-500">&#10008;</span>
                     
                     <span class="text-sm font-medium text-gray-700">Pass 1: Symbol References</span>
                 </div>
@@ -20113,7 +20118,7 @@
                     No L. symbol references found in PDF text<br>
                     
                     
-                    Skipped (already linked)
+                    No matching local proposals found
                     
                 </div>
             </div>
@@ -20122,7 +20127,7 @@
             <div class="mb-4">
                 <div class="flex items-center gap-2 mb-2">
                     
-                    <span class="text-gray-400">&#9679;</span>
+                    <span class="text-green-500">&#10004;</span>
                     
                     <span class="text-sm font-medium text-gray-700">Pass 2: Fuzzy Title Match</span>
                 </div>
@@ -20131,8 +20136,18 @@
                     Normalized title: "strengthening united nations action in the field of human rights through the promotion of international cooperation and the importance of non selectivity impartiality and objectivity"<br>
                     
                     
-                    Skipped (already linked)<br>
+                    Best match: A/C.3/80/L.34 (100%)
+                     + agenda overlap<br>
                     
+                    
+                    <details class="mt-2">
+                        <summary class="cursor-pointer text-un-blue hover:underline">View candidates (1)</summary>
+                        <ul class="mt-1 ml-2 space-y-1">
+                            
+                            <li>A/C.3/80/L.34: 100% (agenda match)</li>
+                            
+                        </ul>
+                    </details>
                     
                 </div>
             </div>
@@ -24243,7 +24258,7 @@ document.getElementById('search-input').addEventListener('input', function(e) {
         <div class="max-w-5xl mx-auto px-6 py-8">
             <p class="text-sm text-muted">
                 
-Generated 2026-01-22 17:25 UTC
+Generated 2026-01-22 20:41 UTC
 
             </p>
         </div>
