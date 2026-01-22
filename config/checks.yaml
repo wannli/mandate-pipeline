@@ -16,7 +16,7 @@ checks:
       - "decides to hold"
       - "decides to convene"
       - "high-level meeting"
-      - "Conference"
+      - "shall be held"
       - "interactive dialogue"
       - "multistakeholder"
 
@@ -25,7 +25,6 @@ checks:
       - "co-facilitators"
       - "co-chairs"
       - "co-conveners"
-      - "bureau"
       - "informal consultations"
 
   - signal: "report"
