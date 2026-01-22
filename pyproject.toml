@@ -34,3 +34,9 @@ testpaths = ["tests"]
 python_files = ["test_*.py"]
 python_functions = ["test_*"]
 pythonpath = ["src"]
+
+[dependency-groups]
+dev = [
+    "pytest (>=7.4.4)",
+    "pytest-mock (>=3.12.0)"
+]
