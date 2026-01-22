@@ -69,7 +69,9 @@
 <div class="mb-8">
     <h1 class="text-3xl font-bold text-gray-900 tracking-tight">C5 proposals</h1>
     
-    <p class="mt-2 text-muted">22 documents · Pattern: <code class="text-sm bg-gray-100 px-2 py-0.5 rounded">A/C.{committee}/{session}/L.{number}</code></p>
+    <p class="mt-1 text-xs text-muted">1 adopted drafts hidden</p>
+    
+    <p class="mt-2 text-muted">21 documents · Pattern: <code class="text-sm bg-gray-100 px-2 py-0.5 rounded">A/C.{committee}/{session}/L.{number}</code></p>
 </div>
 
 <!-- Signal Summary for this Pattern -->
@@ -123,6 +125,10 @@
             </button>
             <button id="show-all-btn" class="px-3 py-1.5 text-sm font-medium rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
                 Show All
+            </button>
+            
+            <button id="toggle-adopted-btn" class="px-3 py-1.5 text-sm font-medium rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
+                Show adopted drafts (1)
             </button>
             
         </div>
@@ -200,8 +206,8 @@
         
         <div class="border border-gray-200 rounded-lg overflow-hidden doc-card no-signals"
              data-has-signals="false"
-             data-adopted="false"
-             >
+             data-adopted="true"
+             style="display: none;">
             <!-- Document Header -->
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
                 <div class="flex items-center gap-3">
@@ -209,6 +215,13 @@
                         A/C.5/80/L.2
                     </a>
                     <span class="text-sm text-muted">6 paragraphs</span>
+                    
+                    <span class="text-xs text-muted">
+                        Adopted by
+                        <a href="../documents/A_RES_80_2.html" class="hover:text-un-blue transition-colors">
+                            A/RES/80/2
+                        </a>
+                    </span>
                     
                     
                     
@@ -2857,7 +2870,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (toggleAdoptedBtn) {
             toggleAdoptedBtn.textContent = showAdopted
                 ? 'Hide adopted drafts'
-                : 'Show adopted drafts (0)';
+                : 'Show adopted drafts (1)';
         }
         applyAdoptedVisibility();
     }

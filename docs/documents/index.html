@@ -60,8 +60,8 @@
 <div class="mb-8">
     <h1 class="text-3xl font-bold text-gray-900 tracking-tight">All Documents</h1>
     <p class="mt-2 text-muted">
-        340 documents analyzed
-        · 203 adopted drafts hidden
+        338 documents analyzed
+        · 205 adopted drafts hidden
     </p>
 </div>
 
@@ -76,12 +76,12 @@
         
         <button onclick="filterBySignal('agenda')" id="btn-agenda"
                 class="check-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all bg-gray-100 text-gray-700 hover:bg-gray-200">
-            agenda (155)
+            agenda (154)
         </button>
         
         <button onclick="filterBySignal('PGA')" id="btn-PGA"
                 class="check-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all bg-gray-100 text-gray-700 hover:bg-gray-200">
-            PGA (788)
+            PGA (786)
         </button>
         
         <button onclick="filterBySignal('process')" id="btn-process"
@@ -104,7 +104,7 @@
         </button>
         
         <button onclick="toggleAdopted()" id="toggle-adopted-btn" class="text-sm text-un-blue hover:underline">
-            Show adopted drafts (203)
+            Show adopted drafts (205)
         </button>
         
         <div class="relative">
@@ -115,7 +115,7 @@
                    class="pl-9 pr-4 py-2 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-un-blue focus:border-un-blue w-64"
                    oninput="performSearch()">
         </div>
-        <span class="text-sm text-muted"><span id="visibleCount">340</span> shown</span>
+        <span class="text-sm text-muted"><span id="visibleCount">338</span> shown</span>
     </div>
 </div>
 
@@ -18206,17 +18206,9 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
             <span class="font-semibold text-gray-900">C1 proposals</span>
-            <span class="text-sm text-muted">(<span class="pattern-count" data-pattern="C1 proposals">4</span> documents)</span>
+            <span class="text-sm text-muted">(<span class="pattern-count" data-pattern="C1 proposals">3</span> documents)</span>
         </div>
         <div class="flex items-center gap-2">
-            
-            
-            
-            
-            
-            
-            
-            
             
             
             
@@ -20764,8 +20756,8 @@
                 
                 
                 <tr class="doc-row hover:bg-gray-50 transition-colors"
-                    data-adopted="false"
-                    
+                    data-adopted="true"
+                    style="display: none;"
                     data-symbol="a/c.1/80/l.40"
                     data-pattern="C1 proposals"
                     data-signals='{"PGA": 2, "agenda": 1}'>
@@ -20773,6 +20765,13 @@
                         <a href="./A_C.1_80_L.40.html" class="font-medium text-gray-900 hover:text-un-blue transition-colors">
                             A/C.1/80/L.40
                         </a>
+                        
+                        <div class="text-xs text-muted mt-1">
+                            Adopted by
+                            <a href="./A_RES_80_15.html" class="hover:text-un-blue transition-colors">
+                                A/RES/80/15
+                            </a>
+                        </div>
                         
                     </td>
                     <td class="text-center py-2 px-4 text-sm text-muted">6</td>
@@ -31839,17 +31838,9 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
             <span class="font-semibold text-gray-900">C5 proposals</span>
-            <span class="text-sm text-muted">(<span class="pattern-count" data-pattern="C5 proposals">22</span> documents)</span>
+            <span class="text-sm text-muted">(<span class="pattern-count" data-pattern="C5 proposals">21</span> documents)</span>
         </div>
         <div class="flex items-center gap-2">
-            
-            
-            
-            
-            
-            
-            
-            
             
             
             
@@ -32114,8 +32105,8 @@
                 
                 
                 <tr class="doc-row hover:bg-gray-50 transition-colors"
-                    data-adopted="false"
-                    
+                    data-adopted="true"
+                    style="display: none;"
                     data-symbol="a/c.5/80/l.2"
                     data-pattern="C5 proposals"
                     data-signals='{}'>
@@ -32123,6 +32114,13 @@
                         <a href="./A_C.5_80_L.2.html" class="font-medium text-gray-900 hover:text-un-blue transition-colors">
                             A/C.5/80/L.2
                         </a>
+                        
+                        <div class="text-xs text-muted mt-1">
+                            Adopted by
+                            <a href="./A_RES_80_2.html" class="hover:text-un-blue transition-colors">
+                                A/RES/80/2
+                            </a>
+                        </div>
                         
                     </td>
                     <td class="text-center py-2 px-4 text-sm text-muted">6</td>
@@ -34831,7 +34829,7 @@ function toggleAdopted() {
     if (btn) {
         btn.textContent = showAdopted
             ? 'Hide adopted drafts'
-            : 'Show adopted drafts (203)';
+            : 'Show adopted drafts (205)';
     }
     applyFilters();
 }
