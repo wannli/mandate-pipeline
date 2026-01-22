@@ -7,6 +7,7 @@ from pathlib import Path
 from mandate_pipeline.extractor import (
     extract_text,
     extract_operative_paragraphs,
+    extract_lettered_paragraphs,
     extract_title,
     extract_agenda_items,
     find_symbol_references,
@@ -572,3 +573,198 @@ provisions contained therein were consistent with A/C.1/80/L.5.
 
         assert "A/80/L.42" in result
         assert "A/C.1/80/L.5" in result
+
+
+class TestExtractLetteredParagraphs:
+    """Test extraction of lettered paragraphs from draft decisions."""
+
+    def test_extract_lettered_simple(self):
+        """Extract simple lettered paragraphs (a), (b), (c)."""
+        text = """
+The General Assembly,
+
+(a) Expresses its profound gratitude to France;
+
+(b) Endorses the New York Declaration;
+
+(c) Decides to remain seized of the matter.
+"""
+        result = extract_lettered_paragraphs(text)
+
+        assert len(result) == 3
+        assert "a" in result
+        assert "b" in result
+        assert "c" in result
+        assert "Expresses its profound gratitude" in result["a"]
+        assert "Endorses the New York Declaration" in result["b"]
+
+    def test_extract_lettered_multiline(self):
+        """Extract lettered paragraphs spanning multiple lines."""
+        text = """
+(a) Expresses its profound gratitude to France and Saudi Arabia
+for discharging their responsibilities as Co-Chairs;
+
+(b) Endorses the Declaration.
+"""
+        result = extract_lettered_paragraphs(text)
+
+        assert len(result) == 2
+        assert "France and Saudi Arabia" in result["a"]
+        assert "Co-Chairs" in result["a"]
+
+    def test_extract_lettered_empty(self):
+        """Return empty dict when no lettered paragraphs."""
+        text = """
+1. First numbered paragraph;
+
+2. Second numbered paragraph.
+"""
+        result = extract_lettered_paragraphs(text)
+
+        assert result == {}
+
+    def test_extract_lettered_whitespace_normalization(self):
+        """Normalize whitespace in lettered paragraphs."""
+        text = """
+(a) Expresses    its   gratitude
+   to all    participants;
+"""
+        result = extract_lettered_paragraphs(text)
+
+        assert result["a"] == "Expresses its gratitude to all participants;"
+
+
+# Data quality tests using real documents
+# These tests validate extraction against actual UN documents
+DATA_DIR = Path(__file__).parent.parent / "data" / "pdfs"
+
+
+@pytest.mark.skipif(not DATA_DIR.exists(), reason="Data directory not available")
+class TestDataQualityRealDocuments:
+    """Data quality tests using real UN documents."""
+
+    def test_draft_decision_lettered_paragraphs(self):
+        """A/80/L.1 is a draft decision with lettered paragraphs."""
+        pdf = DATA_DIR / "A_80_L.1.pdf"
+        if not pdf.exists():
+            pytest.skip("A_80_L.1.pdf not available")
+
+        text = extract_text(pdf)
+        numbered = extract_operative_paragraphs(text)
+        lettered = extract_lettered_paragraphs(text)
+
+        # Draft decisions use lettered paragraphs, not numbered
+        assert len(numbered) == 0, "Draft decision should have no numbered paragraphs"
+        assert len(lettered) >= 2, "Draft decision should have lettered paragraphs"
+        assert "a" in lettered
+        assert "b" in lettered
+
+    def test_draft_decision_title(self):
+        """A/80/L.1 title should be extracted correctly."""
+        pdf = DATA_DIR / "A_80_L.1.pdf"
+        if not pdf.exists():
+            pytest.skip("A_80_L.1.pdf not available")
+
+        text = extract_text(pdf)
+        title = extract_title(text)
+
+        assert "Palestine" in title or "Two-State" in title
+
+    def test_outcome_document_title(self):
+        """A/80/L.41 is an outcome document with special title structure."""
+        pdf = DATA_DIR / "A_80_L.41.pdf"
+        if not pdf.exists():
+            pytest.skip("A_80_L.41.pdf not available")
+
+        text = extract_text(pdf)
+        title = extract_title(text)
+
+        assert title != "", "Outcome document title should not be empty"
+        assert "Information Society" in title or "World Summit" in title
+
+    def test_regular_draft_resolution(self):
+        """A/80/L.10 is a regular draft resolution with numbered paragraphs."""
+        pdf = DATA_DIR / "A_80_L.10.pdf"
+        if not pdf.exists():
+            pytest.skip("A_80_L.10.pdf not available")
+
+        text = extract_text(pdf)
+        title = extract_title(text)
+        paragraphs = extract_operative_paragraphs(text)
+        agenda = extract_agenda_items(text)
+
+        assert title != "", "Title should be extracted"
+        assert len(paragraphs) >= 5, "Should have multiple operative paragraphs"
+        assert len(agenda) >= 1, "Should have agenda items"
+
+    def test_amendment_has_no_operative_paragraphs(self):
+        """A/80/L.19 is an amendment - should have no operative paragraphs."""
+        pdf = DATA_DIR / "A_80_L.19.pdf"
+        if not pdf.exists():
+            pytest.skip("A_80_L.19.pdf not available")
+
+        text = extract_text(pdf)
+        paragraphs = extract_operative_paragraphs(text)
+        lettered = extract_lettered_paragraphs(text)
+
+        # Amendments don't have operative content
+        assert len(paragraphs) == 0
+        assert len(lettered) == 0
+        # But the text should mention "amendment"
+        assert "amendment" in text.lower()
+
+    def test_committee_document_extraction(self):
+        """A/C.1/80/L.1 is a First Committee document."""
+        pdf = DATA_DIR / "A_C.1_80_L.1.pdf"
+        if not pdf.exists():
+            pytest.skip("A_C.1_80_L.1.pdf not available")
+
+        text = extract_text(pdf)
+        title = extract_title(text)
+        paragraphs = extract_operative_paragraphs(text)
+
+        assert len(text) > 500, "Should extract substantial text"
+        # Committee docs should have title or paragraphs
+        assert title != "" or len(paragraphs) > 0
+
+    def test_bulk_extraction_quality(self):
+        """Verify extraction quality across all available documents."""
+        if not DATA_DIR.exists():
+            pytest.skip("Data directory not available")
+
+        pdfs = list(DATA_DIR.glob("*.pdf"))
+        if len(pdfs) < 10:
+            pytest.skip("Not enough PDFs for bulk test")
+
+        results = {
+            "total": 0,
+            "has_text": 0,
+            "has_title": 0,
+            "has_paragraphs": 0,
+            "has_agenda": 0,
+        }
+
+        for pdf in pdfs[:50]:  # Test first 50 for speed
+            results["total"] += 1
+            try:
+                text = extract_text(pdf)
+                title = extract_title(text)
+                numbered = extract_operative_paragraphs(text)
+                lettered = extract_lettered_paragraphs(text)
+                agenda = extract_agenda_items(text)
+
+                if len(text) > 100:
+                    results["has_text"] += 1
+                if title:
+                    results["has_title"] += 1
+                if numbered or lettered:
+                    results["has_paragraphs"] += 1
+                if agenda:
+                    results["has_agenda"] += 1
+            except Exception:
+                pass
+
+        # Quality thresholds
+        assert results["has_text"] == results["total"], "All docs should have text"
+        assert results["has_title"] >= results["total"] * 0.9, "90%+ should have title"
+        assert results["has_agenda"] >= results["total"] * 0.8, "80%+ should have agenda"
