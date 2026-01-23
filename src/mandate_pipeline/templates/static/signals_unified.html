@@ -104,12 +104,9 @@
                     {% for para in doc.signal_paragraphs %}
                     <div class="px-4 py-3 flex gap-4 paragraph-item" data-signals="{{ para.signals|join(',') }}">
                         <div class="flex-shrink-0 text-center">
-                            <div class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-gray-100 text-gray-700 font-medium text-sm">
-                                {{ para.number }}
-                            </div>
-                            <div class="flex flex-col gap-1 mt-2">
+                            <div class="flex flex-col gap-1">
                                 {% for signal in para.signals %}
-                                <span class="px-1.5 py-0.5 rounded text-xs font-medium signal-tag
+                                <span class="px-1.5 py-0.5 rounded text-xs font-medium signal-tag inline-flex items-center justify-center w-24 text-center
                                     {% if signal == 'agenda' %}bg-blue-100 text-blue-700
                                     {% elif signal == 'PGA' %}bg-purple-100 text-purple-700
                                     {% elif signal == 'process' %}bg-amber-100 text-amber-700
@@ -121,7 +118,10 @@
                             </div>
                         </div>
                         <div class="flex-1 min-w-0">
-                            <p class="text-gray-700 leading-relaxed text-sm">{{ para.text|highlight_signals(para.signals) }}</p>
+                            <p class="text-gray-700 leading-relaxed text-sm">
+                                <span class="font-medium text-gray-700 mr-1">{{ para.number }}.</span>
+                                {{ para.text|highlight_signals(para.signals) }}
+                            </p>
                         </div>
                     </div>
                     {% endfor %}
