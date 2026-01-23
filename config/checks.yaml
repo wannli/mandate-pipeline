@@ -44,3 +44,7 @@ checks:
       - "Secretary-General to provide a report"
       - "submit to the General Assembly"
       - "report to the Assembly"
+
+  - signal: "observer"
+    phrases:
+      - "observer"
