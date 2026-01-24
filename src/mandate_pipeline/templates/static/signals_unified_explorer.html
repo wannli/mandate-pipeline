@@ -117,12 +117,7 @@
                         <div class="para-item text-sm text-gray-900" data-signals="{{ para.signals|join(',') }}">
                             <span class="inline-flex flex-wrap items-center gap-1">
                                 {% for signal in para.signals %}
-                                <span class="px-1.5 py-0.5 rounded-full text-xs font-medium
-                                    {% if signal == 'agenda' %}bg-blue-100 text-blue-800
-                                    {% elif signal == 'PGA' %}bg-purple-100 text-purple-800
-                                    {% elif signal == 'process' %}bg-amber-100 text-amber-800
-                                    {% elif signal == 'report' %}bg-green-100 text-green-800
-                                    {% else %}bg-gray-100 text-gray-800{% endif %}">{{ signal }}</span>
+                                <span class="px-1.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-900">{{ signal }}</span>
                                 {% endfor %}
                             </span>
                             <span class="ml-1 font-semibold text-gray-700">{{ para.number }}.</span>
@@ -134,12 +129,7 @@
                         <div class="para-item text-sm text-gray-900" data-signals="{{ signals|join(',') }}">
                             <span class="inline-flex flex-wrap items-center gap-1">
                                 {% for signal in signals %}
-                                <span class="px-1.5 py-0.5 rounded-full text-xs font-medium
-                                    {% if signal == 'agenda' %}bg-blue-100 text-blue-800
-                                    {% elif signal == 'PGA' %}bg-purple-100 text-purple-800
-                                    {% elif signal == 'process' %}bg-amber-100 text-amber-800
-                                    {% elif signal == 'report' %}bg-green-100 text-green-800
-                                    {% else %}bg-gray-100 text-gray-800{% endif %}">{{ signal }}</span>
+                                <span class="px-1.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-900">{{ signal }}</span>
                                 {% endfor %}
                             </span>
                             <span class="ml-1 font-semibold text-gray-700">{{ para_num }}.</span>
@@ -181,7 +171,6 @@
 // Session data cache
 let sessionDataCache = {};
 let selectedSessions = [];
-let originalDocumentsHTML = '';
 
 // Filter elements (initialized later)
 let sourceFilter, signalFilter, statusFilter, clearFiltersBtn;
@@ -281,7 +270,7 @@ function applySearchHighlights(query) {
         const escapedQuery = trimmedQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         const regex = new RegExp(escapedQuery, 'gi');
         target.innerHTML = safeOriginal.replace(regex, match =>
-            `<mark class="bg-yellow-100 text-yellow-900 rounded px-0.5">${match}</mark>`
+            `<mark class="bg-green-100 text-green-900 rounded px-0.5">${match}</mark>`
         );
     });
 }
@@ -392,9 +381,6 @@ function getDocumentSortKey(doc) {
 
 // Initialize the explorer
 document.addEventListener('DOMContentLoaded', function() {
-    // Store original document HTML for current session
-    originalDocumentsHTML = document.getElementById('documents-container').innerHTML;
-
     initializeFilters();
     initializeSearch();
     initializeSessionSelector();
@@ -487,15 +473,8 @@ async function loadSelectedSessions() {
             allDocuments.push(...sessionDocs);
         }
 
-        // If only current session is selected, restore original HTML
-        if (sessionsToLoad.length === 1 && sessionsToLoad[0] === 'current') {
-            document.getElementById('documents-container').innerHTML = originalDocumentsHTML;
-            initializeDocumentCards();
-            applyFilters();
-        } else {
-            // Render combined documents from selected sessions
-            renderCombinedDocuments(allDocuments);
-        }
+        // Render combined documents from selected sessions
+        renderCombinedDocuments(allDocuments);
 
     } catch (error) {
         console.error('Error loading selected sessions:', error);
@@ -607,14 +586,8 @@ function getOriginColor(origin) {
     return colors[origin] || 'bg-gray-100 text-gray-700';
 }
 
-function getSignalColor(signal) {
-    const colors = {
-        'agenda': 'bg-blue-100 text-blue-800',
-        'PGA': 'bg-purple-100 text-purple-800',
-        'process': 'bg-amber-100 text-amber-800',
-        'report': 'bg-green-100 text-green-800'
-    };
-    return colors[signal] || 'bg-gray-100 text-gray-800';
+function getSignalColor() {
+    return 'bg-yellow-100 text-yellow-900';
 }
 
 // Search functionality
