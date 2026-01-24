@@ -1,6 +1,7 @@
 """Static site generator for Mandate Pipeline."""
 
 import json
+import os
 import re
 from datetime import datetime, timezone
 from pathlib import Path
@@ -1429,7 +1430,10 @@ def generate_site(config_dir: Path, data_dir: Path, output_dir: Path) -> None:
 
     # Load all documents
     documents = load_all_documents(data_dir, checks)
-    link_documents(documents)
+
+    # Skip UNDL metadata fetching for faster processing if requested
+    use_undl_metadata = os.getenv("SKIP_UNDL_METADATA", "false").lower() != "true"
+    link_documents(documents, use_undl_metadata=use_undl_metadata)
     annotate_linkage(documents)
     visible_documents = [doc for doc in documents if not doc.get("is_adopted_draft")]
 

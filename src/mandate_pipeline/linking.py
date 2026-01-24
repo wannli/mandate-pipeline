@@ -95,26 +95,51 @@ def fetch_undl_metadata(symbol: str) -> dict | None:
     # 2. Use reused session
     session = _get_session()
 
-    try:
-        resp = session.get(UNDL_SEARCH_URL, params=params, timeout=UNDL_TIMEOUT)
-        resp.raise_for_status()
+    # 3. Retry logic with exponential backoff for rate limits
+    max_retries = 5
+    base_delay = 2  # Start with 2 seconds
 
-        result, parsed_ok = _parse_undl_marc_xml_with_status(resp.text, symbol)
+    for attempt in range(max_retries):
+        try:
+            resp = session.get(UNDL_SEARCH_URL, params=params, timeout=UNDL_TIMEOUT)
 
-        if result:
-            _save_cached_metadata(symbol, result)
-        elif parsed_ok:
-            result = _build_empty_metadata(symbol)
-            _save_cached_metadata(symbol, result)
+            # Handle rate limiting specifically
+            if resp.status_code == 429:
+                if attempt < max_retries - 1:
+                    delay = base_delay * (2 ** attempt)  # Exponential backoff
+                    logger.warning("Rate limited for %s (attempt %d/%d), waiting %d seconds",
+                                 symbol, attempt + 1, max_retries, delay)
+                    time.sleep(delay)
+                    continue
+                else:
+                    logger.warning("Rate limit persisted for %s after %d attempts", symbol, max_retries)
+                    return None
 
-        # 3. Be polite (1s delay balances speed and rate limiting)
-        time.sleep(1)
+            resp.raise_for_status()
 
-        return result
+            result, parsed_ok = _parse_undl_marc_xml_with_status(resp.text, symbol)
 
-    except requests.RequestException as e:
-        logger.warning("Failed to fetch UNDL metadata for %s: %s", symbol, e)
-        return None
+            if result:
+                _save_cached_metadata(symbol, result)
+            elif parsed_ok:
+                result = _build_empty_metadata(symbol)
+                _save_cached_metadata(symbol, result)
+
+            # 4. Be polite with longer delay (increased from 1s to 3s)
+            time.sleep(3)
+
+            return result
+
+        except requests.RequestException as e:
+            if attempt < max_retries - 1:
+                delay = base_delay * (2 ** attempt)
+                logger.warning("Request failed for %s (attempt %d/%d): %s, retrying in %d seconds",
+                             symbol, attempt + 1, max_retries, e, delay)
+                time.sleep(delay)
+            else:
+                logger.warning("Failed to fetch UNDL metadata for %s after %d attempts: %s",
+                             symbol, max_retries, e)
+                return None
 
 
 def _get_cache_path(symbol: str) -> Path:
