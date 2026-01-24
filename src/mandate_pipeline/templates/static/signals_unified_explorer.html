@@ -138,6 +138,8 @@
                 <!-- Expandable Content -->
                 <div class="border-t border-gray-200 hidden" id="content-{{ loop.index }}">
                     <div class="px-4 py-3 space-y-3">
+                        {% if doc.signal_paragraphs %}
+                        <!-- Detailed paragraph view (for current session) -->
                         {% for para in doc.signal_paragraphs %}
                         <div class="border-l-2 border-gray-300 pl-3 para-item" data-signals="{{ para.signals|join(',') }}">
                             <div class="text-xs text-gray-500 mb-1">Paragraph {{ para.number }}</div>
@@ -156,6 +158,35 @@
                             </div>
                         </div>
                         {% endfor %}
+                        {% elif doc.signals %}
+                        <!-- Summary view (for historical sessions) -->
+                        <div class="text-sm text-gray-700 mb-3">
+                            <strong>Signal Summary:</strong> This document contains signals in {{ doc.signals|length }} paragraph{{ 's' if doc.signals|length != 1 else '' }}.
+                        </div>
+                        {% for para_num, signals in doc.signals.items() %}
+                        <div class="border-l-2 border-gray-300 pl-3 para-item" data-signals="{{ signals|join(',') }}">
+                            <div class="text-xs text-gray-500 mb-1">Paragraph {{ para_num }}</div>
+                            <div class="text-sm text-gray-600 italic">Detailed text not available for historical sessions</div>
+                            <div class="flex flex-wrap gap-1 mt-2">
+                                {% for signal in signals %}
+                                <span class="px-1.5 py-0.5 rounded text-xs font-medium
+                                    {% if signal == 'agenda' %}bg-blue-100 text-blue-800
+                                    {% elif signal == 'PGA' %}bg-purple-100 text-purple-800
+                                    {% elif signal == 'process' %}bg-amber-100 text-amber-800
+                                    {% elif signal == 'report' %}bg-green-100 text-green-800
+                                    {% else %}bg-gray-100 text-gray-800{% endif %}">
+                                    {{ signal }}
+                                </span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% else %}
+                        <!-- No signal data available -->
+                        <div class="text-sm text-gray-500 italic">
+                            No signal data available for this document.
+                        </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -194,7 +225,7 @@
 <script>
 // Session data cache
 let sessionDataCache = {};
-let selectedSessions = [];
+let selectedSessions = ['current'];
 let originalDocumentsHTML = '';
 
 // Filter elements (initialized later)
@@ -275,6 +306,65 @@ function applyFilters() {
     statsText.textContent = parts.length > 0 ? `${paragraphCount} paragraphs across ${parts.join(' and ')}` : '0 documents';
 }
 
+const basePath = window.location.pathname.replace(/\/[^/]*$/, '');
+
+function getSessionDataUrl(session) {
+    if (session === 'current') {
+        return `${basePath}/data.json`;
+    }
+    return `${basePath}/sessions/${session}/data.json`;
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text || '';
+    return div.innerHTML;
+}
+
+function buildSignalParagraphs(doc) {
+    const paragraphs = doc.paragraphs || {};
+    const signals = doc.signals || {};
+    const signalParagraphs = [];
+
+    Object.entries(signals).forEach(([paraNum, paraSignals]) => {
+        if (!paraSignals || paraSignals.length === 0) {
+            return;
+        }
+        signalParagraphs.push({
+            number: paraNum,
+            text: paragraphs[paraNum] || '',
+            signals: paraSignals,
+        });
+    });
+
+    signalParagraphs.sort((a, b) => Number(a.number) - Number(b.number));
+    return signalParagraphs;
+}
+
+function buildSignalSummary(signalParagraphs) {
+    const summary = {};
+    signalParagraphs.forEach(para => {
+        (para.signals || []).forEach(signal => {
+            summary[signal] = (summary[signal] || 0) + 1;
+        });
+    });
+    return summary;
+}
+
+function normalizeDocument(doc, session) {
+    const signalParagraphs = doc.signal_paragraphs || buildSignalParagraphs(doc);
+    const signalSummary = doc.signal_summary && Object.keys(doc.signal_summary).length > 0
+        ? doc.signal_summary
+        : buildSignalSummary(signalParagraphs);
+
+    return {
+        ...doc,
+        session,
+        signal_paragraphs: signalParagraphs,
+        signal_summary: signalSummary,
+    };
+}
+
 // Initialize the explorer
 document.addEventListener('DOMContentLoaded', function() {
     // Store original document HTML for current session
@@ -285,8 +375,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeSessionSelector();
     initializeDetailPanel();
 
-    // Load initial data
-    loadSelectedSessions();
+    // Don't load initial data - keep server-rendered current session documents
+    // Only load when user changes session selection
 });
 
 // Session selector
@@ -305,15 +395,20 @@ function initializeSessionSelector() {
 
 // Populate session selector with available sessions
 async function populateSessionOptions(selector) {
-    // Clear existing options
+    // Clear existing options except the current session option
+    const currentOption = selector.querySelector('option[value="current"]');
     selector.innerHTML = '';
 
-    // Add current session option
-    const currentOption = document.createElement('option');
-    currentOption.value = 'current';
-    currentOption.textContent = 'Current Session';
-    currentOption.selected = true;
-    selector.appendChild(currentOption);
+    // Re-add current session option
+    if (currentOption) {
+        selector.appendChild(currentOption);
+    } else {
+        const newCurrentOption = document.createElement('option');
+        newCurrentOption.value = 'current';
+        newCurrentOption.textContent = 'Current Session';
+        newCurrentOption.selected = true;
+        selector.appendChild(newCurrentOption);
+    }
 
     // Check which session directories exist (in reverse chronological order)
     const availableSessions = [79, 78, 77, 76, 75];
@@ -321,15 +416,12 @@ async function populateSessionOptions(selector) {
     for (const session of availableSessions) {
         try {
             // Check if session data exists
-            const response = await fetch(`/mandate-pipeline/sessions/${session}/data.json`, { method: 'HEAD' });
+            const response = await fetch(getSessionDataUrl(session.toString()), { method: 'HEAD' });
             if (response.ok) {
                 const option = document.createElement('option');
                 option.value = session.toString();
                 option.textContent = `Session ${session}`;
-                // Auto-select recent sessions
-                if (session >= 78) {
-                    option.selected = true;
-                }
+                // Don't auto-select - let user choose
                 selector.appendChild(option);
             }
         } catch (error) {
@@ -338,8 +430,9 @@ async function populateSessionOptions(selector) {
         }
     }
 
-    // Update selected sessions based on what's actually selected
-    selectedSessions = Array.from(selector.selectedOptions).map(option => option.value);
+    // Start with only current session selected
+    selectedSessions = ['current'];
+    selector.value = 'current'; // Ensure only current is selected
 }
 
 // Load all selected sessions and combine their documents
@@ -351,31 +444,27 @@ async function loadSelectedSessions() {
         const allDocuments = [];
 
         for (const session of selectedSessions) {
-            if (session === 'current') {
-                // For current session, use the original documents from the template
-                // We can't easily extract individual documents from HTML, so we'll use a different approach
-                // For now, just show a message that current session needs to be loaded differently
-                console.log('Current session selected - would need special handling');
-            } else {
-                // Load session data via AJAX
-                if (!sessionDataCache[session]) {
-                    const response = await fetch(`/mandate-pipeline/sessions/${session}/data.json`);
-                    if (!response.ok) throw new Error(`Failed to load session ${session} data`);
-                    sessionDataCache[session] = await response.json();
-                }
+            const sessionKey = session.toString();
 
-                // Add session documents with session identifier
-                const sessionData = sessionDataCache[session];
-                if (!sessionData.documents || !Array.isArray(sessionData.documents)) {
-                    console.error(`Invalid session data format for ${session}: missing documents array`);
-                    continue;
-                }
-                const sessionDocs = sessionData.documents.map(doc => ({
-                    ...doc,
-                    session: session
-                }));
-                allDocuments.push(...sessionDocs);
+            // Load session data via AJAX
+            if (!sessionDataCache[sessionKey]) {
+                const response = await fetch(getSessionDataUrl(sessionKey));
+                if (!response.ok) throw new Error(`Failed to load session ${sessionKey} data`);
+                sessionDataCache[sessionKey] = await response.json();
             }
+
+            // Add session documents with session identifier
+            const sessionData = sessionDataCache[sessionKey];
+            if (!sessionData.documents || !Array.isArray(sessionData.documents)) {
+                console.error(`Invalid session data format for ${sessionKey}: missing documents array`);
+                continue;
+            }
+
+            const sessionDocs = sessionData.documents
+                .map(doc => normalizeDocument(doc, sessionKey))
+                .filter(doc => doc.signal_paragraphs.length > 0 || Object.keys(doc.signal_summary || {}).length > 0);
+
+            allDocuments.push(...sessionDocs);
         }
 
         // If only current session is selected, restore original HTML
@@ -408,46 +497,76 @@ function renderCombinedDocuments(allDocuments) {
 
     const container = document.getElementById('documents-container');
 
-    const html = allDocuments.map(doc => `
-        <div class="border border-gray-200 rounded-lg overflow-hidden document-card hover:border-gray-300 transition-colors${doc.doc_type === 'proposal' ? ' border-l-4 border-l-amber-400' : ''}"
-             data-symbol="${doc.symbol}"
-             data-source="${doc.origin || doc.source || ''}"
-             data-doctype="${doc.doc_type}"
-             data-signals="${Object.keys(doc.signal_summary || {}).join(',')}"
-             data-session="${doc.session}"
-             data-un-url="${doc.un_url || ''}"
-             data-title="${doc.title || ''}">
-            <!-- Document Header -->
-            <div class="bg-gray-50 px-4 py-3 border-b border-gray-200">
-                <div class="flex items-start justify-between gap-4">
-                    <div class="flex-1 min-w-0">
-                        <div class="flex items-center gap-3 mb-1">
-                            <span class="font-semibold text-gray-900">
-                                ${doc.symbol}
-                            </span>
-                            ${doc.doc_type === 'proposal' ? '<span class="px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-800">Proposal</span>' : ''}
-                            <span class="px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">${doc.session}</span>
-                        </div>
-                        ${doc.title ? `<p class="text-sm text-gray-600 truncate" title="${doc.title}">${doc.title}</p>` : ''}
-                    </div>
-                    <div class="flex items-center gap-2 flex-shrink-0">
-                        ${doc.un_url ? `<a href="${doc.un_url}" target="_blank" class="text-xs text-muted hover:text-un-blue transition-colors">View PDF</a>` : ''}
-                    </div>
-                </div>
-            </div>
+    const html = allDocuments.map(doc => {
+        const signalParagraphs = doc.signal_paragraphs || [];
+        const sessionLabel = doc.session === 'current' ? 'Current' : doc.session;
+        const title = escapeHtml(doc.title || '');
+        const symbol = escapeHtml(doc.symbol || '');
 
-            <!-- Signal Summary -->
-            <div class="px-4 py-3">
-                <div class="flex flex-wrap gap-2">
-                    ${Object.entries(doc.signal_summary || {}).map(([signal, count]) =>
-                        `<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${getSignalColor(signal)}">
-                            ${signal} (${count})
-                        </span>`
-                    ).join('')}
+        const summaryHtml = Object.entries(doc.signal_summary || {}).map(([signal, count]) =>
+            `<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${getSignalColor(signal)}">
+                ${signal} (${count})
+            </span>`
+        ).join('');
+
+        const paragraphsHtml = signalParagraphs.length
+            ? signalParagraphs.map(para => `
+                <div class="border-l-2 border-gray-300 pl-3 para-item" data-signals="${(para.signals || []).join(',')}">
+                    <div class="text-xs text-gray-500 mb-1">Paragraph ${escapeHtml(para.number)}</div>
+                    <p class="text-sm text-gray-900">${escapeHtml(para.text)}</p>
+                    <div class="flex flex-wrap gap-1 mt-2">
+                        ${(para.signals || []).map(signal => `
+                            <span class="px-1.5 py-0.5 rounded text-xs font-medium ${getSignalColor(signal)}">${signal}</span>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('')
+            : '<div class="text-sm text-gray-500 italic">No signal data available for this document.</div>';
+
+        return `
+            <div class="border border-gray-200 rounded-lg overflow-hidden document-card hover:border-gray-300 transition-colors${doc.doc_type === 'proposal' ? ' border-l-4 border-l-amber-400' : ''}"
+                 data-symbol="${doc.symbol}"
+                 data-source="${doc.origin || doc.source || ''}"
+                 data-doctype="${doc.doc_type}"
+                 data-signals="${Object.keys(doc.signal_summary || {}).join(',')}"
+                 data-session="${doc.session}"
+                 data-un-url="${doc.un_url || ''}"
+                 data-title="${doc.title || ''}">
+                <!-- Document Header -->
+                <div class="bg-gray-50 px-4 py-3 border-b border-gray-200">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center gap-3 mb-1">
+                                <span class="font-semibold text-gray-900">
+                                    ${symbol}
+                                </span>
+                                ${doc.doc_type === 'proposal' ? '<span class="px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-800">Proposal</span>' : ''}
+                                <span class="px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">${sessionLabel}</span>
+                            </div>
+                            ${doc.title ? `<p class="text-sm text-gray-600 truncate" title="${title}">${title}</p>` : ''}
+                        </div>
+                        <div class="flex items-center gap-2 flex-shrink-0">
+                            ${doc.un_url ? `<a href="${doc.un_url}" target="_blank" class="text-xs text-muted hover:text-un-blue transition-colors">View PDF</a>` : ''}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Signal Summary -->
+                <div class="px-4 py-3">
+                    <div class="flex flex-wrap gap-2">
+                        ${summaryHtml || '<span class="text-xs text-gray-500 italic">No signals</span>'}
+                    </div>
+                </div>
+
+                <!-- Expandable Content -->
+                <div class="border-t border-gray-200 hidden">
+                    <div class="px-4 py-3 space-y-3">
+                        ${paragraphsHtml}
+                    </div>
                 </div>
             </div>
-        </div>
-    `).join('');
+        `;
+    }).join('');
 
     container.innerHTML = html;
     initializeDocumentCards();

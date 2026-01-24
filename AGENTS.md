@@ -7,6 +7,15 @@ When making code changes:
 - Avoid staging or committing `docs/` changes that are incidental to code edits (e.g., from running the generator locally).
 - Keep changes focused on the source code and templates that *produce* the static site output.
 
+## Testing Workflow
+
+When making changes to the mandate pipeline project:
+
+1. **Test locally first** - Make sure changes work correctly on your local machine before pushing
+2. **Push the code** - Once local testing passes, commit and push to the repository
+3. **Run GitHub runner** - Trigger the GitHub Actions workflow to recreate the site
+4. **Monitor with browser tools** - Use `browser_get_tabs` to see what's happening during the pipeline run and verify the site recreation completed successfully
+
 ## Workflow Architecture
 
 The pipeline uses a **granular, event-driven workflow architecture** with 6 independent GitHub Actions workflows:

@@ -1079,6 +1079,36 @@ def generate_unified_explorer_page(
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
+    # Ensure signal_paragraphs are populated for current-session docs
+    enrichment_start = time.time()
+    enriched_docs = []
+    for doc in documents:
+        if doc.get("signal_paragraphs"):
+            enriched_docs.append(doc)
+            continue
+
+        signal_paras = []
+        for para_num, para_signals in doc.get("signals", {}).items():
+            if para_signals:
+                para_text = doc.get("paragraphs", {}).get(para_num, "")
+                signal_paras.append({
+                    "number": para_num,
+                    "text": para_text,
+                    "signals": para_signals,
+                })
+
+        if signal_paras:
+            signal_paras.sort(key=lambda p: int(p["number"]))
+            doc_copy = doc.copy()
+            doc_copy["signal_paragraphs"] = signal_paras
+            enriched_docs.append(doc_copy)
+        else:
+            enriched_docs.append(doc)
+
+    documents = enriched_docs
+    enrichment_time = time.time() - enrichment_start
+    logger.info(f"Enriched documents with signal_paragraphs in {enrichment_time:.2f}s")
+
     # Filter to documents with signals
     filter_start = time.time()
     docs_with_signals = [doc for doc in documents if doc.get("signal_paragraphs")]
