@@ -1,0 +1,74 @@
+name: Build Historical Session
+
+on:
+  workflow_dispatch:
+    inputs:
+      session_number:
+        description: 'UN General Assembly session number (e.g., 79, 78, 77)'
+        required: true
+        type: string
+      max_misses:
+        description: 'Stop after N consecutive 404s (default: 5)'
+        required: false
+        type: string
+        default: '5'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: "session-${{ github.event.inputs.session_number }}"
+  cancel-in-progress: false
+
+jobs:
+  build-session:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -e .
+
+      - name: Download session ${{ github.event.inputs.session_number }} resolutions
+        run: |
+          python -m mandate_pipeline.cli download-session \
+            --session ${{ github.event.inputs.session_number }} \
+            --config ./config \
+            --data ./data \
+            --max-misses ${{ github.event.inputs.max_misses }} \
+            --verbose
+
+      - name: Process and generate session ${{ github.event.inputs.session_number }}
+        run: |
+          python -m mandate_pipeline.cli generate-session \
+            --session ${{ github.event.inputs.session_number }} \
+            --config ./config \
+            --data ./data \
+            --output ./docs \
+            --verbose
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git add docs/sessions/
+          if git diff --staged --quiet; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit changes
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: build session ${{ github.event.inputs.session_number }} signal browser ($(date -I))"
+          git pull --rebase origin main || true
+          git push

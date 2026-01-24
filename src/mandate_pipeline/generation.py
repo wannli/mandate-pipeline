@@ -967,113 +967,36 @@ def generate_origin_matrix_page(
 
 
 def generate_unified_signals_page(
-    documents: list,
+    documents: list[dict],
     checks: list,
     output_dir: Path
 ) -> None:
     """
-    Generate the unified signals browser page with filtering and document embed.
+    Generate the unified signals page showing all documents with signals.
 
     Args:
-        documents: All documents
+        documents: All processed documents
         checks: All check definitions
         output_dir: Root output directory
     """
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
+    # Filter to documents with signals
+    docs_with_signals = [doc for doc in documents if doc.get("signal_paragraphs")]
+
+    # Count signal types
+    resolution_count = len([d for d in docs_with_signals if d.get("doc_type") == "resolution"])
+    proposal_count = len([d for d in docs_with_signals if d.get("doc_type") == "proposal"])
+
+    # Count total paragraphs with signals
+    total_paragraphs = sum(len(doc.get("signal_paragraphs", [])) for doc in docs_with_signals)
+
+    # Get origin order for filtering
+    origin_order = ["Plenary", "C1", "C2", "C3", "C4", "C5", "C6"]
+
     env = get_templates_env(checks)
     template = env.get_template("signals_unified.html")
-
-    # Get resolutions and non-adopted proposals with signals
-    resolutions = [doc for doc in documents if is_resolution(doc.get("symbol", ""))]
-    non_adopted_proposals = [
-        doc for doc in documents
-        if is_proposal(doc.get("symbol", "")) and not doc.get("is_adopted_draft")
-    ]
-
-    origin_order = ["Plenary", "C1", "C2", "C3", "C4", "C5", "C6", "Unknown"]
-
-    # Prepare document data with origin and signal paragraphs
-    docs_with_signals = []
-    total_paragraphs = 0
-    resolution_count = 0
-    proposal_count = 0
-
-    # Process resolutions
-    for res in resolutions:
-        if not res.get("signal_summary"):
-            continue
-
-        origin = derive_resolution_origin(res)
-
-        # Find all paragraphs that have any signal
-        signal_paras = []
-        for para_num, para_signals in res.get("signals", {}).items():
-            if para_signals:
-                para_text = res.get("paragraphs", {}).get(para_num, "")
-                signal_paras.append({
-                    "number": para_num,
-                    "text": para_text,
-                    "signals": para_signals
-                })
-
-        if not signal_paras:
-            continue
-
-        # Sort paragraphs by number
-        signal_paras.sort(key=lambda p: int(p["number"]))
-        total_paragraphs += len(signal_paras)
-        resolution_count += 1
-
-        docs_with_signals.append({
-            "symbol": res["symbol"],
-            "title": res.get("title", ""),
-            "origin": origin,
-            "doc_type": "resolution",
-            "un_url": res.get("un_url", get_un_document_url(res["symbol"])),
-            "signal_summary": res.get("signal_summary", {}),
-            "signal_paragraphs": signal_paras,
-        })
-
-    # Process non-adopted proposals
-    for prop in non_adopted_proposals:
-        if not prop.get("signal_summary"):
-            continue
-
-        origin = derive_origin_from_symbol(prop.get("symbol", ""))
-
-        # Find all paragraphs that have any signal
-        signal_paras = []
-        for para_num, para_signals in prop.get("signals", {}).items():
-            if para_signals:
-                para_text = prop.get("paragraphs", {}).get(para_num, "")
-                signal_paras.append({
-                    "number": para_num,
-                    "text": para_text,
-                    "signals": para_signals
-                })
-
-        if not signal_paras:
-            continue
-
-        # Sort paragraphs by number
-        signal_paras.sort(key=lambda p: int(p["number"]))
-        total_paragraphs += len(signal_paras)
-        proposal_count += 1
-
-        docs_with_signals.append({
-            "symbol": prop["symbol"],
-            "title": prop.get("title", ""),
-            "origin": origin,
-            "doc_type": "proposal",
-            "un_url": prop.get("un_url", get_un_document_url(prop["symbol"])),
-            "signal_summary": prop.get("signal_summary", {}),
-            "signal_paragraphs": signal_paras,
-        })
-
-    # Sort documents naturally by symbol
-    docs_with_signals.sort(key=lambda d: natural_sort_key(d["symbol"]))
 
     html = template.render(
         documents=docs_with_signals,
@@ -1088,6 +1011,60 @@ def generate_unified_signals_page(
     )
 
     with open(output_dir / "signals.html", "w") as f:
+        f.write(html)
+
+
+def generate_session_unified_signals_page(
+    session: int,
+    all_documents: list[dict],
+    checks: list,
+    output_dir: Path
+) -> None:
+    """
+    Generate signals.html for a specific historical session using the same template as main site.
+
+    Args:
+        session: Session number (e.g., 79)
+        all_documents: All processed documents (will be filtered to session)
+        checks: All check definitions
+        output_dir: Root output directory (will create sessions/{session}/ subdirectory)
+    """
+    output_dir = Path(output_dir)
+    session_output_dir = output_dir / "sessions" / str(session)
+    session_output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Filter to session resolutions only
+    session_docs = [doc for doc in all_documents if f"/RES/{session}/" in doc["symbol"]]
+
+    # Filter to documents with signals
+    docs_with_signals = [doc for doc in session_docs if doc.get("signal_paragraphs")]
+
+    # Count signal types (only resolutions for past sessions)
+    resolution_count = len(docs_with_signals)
+    proposal_count = 0  # No proposals for past sessions
+
+    # Count total paragraphs with signals
+    total_paragraphs = sum(len(doc.get("signal_paragraphs", [])) for doc in docs_with_signals)
+
+    # Get origin order for filtering
+    origin_order = ["Plenary", "C1", "C2", "C3", "C4", "C5", "C6"]
+
+    env = get_templates_env(checks)
+    template = env.get_template("signals_unified.html")
+
+    html = template.render(
+        documents=docs_with_signals,
+        checks=checks,
+        origin_order=origin_order,
+        origin_names=COMMITTEE_NAMES,
+        total_docs=len(docs_with_signals),
+        total_paragraphs=total_paragraphs,
+        resolution_count=resolution_count,
+        proposal_count=proposal_count,
+        generated_at=datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
+    )
+
+    with open(session_output_dir / "signals.html", "w") as f:
         f.write(html)
 
 
@@ -1566,3 +1543,56 @@ def generate_site_verbose(
         "signal_pages": len(checks),
         "signal_counts": total_signal_counts,
     }
+
+
+def generate_sessions_index_page(output_dir: Path):
+    """Generate the sessions index page showing all available historical sessions."""
+    sessions_dir = output_dir / "sessions"
+    sessions_index = output_dir / "sessions" / "index.html"
+    sessions_index.parent.mkdir(parents=True, exist_ok=True)
+
+    available_sessions = []
+
+    # Discover available sessions
+    if sessions_dir.exists():
+        for session_dir in sorted(sessions_dir.iterdir(), reverse=True):
+            if not session_dir.is_dir():
+                continue
+
+            try:
+                session_num = int(session_dir.name)
+                data_file = session_dir / "data.json"
+
+                if data_file.exists():
+                    import json
+                    with open(data_file, "r") as f:
+                        session_data = json.load(f)
+
+                    available_sessions.append({
+                        "number": session_num,
+                        "total_documents": session_data["stats"]["total_documents"],
+                        "documents_with_signals": session_data["stats"]["documents_with_signals"],
+                        "last_updated": session_data["generated_at"],
+                    })
+                else:
+                    # Fallback if no data.json
+                    available_sessions.append({
+                        "number": session_num,
+                        "total_documents": 0,
+                        "documents_with_signals": 0,
+                        "last_updated": None,
+                    })
+            except (ValueError, KeyError, FileNotFoundError):
+                continue
+
+    # Generate the index page
+    env = get_templates_env([])
+    template = env.get_template("sessions/index.html")
+
+    html = template.render(
+        available_sessions=available_sessions,
+        generated_at=datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
+    )
+
+    with open(sessions_index, "w") as f:
+        f.write(html)
