@@ -1,4 +1,4 @@
-name: Extract Document Content
+name: Content Extraction
 
 on:
   push:

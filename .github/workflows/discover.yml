@@ -1,4 +1,4 @@
-name: Discover Documents
+name: Document Discovery
 
 on:
   schedule:

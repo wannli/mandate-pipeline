@@ -1,4 +1,4 @@
-name: Generate Static Site
+name: Site Generation
 
 on:
   push:

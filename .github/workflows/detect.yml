@@ -1,4 +1,4 @@
-name: Detect Mandate Signals
+name: Signal Detection
 
 on:
   push:

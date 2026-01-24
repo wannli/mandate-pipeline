@@ -1,4 +1,4 @@
-name: Link Related Documents
+name: Document Linking
 
 on:
   push:
