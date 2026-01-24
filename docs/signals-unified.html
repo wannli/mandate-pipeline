@@ -311,7 +311,12 @@ async function loadSelectedSessions() {
                 }
 
                 // Add session documents with session identifier
-                const sessionDocs = sessionDataCache[session].map(doc => ({
+                const sessionData = sessionDataCache[session];
+                if (!sessionData.documents || !Array.isArray(sessionData.documents)) {
+                    console.error(`Invalid session data format for ${session}: missing documents array`);
+                    continue;
+                }
+                const sessionDocs = sessionData.documents.map(doc => ({
                     ...doc,
                     session: session
                 }));
@@ -533,7 +538,7 @@ initializeDocumentCards();
         <div class="max-w-5xl mx-auto px-6 py-8">
             <p class="text-sm text-muted">
                 
-Generated 2026-01-24 04:23 UTC · <a href="./data.json" class="text-un-blue hover:underline">JSON API</a>
+Generated 2026-01-24 04:24 UTC · <a href="./data.json" class="text-un-blue hover:underline">JSON API</a>
 
             </p>
         </div>
