@@ -1431,6 +1431,13 @@ def generate_site(config_dir: Path, data_dir: Path, output_dir: Path) -> None:
     # Load all documents
     documents = load_all_documents(data_dir, checks)
 
+    # Limit documents for faster testing if requested
+    max_docs = os.getenv("MAX_DOCUMENTS")
+    if max_docs and max_docs.isdigit():
+        max_docs = int(max_docs)
+        print(f"Limiting to {max_docs} documents for faster processing")
+        documents = documents[:max_docs]
+
     # Skip UNDL metadata fetching for faster processing if requested
     use_undl_metadata = os.getenv("SKIP_UNDL_METADATA", "false").lower() != "true"
     link_documents(documents, use_undl_metadata=use_undl_metadata)
