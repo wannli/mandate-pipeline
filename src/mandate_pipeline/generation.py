@@ -1486,13 +1486,16 @@ def generate_site(config_dir: Path, data_dir: Path, output_dir: Path) -> None:
 
     # Create output directories
     output_dir.mkdir(parents=True, exist_ok=True)
-    (output_dir / "signals").mkdir(exist_ok=True)
-    (output_dir / "patterns").mkdir(exist_ok=True)
-    (output_dir / "matrix").mkdir(exist_ok=True)
-    (output_dir / "provenance").mkdir(exist_ok=True)
 
     # Check if we should skip detailed pages for performance
     skip_detailed_pages = os.getenv("SKIP_DETAILED_PAGES", "false").lower() == "true"
+
+    # Only create detailed page directories if needed
+    if not skip_detailed_pages:
+        (output_dir / "signals").mkdir(exist_ok=True)
+        (output_dir / "patterns").mkdir(exist_ok=True)
+        (output_dir / "matrix").mkdir(exist_ok=True)
+        (output_dir / "provenance").mkdir(exist_ok=True)
 
     # Generate essential pages
     generate_index_page(visible_documents, checks, patterns, output_dir)

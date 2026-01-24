@@ -56,7 +56,7 @@ jobs:
         if: steps.check.outputs.has_changes == 'true'
         env:
           SKIP_UNDL_METADATA: ${{ vars.SKIP_UNDL_METADATA || 'false' }}
-          SKIP_DETAILED_PAGES: ${{ vars.SKIP_DETAILED_PAGES || 'false' }}
+          SKIP_DETAILED_PAGES: ${{ vars.SKIP_DETAILED_PAGES || 'true' }}  # Skip detailed pages by default since unified explorer replaces them
           MAX_DOCUMENTS: ${{ vars.MAX_DOCUMENTS || '' }}
         run: |
           python -c "
