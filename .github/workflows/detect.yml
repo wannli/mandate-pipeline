@@ -15,32 +15,135 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  analyze-changes:
+  detect:
     runs-on: ubuntu-latest
-    outputs:
-      extracted_files: ${{ steps.analyze.outputs.extracted_files }}
-      config_changed: ${{ steps.analyze.outputs.config_changed }}
-      run_mode: ${{ steps.analyze.outputs.run_mode }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          fetch-depth: 2
+          python-version: '3.12'
+          cache: 'pip'
 
-      - name: Analyze what changed
-        id: analyze
+      - name: Install dependencies
+        run: pip install -e .
+
+      - name: Run signal detection
         run: |
-          CONFIG_CHANGED=false
-          EXTRACTED_FILES="[]"
-          RUN_MODE="incremental"
+          python -c "
+          import sys
+          import os
+          from pathlib import Path
+          sys.path.insert(0, 'src')
+          from mandate_pipeline.detection import load_checks, run_checks
+          import json
+          import subprocess
 
-          if [ "${{ github.event_name }}" = "push" ]; then
-            # Check if config changed
-            if git diff --name-only HEAD~1 HEAD | grep -q "config/checks.yaml"; then
-              CONFIG_CHANGED=true
-              RUN_MODE="full"
-              echo "Config changed - running full detection"
-            fi
+          print('Finding extracted documents to process...')
+
+          # Check if config changed (determines run mode)
+          config_changed = False
+          if os.environ.get('GITHUB_EVENT_NAME') == 'push':
+              try:
+                  result = subprocess.run(['git', 'diff', '--name-only', 'HEAD~1', 'HEAD'],
+                                        capture_output=True, text=True, cwd='.')
+                  if 'config/checks.yaml' in result.stdout:
+                      config_changed = True
+                      print('Config changed - running full detection on all documents')
+              except:
+                  pass
+
+          # Get list of extracted files to process
+          if os.environ.get('GITHUB_EVENT_NAME') == 'push' and not config_changed:
+              # Incremental: only changed extracted files
+              try:
+                  result = subprocess.run(['git', 'diff', '--name-only', 'HEAD~1', 'HEAD', '--', 'data/extracted/*.json'],
+                                        capture_output=True, text=True, cwd='.')
+                  extracted_files = result.stdout.strip().split('\n') if result.stdout.strip() else []
+              except:
+                  extracted_files = []
+          else:
+              # Full run: all extracted files
+              extracted_dir = Path('data/extracted')
+              extracted_files = [str(f) for f in extracted_dir.glob('*.json')] if extracted_dir.exists() else []
+
+          # Filter out empty strings
+          extracted_files = [f for f in extracted_files if f.strip()]
+
+          print(f'Found {len(extracted_files)} extracted documents to process')
+
+          if not extracted_files:
+              print('No extracted documents to process')
+              exit(0)
+
+          # Load detection config
+          checks = load_checks(Path('config/checks.yaml'))
+          print(f'Loaded {len(checks)} signal definitions')
+
+          # Process each extracted document
+          processed_count = 0
+          for extracted_file_str in extracted_files:
+              extracted_file = Path(extracted_file_str)
+              if not extracted_file.exists():
+                  print(f'Extracted file not found: {extracted_file}')
+                  continue
+
+              try:
+                  print(f'Detecting signals in: {extracted_file.name}')
+
+                  # Load extracted data
+                  with open(extracted_file) as f:
+                      doc_data = json.load(f)
+
+                  # Run signal detection
+                  signals = run_checks(doc_data['paragraphs'], checks)
+
+                  # Create detection results
+                  detection_result = {
+                      'symbol': doc_data['symbol'],
+                      'signals': signals,
+                      'signal_summary': {}
+                  }
+
+                  # Create signal summary
+                  if signals:
+                      for para_signals in signals.values():
+                          for signal in para_signals:
+                              detection_result['signal_summary'][signal] = detection_result['signal_summary'].get(signal, 0) + 1
+
+                  # Save detection results
+                  output_file = Path('data/detected') / f'{extracted_file.stem}.json'
+                  output_file.parent.mkdir(parents=True, exist_ok=True)
+
+                  with open(output_file, 'w') as f:
+                      json.dump(detection_result, f, indent=2)
+
+                  print(f'Detection results saved to: {output_file}')
+                  print(f'Found signals: {list(detection_result[\"signal_summary\"].keys())}')
+                  processed_count += 1
+
+              except Exception as e:
+                  print(f'Error processing {extracted_file}: {e}')
+                  continue
+
+          print(f'Successfully processed {processed_count} documents')
+          "
+
+      - name: Commit detection results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add data/detected/
+          if git diff --staged --quiet; then
+            echo "No detection changes to commit"
+          else
+            git commit -m "chore: detect signals in documents"
+            git pull --rebase origin main || true
+            git push
+          fi
 
             # Get changed extracted files
             CHANGED_EXTRACTED=$(git diff --name-only HEAD~1 HEAD -- data/extracted/*.json || echo "")
