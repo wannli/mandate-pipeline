@@ -36,22 +36,14 @@ jobs:
       - name: Install dependencies
         run: pip install -e .
 
-      - name: Download session ${{ github.event.inputs.session_number }} resolutions
+      - name: Build session ${{ github.event.inputs.session_number }}
         run: |
-          python -m mandate_pipeline.cli download-session \
-            --session ${{ github.event.inputs.session_number }} \
-            --config ./config \
-            --data ./data \
-            --max-misses ${{ github.event.inputs.max_misses }} \
-            --verbose
-
-      - name: Process and generate session ${{ github.event.inputs.session_number }}
-        run: |
-          python -m mandate_pipeline.cli generate-session \
+          python -m mandate_pipeline.cli build-session \
             --session ${{ github.event.inputs.session_number }} \
             --config ./config \
             --data ./data \
             --output ./docs \
+            --max-misses ${{ github.event.inputs.max_misses }} \
             --verbose
 
       - name: Check for changes

@@ -819,13 +819,19 @@ def cmd_process_session(args):
             # Run signal detection
             signal_paragraphs = run_checks(paragraphs, checks)
 
+            # Create signal summary (for template compatibility)
+            signal_summary = {}
+            for para_signals in signal_paragraphs.values():
+                for signal in para_signals:
+                    signal_summary[signal] = signal_summary.get(signal, 0) + 1
+
             # Classify document
             doc_type = "resolution"  # All session documents are resolutions
 
             # Derive origin (will be "Unknown" for historical sessions)
             origin = derive_resolution_origin({
                 "symbol": symbol,
-                "linked_proposal_symbols": []  # No proposals for historical
+                "linked_proposal_symbols": []  # No proposals to link to
             })
 
             # Build document dict
@@ -836,6 +842,7 @@ def cmd_process_session(args):
                 "text": text,
                 "paragraphs": paragraphs,
                 "signal_paragraphs": signal_paragraphs,
+                "signal_summary": signal_summary,
                 "doc_type": doc_type,
                 "origin": origin,
                 "agenda_items": agenda_items,
@@ -953,11 +960,16 @@ def cmd_build_session(args):
     )
     download_results, download_count, download_duration = cmd_download_session(download_args)
 
-    if download_count == 0:
-        print(f"No new resolutions found for session {args.session}")
-        return 0
-
     print()
+
+    # Check if we have any PDFs for this session to process
+    pdfs_dir = args.data / "pdfs"
+    session_pattern = f"A_RES_{args.session}_*.pdf"
+    session_pdfs = list(pdfs_dir.glob(session_pattern))
+
+    if not session_pdfs:
+        print(f"No PDFs found for session {args.session} after download attempt")
+        return 0
 
     # Phase 2: Generate
     print(f"PHASE 2: GENERATE SESSION {args.session} PAGES")
