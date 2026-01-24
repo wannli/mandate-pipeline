@@ -1189,8 +1189,8 @@ def generate_session_unified_signals_page(
         doc_copy["signal_paragraphs"] = signal_paras
         enriched_docs.append(doc_copy)
 
-    # Filter to documents with signals
-    docs_with_signals = [doc for doc in enriched_docs if doc.get("signal_paragraphs")]
+    # Filter to documents with signals (use signal_summary for linked documents)
+    docs_with_signals = [doc for doc in enriched_docs if doc.get("signal_summary") or doc.get("signal_paragraphs")]
 
     # Ensure all documents have required fields for template compatibility
     for doc in docs_with_signals:
