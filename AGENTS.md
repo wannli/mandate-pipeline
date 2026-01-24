@@ -6,3 +6,46 @@ When making code changes:
 - Do **not** edit files under `docs/` unless the user explicitly asks for a regeneration.
 - Avoid staging or committing `docs/` changes that are incidental to code edits (e.g., from running the generator locally).
 - Keep changes focused on the source code and templates that *produce* the static site output.
+
+## Workflow Architecture
+
+The pipeline uses a **granular, event-driven workflow architecture** with 6 independent GitHub Actions workflows:
+
+### Main Pipeline Workflows (Stages 1-5)
+1. **`discover.yml`** - Stage 1: Document Discovery
+   - Triggers: Hourly schedule + manual historical sessions
+   - Downloads new UN documents and commits PDFs to `data/pdfs/`
+   - Triggers downstream extraction workflow
+
+2. **`extract.yml`** - Stage 2: Text Extraction
+   - Triggers: New files in `data/pdfs/`
+   - Parallel processing of PDFs to extract text/metadata
+   - Commits extracted data to `data/extracted/`
+
+3. **`detect.yml`** - Stage 3: Signal Detection
+   - Triggers: New files in `data/extracted/` OR changes to `config/checks.yaml`
+   - Runs mandate signal detection on extracted documents
+   - Commits detection results to `data/detected/`
+
+4. **`link.yml`** - Stage 4: Document Linking
+   - Triggers: New files in `data/detected/`
+   - Builds relationships between resolutions and proposals
+   - Commits linkage data to `data/linked/`
+
+5. **`generate.yml`** - Stage 5: Site Generation
+   - Triggers: New files in `data/linked/`
+   - Generates static website and commits to `docs/` folder
+   - Site served directly from main branch
+
+### Special Purpose Workflow
+6. **`build-session.yml`** - Historical Session Builder
+   - Manual trigger for complete historical UN sessions
+   - Processes entire past sessions (download → extract → detect → link → generate)
+   - Creates session-specific pages in `docs/sessions/`
+
+### Key Features
+- **Event-driven**: Each stage triggers the next automatically
+- **Parallel processing**: Multiple jobs can run simultaneously where safe
+- **Incremental updates**: Only processes changed documents
+- **Direct commits**: All workflows commit results directly to main branch
+- **Performance focused**: Minimizes redundant work through smart triggering

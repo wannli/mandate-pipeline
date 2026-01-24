@@ -2,16 +2,21 @@ name: Discover Documents
 
 on:
   schedule:
-    # Run daily at 6 AM UTC
+    # Run hourly at minute 0
     - cron: '0 * * * *'
   workflow_dispatch:
-    # Allow manual trigger
+    # Allow manual trigger for historical sessions
+    inputs:
+      session_number:
+        description: 'UN General Assembly session number (e.g., 79, 78, 77) - leave empty for current discovery'
+        required: false
+        type: string
 
 permissions:
   contents: write
 
 concurrency:
-  group: "discover"
+  group: "discover-${{ github.event.inputs.session_number || 'current' }}"
   cancel-in-progress: false
 
 jobs:
@@ -31,10 +36,14 @@ jobs:
         run: pip install -e .
 
       - name: Discover new documents
-        run: python -m mandate_pipeline.cli discover --config ./config --data ./data
+        if: github.event.inputs.session_number == ''
+        run: python -m mandate_pipeline.cli discover --config ./config --data ./data --verbose
+
+      - name: Discover historical session
+        if: github.event.inputs.session_number != ''
+        run: python -m mandate_pipeline.cli download-session --session ${{ github.event.inputs.session_number }} --config ./config --data ./data --verbose
 
       - name: Record discovery run metadata
-        if: always()
         run: |
           cat > data/last_discover_run.json << 'EOF'
           {
@@ -45,7 +54,8 @@ jobs:
             "ref_name": "${{ github.ref_name }}",
             "sha": "${{ github.sha }}",
             "actor": "${{ github.actor }}",
-            "timestamp_utc": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            "timestamp_utc": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+            "session_number": "${{ github.event.inputs.session_number || null }}"
           }
           EOF
 
@@ -64,7 +74,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git commit -m "chore: discover $(date -I)"
-          # Pull any changes that happened during the build, then push
+          if [ -n "${{ github.event.inputs.session_number }}" ]; then
+            git commit -m "chore: discover A/RES/${{ github.event.inputs.session_number }} session documents"
+          else
+            git commit -m "chore: discover new documents ($(date -I))"
+          fi
+          # Pull any changes that happened during discovery, then push
           git pull --rebase origin main || true
           git push

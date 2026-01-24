@@ -194,38 +194,6 @@ checks:
 - `signal`: Name of the signal (used in website sections)
 - `phrases`: List of phrases to match (case-insensitive)
 
-## Email Signal Reports (GitHub Actions)
-
-The `Email Signal Reports` workflow (`.github/workflows/email-signals.yml`) can run daily to
-execute the pipeline and generate one markdown report per signal. Each report includes all
-resolutions for that signal, with newly discovered resolutions listed first and bolded. The
-workflow writes markdown previews to `./email-previews`, uploads them as a workflow artifact,
-and lists the preview filenames plus an inlined markdown summary in the GitHub Actions job
-summary.
-
-### Required GitHub Secrets
-
-**Recipients**
-
-- `SIGNAL_EMAIL_RECIPIENTS`: JSON mapping of signals to recipient lists (optional; if omitted,
-  all signals are included)
-
-### Optional behavior
-
-Set `EMAIL_REPORT_PREVIEW_DIR` to change where previews are written.
-
-Example `SIGNAL_EMAIL_RECIPIENTS` secret:
-
-```json
-{
-  "agenda": ["agenda-team@example.com"],
-  "PGA": ["pga-team@example.com", "ops@example.com"],
-  "default": ["ops@example.com"]
-}
-```
-
-Signals without a configured recipient list are skipped unless a `default` list is provided.
-
 ## CLI Commands
 
 ### mandate discover

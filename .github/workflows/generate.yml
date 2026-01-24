@@ -1,0 +1,152 @@
+name: Generate Static Site
+
+on:
+  push:
+    paths: ['data/linked/**']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: generate-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  check-for-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      has_changes: ${{ steps.check.outputs.has_changes }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Check for linking changes
+        id: check
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            # Check if any linked files changed
+            CHANGED=$(git diff --name-only HEAD~1 HEAD -- data/linked/* || echo "")
+            if [ -n "$CHANGED" ]; then
+              echo "has_changes=true" >> $GITHUB_OUTPUT
+              echo "Found changes in linked data"
+            else
+              echo "has_changes=false" >> $GITHUB_OUTPUT
+              echo "No linking changes found"
+            fi
+          else
+            # Manual trigger
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "Manual trigger - regenerating site"
+          fi
+
+  generate:
+    runs-on: ubuntu-latest
+    needs: check-for-changes
+    if: needs.check-for-changes.outputs.has_changes == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -e .
+
+      - name: Generate static site
+        run: |
+          python -c "
+          import sys
+          import json
+          from pathlib import Path
+          sys.path.insert(0, 'src')
+          from mandate_pipeline.generation import generate_site_verbose
+          from mandate_pipeline.detection import load_checks
+
+          print('Starting incremental site generation...')
+
+          # Load checks for signal definitions
+          checks = load_checks(Path('config/checks.yaml'))
+          print(f'Loaded {len(checks)} signal definitions')
+
+          # For incremental generation, we'd ideally only regenerate changed pages
+          # For now, we'll do a full regeneration (can be optimized later)
+
+          # Load all linked documents
+          linked_dir = Path('data/linked')
+          documents = []
+
+          if linked_dir.exists():
+              # Load documents from linked data
+              for linked_file in linked_dir.glob('*.json'):
+                  if linked_file.name == 'index.json':
+                      continue
+                  try:
+                      with open(linked_file) as f:
+                          doc = json.load(f)
+                          documents.append(doc)
+                  except Exception as e:
+                      print(f'Error loading {linked_file}: {e}')
+
+          print(f'Loaded {len(documents)} linked documents')
+
+          # Create document objects compatible with generation
+          processed_docs = []
+          for doc in documents:
+              # Convert linked format to generation format
+              processed_doc = {
+                  'symbol': doc['symbol'],
+                  'filename': doc['symbol'].replace('/', '_') + '.pdf',
+                  'title': f'Document {doc[\"symbol\"]}',  # Would need to load from extracted data
+                  'text': '',  # Would need to load from extracted data
+                  'paragraphs': {},  # Would need to load from extracted data
+                  'signals': doc.get('signals', {}),
+                  'signal_summary': doc.get('signal_summary', {}),
+                  'doc_type': doc.get('doc_type', 'other'),
+                  'origin': doc.get('origin', 'Unknown'),
+                  'agenda_items': [],  # Would need to load from extracted data
+                  'symbol_references': [],  # Would need to load from extracted data
+                  'un_url': f'https://documents.un.org/doc/{doc[\"symbol\"].replace(\"/\", \"\").replace(\" \", \"\")}',
+                  'is_adopted_draft': False,
+                  'adopted_by': None,
+                  'linked_proposals': doc.get('linked_proposals', []),
+              }
+              processed_docs.append(processed_doc)
+
+          if processed_docs:
+              # Generate site
+              print('Generating static site...')
+              stats = generate_site_verbose(
+                  config_dir=Path('config'),
+                  data_dir=Path('data'),
+                  output_dir=Path('docs'),
+                  skip_debug=True,
+                  on_generate_page=lambda page_type, name: print(f'Generated: {page_type} - {name}'),
+                  on_generate_end=lambda duration: print(f'Site generation completed in {duration:.1f}s')
+              )
+
+              print(f'Site generation stats: {stats}')
+          else:
+              print('No documents to generate site for')
+          "
+
+      - name: Commit site changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add docs/
+          if git diff --staged --quiet; then
+            echo "No site changes to commit"
+          else
+            git commit -m "chore: generate static site"
+            git pull --rebase origin main || true
+            git push
+            echo "Site updated and committed to main branch"
+          fi
