@@ -1,0 +1,21 @@
+{
+  "symbol": "A/RES/79/1",
+  "doc_type": "resolution",
+  "origin": "Unknown",
+  "linked_proposals": [],
+  "linked_resolutions": [],
+  "signal_summary": {
+    "PGA": 2,
+    "process": 2
+  },
+  "signals": {
+    "57": [
+      "PGA",
+      "process"
+    ],
+    "74": [
+      "PGA",
+      "process"
+    ]
+  }
+}

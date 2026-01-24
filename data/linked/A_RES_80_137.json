@@ -1,0 +1,32 @@
+{
+  "symbol": "A/RES/80/137",
+  "doc_type": "resolution",
+  "origin": "Unknown",
+  "linked_proposals": [],
+  "linked_resolutions": [],
+  "signal_summary": {
+    "PGA": 4,
+    "report": 1,
+    "agenda": 1
+  },
+  "signals": {
+    "3": [
+      "PGA"
+    ],
+    "15": [
+      "PGA"
+    ],
+    "75": [
+      "PGA"
+    ],
+    "81": [
+      "PGA"
+    ],
+    "83": [
+      "report"
+    ],
+    "84": [
+      "agenda"
+    ]
+  }
+}

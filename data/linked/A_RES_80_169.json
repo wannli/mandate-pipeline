@@ -1,0 +1,24 @@
+{
+  "symbol": "A/RES/80/169",
+  "doc_type": "resolution",
+  "origin": "Unknown",
+  "linked_proposals": [],
+  "linked_resolutions": [],
+  "signal_summary": {
+    "PGA": 2,
+    "report": 1,
+    "agenda": 1
+  },
+  "signals": {
+    "1": [
+      "PGA"
+    ],
+    "2": [
+      "PGA",
+      "report"
+    ],
+    "16": [
+      "agenda"
+    ]
+  }
+}

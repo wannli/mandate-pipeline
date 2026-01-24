@@ -1,0 +1,18 @@
+{
+  "symbol": "A/RES/79/206",
+  "doc_type": "resolution",
+  "origin": "Unknown",
+  "linked_proposals": [],
+  "linked_resolutions": [],
+  "signal_summary": {
+    "agenda": 2
+  },
+  "signals": {
+    "42": [
+      "agenda"
+    ],
+    "43": [
+      "agenda"
+    ]
+  }
+}

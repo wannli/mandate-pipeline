@@ -1,0 +1,24 @@
+{
+  "symbol": "A/RES/80/242",
+  "doc_type": "resolution",
+  "origin": "Unknown",
+  "linked_proposals": [],
+  "linked_resolutions": [],
+  "signal_summary": {
+    "report": 4
+  },
+  "signals": {
+    "39": [
+      "report"
+    ],
+    "50": [
+      "report"
+    ],
+    "54": [
+      "report"
+    ],
+    "87": [
+      "report"
+    ]
+  }
+}

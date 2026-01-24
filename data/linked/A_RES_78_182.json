@@ -1,0 +1,28 @@
+{
+  "symbol": "A/RES/78/182",
+  "doc_type": "resolution",
+  "origin": "Unknown",
+  "linked_proposals": [],
+  "linked_resolutions": [],
+  "signal_summary": {
+    "PGA": 3,
+    "report": 2
+  },
+  "signals": {
+    "20": [
+      "PGA"
+    ],
+    "21": [
+      "PGA"
+    ],
+    "29": [
+      "PGA"
+    ],
+    "47": [
+      "report"
+    ],
+    "48": [
+      "report"
+    ]
+  }
+}

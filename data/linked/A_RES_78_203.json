@@ -1,0 +1,26 @@
+{
+  "symbol": "A/RES/78/203",
+  "doc_type": "resolution",
+  "origin": "Unknown",
+  "linked_proposals": [],
+  "linked_resolutions": [],
+  "signal_summary": {
+    "PGA": 4,
+    "report": 1
+  },
+  "signals": {
+    "40": [
+      "PGA"
+    ],
+    "41": [
+      "PGA"
+    ],
+    "42": [
+      "PGA"
+    ],
+    "52": [
+      "PGA",
+      "report"
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "symbol": "A/RES/79/245",
+  "doc_type": "resolution",
+  "origin": "Unknown",
+  "linked_proposals": [],
+  "linked_resolutions": [],
+  "signal_summary": {
+    "agenda": 2,
+    "report": 6
+  },
+  "signals": {
+    "4": [
+      "agenda"
+    ],
+    "5": [
+      "agenda"
+    ],
+    "8": [
+      "report"
+    ],
+    "14": [
+      "report"
+    ],
+    "15": [
+      "report"
+    ],
+    "16": [
+      "report"
+    ],
+    "17": [
+      "report"
+    ],
+    "20": [
+      "report"
+    ]
+  }
+}

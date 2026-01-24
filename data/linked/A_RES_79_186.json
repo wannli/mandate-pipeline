@@ -1,0 +1,25 @@
+{
+  "symbol": "A/RES/79/186",
+  "doc_type": "resolution",
+  "origin": "Unknown",
+  "linked_proposals": [],
+  "linked_resolutions": [],
+  "signal_summary": {
+    "PGA": 2,
+    "report": 2
+  },
+  "signals": {
+    "5": [
+      "PGA"
+    ],
+    "6": [
+      "PGA"
+    ],
+    "26": [
+      "report"
+    ],
+    "27": [
+      "report"
+    ]
+  }
+}

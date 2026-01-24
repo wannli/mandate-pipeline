@@ -1,0 +1,27 @@
+{
+  "symbol": "A/RES/79/197",
+  "doc_type": "resolution",
+  "origin": "Unknown",
+  "linked_proposals": [],
+  "linked_resolutions": [],
+  "signal_summary": {
+    "PGA": 3,
+    "agenda": 1,
+    "report": 1
+  },
+  "signals": {
+    "7": [
+      "PGA"
+    ],
+    "30": [
+      "PGA"
+    ],
+    "40": [
+      "PGA"
+    ],
+    "48": [
+      "agenda",
+      "report"
+    ]
+  }
+}

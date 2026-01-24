@@ -1,0 +1,15 @@
+{
+  "symbol": "A/C.6/80/L.7",
+  "doc_type": "proposal",
+  "origin": "Unknown",
+  "linked_proposals": [],
+  "linked_resolutions": [],
+  "signal_summary": {
+    "observer": 1
+  },
+  "signals": {
+    "1": [
+      "observer"
+    ]
+  }
+}

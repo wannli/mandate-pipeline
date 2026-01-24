@@ -1,0 +1,15 @@
+{
+  "symbol": "A/C.3/80/L.54",
+  "doc_type": "proposal",
+  "origin": "Unknown",
+  "linked_proposals": [],
+  "linked_resolutions": [],
+  "signal_summary": {
+    "report": 1
+  },
+  "signals": {
+    "47": [
+      "report"
+    ]
+  }
+}

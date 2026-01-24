@@ -1,0 +1,30 @@
+{
+  "symbol": "A/RES/78/257",
+  "doc_type": "resolution",
+  "origin": "Unknown",
+  "linked_proposals": [],
+  "linked_resolutions": [],
+  "signal_summary": {
+    "report": 6
+  },
+  "signals": {
+    "17": [
+      "report"
+    ],
+    "18": [
+      "report"
+    ],
+    "19": [
+      "report"
+    ],
+    "21": [
+      "report"
+    ],
+    "22": [
+      "report"
+    ],
+    "24": [
+      "report"
+    ]
+  }
+}

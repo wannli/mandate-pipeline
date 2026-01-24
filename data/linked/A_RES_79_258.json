@@ -1,0 +1,21 @@
+{
+  "symbol": "A/RES/79/258",
+  "doc_type": "resolution",
+  "origin": "Unknown",
+  "linked_proposals": [],
+  "linked_resolutions": [],
+  "signal_summary": {
+    "report": 3
+  },
+  "signals": {
+    "3": [
+      "report"
+    ],
+    "4": [
+      "report"
+    ],
+    "10": [
+      "report"
+    ]
+  }
+}
