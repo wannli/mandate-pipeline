@@ -67,6 +67,7 @@ jobs:
         run: |
           python -c "
           import sys
+          import os
           import json
           from pathlib import Path
           sys.path.insert(0, 'src')
