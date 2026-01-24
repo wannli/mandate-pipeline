@@ -16,6 +16,17 @@ When making changes to the mandate pipeline project:
 3. **Run GitHub runner** - Trigger the GitHub Actions workflow to recreate the site
 4. **Monitor with browser tools** - Use `browser_get_tabs` to see what's happening during the pipeline run and verify the site recreation completed successfully
 
+## Collaboration Flow
+
+When working changes end-to-end with this project:
+
+1. **Review diffs** - Check `git status`, `git diff`, and recent `git log` before committing.
+2. **Commit and push** - Create a concise commit message, push, and rebase if the remote is ahead.
+3. **Trigger site generation** - Run `gh workflow run generate.yml` after pushing.
+4. **Verify workflow status** - Use `gh run list -w generate.yml -L 1` and `gh run view <id>` to confirm completion.
+5. **Monitor via browser** - Keep the workflow page open and use `browser_get_tabs` to track progress.
+6. **Poll for completion** - Check `gh run view <id>` every 30s until it finishes.
+
 ## Workflow Architecture
 
 The pipeline uses a **granular, event-driven workflow architecture** with 6 independent GitHub Actions workflows:
