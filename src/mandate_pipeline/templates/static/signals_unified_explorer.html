@@ -323,7 +323,12 @@ async function loadSelectedSessions() {
                 }
 
                 // Add session documents with session identifier
-                const sessionDocs = sessionDataCache[session].map(doc => ({
+                const sessionData = sessionDataCache[session];
+                if (!sessionData.documents || !Array.isArray(sessionData.documents)) {
+                    console.error(`Invalid session data format for ${session}: missing documents array`);
+                    continue;
+                }
+                const sessionDocs = sessionData.documents.map(doc => ({
                     ...doc,
                     session: session
                 }));
