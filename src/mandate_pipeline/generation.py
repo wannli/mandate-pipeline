@@ -483,12 +483,50 @@ def group_documents_by_pattern(documents: list, patterns: list) -> dict:
 def natural_sort_key(symbol: str) -> list:
     """
     Generate a sort key for natural sorting of document symbols.
-    
+
     This ensures A/80/L.9 comes before A/80/L.10.
     """
     import re
     parts = re.split(r'(\d+)', symbol)
     return [int(p) if p.isdigit() else p.lower() for p in parts]
+
+
+def unified_sort_key(doc: dict) -> tuple:
+    """
+    Sort key for unified signals browser.
+
+    Order: Draft Proposals (L-series) → Committee Proposals (C-series) → Resolutions
+    Within each group: Committee order (C1→C6) then natural numerical sorting
+    """
+    symbol = doc["symbol"]
+    doc_type = doc.get("doc_type", "other")
+
+    # Primary: Document type hierarchy
+    type_hierarchy = {
+        "proposal": 0,  # All proposals together
+        "resolution": 1
+    }
+    type_priority = type_hierarchy.get(doc_type, 2)
+
+    # Secondary: Within proposals, L-series before C-series
+    if doc_type == "proposal":
+        is_l_series = "/L." in symbol
+        series_priority = 0 if is_l_series else 1  # L-series first
+
+        # Tertiary: Committee order for C-series (or 0 for L-series)
+        if is_l_series:
+            committee_priority = 0
+        else:
+            committee_order = {"C1": 1, "C2": 2, "C3": 3, "C4": 4, "C5": 5, "C6": 6}
+            committee_priority = committee_order.get(doc.get("origin", ""), 99)
+    else:
+        series_priority = 0  # Not applicable for resolutions
+        committee_priority = 0  # Not applicable for resolutions
+
+    # Quaternary: Natural numerical sorting
+    natural_key = natural_sort_key(symbol)
+
+    return (type_priority, series_priority, committee_priority, natural_key)
 
 
 def generate_documents_list_page(
@@ -1014,6 +1052,57 @@ def generate_unified_signals_page(
         f.write(html)
 
 
+def generate_unified_explorer_page(
+    documents: list[dict],
+    checks: list,
+    output_dir: Path
+) -> None:
+    """
+    Generate the unified signals explorer page with proper UN document sorting.
+
+    Args:
+        documents: All processed documents
+        checks: All check definitions
+        output_dir: Root output directory
+    """
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Filter to documents with signals
+    docs_with_signals = [doc for doc in documents if doc.get("signal_paragraphs")]
+
+    # Sort documents using unified sorting logic
+    docs_with_signals.sort(key=unified_sort_key)
+
+    # Count signal types
+    resolution_count = len([d for d in docs_with_signals if d.get("doc_type") == "resolution"])
+    proposal_count = len([d for d in docs_with_signals if d.get("doc_type") == "proposal"])
+
+    # Count total paragraphs with signals
+    total_paragraphs = sum(len(doc.get("signal_paragraphs", [])) for doc in docs_with_signals)
+
+    # Get origin order for filtering
+    origin_order = ["Plenary", "C1", "C2", "C3", "C4", "C5", "C6"]
+
+    env = get_templates_env(checks)
+    template = env.get_template("signals_unified_explorer.html")
+
+    html = template.render(
+        documents=docs_with_signals,
+        checks=checks,
+        origin_order=origin_order,
+        origin_names=COMMITTEE_NAMES,
+        total_docs=len(docs_with_signals),
+        total_paragraphs=total_paragraphs,
+        resolution_count=resolution_count,
+        proposal_count=proposal_count,
+        generated_at=datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
+    )
+
+    with open(output_dir / "signals-unified.html", "w") as f:
+        f.write(html)
+
+
 def generate_session_unified_signals_page(
     session: int,
     all_documents: list[dict],
@@ -1368,6 +1457,7 @@ def generate_site(config_dir: Path, data_dir: Path, output_dir: Path) -> None:
     generate_provenance_page(documents, checks, output_dir / "provenance")
     generate_origin_matrix_page(documents, checks, output_dir)
     generate_unified_signals_page(documents, checks, output_dir)
+    generate_unified_explorer_page(documents, checks, output_dir)
 
     # Generate data exports
     generate_data_json(visible_documents, checks, output_dir)
@@ -1557,6 +1647,10 @@ def generate_site_verbose(
     generate_unified_signals_page(documents, checks, output_dir)
     if on_generate_page:
         on_generate_page("signals_unified", "signals.html")
+
+    generate_unified_explorer_page(documents, checks, output_dir)
+    if on_generate_page:
+        on_generate_page("signals_unified_explorer", "signals-unified.html")
 
     # Generate data exports
     generate_data_json(visible_documents, checks, output_dir)
