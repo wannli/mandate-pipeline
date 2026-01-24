@@ -60,6 +60,10 @@ jobs:
         run: pip install -e .
 
       - name: Generate static site
+        env:
+          SKIP_UNDL_METADATA: ${{ vars.SKIP_UNDL_METADATA || 'false' }}
+          SKIP_DETAILED_PAGES: ${{ vars.SKIP_DETAILED_PAGES || 'false' }}
+          MAX_DOCUMENTS: ${{ vars.MAX_DOCUMENTS || '' }}
         run: |
           python -c "
           import sys
@@ -70,6 +74,10 @@ jobs:
           from mandate_pipeline.detection import load_checks
 
           print('Starting incremental site generation...')
+          print('Environment variables:')
+          print(f'  SKIP_UNDL_METADATA: {os.getenv(\"SKIP_UNDL_METADATA\", \"not set\")}')
+          print(f'  SKIP_DETAILED_PAGES: {os.getenv(\"SKIP_DETAILED_PAGES\", \"not set\")}')
+          print(f'  MAX_DOCUMENTS: {os.getenv(\"MAX_DOCUMENTS\", \"not set\")}')
 
           # Load checks for signal definitions
           checks = load_checks(Path('config/checks.yaml'))
@@ -118,6 +126,13 @@ jobs:
                   'linked_proposals': doc.get('linked_proposals', []),
               }
               processed_docs.append(processed_doc)
+
+          # Apply MAX_DOCUMENTS limit if set
+          max_docs = os.getenv('MAX_DOCUMENTS')
+          if max_docs and max_docs.isdigit():
+              max_docs = int(max_docs)
+              print(f'Limiting to {max_docs} documents for faster processing')
+              processed_docs = processed_docs[:max_docs]
 
           if processed_docs:
               # Generate site
