@@ -821,9 +821,10 @@ def cmd_process_session(args):
 
             # Create signal summary (for template compatibility)
             signal_summary = {}
-            for para_signals in signal_paragraphs.values():
-                for signal in para_signals:
-                    signal_summary[signal] = signal_summary.get(signal, 0) + 1
+            if signal_paragraphs:
+                for para_signals in signal_paragraphs.values():
+                    for signal in para_signals:
+                        signal_summary[signal] = signal_summary.get(signal, 0) + 1
 
             # Classify document
             doc_type = "resolution"  # All session documents are resolutions

@@ -1039,6 +1039,18 @@ def generate_session_unified_signals_page(
     # Filter to documents with signals
     docs_with_signals = [doc for doc in session_docs if doc.get("signal_paragraphs")]
 
+    # Ensure all documents have required fields for template compatibility
+    for doc in docs_with_signals:
+        if "signal_summary" not in doc:
+            # Create signal summary from signal_paragraphs if it exists
+            signal_paragraphs = doc.get("signal_paragraphs", {})
+            signal_summary = {}
+            if signal_paragraphs:
+                for para_signals in signal_paragraphs.values():
+                    for signal in para_signals:
+                        signal_summary[signal] = signal_summary.get(signal, 0) + 1
+            doc["signal_summary"] = signal_summary
+
     # Count signal types (only resolutions for past sessions)
     resolution_count = len(docs_with_signals)
     proposal_count = 0  # No proposals for past sessions
