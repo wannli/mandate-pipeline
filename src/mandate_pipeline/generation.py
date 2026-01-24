@@ -1444,22 +1444,32 @@ def generate_site(config_dir: Path, data_dir: Path, output_dir: Path) -> None:
     (output_dir / "matrix").mkdir(exist_ok=True)
     (output_dir / "provenance").mkdir(exist_ok=True)
 
-    # Generate pages
+    # Check if we should skip detailed pages for performance
+    skip_detailed_pages = os.getenv("SKIP_DETAILED_PAGES", "false").lower() == "true"
+
+    # Generate essential pages
     generate_index_page(visible_documents, checks, patterns, output_dir)
     generate_signals_info_page(checks, output_dir)
 
-    for check in checks:
-        generate_signal_page(documents, visible_documents, check, checks, output_dir / "signals")
-
-    for pattern in patterns:
-        generate_pattern_page(documents, visible_documents, pattern, checks, patterns, output_dir / "patterns")
-        # Generate pattern+signal pages
+    # Generate detailed pages (can be skipped for performance)
+    if not skip_detailed_pages:
+        print("Generating detailed signal pages...")
         for check in checks:
-            generate_pattern_signal_page(documents, visible_documents, pattern, check["signal"], checks, patterns, output_dir / "matrix")
+            generate_signal_page(documents, visible_documents, check, checks, output_dir / "signals")
 
-    # Generate new UI pages
-    generate_provenance_page(documents, checks, output_dir / "provenance")
-    generate_origin_matrix_page(documents, checks, output_dir)
+        print("Generating pattern pages...")
+        for pattern in patterns:
+            generate_pattern_page(documents, visible_documents, pattern, checks, patterns, output_dir / "patterns")
+            # Generate pattern+signal pages
+            for check in checks:
+                generate_pattern_signal_page(documents, visible_documents, pattern, check["signal"], checks, patterns, output_dir / "matrix")
+
+        print("Generating additional analysis pages...")
+        generate_provenance_page(documents, checks, output_dir / "provenance")
+        generate_origin_matrix_page(documents, checks, output_dir)
+
+    # Always generate unified pages (core functionality)
+    print("Generating unified signals pages...")
     generate_unified_signals_page(documents, checks, output_dir)
     generate_unified_explorer_page(documents, checks, output_dir)
 
