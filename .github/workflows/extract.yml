@@ -32,17 +32,22 @@ jobs:
             CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD -- data/pdfs/*.pdf || echo "")
           else
             # Manual trigger - find all PDFs
-            CHANGED_FILES=$(find data/pdfs -name "*.pdf" -type f | head -20)  # Limit for manual runs
+            CHANGED_FILES=$(find data/pdfs -name "*.pdf" -type f)
           fi
 
           # Filter to PDF files and format as JSON array
           PDF_ARRAY="[]"
           if [ -n "$CHANGED_FILES" ]; then
-            PDF_ARRAY=$(echo "$CHANGED_FILES" | jq -R -s 'split("\n") | map(select(. != ""))')
+            # Clean up the file list and create JSON array
+            CLEAN_FILES=$(echo "$CHANGED_FILES" | sed '/^$/d')
+            if [ -n "$CLEAN_FILES" ]; then
+              PDF_ARRAY=$(echo "$CLEAN_FILES" | jq -R -s 'split("\n") | map(select(. != "" and . != null))')
+            fi
           fi
 
           echo "pdfs=$PDF_ARRAY" >> $GITHUB_OUTPUT
-          echo "Found $(echo "$PDF_ARRAY" | jq length) PDFs to process"
+          PDF_COUNT=$(echo "$PDF_ARRAY" | jq length)
+          echo "Found $PDF_COUNT PDFs to process"
 
   extract:
     runs-on: ubuntu-latest
