@@ -194,7 +194,7 @@
 <script>
 // Session data cache
 let sessionDataCache = {};
-let selectedSessions = ['current', '79', '78'];
+let selectedSessions = [];
 let originalDocumentsHTML = '';
 
 // Filter elements (initialized later)
@@ -293,11 +293,53 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeSessionSelector() {
     const sessionSelector = document.getElementById('session-selector');
 
+    // Populate session options dynamically
+    populateSessionOptions(sessionSelector);
+
     sessionSelector.addEventListener('change', function() {
         const selectedOptions = Array.from(this.selectedOptions).map(option => option.value);
         selectedSessions = selectedOptions;
         loadSelectedSessions();
     });
+}
+
+// Populate session selector with available sessions
+async function populateSessionOptions(selector) {
+    // Clear existing options
+    selector.innerHTML = '';
+
+    // Add current session option
+    const currentOption = document.createElement('option');
+    currentOption.value = 'current';
+    currentOption.textContent = 'Current Session';
+    currentOption.selected = true;
+    selector.appendChild(currentOption);
+
+    // Check which session directories exist (in reverse chronological order)
+    const availableSessions = [79, 78, 77, 76, 75];
+
+    for (const session of availableSessions) {
+        try {
+            // Check if session data exists
+            const response = await fetch(`/mandate-pipeline/sessions/${session}/data.json`, { method: 'HEAD' });
+            if (response.ok) {
+                const option = document.createElement('option');
+                option.value = session.toString();
+                option.textContent = `Session ${session}`;
+                // Auto-select recent sessions
+                if (session >= 78) {
+                    option.selected = true;
+                }
+                selector.appendChild(option);
+            }
+        } catch (error) {
+            // Session not available, skip
+            console.log(`Session ${session} not available`);
+        }
+    }
+
+    // Update selected sessions based on what's actually selected
+    selectedSessions = Array.from(selector.selectedOptions).map(option => option.value);
 }
 
 // Load all selected sessions and combine their documents
