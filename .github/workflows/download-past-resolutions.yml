@@ -1,0 +1,66 @@
+name: Download Past Session Resolutions
+
+on:
+  workflow_dispatch:
+    inputs:
+      session_number:
+        description: 'UN General Assembly session number (e.g., 79, 78, 77)'
+        required: true
+        type: string
+      max_misses:
+        description: 'Stop after N consecutive 404s (default: 5)'
+        required: false
+        type: string
+        default: '5'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: "past-session-${{ github.event.inputs.session_number }}"
+  cancel-in-progress: false
+
+jobs:
+  download-resolutions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -e .
+
+      - name: Download resolutions from session ${{ github.event.inputs.session_number }}
+        run: |
+          python -m mandate_pipeline.cli download-resolutions \
+            --session ${{ github.event.inputs.session_number }} \
+            --config ./config \
+            --data ./data \
+            --max-misses ${{ github.event.inputs.max_misses }} \
+            --verbose
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git add data/
+          if git diff --staged --quiet; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit changes
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: download A/RES/${{ github.event.inputs.session_number }} resolutions ($(date -I))"
+          # Pull any changes that happened during the build, then push
+          git pull --rebase origin main || true
+          git push

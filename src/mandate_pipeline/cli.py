@@ -7,7 +7,7 @@ import sys
 import time
 from pathlib import Path
 
-from .discovery import sync_all_patterns_verbose, load_sync_state
+from .discovery import sync_all_patterns_verbose, load_sync_state, sync_session_resolutions
 from .generation import generate_site_verbose
 from .detection import load_checks
 
@@ -152,6 +152,41 @@ def main():
         help="Skip generating debug pages (faster builds)",
     )
 
+    # Download resolutions command
+    download_parser = subparsers.add_parser(
+        "download-resolutions",
+        help="Download all resolutions from a specific UN General Assembly session",
+    )
+    download_parser.add_argument(
+        "--session",
+        type=int,
+        required=True,
+        help="UN General Assembly session number (e.g., 79, 78, 77)",
+    )
+    download_parser.add_argument(
+        "--config",
+        type=Path,
+        default=Path("./config"),
+        help="Path to config directory (default: ./config)",
+    )
+    download_parser.add_argument(
+        "--data",
+        type=Path,
+        default=Path("./data"),
+        help="Path to data directory (default: ./data)",
+    )
+    download_parser.add_argument(
+        "--max-misses",
+        type=int,
+        default=5,
+        help="Stop after N consecutive 404s (default: 5)",
+    )
+    download_parser.add_argument(
+        "--verbose", "-v",
+        action="store_true",
+        help="Enable verbose logging",
+    )
+
     # Build command (discover + generate)
     build_parser = subparsers.add_parser(
         "build",
@@ -207,6 +242,8 @@ def main():
         cmd_discover(args)
     elif args.command == "generate":
         cmd_generate(args)
+    elif args.command == "download-resolutions":
+        cmd_download_resolutions(args)
     elif args.command == "build":
         cmd_build(args)
 
@@ -376,6 +413,69 @@ def cmd_generate(args):
     gh_group_end()
     
     return stats, errors, total_duration
+
+
+def cmd_download_resolutions(args):
+    """Run the download resolutions command."""
+    verbose = args.verbose or is_github_actions()
+    
+    gh_group_start("Session Resolutions Download")
+    print(f"Session number: {args.session}")
+    print(f"Data directory: {args.data}")
+    print(f"Max consecutive misses: {args.max_misses}")
+    print(f"Verbose: {verbose}")
+    
+    # Count existing PDFs
+    pdfs_dir = args.data / "pdfs"
+    if pdfs_dir.exists():
+        pdf_count = len(list(pdfs_dir.glob("**/*.pdf")))
+        print(f"\nExisting cached PDFs: {pdf_count}")
+    gh_group_end()
+    
+    # Run download with verbose callback
+    start_time = time.time()
+    
+    def on_check(symbol: str, exists: bool, consecutive_misses: int):
+        if exists:
+            print(f"  [CHECK] {symbol} ... FOUND")
+        else:
+            print(f"  [CHECK] {symbol} ... 404 (miss {consecutive_misses}/{args.max_misses})")
+    
+    def on_download(symbol: str, path: Path, size: int, duration: float):
+        print(f"  [DOWNLOAD] {symbol} -> {format_size(size)} in {format_duration(duration)}")
+    
+    def on_error(symbol: str, error: str):
+        gh_error(f"Failed to download {symbol}: {error}")
+    
+    results = sync_session_resolutions(
+        session=args.session,
+        data_dir=args.data,
+        max_consecutive_misses=args.max_misses,
+        on_check=on_check if verbose else None,
+        on_download=on_download if verbose else None,
+        on_error=on_error,
+    )
+    
+    total_duration = time.time() - start_time
+    
+    # Summary
+    gh_group_start("Download Summary")
+    new_docs = results.get("session_resolutions", [])
+    total_new = len(new_docs)
+    
+    print(f"Session {args.session} resolutions: {total_new} new documents downloaded")
+    print(f"Duration: {format_duration(total_duration)}")
+    
+    if total_new > 0 and verbose:
+        print(f"\nNew documents:")
+        for doc in new_docs[:10]:  # Show first 10
+            print(f"  {doc}")
+        if total_new > 10:
+            print(f"  ... and {total_new - 10} more")
+    
+    gh_group_end()
+    
+    return results, total_new, total_duration
 
 
 def cmd_build(args):

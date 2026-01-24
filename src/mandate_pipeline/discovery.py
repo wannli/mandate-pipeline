@@ -304,6 +304,110 @@ def sync_all_patterns(
     return results
 
 
+def sync_session_resolutions(
+    session: int,
+    data_dir: Path,
+    max_consecutive_misses: int = 5,
+    on_check: callable = None,
+    on_download: callable = None,
+    on_error: callable = None,
+) -> dict:
+    """
+    Download all resolutions from a specific UN General Assembly session.
+
+    Args:
+        session: Session number (e.g., 79, 78, 77)
+        data_dir: Directory to store PDFs
+        max_consecutive_misses: Stop after this many consecutive 404s
+        on_check: Callback(symbol, exists, consecutive_misses) for each check
+        on_download: Callback(symbol, path, size, duration) for each download
+        on_error: Callback(symbol, error) for download errors
+
+    Returns:
+        Dict with results: {"session_resolutions": [new_symbols]}
+    """
+    import time
+
+    # Create output directory (flat structure)
+    output_dir = data_dir / "pdfs"
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Pattern for resolutions: A/RES/{session}/{number}
+    pattern = {
+        "name": f"Session {session} resolutions",
+        "template": "A/RES/{session}/{number}",
+        "session": session,
+        "start": 1
+    }
+
+    pattern_start_time = time.time()
+    new_docs = []
+    consecutive_misses = 0
+    current_number = pattern["start"]
+
+    print(f"Starting to download resolutions for session {session}")
+    print(f"Pattern: A/RES/{session}/1, A/RES/{session}/2, A/RES/{session}/3...")
+
+    for symbol in generate_symbols(pattern):
+        # Skip if we already have this file locally
+        if file_exists_for_symbol(symbol, output_dir):
+            consecutive_misses = 0
+            if on_check:
+                on_check(symbol, True, 0)  # Report as exists (locally)
+            current_number += 1
+            continue
+
+        # Check if document exists remotely
+        exists = document_exists(symbol)
+
+        if exists:
+            consecutive_misses = 0
+
+            if on_check:
+                on_check(symbol, True, 0)
+
+            # Download the document
+            try:
+                download_start = time.time()
+                pdf_path = download_document(symbol, output_dir=output_dir, skip_existing=False)
+                download_duration = time.time() - download_start
+                file_size = pdf_path.stat().st_size
+
+                if on_download:
+                    on_download(symbol, pdf_path, file_size, download_duration)
+
+                new_docs.append(symbol)
+
+            except Exception as e:
+                if on_error:
+                    on_error(symbol, str(e))
+        else:
+            consecutive_misses += 1
+
+            if on_check:
+                on_check(symbol, False, consecutive_misses)
+
+            if consecutive_misses >= max_consecutive_misses:
+                print(f"Stopping after {max_consecutive_misses} consecutive 404s at {symbol}")
+                break
+
+        current_number += 1
+
+    pattern_duration = time.time() - pattern_start_time
+    if pattern_duration < 1:
+        duration_str = f"{pattern_duration * 1000:.0f}ms"
+    elif pattern_duration < 60:
+        duration_str = f"{pattern_duration:.1f}s"
+    else:
+        mins = int(pattern_duration // 60)
+        secs = pattern_duration % 60
+        duration_str = f"{mins}m {secs:.0f}s"
+    
+    print(f"Session {session} complete: {len(new_docs)} new resolutions in {duration_str}")
+
+    return {"session_resolutions": new_docs}
+
+
 def sync_all_patterns_verbose(
     config_dir: Path,
     data_dir: Path,
