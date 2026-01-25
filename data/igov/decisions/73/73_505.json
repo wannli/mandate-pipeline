@@ -1,0 +1,22 @@
+{
+  "_id": "5fecbd029b661c0917d13b3f",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "73/505",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Report of the Secretary-General on the work of the Organization",
+  "ED_AgendaItem": "112",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "73rd session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 17th plenary meeting, on 8 October 2018, the General Assembly took note of the report of the Secretary-General on the work of the Organization*\r\n\r\n*Official Records of the General Assembly, Seventy-third Session, Supplement No.1 (A/73/1)",
+  "ED_Disclaimer": "",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "ED_Meeting": [
+    {
+      "ED_Date": "2018-10-08T05:00:00.000Z",
+      "ED_Number": "17th plenary meeting"
+    }
+  ]
+}

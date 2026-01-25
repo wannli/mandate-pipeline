@@ -1,0 +1,26 @@
+{
+  "_id": "5fecbcf69b661c0917d13a36",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "73/411",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Appointment of members of the Committee on Conferences",
+  "ED_AgendaItem": "117 (e)",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "73rd session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 51st and 54th plenary meetings, on 12 and 14 December 2018, respectively, the General Assembly, in accordance with paragraph 2 of its resolution 43/222 B of 21 December 1988, took note of the appointment by its President, after consultations with the Chairs of the regional groups concerned, of ECUADOR, GERMANY, GHANA, GUYANA, IRAN (ISLAMIC REPUBLIC OF), SENEGAL and UKRAINE as members of the Committee on Conferences for a three-year term of office beginning on 1 January 2019.\r\n\r\nAs a result, as 1 January 2019, the Committee on Conferences is composed of the following 21 Member States:  AUSTRIA,* BOTSWANA,** BRAZIL,** CHINA,* ECUADOR,*** FRANCE,** GERMANY,*** GHANA,*** GUYANA,*** IRAN (ISLAMIC REPUBLIC OF),*** IRAQ,** JAMAICA,* JAPAN,* KENYA,* MOROCCO,* NEPAL,** RUSSIAN FEDERATION,** SENEGAL,*** SIERRA LEONE,** UKRAINE,*** and UNITED STATES OF AMERICA.*\r\n\r\n__________________\r\n* \tTerm of office expires on 31 December 2019. \r\n** \tTerm of office expires on 31 December 2020.\r\n*** \tTerm of office expires on 31 December 2021.\r\n",
+  "ED_Disclaimer": "(See A/73/107; A/73/PV.51 and 54) \r\n\r\nThe final text of this decision will be contained in document A/73/49 (Vol. II) after editorial review.\r\n",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "ED_Meeting": [
+    {
+      "ED_Date": "2018-12-14T05:00:00.000Z",
+      "ED_Number": "54th plenary meeting"
+    },
+    {
+      "ED_Date": "2018-12-12T05:00:00.000Z",
+      "ED_Number": "51st plenary meeting"
+    }
+  ]
+}

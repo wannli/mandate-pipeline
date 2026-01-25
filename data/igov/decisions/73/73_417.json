@@ -1,0 +1,22 @@
+{
+  "_id": "5fecbcf69b661c0917d13a30",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "73/417",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Appointment of the Under-Secretary-General for Internal Oversight Services",
+  "ED_AgendaItem": "117",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "73rd session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 85th plenary meeting, on 28 May 2019, the General Assembly took note of the Secretary-General\u2019s proposed action as contained in his note.",
+  "ED_Disclaimer": "(See A/73/876; A/73/PV.85) The final version of this decision will be contained in document A/73/49 (Vol. III), after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "ED_Meeting": [
+    {
+      "ED_Date": "2019-05-28T05:00:00.000Z",
+      "ED_Number": "85th plenary meeting"
+    }
+  ]
+}

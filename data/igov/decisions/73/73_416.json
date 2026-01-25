@@ -1,0 +1,22 @@
+{
+  "_id": "5fecbcf69b661c0917d13a31",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "73/416",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Election of the Executive Director of the United Nations Environment programme",
+  "ED_AgendaItem": "116 (e)",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "73rd session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "\tAt its 68th plenary meeting, on 20 February 2019, the General Assembly confirmed the appointment by the Secretary-General of. Ms. Inger ANDERSEN of Denmark as the Executive Director of the United Nations Environment Programme for a four-year term of office. \r\n\r\n        Subsequently, the Secretary-General informed the General Assembly that the term of office of Ms. ANDERSEN would be from 15 June 2019 to 14 June 2023.\r\n",
+  "ED_Disclaimer": "(See A/73/747; A/73/747/ADD.1; A/73/PV.68)\r\n\r\nThe final version of this decision will be contained in document A/73/49 (Vol. III), after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "ED_Meeting": [
+    {
+      "ED_Date": "2019-02-20T05:00:00.000Z",
+      "ED_Number": "68th plenary meeting"
+    }
+  ]
+}

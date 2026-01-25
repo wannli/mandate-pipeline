@@ -1,0 +1,22 @@
+{
+  "_id": "5fecbcf69b661c0917d13a2f",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "73/418",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Election of the President of the General Assembly at its seventy-fourth session",
+  "ED_AgendaItem": "4",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "73rd session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 87th plenary meeting, on 4 June 2019, the General Assembly, in accordance with Article 21 of the Charter of the United Nations, rule 30 of the rules of procedure of the Assembly and paragraph 1 of the annex to resolution 33/138 of 19 December 1978, elected Mr. Tijjani MUHAMMAD BANDE of Nigeria as President of the General Assembly at its seventy-fourth session.",
+  "ED_Disclaimer": "  In accordance with rule 38 of the rules of procedure of the General Assembly, the General Committee consists of the President of the Assembly, the 21 Vice Presidents and the Chairs of the six Main Committees.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "ED_Meeting": [
+    {
+      "ED_Date": "2019-06-04T05:00:00.000Z",
+      "ED_Number": "87th plenary meeting"
+    }
+  ]
+}

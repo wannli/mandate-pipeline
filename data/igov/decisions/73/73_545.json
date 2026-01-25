@@ -1,0 +1,22 @@
+{
+  "_id": "5fecbd029b661c0917d13b17",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "73/545",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Programme planning (Second Committee)",
+  "ED_AgendaItem": "137",
+  "ED_Plenary_Committee": "Second Committee",
+  "ED_Session": "73rd session of the General Assembly",
+  "ED_OriginatingBody": "Second Committee",
+  "ED_DecisionText": "At its 62nd plenary meeting, on 20 December 2018, the General Assembly took note of the report of the Second Committee",
+  "ED_Disclaimer": "",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "ED_Meeting": [
+    {
+      "ED_Date": "2018-12-20T05:00:00.000Z",
+      "ED_Number": "62nd plenary meeting"
+    }
+  ]
+}

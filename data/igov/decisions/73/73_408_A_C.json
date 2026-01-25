@@ -1,0 +1,34 @@
+{
+  "_id": "5fecbcf69b661c0917d13a39",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "73/408 A-C",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Appointment of the judges of the United Nations Dispute Tribunal",
+  "ED_AgendaItem": "117 (h)",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "73rd session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "A\r\n\tAt its 41st plenary meeting held on 28 November 2018, the General Assembly, pursuant to article 4 of the statute of the United Nations Dispute Tribunal, on the recommendation of the Internal Justice Council,  appointed the following persons as judges of the Tribunal for a seven-year term of office beginning on 1 July 2019 and expiring on 30 June 2026: Ms. Jo\u00eblle Adda (France), full-time, New York; and Mr. Francesco Buffa (Italy), half-time.\r\n\r\nB\r\n\tAt its 65th plenary meeting, on 22 December 2018, the General Assembly, pursuant to paragraph 37 of resolution 73/276 of 22 December 2018, confirmed the extension of the terms of Rowan Downing (Australia) and Nkemdilim Amelia Izuako (Nigeria), the ad litem judges in Geneva and Nairobi, respectively, pending the nomination of candidates by the Internal Justice Council and the appointment of four half-time judges by the General Assembly, which should take place no later than 31 December 2019. \r\n\r\n\tAs of 1 July 2019, the United Nations Dispute Tribunal is composed as follows: Ms. Jo\u00eblle Adda (France, Full time, New York),** Ms. Teresa Maria DA SILVA BRAVO (Portugal, full time, Geneva),* Mr. Francesco Buffa (Italy, half-time),** Mr. Rowan DOWNING (Australia, ad litem), Mr. Alexander W. HUNTER, Jr. (United States of America, half-time),* Ms. Nkemdilim Amelia IZUAKO (Nigeria, ad litem) and Ms. Agnieszka KLONOWIECKA-MILART (Poland, full-time, Nairobi).* \r\n\r\nC.\r\n\r\nAt its 98th plenary meeting, on 10 July 2019, the General Assembly, pursuant to paragraph 37 of resolution 73/276 of 22 December 2018, on the recommendation of the Internal Justice Council,  appointed the following persons as half-time judges of the Tribunal for a seven-year term of office beginning on 10 July 2019 and expiring on 9 July 2026: Mr. Francis Belle (Barbados), Ms. Eleanor Donaldson-Honeywell (Trinidad and Tobago), Ms. Rachel Sikwese (Malawi) and Ms. Margaret Tibulya (Uganda).\r\n\r\nAs of 10 July 2019, the United Nations Dispute Tribunal is composed as follows: Ms. Jo\u00eblle ADDA (France, full-time, New York),** Mr. Francis BELLE (Barbados, half-time),***  Mr. Francesco BUFFA (Italy, half-time),** Ms. Teresa Maria DA SILVA BRAVO (Portugal, full-time, Geneva),* Ms. Eleanor DONALDSON-HONEYWELL (Trinidad and Tobago, half-time),*** Mr. Alexander W. HUNTER, Jr. (United States of America, half-time),* Ms. Agnieszka KLONOWIECKA-MILART (Poland, full-time, Nairobi),*   Ms. Rachel SIKWESE (Malawi, half-time), *** and Ms. Margaret TIBULYA (Uganda, half-time). *** \r\n\r\n___________________\r\n*\tTerm of office expires on 30 June 2023.\r\n**\tTerm of office expires on 30 June 2026.\r\n***\tTerm of office expires on 9 July 2026.",
+  "ED_Disclaimer": "See A/73/911 and A/73/911/Corr.1. The final version of this decision will be contained in document A/73/49 (Vol. III), after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "ED_Meeting": [
+    {
+      "_id": "5fee4b627f815d001127ef8c",
+      "ED_Number": "98th plenary meeting",
+      "ED_Date": "2019-07-10T05:00:00.000Z"
+    },
+    {
+      "_id": "5fee4b627f815d001127ef8b",
+      "ED_Number": "65th plenary meeting",
+      "ED_Date": "2018-12-22T05:00:00.000Z"
+    },
+    {
+      "_id": "5fee4b627f815d001127ef8a",
+      "ED_Number": "41st plenary meeting",
+      "ED_Date": "2018-11-28T05:00:00.000Z"
+    }
+  ],
+  "DEC_NotificationSentTime": null
+}

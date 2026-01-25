@@ -1,0 +1,22 @@
+{
+  "_id": "5fecbcf69b661c0917d13a2c",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "73/421",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Election of the Chairs of the Main Committees of the General Assembly at its seventy-fourth session ",
+  "ED_AgendaItem": "5",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "73rd session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "On 4 June 2019, the First, Special Political and Decolonization (Fourth), Second, Third and Sixth Committees of the General Assembly held meetings in accordance with rules 99 (a) and 103 of the rules of procedure of the Assembly for the purpose of electing their Chairs. \r\n\r\n\tAt its 89th plenary meeting, on 7 June 2019, the President of the General Assembly announced that the following persons had been elected as Chairs of the First, Special Political and Decolonization (Fourth), Second, Third and Sixth Committees of the Assembly at its seventy-fourth session:\r\n\r\nFirst Committee:\t\t\tMr. Sacha Sergio LLORENTY SOL\u00cdZ (Plurinational State of Bolivia)\r\nSpecial Political and\r\nDecolonization Committee \r\n(Fourth Committee):\t\tMr. Mohammed Hussein BAHR ALULOOM (Iraq)\r\nSecond Committee:\t\tMr. Cheikh NIANG (Senegal)\r\nThird Committee:\t\t\tMr. Christian BRAUN (Luxembourg)\r\nSixth Committee:\t\t\tMr. Michal MLYN\u00c1R (Slovakia)\r\n",
+  "ED_Disclaimer": "*  In accordance with rule 38 of the rules of procedure of the General Assembly, the General Committee consists of the President of the Assembly, the 21 Vice-Presidents and the Chairs of the six Main Committees.\r\n ** The Chair of the Fifth Committee will be elected at a later date to be announced.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "ED_Meeting": [
+    {
+      "ED_Date": "2019-06-07T05:00:00.000Z",
+      "ED_Number": "89th plenary meeting"
+    }
+  ]
+}

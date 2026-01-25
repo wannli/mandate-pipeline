@@ -1,0 +1,22 @@
+{
+  "_id": "5fecbd029b661c0917d13b19",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "73/543",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Draft provisional rules of procedure and provisional agenda of the second High-level United Nations Conference on South-South Cooperation ",
+  "ED_AgendaItem": "25 (b)",
+  "ED_Plenary_Committee": "Second Committee",
+  "ED_Session": "73rd session of the General Assembly",
+  "ED_OriginatingBody": "Second Committee",
+  "ED_DecisionText": "At its 62nd plenary meeting, on 20 December 2018, the General Assembly, on the recommendation of the Second Committee,  took note of the Note by the Secretary-General on the organization of work of the second High-level United Nations Conference on South-South Cooperation,  and decided to recommend the draft provisional rules of procedure of the Conference and the provisional agenda of the Conference contained in annexes I and II to the note, respectively, for adoption by the Conference",
+  "ED_Disclaimer": "",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "ED_Meeting": [
+    {
+      "ED_Date": "2018-12-20T05:00:00.000Z",
+      "ED_Number": "62nd plenary meeting"
+    }
+  ]
+}

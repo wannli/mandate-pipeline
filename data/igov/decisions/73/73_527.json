@@ -1,0 +1,22 @@
+{
+  "_id": "5fecbd029b661c0917d13b29",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "73/527",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Documents considered by the General Assembly in connection with the question of crime prevention and criminal justice",
+  "ED_AgendaItem": "109",
+  "ED_Plenary_Committee": "Third Committee",
+  "ED_Session": "73rd session of the General Assembly",
+  "ED_OriginatingBody": "Third Committee",
+  "ED_DecisionText": "At its 55th plenary meeting, on 17 December 2018, the General Assembly, on the recommendation of the Third Committee,  decided to take note of the following documents submitted under the item entitled \u201cCrime prevention and criminal justice\u201d:\r\n\t(a) Report of the Secretary-General on the follow-up to the Thirteenth United Nations Congress on Crime Prevention and Criminal Justice and preparations for the Fourteenth United Nations Congress on Crime Prevention and Criminal Justice; \r\n\t(b) Report of the Secretary-General on technical assistance in implementing the international conventions and protocols related to terrorism; \r\n\t(c) Note by the Secretary-General transmitting the report of the Conference of the States Parties to the United Nations Convention against Corruption on its seventh session. \r\n",
+  "ED_Disclaimer": "",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "ED_Meeting": [
+    {
+      "ED_Date": "2018-12-17T05:00:00.000Z",
+      "ED_Number": "55th plenary meeting"
+    }
+  ]
+}

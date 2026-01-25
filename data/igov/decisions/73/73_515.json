@@ -1,0 +1,22 @@
+{
+  "_id": "5fecbd029b661c0917d13b35",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "73/515",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Provisional programme of work and timetable of the First Committee for 2019",
+  "ED_AgendaItem": "123",
+  "ED_Plenary_Committee": "First Committeee",
+  "ED_Session": "73rd session of the General Assembly",
+  "ED_OriginatingBody": "First Committeee",
+  "ED_DecisionText": "At its 45th plenary meeting, on 5 December 2018, the General Assembly, on the recommendation of the First Committee,  approved the provisional programme of work and timetable of the Committee for 2019, as set out in the annex to the report of the Committee. ",
+  "ED_Disclaimer": "",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "ED_Meeting": [
+    {
+      "ED_Date": "2018-12-05T05:00:00.000Z",
+      "ED_Number": "45th plenary meeting"
+    }
+  ]
+}

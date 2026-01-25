@@ -1,0 +1,22 @@
+{
+  "_id": "5fecbd029b661c0917d13b03",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "73/565",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "The situation in the occupied territories of Azerbaijan",
+  "ED_AgendaItem": "67",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "73rd session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 107th plenary meeting, on 16 September 2019, the General Assembly decided to defer consideration of the item entitled \u201cThe situation in the occupied territories of Azerbaijan\u201d and to include it in the draft agenda of its seventy-fourth session.",
+  "ED_Disclaimer": "The final version of decisions adopted during the resumed part of the session will be contained in the official record of the GA (A/73/49 (Vol. III) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "ED_Meeting": [
+    {
+      "ED_Date": "2019-09-16T05:00:00.000Z",
+      "ED_Number": "107th plenary meeting"
+    }
+  ]
+}
