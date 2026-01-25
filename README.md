@@ -194,6 +194,18 @@ checks:
 - `signal`: Name of the signal (used in website sections)
 - `phrases`: List of phrases to match (case-insensitive)
 
+### igov.yaml
+
+Defines defaults for the IGov decisions pipeline:
+
+```yaml
+igov:
+  session: 80
+  series_starts:
+    - 401
+    - 501
+```
+
 ## CLI Commands
 
 ### mandate discover
@@ -235,6 +247,27 @@ mandate generate \
 | `--output` | Output directory for static site |
 | `--clean-output` | Delete existing output directory contents before generation |
 | `--verbose` | Log each document processed |
+
+### mandate igov-sync
+
+Sync IGov General Assembly decisions into a separate data store.
+
+```bash
+mandate igov-sync \
+  --session 80 \
+  --config ./config \
+  --data ./data \
+  --verbose
+```
+
+| Option | Description |
+|--------|-------------|
+| `--session` | General Assembly session number (defaults to config) |
+| `--session-label` | Override IGov session label string |
+| `--series-start` | Decision number series start (repeatable) |
+| `--config` | Directory containing igov.yaml |
+| `--data` | Base data directory (stores in data/igov/) |
+| `--verbose` | Log new/updated decisions |
 
 ### mandate build
 

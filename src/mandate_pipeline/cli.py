@@ -20,6 +20,12 @@ from .extractor import (
 )
 from .linking import derive_resolution_origin
 from .generation import get_un_document_url
+from .igov import (
+    load_igov_config,
+    sync_igov_decisions,
+    default_session_label,
+    DEFAULT_SERIES_STARTS,
+)
 
 
 def is_github_actions() -> bool:
@@ -302,6 +308,45 @@ def main():
         help="Enable verbose logging",
     )
 
+    # IGov decisions sync command
+    igov_sync_parser = subparsers.add_parser(
+        "igov-sync",
+        help="Sync IGov General Assembly decision records",
+    )
+    igov_sync_parser.add_argument(
+        "--session",
+        type=int,
+        help="UN General Assembly session number (default from config)",
+    )
+    igov_sync_parser.add_argument(
+        "--session-label",
+        type=str,
+        help="Override IGov session label string",
+    )
+    igov_sync_parser.add_argument(
+        "--series-start",
+        type=int,
+        action="append",
+        help="Decision number series start (repeatable)",
+    )
+    igov_sync_parser.add_argument(
+        "--config",
+        type=Path,
+        default=Path("./config"),
+        help="Path to config directory (default: ./config)",
+    )
+    igov_sync_parser.add_argument(
+        "--data",
+        type=Path,
+        default=Path("./data"),
+        help="Path to data directory (default: ./data)",
+    )
+    igov_sync_parser.add_argument(
+        "--verbose", "-v",
+        action="store_true",
+        help="Enable verbose logging",
+    )
+
     # Download resolutions command (deprecated - keeping for compatibility)
     download_parser = subparsers.add_parser(
         "download-resolutions",
@@ -400,6 +445,8 @@ def main():
         cmd_generate_session(args)
     elif args.command == "build-session":
         cmd_build_session(args)
+    elif args.command == "igov-sync":
+        cmd_igov_sync(args)
     elif args.command == "download-resolutions":
         # Deprecated command - redirect to download-session
         gh_warning("Command 'download-resolutions' is deprecated. Use 'download-session' instead.")
@@ -762,6 +809,60 @@ def cmd_download_session(args):
     gh_group_end()
 
     return results, total_new, total_duration
+
+
+def cmd_igov_sync(args):
+    """Run the IGov decision sync command."""
+    verbose = args.verbose or is_github_actions()
+
+    config = load_igov_config(args.config)
+    session = args.session or config.get("session", 80)
+    series_starts = args.series_start or config.get("series_starts") or DEFAULT_SERIES_STARTS
+    session_label = args.session_label or config.get("session_label") or default_session_label(session)
+
+    gh_group_start("IGov Sync Configuration")
+    print(f"Session number: {session}")
+    print(f"Session label: {session_label}")
+    print(f"Series starts: {', '.join(str(v) for v in series_starts)}")
+    print(f"Config directory: {args.config}")
+    print(f"Data directory: {args.data}")
+    print(f"Verbose: {verbose}")
+    gh_group_end()
+
+    start_time = time.time()
+    result = sync_igov_decisions(
+        session=session,
+        data_dir=args.data,
+        series_starts=series_starts,
+        session_label=session_label,
+    )
+    duration = time.time() - start_time
+
+    gh_group_start("IGov Sync Summary")
+    print(f"Session label: {result.session_label}")
+    print(f"Decisions fetched: {result.total_fetched}")
+    print(f"Decisions in series: {result.total_filtered}")
+    print(f"New decisions: {len(result.new_decisions)}")
+    print(f"Updated decisions: {len(result.updated_decisions)}")
+    print(f"Duration: {format_duration(duration)}")
+
+    if verbose and result.new_decisions:
+        print("\nNew decisions:")
+        for decision in result.new_decisions[:10]:
+            print(f"  {decision}")
+        if len(result.new_decisions) > 10:
+            print(f"  ... and {len(result.new_decisions) - 10} more")
+
+    if verbose and result.updated_decisions:
+        print("\nUpdated decisions:")
+        for decision in result.updated_decisions[:10]:
+            print(f"  {decision}")
+        if len(result.updated_decisions) > 10:
+            print(f"  ... and {len(result.updated_decisions) - 10} more")
+
+    gh_group_end()
+
+    return result
 
 
 def cmd_process_session(args):

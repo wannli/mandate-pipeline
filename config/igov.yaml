@@ -1,0 +1,5 @@
+igov:
+  session: 80
+  series_starts:
+    - 401
+    - 501
