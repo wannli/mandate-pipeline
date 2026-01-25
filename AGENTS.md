@@ -27,9 +27,10 @@ When working changes end-to-end with this project:
 5. **Monitor via browser** - Keep the workflow page open and use `browser_get_tabs` to track progress.
 6. **Poll for completion** - Check `gh run view <id>` every 10s until it finishes.
 7. **Refresh the site tab** - Once the run completes, refresh the site browser tab to load the latest output.
-8. **Remember instructions** - When the user says "remember", add the instruction to `AGENTS.md`.
-9. **Pull before push** - Always run `git pull --rebase` before `git push`.
+ 8. **Remember instructions** - When the user says "remember", add the instruction to `AGENTS.md`.
+ 9. **Pull before push** - Always run `git pull --rebase` before `git push`.
 10. **Check open tabs first** - Use `browser_get_tabs` before starting work for context.
+11. **Auto-run git flow** - When asked to proceed, run rebase/commit/push without asking.
 
 ## Workflow Architecture
 
