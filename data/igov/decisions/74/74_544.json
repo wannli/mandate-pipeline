@@ -1,0 +1,22 @@
+{
+  "_id": "5fecbd029b661c0917d13b6e",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "74/544",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Procedure for taking decisions of the General Assembly during the Coronavirus disease 2019 (COVID-19) pandemic",
+  "ED_AgendaItem": "7",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "74th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "On 27 March 2020, the General Assembly, on the proposal of its President, noting with concern the situation concerning the Coronavirus disease 2019 (COVID-19) and the limitations recommended on meetings within the United Nations premises as precautionary measures aimed at containing the spread of COVID-19, \r\n\r\n(a) Authorized the President of the General Assembly, where, in his view, a plenary meeting of the General Assembly was not practicable due to the coronavirus pandemic, to circulate, after consultation with the General Committee, draft decisions of the General Assembly to all Member States under a silence procedure of at least 72 hours; \r\n\r\n(b) Decided that, if the silence is not broken, the decision should be considered adopted, and the General Assembly should take note of the decision at its first plenary meeting held after the cessation of the precautionary measures as soon as the circumstances allow, and that this decision on the procedure for taking of decisions of the General Assembly should be in effect until the end of May unless extended through this procedure.\r\n",
+  "ED_Disclaimer": "The final version of decisions adopted during the resumed part of the session will be contained in the official record of the GA (A/74/49 (Vol. III)) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "ED_Meeting": [
+    {
+      "ED_Date": "2020-03-27T05:00:00.000Z",
+      "ED_Number": "N.A. plenary meeting"
+    }
+  ]
+}

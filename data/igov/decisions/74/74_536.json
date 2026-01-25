@@ -1,0 +1,22 @@
+{
+  "_id": "5fecbd029b661c0917d13b76",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "74/536",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Operational activities for development ",
+  "ED_AgendaItem": "23",
+  "ED_Plenary_Committee": "Second Committee",
+  "ED_Session": "74th session of the General Assembly",
+  "ED_OriginatingBody": "Second Committee",
+  "ED_DecisionText": "At its 52nd plenary meeting, on 19 December 2019, the General Assembly took note of the report of the Second Committee (A/74/385).",
+  "ED_Disclaimer": "The final version of decisions adopted during the main part of the session will be contained in document A/74/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "ED_Meeting": [
+    {
+      "ED_Date": "2019-12-19T05:00:00.000Z",
+      "ED_Number": "52nd plenary meeting"
+    }
+  ]
+}

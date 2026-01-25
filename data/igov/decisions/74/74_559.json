@@ -1,0 +1,22 @@
+{
+  "_id": "5fecbd029b661c0917d13b5f",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "74/559.",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Postponement of the seventy-second session of the International Law Commission ",
+  "ED_AgendaItem": "79",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "74th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "On 23 June 2020, the General Assembly, on the proposal of its President (A/74/L.70) ,\t recalling its resolution 74/186 of 18 December 2019, in which it had decided that the International Law Commission would hold its seventy-second session at the United Nations Office at Geneva from 27 April to 5 June and from 6 July to 7 August 2020, recalling also its decision 74/545 of 2 April 2020, in which it had decided to postpone the first part of the seventy-second session of the Commission and to extend by one week the second part of the session so that it would be held from 29 June to 7 August 2020, and taking into account the continuing situation concerning the coronavirus disease (COVID-19),\r\n\r\nDecided that the seventy-second session of the International Law Commission shall be postponed to a later date.\r\n",
+  "ED_Disclaimer": "The final version of decisions adopted during the resumed part of the session will be contained in the official record of the GA (A/74/49 (Vol. III)) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "ED_Meeting": [
+    {
+      "ED_Date": "2020-06-23T05:00:00.000Z",
+      "ED_Number": "N/A plenary meeting"
+    }
+  ]
+}

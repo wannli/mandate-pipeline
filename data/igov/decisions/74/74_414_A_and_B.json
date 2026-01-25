@@ -1,0 +1,29 @@
+{
+  "_id": "5fecbcf69b661c0917d13a48",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "74/414 A and B",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Appointment of members of the Board of the 10-Year Framework of Programmes on Sustainable Consumption and Production Patterns",
+  "ED_AgendaItem": "115(i)",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "74th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 52nd plenary meeting, on 27 December 2019, the General Assembly, in accordance with resolutions 67/203 of 21 December 2012 and 69/214 of 19 December 2014, decided to appoint HUNGARY as member of the Board of the 10-Year Framework of Programmes on Sustainable Consumption and Production Patterns for a term beginning on 27 December 2019 and ending on 15 September 2021 . \r\n\r\nB \r\n\tAt its 64th plenary meeting, on 11 September 2020, the General Assembly, in accordance with resolutions 67/203 of 21 December 2012 and 69/214 of 19 December 2014, decided to appoint BHUTAN as member of the Board of the 10-Year Framework of Programmes on Sustainable Consumption and Production Patterns for a term beginning on 11 September 2020 and ending on 15 September 2021.\r\n \r\nAs a result, as of 11 September 2020, the Board of the 10-Year Framework of Programmes on Sustainable Consumption and Production Patterns is composed of the following three Member States : BHUTAN,* HUNGARY* and SWITZERLAND.*\r\n__________________\r\n*\tTerm of office expires on 15 September 2021.\r\n",
+  "ED_Disclaimer": "Bhutan, Hungary and Switzerland are serving their second consecutive term. Two vacancies from African States, one vacancy from Asia-Pacific States, one vacancy from Eastern European States, two vacancies from Latin American and Caribbean States and one vacancy from Western European and other States remain to be filled for a term of office beginning on the date of appointment and expiring on 15 September 2021. The final version of decisions adopted during the main part of the session will be contained in document A/74/49 (Vol. III) after editorial review.\r\n",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "ED_Meeting": [
+    {
+      "_id": "5fee60f57f815d001127ef91",
+      "ED_Number": "64th plenary meeting",
+      "ED_Date": "2020-09-11T05:00:00.000Z"
+    },
+    {
+      "_id": "5fee60f57f815d001127ef90",
+      "ED_Number": "52nd plenary meeting",
+      "ED_Date": "2019-12-27T05:00:00.000Z"
+    }
+  ],
+  "DEC_NotificationSentTime": null
+}

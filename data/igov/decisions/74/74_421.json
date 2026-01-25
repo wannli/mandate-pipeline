@@ -1,0 +1,24 @@
+{
+  "_id": "5fecbcf69b661c0917d13a41",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "74/421",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Election of the Chairs of the Main Committees of the General Assembly at its seventy-fifth session",
+  "ED_AgendaItem": "5",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "74th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "On 11 June 2020, the First, Special Political and Decolonization (Fourth), Second, Third. Fifth and Sixth Committees of the General Assembly elected their Chairs in accordance with rules 99 (a) and 103 of the rules of procedure of the Assembly as well as General Assembly decisions 74/555 of 15 May 2020 and 74/557 of 29 May 2020.\r\n\r\n\tAt its 63rd plenary meeting on 4 September 2020, the President of the General Assembly announced that the following persons had been elected as Chairs of the First, Special Political and Decolonization (Fourth), Second, Third, Fifth and Sixth Committees of the Assembly at its seventy-fifth session:\r\n\r\nFirst Committee:\tAgust\u00edn Santos Maraver (Spain)\r\nSpecial Political and Decolonization Committee \r\n(Fourth Committee):\tCollen Vixen Kelapile (Botswana)\r\nSecond Committee:\tAmrit Bahadur Rai (Nepal)\r\nThird Committee:\tKatalin Annam\u00e1ria Bogyay (Hungary)\r\nFifth Committee:\tCarlos Amor\u00edn (Uruguay)\r\nSixth Committee:\tMilenko Esteban Skoknic Tapia (Chile)\r\n",
+  "ED_Disclaimer": "In accordance with rule 38 of the rules of procedure of the General Assembly, the General Committee consists of the President of the Assembly, the 21 Vice-Presidents and the Chairs of the six Main Committees. The final version of decisions adopted during the resumed part of the session will be contained in the official record of the GA (A/74/49 (Vol. III)) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "ED_Meeting": [
+    {
+      "_id": "5fee60e57f815d001127ef8f",
+      "ED_Number": "63rd plenary meeting",
+      "ED_Date": "2020-09-04T05:00:00.000Z"
+    }
+  ],
+  "DEC_NotificationSentTime": null
+}

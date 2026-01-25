@@ -1,0 +1,30 @@
+{
+  "_id": "5fecbd029b661c0917d13b98",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "74/502",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Organization of the seventy-fourth session",
+  "ED_AgendaItem": "7",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "74th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 2nd plenary meeting, on 20 September 2019, the General Assembly, on the recommendation of the General Committee as set forth in its first report,  adopted a number of provisions concerning the organization of the seventy-fourth session.\r\n\r\nAt the same meeting, the General Assembly took note of the information provided in paragraph 36 of the same report of the General Committee concerning debates on the items on its agenda.\r\n\r\nAt the same meeting, the General Assembly took note of the information provided in paragraph 43 of the same report of the General Committee concerning conduct of the meetings of the plenary, including on the order and the format of statements.\r\n\r\nAt the same meeting, the General Assembly took note of the information provided in paragraph 52 of the same report of the General Committee concerning sponsorship of draft resolutions and decisions.\r\n\r\nAt the same meeting, the General Assembly took note of the information provided in paragraph 53 of the same report of the General Committee concerning rights of reply.\r\n\r\nAt its 39th plenary meeting, on 5 December 2019, the General Assembly, on the proposal of its President, decided to postpone the date of recess of the seventy-fourth session of the Assembly from Monday, 16 December 2019, to Tuesday, 24 December 2019.\r\n\r\nAt the same meeting, the General Assembly, at the request of the Chair of the Fifth Committee, decided to extend the work of the Committee until Tuesday, 24 December 2019.       \r\n\r\nAt its 52nd plenary meeting, on 24 December 2019, the General Assembly, on the proposal of its President, decided to postpone the date of recess of the seventy-fourth session of the Assembly from Tuesday, 24 December 2019, to Friday, 27 December 2019. \r\n\r\n At the same meeting, the General Assembly, at the request of the Chair of the Fifth Committee, decided to extend the work of the Committee until Friday, 27 December 2019. \r\n",
+  "ED_Disclaimer": "The final version of decisions adopted during the main part of the session will be contained in the official record of the GA (A/74/49 (Vol. II) after editorial review.\r\n",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "ED_Meeting": [
+    {
+      "ED_Date": "2019-12-24T05:00:00.000Z",
+      "ED_Number": "52nd plenary meeting"
+    },
+    {
+      "ED_Date": "2019-12-05T05:00:00.000Z",
+      "ED_Number": "39th plenary meeting"
+    },
+    {
+      "ED_Date": "2019-09-20T05:00:00.000Z",
+      "ED_Number": "2nd plenary meeting"
+    }
+  ]
+}

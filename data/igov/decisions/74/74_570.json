@@ -1,0 +1,22 @@
+{
+  "_id": "5fecbd029b661c0917d13b54",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "74/570",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Taking note of decision 74/544 entitled \u201cProcedure for taking decisions of the General Assembly during the Coronavirus disease (COVID-19) pandemic\u201d",
+  "ED_AgendaItem": "7",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "74th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 62nd plenary meeting, on 3 September 2020, the General Assembly pursuant to its decision 74/544 of 27 March 2020, took note of decision 74/544 entitled \u201cProcedure for taking decisions of the General Assembly during the Coronavirus disease (COVID-19) pandemic\u201d.",
+  "ED_Disclaimer": "The final version of decisions adopted during the resumed part of the session will be contained in the official record of the GA (A/74/49 (Vol. III)) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "ED_Meeting": [
+    {
+      "ED_Date": "2020-09-03T05:00:00.000Z",
+      "ED_Number": "62nd plenary meeting"
+    }
+  ]
+}
