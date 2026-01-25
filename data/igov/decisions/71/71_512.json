@@ -1,0 +1,22 @@
+{
+  "_id": "5fecbd029b661c0917d13aa5",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "71/512",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Reduction of military budgets",
+  "ED_AgendaItem": "89",
+  "ED_Plenary_Committee": "First Committee",
+  "ED_Session": "71st session of the General Assembly",
+  "ED_OriginatingBody": "First Committee",
+  "ED_DecisionText": "\tAt its 51st plenary meeting, on 5 December 2016, the General Assembly took note of the report of the First Committee. \r\n\r\n(See A/71/441, A/71/PV.51)",
+  "ED_Disclaimer": "The text of this decision is available in all languages in document A/71/49 (Vol. II).",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "ED_Meeting": [
+    {
+      "ED_Date": "2016-12-05T05:00:00.000Z",
+      "ED_Number": "51st plenary meeting"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "_id": "5fecbd029b661c0917d13ab0",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "71/501 A and B",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Meetings of subsidiary organs during the main part of the seventy-first session",
+  "ED_AgendaItem": "7",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "71st session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "A.\r\n\r\nAt its 1st plenary meeting, on 13 September 2016, the General Assembly decided to authorize those subsidiary organs of the Assembly listed in the letter dated 7 September 2016 from the Chair of the Committee on Conferences,  namely the United Nations Appeals Tribunal, the Committee on Relations with the Host Country, the Committee on the Exercise of the Inalienable Rights of the Palestinian People, the Executive Board of the United Nations Children\u2019s Fund, the United Nations System Chief Executives Board for Coordination, the Board of Auditors, the Panel of External Auditors of the United Nations, the Specialized Agencies, the International Atomic Energy Agency, the Independent Audit Advisory Committee and the Committee on Conference to meet during the main part of the seventy-first session of the Assembly.\r\n\r\n(See A/71/382, A/71/PV.1) \r\n\r\nB.\r\n\r\nAt its 57th plenary meeting, on 8 December 2016, the General Assembly, on the recommendation of the Committee on Conferences,  decided to authorize the Open-ended Working Group on Aging to meet during the main part of the seventy-first session of the General Assembly.\r\n\r\n(See A/71/382/Add.1, A/71/PV.57)",
+  "ED_Disclaimer": "The text of this decision is available in all languages in document A/71/49 (Vol. II).",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "ED_Meeting": [
+    {
+      "ED_Date": "2016-12-08T05:00:00.000Z",
+      "ED_Number": "57th plenary meeting"
+    },
+    {
+      "ED_Date": "2016-09-13T05:00:00.000Z",
+      "ED_Number": "1st plenary meeting"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "_id": "5fecbd029b661c0917d13a98",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "71/525",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Observer status for the Eurasian Economic Union in the General Assembly",
+  "ED_AgendaItem": "167",
+  "ED_Plenary_Committee": "Sixth Committee",
+  "ED_Session": "71st session of the General Assembly",
+  "ED_OriginatingBody": "Sixth Committee",
+  "ED_DecisionText": "\tAt its 62nd plenary meeting, on 13 December 2016, the General Assembly, on the recommendation of the Sixth Committee,  decided to defer a decision on the request for observer status for the Eurasian Economic Union in the Assembly until the seventy-second session of the Assembly.\r\n\r\n(See A/71/524, para. 8,  A/71/PV.62)",
+  "ED_Disclaimer": "The text of this decision is available in all languages in document A/71/49 (Vol. II).",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "ED_Meeting": [
+    {
+      "_id": "5fee6608faddaa001128288c",
+      "ED_Number": "62nd plenary meeting",
+      "ED_Date": "2016-12-13T05:00:00.000Z"
+    }
+  ],
+  "DEC_NotificationSentTime": null
+}

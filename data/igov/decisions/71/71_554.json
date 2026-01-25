@@ -1,0 +1,22 @@
+{
+  "_id": "5fecbd029b661c0917d13a7b",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "71/554",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Notification by the Secretary-General under Article 12, paragraph 2, of the Charter of the United Nations",
+  "ED_AgendaItem": "111",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "71st session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 95th plenary meeting, on 28 August 2017, the General Assembly took note of the note by the Secretary-General (A/71/300). ",
+  "ED_Disclaimer": "The final version of this decision will be contained in document A/71/49 (Vol. III) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "ED_Meeting": [
+    {
+      "ED_Date": "2017-08-28T05:00:00.000Z",
+      "ED_Number": "95th plenary meeting"
+    }
+  ]
+}

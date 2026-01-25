@@ -1,0 +1,22 @@
+{
+  "_id": "5fecbd029b661c0917d13aac",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "71/505",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Report of the Secretary-General on the work of the Organization",
+  "ED_AgendaItem": "109",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "71st session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "\tAt its 24th plenary meeting, on 5 October 2016, the General Assembly took note of the report of the Secretary-General on the work of the Organization. \r\n\r\n(See A/71/1; A/71/PV.24)",
+  "ED_Disclaimer": "The text of this decision is available in all languages in document A/71/49 (Vol. II).",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "ED_Meeting": [
+    {
+      "ED_Date": "2016-10-05T05:00:00.000Z",
+      "ED_Number": "24th plenary meeting"
+    }
+  ]
+}

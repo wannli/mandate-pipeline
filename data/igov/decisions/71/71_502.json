@@ -1,0 +1,42 @@
+{
+  "_id": "5fecbd029b661c0917d13aaf",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "71/502",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Organization of the seventy-first session",
+  "ED_AgendaItem": "7",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "71st session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "\tAt its 2nd plenary meeting, on 16 September 2016, the General Assembly, on the recommendation of the General Committee as set forth in its first report,  adopted a number of provisions concerning the organization of the seventy-first session.\r\n\tAt its 48th plenary meeting, on 21 November 2016, the General Assembly, at the request of the Chair of the Second Committee, decided to extend the work of the Committee until Wednesday, 30 November 2016.\r\n\tAt its 50th plenary meeting, on 30 November 2016, the General Assembly, at the request of the Chair of the Second Committee, decided to further extend the work of the Committee until Friday, 9 December 2016.\r\n\tAt its 51st plenary meeting, on 5 December 2016, the General Assembly, on the proposal of its President, decided to postpone the date of recess of the seventy-first session of the Assembly from Monday, 12 December 2016, to Monday, 19 December 2016.\r\n\tAt the same meeting, the General Assembly, at the request of the Chair of the Fifth Committee, decided to extend the work of the Committee until Friday, 16 December 2016.\r\n\tAt its 59th plenary meeting, on 9 December 2016, the General Assembly, at the request of the Chair of the Second Committee, decided to further extend the work of the Committee until Wednesday, 14 December 2016.\r\n\tAt its 63rd plenary meeting, on 15 December 2016, the General Assembly, on the proposal of its President, decided to further postpone the date of recess of the seventy-first session of the Assembly from Monday, 19 December 2016, to Friday, 23 December 2016.\r\n\tAt the same meeting, the General Assembly, at the request of the Chair of the Fifth Committee, decided to further extend the work of the Committee until Friday, 23 December 2016.\r\n\r\n(See A/71/250; A/71/PV.2; A/71/PV.48; A/71/PV.50; A/71/PV.51; A/71/PV.59; A/71/PV.63)",
+  "ED_Disclaimer": "The text of this decision is available in all languages in document A/71/49 (Vol. II).",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "ED_Meeting": [
+    {
+      "ED_Date": "2016-12-15T05:00:00.000Z",
+      "ED_Number": "63rd plenary meeting"
+    },
+    {
+      "ED_Date": "2016-12-09T05:00:00.000Z",
+      "ED_Number": "59th plenary meeting"
+    },
+    {
+      "ED_Date": "2016-12-05T05:00:00.000Z",
+      "ED_Number": "51st plenary meeting"
+    },
+    {
+      "ED_Date": "2016-11-30T05:00:00.000Z",
+      "ED_Number": "50th plenary meeting"
+    },
+    {
+      "ED_Date": "2016-11-21T05:00:00.000Z",
+      "ED_Number": "48th plenary meeting"
+    },
+    {
+      "ED_Date": "2016-09-16T05:00:00.000Z",
+      "ED_Number": "2nd plenary meeting"
+    }
+  ]
+}

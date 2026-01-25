@@ -1,0 +1,22 @@
+{
+  "_id": "5fecbd029b661c0917d13aab",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "71/506",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Documentation for the election of the members of the International Law Commission",
+  "ED_AgendaItem": "7",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "71st session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 25th plenary meeting, on 6 October 2016, the General Assembly decided to request the Secretary-General to issue a consolidated list of candidates for the election of the members of the International Law Commission, scheduled for Thursday, 3 November 2016, incorporating new information provided subsequent to the deadline of 1 June 2016 for the submission of candidatures.\r\n\r\n(See A/71/PV.25)",
+  "ED_Disclaimer": "The text of this decision is available in all languages in document A/71/49 (Vol. II).",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "ED_Meeting": [
+    {
+      "ED_Date": "2017-04-06T05:00:00.000Z",
+      "ED_Number": "25th plenary meeting"
+    }
+  ]
+}
