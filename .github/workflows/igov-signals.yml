@@ -37,29 +37,18 @@ jobs:
       - name: Generate IGov signal browser
         run: |
           if [ -n "${{ github.event.inputs.session_number }}" ]; then
-            SESSION_TAG="${{ github.event.inputs.session_number }}"
-            OUTPUT_DIR="docs/igov/${SESSION_TAG}"
             python -m mandate_pipeline.cli igov-signals \
               --session ${{ github.event.inputs.session_number }} \
               --config ./config \
               --data ./data \
-              --output "$OUTPUT_DIR" \
+              --output "docs/igov" \
               --verbose
           else
-            for SESSION_DIR in data/igov/decisions/*; do
-              if [ ! -d "$SESSION_DIR" ]; then
-                continue
-              fi
-              SESSION_TAG=$(basename "$SESSION_DIR")
-              OUTPUT_DIR="docs/igov/${SESSION_TAG}"
-              echo "Generating IGov signals for session ${SESSION_TAG}"
-              python -m mandate_pipeline.cli igov-signals \
-                --session "$SESSION_TAG" \
-                --config ./config \
-                --data ./data \
-                --output "$OUTPUT_DIR" \
-                --verbose
-            done
+            python -m mandate_pipeline.cli igov-signals \
+              --config ./config \
+              --data ./data \
+              --output "docs/igov" \
+              --verbose
           fi
 
       - name: Check for changes

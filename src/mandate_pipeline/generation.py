@@ -33,7 +33,7 @@ from .linking import (
     get_undl_cache_stats,
     COMMITTEE_NAMES,
 )
-from .igov import load_igov_decisions
+from .igov import load_igov_decisions, load_igov_decisions_all
 
 
 def get_un_document_url(symbol: str) -> str:
@@ -1116,13 +1116,16 @@ def generate_unified_explorer_page(
 
 
 def generate_igov_signals_page(
-    session: int,
     checks: list,
     data_dir: Path,
     output_dir: Path,
+    session=None,
 ) -> dict:
     """Generate a standalone IGov decision signal browser page."""
-    decisions = load_igov_decisions(data_dir, session)
+    if session is None:
+        decisions = load_igov_decisions_all(data_dir)
+    else:
+        decisions = load_igov_decisions(data_dir, session)
 
     decision_docs = []
     for decision in decisions:
@@ -1156,6 +1159,7 @@ def generate_igov_signals_page(
     docs_with_signals = [doc for doc in decision_docs if doc.get("signal_paragraphs")]
     total_paragraphs = sum(len(doc.get("signal_paragraphs", [])) for doc in docs_with_signals)
     session_label = decisions[0].get("session_label") if decisions else ""
+    session_list = sorted([doc.get("session") for doc in decisions if doc.get("session") is not None])
 
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -1170,6 +1174,7 @@ def generate_igov_signals_page(
         total_paragraphs=total_paragraphs,
         session=session,
         session_label=session_label,
+        sessions=session_list,
         generated_at=datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
     )
 

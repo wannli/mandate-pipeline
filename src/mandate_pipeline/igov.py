@@ -8,7 +8,7 @@ import re
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+from typing import Any, Optional
 from urllib.parse import quote
 
 import requests
@@ -49,7 +49,7 @@ def default_session_label(session: int) -> str:
     return f"{session}{suffix} session of the General Assembly"
 
 
-def normalize_decision_number(decision_number: str) -> int | None:
+def normalize_decision_number(decision_number: str) -> Optional[int]:
     """Extract the numeric decision number from a decision label."""
     if not decision_number:
         return None
@@ -89,7 +89,7 @@ def decision_hash(decision: dict[str, Any]) -> str:
     return hashlib.sha256(payload).hexdigest()
 
 
-def build_igov_url(session: int, decision_number: str) -> str | None:
+def build_igov_url(session: int, decision_number: str) -> Optional[str]:
     """Build an IGov decision URL when possible."""
     number_value = normalize_decision_number(decision_number)
     if number_value is None:
@@ -97,9 +97,8 @@ def build_igov_url(session: int, decision_number: str) -> str | None:
     return f"https://igov.un.org/a/dec/{session}/{number_value}"
 
 
-def load_igov_decisions(data_dir: Path, session: int) -> list[dict[str, Any]]:
-    """Load IGov decision JSON files from disk."""
-    decisions_dir = Path(data_dir) / "igov" / "decisions" / str(session)
+def _load_igov_decision_dir(decisions_dir: Path, session: int) -> list[dict[str, Any]]:
+    """Load IGov decision JSON files from a session directory."""
     if not decisions_dir.exists():
         return []
 
@@ -113,6 +112,7 @@ def load_igov_decisions(data_dir: Path, session: int) -> list[dict[str, Any]]:
         meeting = meeting_info[0] if meeting_info else {}
 
         decisions.append({
+            "session": session,
             "decision_number": decision_number,
             "title": payload.get("ED_Title", ""),
             "decision_type": payload.get("ED_Type", ""),
@@ -126,11 +126,37 @@ def load_igov_decisions(data_dir: Path, session: int) -> list[dict[str, Any]]:
             "igov_url": build_igov_url(session, decision_number),
         })
 
-    def sort_key(entry: dict[str, Any]) -> tuple[int, str]:
+    def sort_key(entry: dict[str, Any]) -> tuple[int, int, str]:
         number_value = normalize_decision_number(entry.get("decision_number", ""))
-        return (number_value or 0, entry.get("decision_number", ""))
+        session_value = entry.get("session") or 0
+        return (session_value, number_value or 0, entry.get("decision_number", ""))
 
     decisions.sort(key=sort_key)
+    return decisions
+
+
+def load_igov_decisions(data_dir: Path, session: int) -> list[dict[str, Any]]:
+    """Load IGov decision JSON files from disk for a session."""
+    decisions_dir = Path(data_dir) / "igov" / "decisions" / str(session)
+    return _load_igov_decision_dir(decisions_dir, session)
+
+
+def load_igov_decisions_all(data_dir: Path) -> list[dict[str, Any]]:
+    """Load IGov decision JSON files for all sessions on disk."""
+    root_dir = Path(data_dir) / "igov" / "decisions"
+    if not root_dir.exists():
+        return []
+
+    decisions = []
+    for session_dir in sorted(root_dir.iterdir()):
+        if not session_dir.is_dir():
+            continue
+        try:
+            session = int(session_dir.name)
+        except ValueError:
+            continue
+        decisions.extend(_load_igov_decision_dir(session_dir, session))
+
     return decisions
 
 

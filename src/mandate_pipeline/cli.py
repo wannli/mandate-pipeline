@@ -909,12 +909,12 @@ def cmd_igov_signals(args):
     verbose = args.verbose or is_github_actions()
 
     config = load_igov_config(args.config)
-    session = args.session or config.get("session", 80)
+    session = args.session
 
     checks = load_checks(args.config / "checks.yaml")
 
     gh_group_start("IGov Signal Browser")
-    print(f"Session number: {session}")
+    print(f"Session number: {session or 'all'}")
     print(f"Config directory: {args.config}")
     print(f"Data directory: {args.data}")
     print(f"Output directory: {args.output}")
@@ -922,10 +922,10 @@ def cmd_igov_signals(args):
     gh_group_end()
 
     result = generate_igov_signals_page(
-        session=session,
         checks=checks,
         data_dir=args.data,
         output_dir=args.output,
+        session=session,
     )
 
     gh_group_start("IGov Signal Browser Summary")
