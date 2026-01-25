@@ -1,0 +1,25 @@
+{
+  "_id": "6581de4eb14a3700120b9e69",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/532",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Operational activities for development  ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2023-12-19T05:00:00.000Z",
+      "ED_Number": "49 plenary meeting",
+      "_id": "6581de4eb14a3700120b9e6a"
+    }
+  ],
+  "ED_AgendaItem": "22",
+  "ED_Plenary_Committee": "Second Committee",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "Second Committee",
+  "ED_DecisionText": "At its 49th plenary meeting, on 19  December 2023, the General Assembly took note of the report of the Second Committee.  (Footnote: A/78/465.)\n\n",
+  "ED_Disclaimer": "The final version of decisions adopted during the main part of the session will be contained in document A/78/49 (Vol. II) after editorial review.\n",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "__v": 0,
+  "DEC_NotificationSentTime": "2023-12-20T00:00:00.173Z"
+}

@@ -1,0 +1,25 @@
+{
+  "_id": "656e3e7db14a3700120b92fb",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/510",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Provisional programme of work and timetable of the First Committee for 2024 ",
+  "ED_Meeting": [
+    {
+      "_id": "656e3e7db14a3700120b92fc",
+      "ED_Date": "2023-12-04T05:00:00.000Z",
+      "ED_Number": "42 plenary meeting"
+    }
+  ],
+  "ED_AgendaItem": "120",
+  "ED_Plenary_Committee": "First Committee",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "First Committee",
+  "ED_DecisionText": "At its 42nd plenary meeting, on 4 December 2023, the General Assembly, on the recommendation of the First Committee,  (Footnote: A/78/416, para. 5.) approved the provisional programme of work and timetable of the Committee for 2024, as set out in the annex to the report of the Committee.  (Footnote: A/78/416.)\n\n",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/78/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "__v": 0,
+  "DEC_NotificationSentTime": "2023-12-05T00:00:00.206Z"
+}

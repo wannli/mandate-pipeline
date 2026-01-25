@@ -1,0 +1,25 @@
+{
+  "_id": "66db7d33674e0a36abab4c75",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/570",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Financing of the United  Nations Mission in East Timor",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-09-06T04:00:00.000Z",
+      "ED_Number": "108 plenary meeting",
+      "_id": "66db7d33674e0a36abab4c76"
+    }
+  ],
+  "ED_AgendaItem": "152",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 108th plenary meeting, on 6 September 2024, the General Assembly decided to include the item entitled \u201cFinancing of the United Nations Mission in East Timor\u201d in the draft agenda of its seventy-ninth session.\n\n",
+  "ED_Disclaimer": "The final version of decisions adopted during the resumed part of the session will be contained in document A/78/49 (Vol. III) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-09-07T00:00:00.233Z"
+}

@@ -1,0 +1,25 @@
+{
+  "_id": "654e640db14a3700120b8941",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/403",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Election of members of the International Court of Justice",
+  "ED_Meeting": [
+    {
+      "_id": "654e640db14a3700120b8942",
+      "ED_Date": "2023-11-09T05:00:00.000Z",
+      "ED_Number": "31st plenary meeting"
+    }
+  ],
+  "ED_AgendaItem": "113(c)",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "The General Assembly, at its 31st plenary meeting, on 9 November 2023, and the Security Council, at its 9471st meeting, on the same date, proceeded independently of one another to elect, in accordance with Articles 2 to 4 and 7 to 12 of the Statute of the International Court of Justice, rules 150 and 151 of the rules of procedure of the Assembly and rules 40 and 61 of the provisional rules of procedure of the Council, five members of the Court for a nine-year term of office beginning on 6 February 2024 to fill the vacancies occurring on the expiration of the terms of office of Joan E. Donoghue (United States of America), Kirill Gevorgian (Russian Federation), Mohamed Bennouna (Morocco), Patrick Lipton Robinson (Jamaica) and Hilary Charlesworth (Australia). \n\n\tHaving obtained the required absolute majority of votes in both the General Assembly and the Security Council, Bogdan-Lucian Aurescu (Romania), Hilary Charlesworth (Australia), Sarah Hull Cleveland (United States of America), Juan Manuel G\u00f3mez Robledo Verduzco (Mexico) and Dire Tladi (South Africa) were elected as members of the Court for a nine-year term of office beginning on 6 February 2024.\n\n\tAs a result, as of 6 February 2024, the International Court of Justice is composed as follows: Ronny ABRAHAM (France),* Bogdan-Lucian AURESCU (Romania),*** Dalveer BHANDARI (India),* Leonardo Nemer Caldeira BRANT (Brazil),* Hilary CHARLESWORTH (Australia),*** Sarah Hull CLEVELAND (United States of America),*** Juan Manuel G\u00d3MEZ ROBLEDO VERDUZCO (Mexico),*** IWASAWA Yuji (Japan),** Georg NOLTE (Germany),** Nawaf SALAM (Lebanon),* Julia SEBUTINDE (Uganda),** Dire TLADI (South Africa),*** Peter TOMKA (Slovakia),** XUE Hanqin (China)** and Abdulqawi Ahmed YUSUF (Somalia).*\n\n*\tTerm of office expires on 5 February 2027. \n**\tTerm of office expires on 5 February 2030. \n***\tTerm of office expires on 5 February 2033. ",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/78/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "__v": 0,
+  "DEC_NotificationSentTime": "2023-11-11T00:00:00.223Z"
+}

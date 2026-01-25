@@ -1,0 +1,25 @@
+{
+  "_id": "66636a81aae579c43b17162a",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/416",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Election of the Vice-Presidents of the General Assembly at its seventy-ninth session",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-06-06T04:00:00.000Z",
+      "ED_Number": "87th plenary meeting",
+      "_id": "66636a81aae579c43b17162b"
+    }
+  ],
+  "ED_AgendaItem": "6",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 87th plenary meeting, on 6 June 2024, the General Assembly, in accordance with rule 30 of the rules of procedure of the Assembly and paragraphs 2 and 3 of the annex to resolution 33/138 of 19 December 1978, elected the following 21 Member States as Vice-Presidents of the General Assembly at its seventy-ninth session: ALGERIA, ANGOLA, AUSTRIA, BARBADOS, CHINA, FRANCE, GHANA, GUATEMALA, ITALY, KYRGYZSTAN, MADAGASCAR, MICRONESIA (FEDERATED STATES OF), REPUBLIC OF MOLDOVA, RUSSIAN FEDERATION, SENEGAL, THAILAND, TONGA, TURKMENISTAN, UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND, UNITED STATES OF AMERICA and VENEZUELA (BOLIVARIAN REPUBLIC OF).",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/78/49 (Vol. III) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-06-08T00:00:00.159Z"
+}

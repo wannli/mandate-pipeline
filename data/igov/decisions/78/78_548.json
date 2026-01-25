@@ -1,0 +1,25 @@
+{
+  "_id": "6601e015c1545a6ada5e0ad2",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/548",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Commemorative meeting of the General Assembly to mark the International Day of Remembrance of the Victims of Slavery and the Transatlantic Slave Trade",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-03-25T04:00:00.000Z",
+      "ED_Number": "64 plenary meeting",
+      "_id": "6601e015c1545a6ada5e0ad3"
+    }
+  ],
+  "ED_AgendaItem": "118",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 64th plenary meeting, on 25 March 2024, the General Assembly, on the proposal of its President,  decided, without setting a precedent, to invite Hilary Beckles, Vice-Chancellor of the University of the West Indies, and Chairman of the Reparations Commission of the Caribbean Community (CARICOM); and Yolanda Renee King, Youth Activist, to make statements at the commemorative meeting on the occasion of the International Day of Remembrance of the Victims of Slavery and the Transatlantic Slave Trade.  ",
+  "ED_Disclaimer": "The final version of decisions adopted during the resumed part of the session will be contained in document A/78/49 (Vol. III) after editorial review.\n",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-03-26T00:00:00.257Z"
+}

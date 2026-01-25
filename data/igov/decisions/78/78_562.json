@@ -1,0 +1,25 @@
+{
+  "_id": "66d88796674e0a36abab4aa8",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/562",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "High-level  meeting to commemorate and promote the International Day against Nuclear Tests  ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-09-04T04:00:00.000Z",
+      "ED_Number": "105 plenary meeting",
+      "_id": "66d88796674e0a36abab4aa9"
+    }
+  ],
+  "ED_AgendaItem": "99",
+  "ED_Plenary_Committee": "Plenary ",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary ",
+  "ED_DecisionText": "At its 105th plenary meeting, on 4 September 2024, the General Assembly, on the proposal of its President, decided, without setting a precedent, to invite the Executive Secretary of the Preparatory Commission for the Comprehensive Nuclear-Test-Ban Treaty Organization, Robert Floyd, the Director of the International Atomic Energy Agency Liaison Office in New York, Vivian Okeke, on behalf of the Director General of the Agency, Rafael Mariano Grossi, Research Assistant of the Arms Control Association and former United Nations Office for Disarmament Affairs Youth Champion, Shizuka Kuramitsu, and Professor at the Elliott School of International Affairs of George Washington University, Sharon Squassoni, to make statements at the high-level meeting to commemorate and promote the International Day against Nuclear Tests.\n",
+  "ED_Disclaimer": "The final version of decisions adopted during the resumed part of the session will be contained in document A/78/49 (Vol. III) after editorial review.\n",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-09-05T00:00:00.132Z"
+}

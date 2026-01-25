@@ -1,0 +1,25 @@
+{
+  "_id": "65567909b14a3700120b8cb0",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/407",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Appointment of a member of the Board of Auditors",
+  "ED_Meeting": [
+    {
+      "_id": "65567909b14a3700120b8cb1",
+      "ED_Date": "2023-11-16T05:00:00.000Z",
+      "ED_Number": "35th plenary meeting"
+    }
+  ],
+  "ED_AgendaItem": "115 (d)",
+  "ED_Plenary_Committee": "Fifth Committee",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "Fifth Committee",
+  "ED_DecisionText": "At its 35th plenary meeting, on 16 November 2023, the General Assembly, on the recommendation of the Fifth Committee,(footnote: A/78/561, para. 4.) appointed the Chair of the Federal Court of Accounts of Brazil as a member of the Board of Auditors for a six-year term of office beginning on 1 July 2024. \n\nAs a result, as of 1 July 2024, the Board of Auditors is composed as follows: Chair of the Federal Court of Accounts of BRAZIL,*** Auditor-General of the National Audit Office of CHINA* and the First President of the Court of Accounts of FRANCE.**\n\n ___________________ \n\n* Term of office expires on 30 June 2026. \n** Term of office expires on 30 June 2028.\n*** Term of office expires on 30 June 2030. ",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/78/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "__v": 0,
+  "DEC_NotificationSentTime": "2023-11-17T00:00:00.225Z"
+}

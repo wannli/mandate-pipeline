@@ -1,0 +1,30 @@
+{
+  "_id": "65c4f9a6e4cc1f94a95b5e86",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/545 A and B",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Report of the Secretary-General on the work of the Organization ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-02-07T05:00:00.000Z",
+      "ED_Number": "54th plenary meeting",
+      "_id": "65c4f9a6e4cc1f94a95b5e87"
+    },
+    {
+      "ED_Date": "2024-02-07T05:00:00.000Z",
+      "ED_Number": "55th plenary meeting",
+      "_id": "65c4f9dfe4cc1f94a95b5e96"
+    }
+  ],
+  "ED_AgendaItem": "110",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "A\u202f\u202f\n\nAt its 54th plenary meeting, on 7 February 2024, the General Assembly decided that, after the departure of the Secretary-General, his seat at the podium might be occupied by his representative.\u202f\u202f\u202f \n\nB\n\nAt its 55th plenary meeting, on 7 February 2024, the General Assembly took note of the\u202freport of the Secretary-General\u202fon the work of the Organization.(Footnote: A/78/1.)\u202f\u202f \n",
+  "ED_Disclaimer": "The final version of decisions adopted during the resumed part of the session will be contained in document A/78/49 (Vol. III) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-02-09T00:00:00.177Z"
+}

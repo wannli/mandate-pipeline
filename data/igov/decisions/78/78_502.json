@@ -1,0 +1,25 @@
+{
+  "_id": "64fb510bc080b40012e6eb49",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/502",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Rights of reply to addresses by Heads of State",
+  "ED_Meeting": [
+    {
+      "_id": "64fb510bc080b40012e6eb4a",
+      "ED_Date": "2023-09-08T04:00:00.000Z",
+      "ED_Number": "2 plenary meeting"
+    }
+  ],
+  "ED_AgendaItem": "7",
+  "ED_Plenary_Committee": "Plenary ",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary ",
+  "ED_DecisionText": "At its 2nd plenary meeting, on 8 September 2023, the General Assembly took note of the information provided in paragraph 53 of the report of the General Committee  (footnote: A/78/250) concerning rights of reply to addresses by Heads of State. \n",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/78/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "__v": 0,
+  "DEC_NotificationSentTime": "2023-09-09T00:00:00.255Z"
+}

@@ -1,0 +1,25 @@
+{
+  "_id": "66636bc7aae579c43b17163c",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/419",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Election of the Chairs of the Main Committees of the General Assembly at its seventy-ninth session",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-06-07T04:00:00.000Z",
+      "ED_Number": "88th plenary meeting",
+      "_id": "66636bc7aae579c43b17163d"
+    }
+  ],
+  "ED_AgendaItem": "5",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "On 6 June 2024, the First, Special Political and Decolonization (Fourth), Second, Third, Fifth and Sixth Committees of the General Assembly held meetings in accordance with rules 99 (a) and 103 of the rules of procedure of the Assembly for the purpose of electing their Chairs. At its 88th plenary meeting, on 7 June 2024, the President of the General Assembly announced that the following persons had been elected as Chairs of the First, Special Political and Decolonization (Fourth), Second, Third, Fifth and Sixth Committees of the Assembly at its seventy-ninth session and are accordingly members of the General Committee for that session: \n\nFirst Committee: Maritza CHAN VALVERDE (Costa Rica) \nSpecial Political and Decolonization Committee (Fourth Committee): Sanita PAV\u013bUTA-DESLANDES (Latvia) \nSecond Committee: Muhammad Abdul MUHITH (Bangladesh) \nThird Committee: Z\u00e9phyrin MANIRATANGA (Burundi) \nFifth Committee: Egriselda L\u00d3PEZ (El Salvador) \nSixth Committee: Rui VINHAS (Portugal)",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/78/49 (Vol. III) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-06-08T00:00:00.175Z"
+}

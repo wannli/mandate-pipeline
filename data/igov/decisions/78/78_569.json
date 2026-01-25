@@ -1,0 +1,25 @@
+{
+  "_id": "66db7cda674e0a36abab4c6c",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/569",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Implementation of the resolutions  of the United Nations",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-09-06T04:00:00.000Z",
+      "ED_Number": "108 plenary meeting",
+      "_id": "66db7cda674e0a36abab4c6d"
+    }
+  ],
+  "ED_AgendaItem": "119",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 108th plenary meeting, on 6 September 2024, the General Assembly, the General Assembly decided to include the item entitled \u201cImplementation of the resolutions of the United Nations\u201d in the draft agenda of its seventy-ninth session.\n\n",
+  "ED_Disclaimer": "The final version of decisions adopted during the resumed part of the session will be contained in document A/78/49 (Vol. III) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-09-07T00:00:00.226Z"
+}

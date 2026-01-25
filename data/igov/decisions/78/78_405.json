@@ -1,0 +1,25 @@
+{
+  "_id": "65567851b14a3700120b8c9e",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/405",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Appointment of members of the Committee on Contributions",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2023-11-16T05:00:00.000Z",
+      "ED_Number": "35th plenary meeting",
+      "_id": "65567851b14a3700120b8c9f"
+    }
+  ],
+  "ED_AgendaItem": "115 (b)",
+  "ED_Plenary_Committee": "Fifth Committee",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "Fifth Committee",
+  "ED_DecisionText": "At its 35th plenary meeting, on 16 November 2023, the General Assembly, on the recommendation of the Fifth Committee,(footnote: A/78/559, para. 7.) appointed or reappointed the following persons as members of the Committee on Contributions:\n\n(a) For a term of office beginning on 1 January 2024 and ending on 31 December 2024: SUZUKI Yoriko (Japan); \n\n(b) For a three-year term of office beginning on 1 January 2024: Michael HOLTSCH (Germany), Vadim LAPUTIN (Russian Federation), LIN Shan (China), Hae-yun PARK (Republic of Korea), Henrique da Silveira SARDINHA PINTO (Brazil) and Cihan TERZI (T\u00fcrkiye).\n\nAs a result, as of 1 January 2024, the Committee on Contributions is composed as follows: Syed Yawar ALI (Pakistan),* Phologo Kaone BOGATSU (Botswana),* Cheikh Tidiane D\u00c8ME (Senegal),** Jasminka DINI\u0106 (Croatia),* Gordon ECKERSLEY (Australia),** Helena Concepci\u00f3n FELIP SALAZAR (Paraguay),** Bernardo GREIVER DEL HOYO (Uruguay),** Michael HOLTSCH (Germany),*** Ihor HUMENNYI (Ukraine),* Marcel JULLIER (Switzerland),** Vadim LAPUTIN (Russian Federation),*** LIN Shan (China),*** Joseph MASILA (Kenya),** Hae-yun PARK (Republic of Korea),*** Thomas Anthony REPASCH (United States of America),* Henrique da Silveira SARDINHA PINTO (Brazil),*** SUZUKI Yoriko (Japan)* and Cihan TERZI (T\u00fcrkiye)***.\n\n__________________ \n\n* \tTerm of office expires on 31 December 2024. \n** \tTerm of office expires on 31 December 2025. \n*** \tTerm of office expires on 31 December 2026.",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/78/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "__v": 0,
+  "DEC_NotificationSentTime": "2023-11-17T00:00:00.224Z"
+}

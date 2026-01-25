@@ -1,0 +1,25 @@
+{
+  "_id": "667b285b3364fe6b3b178a02",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/553",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Notification by the Secretary-General under Article 12, paragraph 2, of the Charter of the United Nations",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-06-25T04:00:00.000Z",
+      "ED_Number": "93rd plenary meeting",
+      "_id": "667b285b3364fe6b3b178a03"
+    }
+  ],
+  "ED_AgendaItem": "112",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 93rd plenary meeting, on 25 June 2024, the General Assembly took note of the note by the Secretary-General. (Footnote: A/78/300.)",
+  "ED_Disclaimer": "The final version of decisions adopted during the resumed part of the session will be contained in document A/78/49 (Vol. III) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-06-26T00:00:00.173Z"
+}

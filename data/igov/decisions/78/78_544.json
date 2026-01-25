@@ -1,0 +1,25 @@
+{
+  "_id": "65a6e89bcc0744d0f6d681e5",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/544",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "High-level plenary  meeting on addressing the existential threats posed by sea level rise",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-01-16T05:00:00.000Z",
+      "ED_Number": "53 plenary meeting",
+      "_id": "65a6e89bcc0744d0f6d681e6"
+    }
+  ],
+  "ED_AgendaItem": "13 and 117",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 53rd plenary meeting, on 16 January 2024, the General Assembly, on the proposal of its President : (Footnote: A/78/L.35.) \n\n(a)\tDecided to convene a one-day high-level plenary meeting of the General Assembly, within existing resources, on addressing the existential threats posed by sea level rise, on 25 September 2024;\n\n(b)\tRequested the President of the General Assembly to finalize the organizational arrangements, including on a possible outcome document, for the high-level meeting, through open, transparent and inclusive consultations with Member States.",
+  "ED_Disclaimer": "The final version of decisions adopted during the resumed part of the session will be contained in document A/78/49 (Vol. III) after editorial review. ",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-01-17T00:00:00.071Z"
+}

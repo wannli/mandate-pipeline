@@ -1,0 +1,25 @@
+{
+  "_id": "660197d3c1545a6ada5e0a85",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/412",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Extension of the appointment of the Under-Secretary-General for Safety and Security",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-03-21T04:00:00.000Z",
+      "ED_Number": "63rd plenary meeting",
+      "_id": "660197d3c1545a6ada5e0a86"
+    }
+  ],
+  "ED_AgendaItem": "115",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 63rd plenary meeting, on 21 March 2024, at the proposal of the Secretary-General (A/78/785), the General Assembly approved, notwithstanding paragraph 22 of Section XI of resolution 59/276, the exceptional extension of the term of Mr. Gilles Michaud of Canada as Under-Secretary-General for Safety and Security by two years, until 30 June 2026.",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/78/49 (Vol. III) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-03-26T00:00:00.247Z"
+}

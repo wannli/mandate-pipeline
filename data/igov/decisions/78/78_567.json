@@ -1,0 +1,25 @@
+{
+  "_id": "66db71f0674e0a36abab4c54",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/567",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Zone of peace, trust and cooperation of Central Asia",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-09-06T04:00:00.000Z",
+      "ED_Number": "108 plenary meeting",
+      "_id": "66db71f0674e0a36abab4c55"
+    }
+  ],
+  "ED_AgendaItem": "64",
+  "ED_Plenary_Committee": "Plenary ",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary ",
+  "ED_DecisionText": "At its 108th plenary meeting, on 6 September 2024, the General Assembly, the General Assembly decided to include the item entitled \u201cZone of peace, trust and cooperation of Central Asia\u201d in the draft agenda of its seventy-ninth session.\n\n",
+  "ED_Disclaimer": "",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-09-07T00:00:00.215Z"
+}

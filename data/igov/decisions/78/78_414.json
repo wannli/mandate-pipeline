@@ -1,0 +1,25 @@
+{
+  "_id": "66636a1eaae579c43b17161e",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/414",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Election of non-permanent members of the Security Council",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-06-06T04:00:00.000Z",
+      "ED_Number": "86th plenary meeting",
+      "_id": "66636a1eaae579c43b17161f"
+    }
+  ],
+  "ED_AgendaItem": "113 (a)",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 86th plenary meeting, on 6 June 2024, the General Assembly, in accordance with Article 23 of the Charter of the United Nations, rule 142 of the rules of procedure of the Assembly and paragraph 17 of Assembly resolution 68/307 of 10 September 2014, elected DENMARK, GREECE, PAKISTAN, PANAMA and SOMALIA as non-permanent members of the Security Council for a two-year term of office beginning on 1 January 2025 to fill the vacancies occurring on the expiration of the terms of office of ECUADOR, JAPAN, MALTA, MOZAMBIQUE and SWITZERLAND. \n\nAs a result, as of 1 January 2025, the Security Council is composed of the following 15 Member States: ALGERIA,* CHINA, DENMARK,** FRANCE, GREECE,** GUYANA,* PAKISTAN,** PANAMA,** REPUBLIC OF KOREA,* RUSSIAN FEDERATION, SIERRA LEONE,* SLOVENIA,* SOMALIA,** UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND and UNITED STATES OF AMERICA. \n\n__________________ \n* Term of office expires on 31 December 2025. \n** Term of office expires on 31 December 2026.",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/78/49 (Vol. III) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-06-08T00:00:00.142Z"
+}

@@ -1,0 +1,25 @@
+{
+  "_id": "6696e8b1b9e20da424a5b967",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/557",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Accreditation and participation of an intergovernmental organization in the Fourth International Conference on Financing for Development",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-07-16T04:00:00.000Z",
+      "ED_Number": "101 plenary meeting",
+      "_id": "6696e8b1b9e20da424a5b968"
+    }
+  ],
+  "ED_AgendaItem": "17",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 101st plenary meeting, on 16 July 2024, the General Assembly, on the proposal of its President[1] (Footnote: A/78/L.94.) taking note of the note by the Secretariat,[2] (Footnote: A/78/958.) decided to accredit the organization identified in the note by the Secretariat and invite it to participate as an intergovernmental organization in the work of Fourth International Conference on Financing for Development and its preparatory process, as an observer, in accordance with paragraph 3 (b) of its resolution 78/271 of 11 April 2024. \n\n",
+  "ED_Disclaimer": "The final version of decisions adopted during the resumed part of the session will be contained in document A/78/49 (Vol. III) after editorial review.\n",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-07-17T00:00:00.145Z"
+}

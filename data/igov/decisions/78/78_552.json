@@ -1,0 +1,25 @@
+{
+  "_id": "667b27fc3364fe6b3b1789f0",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/552",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Building a peaceful and better world through sport and the Olympic ideal",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-06-25T04:00:00.000Z",
+      "ED_Number": "93rd plenary meeting",
+      "_id": "667b27fc3364fe6b3b1789f1"
+    }
+  ],
+  "ED_AgendaItem": "11",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 93rd plenary meeting, on 25 June 2024, the General Assembly took note of the solemn appeal made by the President of the General Assembly in connection with the observance of the Olympic Truce. (Footnote: A/78/917)",
+  "ED_Disclaimer": "The final version of decisions adopted during the resumed part of the session will be contained in document A/78/49 (Vol. III) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-06-26T00:00:00.142Z"
+}

@@ -1,0 +1,25 @@
+{
+  "_id": "65846ba6b14a3700120ba11c",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/540",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Programme planning   (Third Committee)",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2023-12-19T05:00:00.000Z",
+      "ED_Number": "50 plenary meeting",
+      "_id": "65846ba6b14a3700120ba11d"
+    }
+  ],
+  "ED_AgendaItem": "135",
+  "ED_Plenary_Committee": "Third Committee",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "Third Committee",
+  "ED_DecisionText": "At its 50th plenary meeting, on 19 December 2023, the General Assembly took note of the report of the Second Committee.  (Footnote: A/78/485.)\n",
+  "ED_Disclaimer": "The final version of decisions adopted during the main part of the session will be contained in document A/78/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "__v": 0,
+  "DEC_NotificationSentTime": "2023-12-22T00:00:00.160Z"
+}

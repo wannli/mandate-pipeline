@@ -1,0 +1,25 @@
+{
+  "_id": "6557842cb14a3700120b8d15",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/508",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Report of the Economic and Social Council ",
+  "ED_Meeting": [
+    {
+      "_id": "6557842cb14a3700120b8d16",
+      "ED_Date": "2023-11-14T05:00:00.000Z",
+      "ED_Number": "33 plenary meeting"
+    }
+  ],
+  "ED_AgendaItem": "9",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 33rd plenary meeting, on 14 November 2023, the General Assembly took note of the report of the Economic and Social Council. (Footnote: A/78/3.)\n",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/78/49 (Vol. II) after editorial review.\n",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "__v": 0,
+  "DEC_NotificationSentTime": "2023-11-18T00:00:00.177Z"
+}

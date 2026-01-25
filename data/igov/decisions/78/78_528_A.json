@@ -1,0 +1,25 @@
+{
+  "_id": "657203c1b14a3700120b963b",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/528 A",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Participation of non-governmental  organizations, civil society organizations, academic institutions and the private sector in the third United Nations Conference on the Landlocked Developing Countries",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2023-12-07T05:00:00.000Z",
+      "ED_Number": "45 plenary meeting",
+      "_id": "657203c1b14a3700120b963c"
+    }
+  ],
+  "ED_AgendaItem": "20 (b)",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 45th plenary meeting, on 7 December 2023, the General Assembly, on the proposal of its President, (Footnote: A/78/L.23.), recalling paragraph 51 (c) of its resolution 77/246 of 30 December 2022 on follow-up to the second United Nations Conference on the Landlocked Developing Countries, decided to approve the participation of the nongovernmental organizations, civil society organizations, academic institutions and the private sector as listed in the annex to the present decision in the third United Nations Conference on the Landlocked Developing Countries and its preparatory process, to be held pursuant to resolutions 77/246, and 77/329 of 25 August 2023. \n\nAnnex\n\n\nAssociation pour la Conservation et la Protection des Ecosyst\u00e8mes des Lacs et l\u2019Agriculture Durable\nASSOCIATION POUR LA COOPERATION INTERNATIONALE AU DEVELOPPEMENT (ACID)\nChako Zanzibar\nChild\u2019s Destiny and Development Organization (CHIDDO)\nCommunaut\u00e9 des Personnes Engag\u00e9es pour Promouvoir l\u2019Entrepreneuriat et le D\u00e9veloppement durable (CPEPED)\nDUKINGIRE ISI YACU\nGlocal Pvt. Ltd.\nGSDM, Professionnels de l\u2019Agro\u00e9cologie\nHuman Health Aid Burundi\nInternational Young Catholic Students (IYCS Africa)\nISHAKA 2250\nKIWONNONGO FOUNDATION INC\nLet There Be Light International\nMicrosoft\nMKAAJI MPYA asbl\nOrganisation des Visionnaires D\u00e9vou\u00e9s pour un D\u00e9veloppement de Haute Modernisation (OVDDHMO)\nPay No Bribe Animators (PaNBA)\nPVBLIC Foundation, Inc.\nShamba Centre for Food & Climate\nSoci\u00e9t\u00e9 SOMMAC\nSouthern and Eastern Africa Trade Information and Negotiations Institute (SEATINI) \nThe national institute for Sustainable development\nThinkBikes\nVeille Citoyenne Togo\nWorthy General Supplies Limited\nYoung African Leaders Initiative YALI RDC\nYouths Enterprise Development and Innovation Society\n",
+  "ED_Disclaimer": "The final version of decisions adopted during the main part of the session will be contained in document A/78/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "__v": 0,
+  "DEC_NotificationSentTime": "2023-12-08T00:00:00.193Z"
+}

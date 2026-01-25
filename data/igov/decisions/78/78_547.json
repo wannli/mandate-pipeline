@@ -1,0 +1,25 @@
+{
+  "_id": "65fc48fabed46ae3713521d0",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/547",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Commemorative meeting of the General Assembly on the occasion of the International Day for the Elimination of Racial Discrimination\t      ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-03-21T04:00:00.000Z",
+      "ED_Number": "63 plenary meeting",
+      "_id": "65fc48fabed46ae3713521d1"
+    }
+  ],
+  "ED_AgendaItem": "69",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 63rd plenary meeting, on 21 March 2024, the General Assembly, on the proposal of its President,  decided, without setting a precedent, to invite Ilze Brand Kehris, Assistant Secretary-General for Human Rights, Verene Alberta Shepherd, Chair of the Committee on the Elimination of Racial Discrimination, June Soomer, Chair-designate of the Permanent Forum on People of African Descent and Uch\u00e9 Blackstock, Founder and Chief Executive Officer of Advancing Health Equity, to make statements at the commemorative meeting on the occasion of the International Day for the Elimination of Racial Discrimination.   ",
+  "ED_Disclaimer": "The final version of decisions adopted during the resumed part of the session will be contained in document A/78/49 (Vol. III) after editorial review.\n",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-03-22T00:00:00.181Z"
+}

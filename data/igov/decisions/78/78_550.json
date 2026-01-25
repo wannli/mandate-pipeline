@@ -1,0 +1,25 @@
+{
+  "_id": "663bb9ae6b51d90d00db548d",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/550",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Postponement of the third United Nations Conference on Landlocked Developing Countries and the second session of the Preparatory Committee for the third United Nations Conference on Landlocked Developing Countries ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-05-07T04:00:00.000Z",
+      "ED_Number": "80 plenary meeting",
+      "_id": "663bb9ae6b51d90d00db548e"
+    }
+  ],
+  "ED_AgendaItem": "20(b)",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 80th meeting, on 7 May 2024, the General Assembly, on the proposal of Botswana, (Footnote: A/78/L.63.) recalling its resolutions 76/217 of 17 December 2021, and 77/246 of 30 December 2022, by which the Assembly had decided to convene the third United Nations Conference on Landlocked Developing Countries in the first half of 2024 in Kigali at the highest possible level, including Heads of State and Government, and recalling also its resolution 77/329 of 25 August 2023, by which it had decided to hold the Conference from 18 to 21 June 2024 in Kigali and had also decided that the first and second sessions of the Preparatory Committee for the third United Nations Conference on Landlocked Developing Countries should have been should be organized from 5 to 8 February 2024 and from 29 April to 1 May 2024 in New York, decided that the third United Nations Conference on Landlocked Developing Countries shall be postponed to a later date, and also decided that the second session of the Preparatory Committee for the Conference shall be postponed to 3 to 5 June 2024. \n",
+  "ED_Disclaimer": "The final version of decisions adopted during the resumed part of the session will be contained in document A/78/49 (Vol. III) after editorial review. ",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-05-09T00:00:00.227Z"
+}

@@ -1,0 +1,25 @@
+{
+  "_id": "65c4fab1e4cc1f94a95b5e9e",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/546",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Authorization for the United Nations Office for Disaster Risk Reduction regarding the hosting of the secretariat of the Santiago network for averting, minimizing and addressing loss and damage associated with the adverse effects of climate change",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-02-07T05:00:00.000Z",
+      "ED_Number": "55th plenary meeting",
+      "_id": "65c4fab1e4cc1f94a95b5e9f"
+    }
+  ],
+  "ED_AgendaItem": "18 (c)",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 55th plenary meeting, on 7 February 2024, the General Assembly, on the proposal of Austria, Bulgaria, Canada, Croatia, Cyprus, Czechia, Denmark, Estonia, Finland, France, Germany Greece, Italy, Japan, Kenya, Latvia, Luxembourg, Malta, Kingdom of the Netherlands, Norway, Poland, Portugal, the Republic of Moldova, Romania, Slovenia, Spain, Suriname, Sweden, Switzerland, the United Arab Emirates, the United Kingdom of Great Britain and Northern Ireland and the United States of America, (footnote: A/78/L.36/Rev.1 and A/78/PV.55.), recalling the relevant resolutions regarding the United Nations Office for Disaster Risk Reduction, including resolutions 54/219 of 22 December 1999 and 56/195 of 21 December 2001, authorized the United Nations Office for Disaster Risk Reduction to enter into a memorandum of understanding with the Conference of the Parties to the United Nations Framework Convention on Climate Change and the Conference of the Parties serving as the Meeting of the Parties to the Paris Agreement regarding the hosting of the secretariat of the Santiago network for averting, minimizing and addressing loss and damage associated with the adverse effects of climate change, in line with decisions 6/CMA.5 and 2/CP.28.",
+  "ED_Disclaimer": "The final version of decisions adopted during the resumed part of the session will be contained in document A/78/49 (Vol. III) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-02-09T00:00:00.236Z"
+}

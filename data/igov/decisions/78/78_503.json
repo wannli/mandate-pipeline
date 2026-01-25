@@ -1,0 +1,35 @@
+{
+  "_id": "64fb513ac080b40012e6eb52",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/503",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Organization of the seventy-eighth session\t",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2023-09-08T04:00:00.000Z",
+      "ED_Number": "2 plenary meeting",
+      "_id": "64fb513ac080b40012e6eb53"
+    },
+    {
+      "ED_Date": "2023-11-10T05:00:00.000Z",
+      "ED_Number": "32 plenary meeting",
+      "_id": "654e680bb14a3700120b89aa"
+    },
+    {
+      "ED_Date": "2023-12-08T05:00:00.000Z",
+      "ED_Number": "46th plenary meeting",
+      "_id": "657355a5b14a3700120b9782"
+    }
+  ],
+  "ED_AgendaItem": "7",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 2nd plenary meeting, on 8 September 2023, the General Assembly, on the recommendation of the General Committee as set forth in its first report (A/78/250),  adopted a number of provisions concerning the organization of the seventy-eighth session. \n\nAt the 32nd meeting, on 10 November 2023, the Assembly, on the proposal of its President, decided to postpone the date of recess of the seventy-eighth session of the Assembly from Monday, 4 December 2023, to Friday, 15 December 2023. \n\nAt the same meeting, the General Assembly, at the request of the Chair of the Fifth Committee, decided to extend the work of the Committee until Friday, 15 December 2023.\n\nAt the 46th meeting, on 8 December 2023, the General Assembly, on the proposal of its President, decided to postpone the date of recess of the seventy-eighth session of the Assembly from Friday, 15 December 2023, to Tuesday, 19 December 2023.  \n\n",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/78/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "DEC_NotificationSent": true,
+  "__v": 0,
+  "DEC_NotificationSentTime": "2023-09-09T00:00:00.255Z"
+}

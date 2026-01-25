@@ -1,0 +1,25 @@
+{
+  "_id": "66db3cd4674e0a36abab4c06",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "78/564 A and B",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Speakers for the opening segment  of the Summit of the Future",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-09-06T04:00:00.000Z",
+      "ED_Number": "107 plenary meeting",
+      "_id": "66db3cd4674e0a36abab4c07"
+    }
+  ],
+  "ED_AgendaItem": "122",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "78th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "A \nAt its 107th plenary meeting, on 6 September 2024, the General Assembly, under rule 81 of its rules of procedure, decided to reconsider the provision contained in footnote 1 of decision 78/555 of 10 July 2024. \n\nB \nAt its 107th\u202fplenary meeting, on 6 September, the General Assembly, on the proposal of its President, decided that, in addition to those listed in resolution 76/307 of 8 September 2022 and decision 78/555 of 10 July 2024, the opening segment of the Summit of the Future also feature statements by the President of the Republic of Namibia and the Chancellor of the Federal Republic of Germany in lieu of their national statements from the plenary list of speakers.\n ",
+  "ED_Disclaimer": "",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-09-07T00:00:00.194Z"
+}
