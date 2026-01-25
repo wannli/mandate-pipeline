@@ -1,0 +1,98 @@
+name: IGov Decision Sync
+
+on:
+  schedule:
+    # Run hourly at minute 30
+    - cron: '30 * * * *'
+  workflow_dispatch:
+    inputs:
+      session_number:
+        description: 'UN General Assembly session number (e.g., 80, 79)'
+        required: false
+        type: string
+      session_label:
+        description: 'Override IGov session label string'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: "igov-sync-${{ github.event.inputs.session_number || 'current' }}"
+  cancel-in-progress: false
+
+jobs:
+  igov-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -e .
+
+      - name: Sync IGov decisions
+        run: |
+          if [ -n "${{ github.event.inputs.session_number }}" ] && [ -n "${{ github.event.inputs.session_label }}" ]; then
+            python -m mandate_pipeline.cli igov-sync \
+              --session ${{ github.event.inputs.session_number }} \
+              --session-label "${{ github.event.inputs.session_label }}" \
+              --config ./config \
+              --data ./data \
+              --verbose
+          elif [ -n "${{ github.event.inputs.session_number }}" ]; then
+            python -m mandate_pipeline.cli igov-sync \
+              --session ${{ github.event.inputs.session_number }} \
+              --config ./config \
+              --data ./data \
+              --verbose
+          else
+            python -m mandate_pipeline.cli igov-sync --config ./config --data ./data --verbose
+          fi
+
+      - name: Record IGov sync metadata
+        run: |
+          cat > data/igov/last_sync_run.json << 'EOF'
+          {
+            "run_id": "${{ github.run_id }}",
+            "run_attempt": "${{ github.run_attempt }}",
+            "event_name": "${{ github.event_name }}",
+            "ref": "${{ github.ref }}",
+            "ref_name": "${{ github.ref_name }}",
+            "sha": "${{ github.sha }}",
+            "actor": "${{ github.actor }}",
+            "timestamp_utc": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+            "session_number": "${{ github.event.inputs.session_number || '' }}",
+            "session_label": "${{ github.event.inputs.session_label || '' }}"
+          }
+          EOF
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git add data/igov
+          if git diff --staged --quiet; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit changes
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -n "${{ github.event.inputs.session_number }}" ]; then
+            git commit -m "chore: sync IGov decisions for session ${{ github.event.inputs.session_number }}"
+          else
+            git commit -m "chore: sync IGov decisions ($(date -I))"
+          fi
+          git pull --rebase origin main || true
+          git push
