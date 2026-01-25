@@ -1159,7 +1159,13 @@ def generate_igov_signals_page(
     docs_with_signals = [doc for doc in decision_docs if doc.get("signal_paragraphs")]
     total_paragraphs = sum(len(doc.get("signal_paragraphs", [])) for doc in docs_with_signals)
     session_label = decisions[0].get("session_label") if decisions else ""
-    session_list = sorted([doc.get("session") for doc in decisions if doc.get("session") is not None])
+    session_list = []
+    for doc in decisions:
+        session_value = doc.get("session")
+        if session_value is None:
+            continue
+        session_list.append(int(session_value))
+    session_list = sorted(session_list)
 
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -1178,7 +1184,7 @@ def generate_igov_signals_page(
         generated_at=datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
     )
 
-    with open(output_dir / "signals.html", "w") as f:
+    with open(output_dir / "signals-unified.html", "w") as f:
         f.write(html)
     with open(output_dir / "index.html", "w") as f:
         f.write(html)
