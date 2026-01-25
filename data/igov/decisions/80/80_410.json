@@ -1,0 +1,25 @@
+{
+  "_id": "691cdd15dbbfaeaa0f835962",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/410",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Appointment of members of the Committee on Contributions",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-11-17T05:00:00.000Z",
+      "ED_Number": "42nd plenary meeting",
+      "_id": "691cdd15dbbfaeaa0f835963"
+    }
+  ],
+  "ED_AgendaItem": "115 (b)",
+  "ED_Plenary_Committee": "Fifth Committee",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Fifth Committee",
+  "ED_DecisionText": "At its 42nd plenary meeting, on 17 November 2025, the General Assembly, on the recommendation of the Fifth Committee,  (footnote: A/80/516, para. 5.) appointed the following persons as members of the Committee on Contributions for a three-year term of office beginning on 1 January 2026: Leandro Cosentino (Argentina), Hannah Davies (United Kingdom of Great Britain and Northern Ireland), Cheikh Tidiane D\u00e8me (Senegal), Bernardo Greiver del Hoyo (Uruguay), Richard Kamutando (Zimbabwe) and Christopher Legg (Australia).\n\nAs a result, as of 1 January 2026, the Committee on Contributions is composed as follows: Syed Yawar Ali (Pakistan),** Leandro Cosentino (Argentina),*** Hannah Davies (United Kingdom of Great Britain and Northern Ireland),*** Cheikh Tidiane D\u00e8me (Senegal),*** Jasminka Dini\u0107 (Croatia),** Fu Liheng (China),* Bernardo Greiver del Hoyo (Uruguay),*** George Hannum (United States of America),** Ihor Humennyi (Ukraine),** Richard Kamutando (Zimbabwe),*** Christopher Legg (Australia),*** Ren\u00e9 Michel Mizingou-Nzaba (Congo),** Hae-yun Park (Republic of Korea),* Denis Piminov (Russian Federation),* Henrique da Silveira Sardinha Pinto (Brazil),* Benjamin Sieberns (Germany),* Suzuki Yoriko (Japan)** and Cihan Terzi (T\u00fcrkiye).*\n\n* Term of office expires on 31 December 2026. \n** Term of office expires on 31 December 2027. \n*** Term of office expires on 31 December 2028.\n",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-11-19T00:00:00.163Z"
+}

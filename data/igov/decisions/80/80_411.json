@@ -1,0 +1,25 @@
+{
+  "_id": "691cdd68369bb45934f3bdd1",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/411",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Confirmation of the appointment of members of the Investments Committee",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-11-17T05:00:00.000Z",
+      "ED_Number": "42nd plenary meeting",
+      "_id": "691cdd68369bb45934f3bdd2"
+    }
+  ],
+  "ED_AgendaItem": "115 (c)",
+  "ED_Plenary_Committee": "Fifth Committee",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Fifth Committee",
+  "ED_DecisionText": "At its 42nd plenary meeting, on 17 November 2025, the General Assembly, on the recommendation of the Fifth Committee,  (footnote: A/80/516, para. 5.)\n\n(a) Confirmed the appointment by the Secretary-General of Jens Fricke (Germany), Michael S. Klein (United States of America) and Luciane Ribeiro (Brazil) as regular members of the Investments Committee for a three-year term of office beginning on 1 January 2026;\n\n(b) Also confirmed the appointment by the Secretary-General of Macky Tall (Mali) as an ad hoc member of the Investments Committee for a one-year term of office beginning on 1 January 2026.\nAs a result, as of 1 January 2026, the Investments Committee is composed of the following nine regular members: Yasir O. Al-Rumayyan (Saudi Arabia),* Sarah Omotunde Alade (Nigeria),* Jens Fricke (Germany),*** Keiko Honda (Japan),** Natalia Khanjenkova (Russian Federation),* Michael S. Klein (United States of America),*** Shan Li (China),* Patricia Parise (Argentina)* and Luciane Ribeiro (Brazil)*** and the following ad hoc member: Macky Tall (Mali).* \n\n* \tTerm of office expires on 31 December 2026. \n** \tTerm of office expires on 31 December 2027. \n*** \tTerm of office expires on 31 December 2028.",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-11-19T00:00:00.169Z"
+}

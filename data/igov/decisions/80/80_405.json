@@ -1,0 +1,25 @@
+{
+  "_id": "691cdbb0369bb45934f3bdc0",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/405",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Appointment of members of the Committee on Conferences",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-11-17T05:00:00.000Z",
+      "ED_Number": "42nd plenary meeting",
+      "_id": "691cdbb0369bb45934f3bdc1"
+    }
+  ],
+  "ED_AgendaItem": "115 (g)",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 42nd plenary meeting, on 17 November 2025, the General Assembly, in accordance with paragraph 2 of its resolution 43/222 B of 21 December 1988, took note of the appointment by its President, after consultations with the Chairs of the regional groups concerned, of Austria, China, Japan, Kenya, Libya and the United States of America as members of the Committee on Conferences for a three-year term of office beginning on 1 January 2026.\nAs a result, as of 1 January 2026 the Committee on Conferences is composed of the following 20 Member States:   (footnote: One vacancy from the Latin American and Caribbean States remains to be filled for a three-year term beginning on 1 January 2026 ) Argentina,* Austria,*** Botswana,* Brazil,** China,*** Congo,** France,* Hungary,** Iran (Islamic Republic of),** Japan,*** Kenya,*** Libya,*** Mali,** Paraguay,** Philippines,* Portugal,** Russian Federation,* Sierra Leone,* Sri Lanka* and United States of America.***\n\n* Term of office expires on 31 December 2026. \n** Term of office expires on 31 December 2027. \n*** Term of office expires on 31 December 2028.",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-11-19T00:00:00.140Z"
+}

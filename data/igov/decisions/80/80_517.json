@@ -1,0 +1,25 @@
+{
+  "_id": "693c5ed617b3349f195a5662",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/517",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Question of Gibraltar",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-12-05T05:00:00.000Z",
+      "ED_Number": "55th plenary meeting",
+      "_id": "693c5ed617b3349f195a5663"
+    }
+  ],
+  "ED_AgendaItem": "58",
+  "ED_Plenary_Committee": "Fourth Committee",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Fourth Committee",
+  "ED_DecisionText": "At its 55th plenary meeting, on 5 December 2025, the General Assembly, on the recommendation of the Special Political and Decolonization Committee (Fourth Committee),  (Footnote: A/80/537, para. 16, Draft decision 5.) recalling its decision 79/521 of 4 December 2024: \n\t(a) Urged the Governments of Spain and the United Kingdom of Great Britain and Northern Ireland, while listening to the interests and aspirations of Gibraltar that are legitimate under international law, to reach, in the spirit of the Brussels Declaration of 27 November 1984, a definitive solution to the question of Gibraltar, in the light of the relevant resolutions of the General Assembly and applicable principles, and in the spirit of the Charter of the United Nations; \n\t(b) Took note of the desire of the United Kingdom to continue with the trilateral Forum for Dialogue; \n\t(c) Took note of the position of Spain that the trilateral Forum for Dialogue did not exist any longer and should be replaced with a new mechanism for local cooperation in which the people of the Campo de Gibraltar and Gibraltar were represented; \n\t(d) Welcomed the efforts made by all to resolve problems and advance in a spirit of trust and solidarity, in order to find common solutions and move forward in areas of mutual interest towards a relationship based on dialogue and cooperation. ",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-12-13T00:00:00.151Z"
+}

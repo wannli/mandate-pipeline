@@ -1,0 +1,25 @@
+{
+  "_id": "691cddaedbbfaeaa0f835968",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/412",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Appointment of a member of the Board of Auditors",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-11-17T05:00:00.000Z",
+      "ED_Number": "42nd plenary meeting",
+      "_id": "691cddaedbbfaeaa0f835969"
+    }
+  ],
+  "ED_AgendaItem": "115 (d)",
+  "ED_Plenary_Committee": "Fifth Committee",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Fifth Committee",
+  "ED_DecisionText": "At its 42nd plenary meeting, on 17 November 2025, the General Assembly, on the recommendation of the Fifth Committee,  (footnote: A/80/516, para. 5.) appointed the Chair of the Audit Board of the Republic of Indonesia as a member of the Board of Auditors for a six-year term of office beginning on 1 July 2026. \nAs a result, as of 1 July 2026, the Board of Auditors is composed as follows: Chair of the Federal Court of Accounts of Brazil,** the First President of the Court of Accounts of FRANCE,* and the Chair of the Audit Board of the Republic of Indonesia.***\n\n* Term of office expires on 30 June 2028. \n** Term of office expires on 30 June 2030. \n*** Term of office expires on 30 June 2032.",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-11-19T00:00:00.175Z"
+}

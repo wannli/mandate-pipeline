@@ -1,0 +1,25 @@
+{
+  "_id": "691cdccb369bb45934f3bdcb",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/409",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Appointment of members of the Advisory Committee on Administrative and Budgetary Questions",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-11-17T05:00:00.000Z",
+      "ED_Number": "42nd plenary meeting",
+      "_id": "691cdccb369bb45934f3bdcc"
+    }
+  ],
+  "ED_AgendaItem": "115 (a)",
+  "ED_Plenary_Committee": "Fifth Committee",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Fifth Committee",
+  "ED_DecisionText": "At its 42nd plenary meeting, on 17 November 2025, the General Assembly, on the recommendation of the Fifth Committee,  (footnote: A/80/516, para. 5.) appointed the following persons as members of the Advisory Committee on Administrative and Budgetary Questions for a three-term of office beginning on 1 January 2026: Carlo Jacobucci (Italy), Ji Haojun (China), Matsuda Yukiko (Japan), Gerdine Albertine Agnes Sneller (Kingdom of the Netherlands), Jes\u00fas Vel\u00e1zquez Castillo (Mexico) and Minhong Yi (Republic of Korea).\n\nAs a result, as of 1 January 2026, the Advisory Committee on Administrative and Budgetary Questions is composed as follows: Surendra Kumar Adhana (India),* Amjad Qaid Al Kumaim (Yemen),** Abdallah Bachar Bong (Chad),* Feliksas Bakanauskas (Lithuania),* Ali Ben Said (Tunisia),* Sharon Brennen-Haylock (Bahamas),** Jakub Chmielewski (Poland),** Simon Horner (United Kingdom of Great Britain and Northern Ireland),* Carlo Jacobucci (Italy),*** JI Haojun (China),*** Evgeny Kalugin (Russian Federation),* Paul Djoh Kpeye (C\u00f4te d\u2019Ivoire),** Julia Maciel (Paraguay),* Matsuda Yukiko (Japan),*** Katlego Boase Mmalane (Botswana),** Caroline Nalwanga (Uganda),* Juliana Gaspar Ruas (Brazil),* Stephani Laura Scheer (United States of America)* Gerdine Albertine Agnes Sneller (Kingdom of the Netherlands),*** Jes\u00fas Vel\u00e1zquez Castillo (Mexico)*** and Minhong Yi (Republic of Korea).*** \n\n* Term of office expires on 31 December 2026. \n** Term of office expires on 31 December 2027. \n*** Term of office expires on 31 December 2028.",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-11-19T00:00:00.157Z"
+}

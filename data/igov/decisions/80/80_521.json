@@ -1,0 +1,25 @@
+{
+  "_id": "69431a2748333ac6c7aa7ce8",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/521",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Preparatory Committee for the United Nations Conference of Plenipotentiaries on Prevention and Punishment of Crimes against Humanity ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-12-15T05:00:00.000Z",
+      "ED_Number": "64th plenary meeting",
+      "_id": "69431a2748333ac6c7aa7ce9"
+    }
+  ],
+  "ED_AgendaItem": "81",
+  "ED_Plenary_Committee": "Sixth Committee",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Sixth Committee",
+  "ED_DecisionText": "\tAt its 64th plenary meeting, on 15 December 2025, the General Assembly, on the recommendation of the Sixth Committee,   (Footnote: A/80/451, para.7.) recalling its resolution 79/122 of 4 December 2024, in which it had decided, inter alia, to convene a preparatory committee for the United Nations Conference of Plenipotentiaries on Prevention and Punishment of Crimes against Humanity, to meet for two consecutive weeks, from 19 to 30 January 2026, and for four days, in 2027, at United Nations Headquarters in New York: \n\n(a) Decided that the second session of the Preparatory Committee for the United Nations Conference of Plenipotentiaries on Prevention and Punishment of Crimes against Humanity shall be held over four days, from 12 to 15 April 2027; \n\n(b) Also decided to include in the provisional agenda of its eighty-first session an item entitled \u201cUnited Nations Conference of Plenipotentiaries on Prevention and Punishment of Crimes against Humanity\u201d.\n",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-12-18T00:00:00.132Z"
+}

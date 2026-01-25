@@ -1,0 +1,25 @@
+{
+  "_id": "68eed324aa3aeaaeaa0abe43",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/402",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Election of members of the Human Rights Council",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-10-14T04:00:00.000Z",
+      "ED_Number": "18th plenary meeting",
+      "_id": "68eed324aa3aeaaeaa0abe44"
+    }
+  ],
+  "ED_AgendaItem": "114 (c)",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 18th plenary meeting, on 14 October 2025, the General Assembly, pursuant to its resolutions 60/251 of 15 March 2006 and 65/281 of 17 June 2011, elected Angola, Chile, Ecuador, Egypt, Estonia, India, Iraq, Italy, Mauritius, Pakistan, Slovenia, South Africa, the United Kingdom of Great Britain and Northern Ireland and Viet Nam as members of the Human Rights Council for a three-year term of office beginning on 1 January 2026 to fill the vacancies occurring on the expiration of the terms of office of Algeria, Bangladesh, Belgium, Chile, Costa Rica, Georgia, Germany, Kyrgyzstan, Maldives, Morocco, Romania, South Africa, the Sudan and Viet Nam.\nAs a result, as of 1 January 2026, the Human Rights Council is composed of the following 47 Member States (footnote: Benin, Chile, China, C\u00f4te d'Ivoire, Cuba, France, the Gambia, Malawi, Qatar, South Africa and Viet Nam are serving their second consecutive term.): Albania,* Angola,*** Benin,** Bolivia (Plurinational State of),** Brazil,* Bulgaria,* Burundi,* Chile,*** China,* Colombia,** C\u00f4te d\u2019Ivoire,* Cuba,* Cyprus,** Czechia,** Democratic Republic of the Congo,** Dominican Republic,* Ecuador,*** Egypt,*** Estonia,*** Ethiopia,** France,* Gambia,** Ghana,* Iceland,** India,*** Indonesia,* Iraq,*** Italy,*** Japan,* Kenya,** Kuwait,* Malawi,* Marshall Islands,** Mauritius,*** Mexico,** Netherlands (Kingdom of the),* North Macedonia,** Pakistan,*** Qatar,** Republic of Korea,** Slovenia,*** South Africa,*** Spain,** Switzerland,** Thailand,** United Kingdom of Great Britain and Northern Ireland*** and Viet Nam.***\n\nTerm of office expires on 31 December 2026 *\nTerm of office expires on 31 December 2027 **\nTerm of office expires on 31 December 2028 ***",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-10-15T00:00:00.151Z"
+}

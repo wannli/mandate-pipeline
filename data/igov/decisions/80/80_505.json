@@ -1,0 +1,35 @@
+{
+  "_id": "68c59d6e688a408363b5c04e",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/505",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Adoption of the agenda and allocation of agenda items ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-09-12T04:00:00.000Z",
+      "ED_Number": "2 plenary meeting",
+      "_id": "68c59d6e688a408363b5c04f"
+    },
+    {
+      "ED_Date": "2025-10-14T04:00:00.000Z",
+      "ED_Number": "18th plenary meeting",
+      "_id": "68eed360a41d09370355c7b5"
+    },
+    {
+      "ED_Date": "2025-12-18T05:00:00.000Z",
+      "ED_Number": "69th plenary meeting",
+      "_id": "6945dc30a98e09cc91d987e7"
+    }
+  ],
+  "ED_AgendaItem": "7",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 2nd plenary meeting, on 12\u202fSeptember 2025, the General Assembly, on the recommendation of the General Committee as set forth in its first report,3 (Footnote: A/80/250.) adopted the agenda and the allocation of agenda items4 (Footnote: A/80/251.) for the eightieth session.  \n\nAt the same meeting, the General Assembly, on the recommendation of the General Committee as set forth in its first report,5 (Footnote: A/80/250, para. 26 (d).) decided to include in the agenda of its eightieth session the item entitled \u201cQuestion of the Comorian island of Mayotte\u201d, under heading B (Maintenance of international peace and security), on the understanding that there would be no consideration of this item by the Assembly.  \n\nAlso at the same meeting, the General Assembly, on the recommendation of the General Committee as set forth in its first report,6 (Footnote: A/80/250, para. 26 (e).) decided to defer consideration of the item entitled \u201cQuestion of the Malagasy islands of Glorieuses, Juan de Nova, Europa and Bassas da India\u201d and to include it in the provisional agenda of its eighty-first session. \n\nAt its 18th plenary meeting, on 14 October 2025, the General Assembly, on the proposal of the Secretary-General,  (Footnote: A/80/438.), having waived the relevant provisions of rule 40 of its rules of procedure,  decided to include in the agenda of its eightieth session an additional item entitled \u201cFinancing of the United Nations Support Office in Haiti\u201d, as agenda item\u202f177 under heading I (Organizational, administrative and other matters), and to allocate it to the Fifth Committee. \n\nAt its 69th plenary meeting, on 18 December 2025, the General Assembly, on the proposal of the Secretary-General,  (Footnote: A/80/241.), having waived the relevant provisions of rule 40 of its rules of procedure,  decided to include in the agenda of its eightieth session an additional item entitled \u201cFollow-up to the implementation of the New Urban Agenda and strengthening of the United Nations Human Settlements Programme (UN-Habitat)\u201d, as agenda item\u202f178 under heading A (Promotion of sustained economic growth and sustainable development in accordance with the relevant resolutions of the General Assembly and recent United Nations conferences), and to consider it directly in plenary meeting. \n\nAt the same meeting, the General Assembly, on the proposal of the Secretary-General,  (Footnote: A/80/242.), having waived the relevant provisions of rule 40 of its rules of procedure,  decided to include in the agenda of its eightieth session an additional sub-item entitled \u201cAppointment of members of the Independent International Scientific Panel on Artificial Intelligence\u201d, as sub-item (m) of agenda item\u202f115 entitled \u201cAppointments to fill vacancies in subsidiary organs and other appointments\u201d under heading I (Organizational, administrative and other matters), and to consider it directly in plenary meeting. ",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. II) after editorial review. \n",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": true,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-09-14T00:00:00.154Z"
+}

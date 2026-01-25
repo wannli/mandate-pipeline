@@ -1,0 +1,25 @@
+{
+  "_id": "69431b7448333ac6c7aa7cf5",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/523",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Requests for observer status in the General Assembly deferred to the eighty-first session ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-12-15T05:00:00.000Z",
+      "ED_Number": "64th plenary meeting",
+      "_id": "69431b7448333ac6c7aa7cf6"
+    }
+  ],
+  "ED_AgendaItem": "161, 162, 164\u2013169, 171\u2013173 and 176",
+  "ED_Plenary_Committee": "Sixth Committee",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Sixth Committee",
+  "ED_DecisionText": "At its 64th plenary meeting, on 15 December 2025, the General Assembly, on the recommendation of the Sixth Committee,   (Footnote: A/80/463, para.13.) decided to defer until the eighty-first session of the Assembly decisions on the following requests for observer status in the Assembly:\n\n\t(a)\tObserver status for the Cooperation Council of Turkic-speaking States in the General Assembly;  (footnote: See A/66/141.)\n\t(b)\tObserver status for the Eurasian Economic Union in the General Assembly;  (footnote: See A/70/141.)\n\t(c)\tObserver status for the Ramsar Convention on Wetlands Secretariat in the General Assembly;  (footnote: See A/72/194.)\n\t(d)\tObserver status for the Global Environment Facility in the General Assembly;  (footnote: See A/72/195.)\n\t(e)\tObserver status for the International Organization of Employers in the General Assembly;  (footnote: See A/74/291.)\n\t(f)\tObserver status for the International Trade Union Confederation in the General Assembly;  (footnote: See A/74/292.)\n\t(g)\tObserver status for the Boao Forum for Asia in the General Assembly;  (footnote: See A/74/293)\n\t(h)\tObserver status for the International Parliamentarians\u2019 Congress in the General Assembly;  (footnote: See A/78/141.)\n\t(i)\tObserver status for the International Centre for Integrated Mountain Development in the General Assembly;  (footnote: See A/80/141.)\n\t(j)\tObserver status for the Islamic Organization for Food Security in the General Assembly;  (footnote: See A/80/142.)\n\t(k)\tObserver status for the African Export-Import Bank in the General Assembly;  (footnote: See A/80/143.)\n\t(l)\tObserver status for the Climate Vulnerable Forum in the General Assembly.  (footnote: See A/80/193.)\n",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-12-18T00:00:00.142Z"
+}

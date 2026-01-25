@@ -1,0 +1,25 @@
+{
+  "_id": "6957cf54a98e09cc91d988f4",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/416",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Election  of the United Nations High Commissioner for Refugees",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-12-18T05:00:00.000Z",
+      "ED_Number": "69th plenary meeting",
+      "_id": "6957cf54a98e09cc91d988f5"
+    }
+  ],
+  "ED_AgendaItem": "114 (e)",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 69th plenary meeting, on 18 December 2025, the General Assembly, on the proposal of the Secretary-General,  (footnote: A/80/461.) elected Barham Ahmed Salih as United Nations High Commissioner for Refugees for a period of five years beginning on 1 January 2026 and ending on 31 December 2030.",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2026-01-03T00:00:00.214Z"
+}

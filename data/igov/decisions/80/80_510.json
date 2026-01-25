@@ -1,0 +1,25 @@
+{
+  "_id": "69160fb4dd7dee37b8a871f4",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/510",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Report  of the Economic and Social Council",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-11-13T05:00:00.000Z",
+      "ED_Number": "38th plenary meeting",
+      "_id": "69160fb4dd7dee37b8a871f5"
+    }
+  ],
+  "ED_AgendaItem": "9",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 38th plenary meeting, on 13 November 2025, the General Assembly took note of the report of the Economic and Social Council  (Footnote: Official Records of the General Assembly, Eightieth Session, Supplement No. 3 (A/80/3).).",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-11-14T00:00:00.114Z"
+}

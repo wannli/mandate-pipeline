@@ -1,0 +1,25 @@
+{
+  "_id": "6955555f977b29ce13813157",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/526",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Questions deferred for future consideration",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-12-30T05:00:00.000Z",
+      "ED_Number": "69th (resumed) plenary meeting",
+      "_id": "6955555f977b29ce13813158"
+    }
+  ],
+  "ED_AgendaItem": "134",
+  "ED_Plenary_Committee": "Fifth Committee",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Fifth Committee",
+  "ED_DecisionText": "At its 69th (resumed) plenary meeting, on 30\u202fDecember 2025, the General Assembly, on the recommendation of the Fifth Committee,  (Footnote: A/80/568, para.19.) The General Assembly decided to defer until the main part of its eighty-first session consideration of the following documents: \n\nItem 136 \nProposed programme budget for 2026 \nEstimates in respect of special political missions \nReport of the Secretary-General on the review of arrangements for funding and backstopping special political missions  (Footnote: A/66/340.)\nRelated report of the Advisory Committee on Administrative and Budgetary Questions  (Footnote: A/66/7/Add.21.)",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2026-01-01T00:00:00.132Z"
+}

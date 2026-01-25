@@ -1,0 +1,25 @@
+{
+  "_id": "693051f0dbbfaeaa0f835b7b",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/515",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Provisional programme of work and timetable of the First Committee for 2026",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-12-01T05:00:00.000Z",
+      "ED_Number": "52nd plenary meeting",
+      "_id": "693051f0dbbfaeaa0f835b7c"
+    }
+  ],
+  "ED_AgendaItem": "121",
+  "ED_Plenary_Committee": "First Committee",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "First Committee",
+  "ED_DecisionText": "At its 52nd plenary meeting, on 1\u202fDecember 2025, the General Assembly, on the recommendation of the First Committee, (Footnote: A/80/534, para.8.) approved the provisional programme of work and timetable of the Committee for 2026, as set out in the annex to the report of the Committee.  (Footnote: A/80/534.)",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-12-04T00:00:00.189Z"
+}

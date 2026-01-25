@@ -1,0 +1,25 @@
+{
+  "_id": "69051e555972bdcf73429241",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/509",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "World Social Summit",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-10-31T04:00:00.000Z",
+      "ED_Number": "26th plenary meeting",
+      "_id": "69051e555972bdcf73429242"
+    }
+  ],
+  "ED_AgendaItem": "25 (b)",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 26th plenary meeting, on 31 October 2025, the General Assembly, on the proposal of its President, decided that any explanation of vote concerning the draft resolution entitled \u201cDoha Political Declaration of the \u2018World Social Summit\u2019 under the title \u2018the Second World Summit for Social Development\u2019\u201d (Footnote: A/80/L.5.) shall be made immediately before the closing segment of the Summit, instead of at the opening segment, in order to ensure that the statements from the list of speakers would begin on time at 10.30 a.m. at the plenary meeting on 4 November 2025 as provided for in resolution 78/318.",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-11-01T00:00:00.164Z"
+}

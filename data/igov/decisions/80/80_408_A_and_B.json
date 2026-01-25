@@ -1,0 +1,30 @@
+{
+  "_id": "691cde73dbbfaeaa0f835977",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/408 A and B",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Appointment of the judges of the United Nations Dispute Tribunal",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-11-17T05:00:00.000Z",
+      "ED_Number": "42nd plenary meeting",
+      "_id": "691cde73dbbfaeaa0f835978"
+    },
+    {
+      "ED_Date": "2025-11-17T05:00:00.000Z",
+      "ED_Number": "43rd plenary meeting",
+      "_id": "691cde82dbbfaeaa0f83597d"
+    }
+  ],
+  "ED_AgendaItem": "115 (k)",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "A\nAt its 42nd plenary meeting, on 17 November 2025, the General Assembly decided to change the seven-year term of the one seat of the half-time judge of the Dispute Tribunal starting on 1 July 2026 to a seven-year term starting on 10 July 2026.\n\nB\nAt its 42nd plenary meeting, on 17 November 2025, the General Assembly, pursuant to article 4 of the statute of the United Nations Dispute Tribunal, contained in annex I to resolution 63/253 of 24 December 2008 and amended in resolution 73/276 of 22 December 2018, and on the recommendation of the Internal Justice Council,  (footnote: See A/80/152) appointed the following persons as half-time judges of the Tribunal for a seven-year term starting on 10 July 2026: Martin Musaluke (Zambia), Mira Mihaylova Raycheva-Shekerdzhieva (Bulgaria) and Elda Vrioni (Albania).\n\nAt its 43rd plenary meeting, on the same date, the General Assembly, pursuant to article 4 of the statute of the United Nations Dispute Tribunal, contained in annex I to resolution 63/253 of 24 December 2008 and amended in resolution 73/276 of 22 December 2018, and on the recommendation of the Internal Justice Council,  (footnote: See A/80/152) appointed Adina Elvira Ghita (Romania) as a full-time judge of the Tribunal in New York for a term of office beginning on 17 November 2025 and expiring on 30 June 2026 to fill the vacancy occurring as a result of the resignation of Jo\u00eblle Adda on 1 January 2025; Adina Elvira Ghita (Romania) as a full-time judge of the Tribunal in New York for a seven-year term beginning on 1 July 2026; and Anatole Kabore (Burkina Faso) and Aikaterini Koutsopoulou (Greece) as half-time judges of the Tribunal for a seven-year term starting on 10 July 2026.\n\nAs a result, as of 10 July 2026, the United Nations Dispute Tribunal is composed as follows: Adina Elvira Ghita (Romania, full-time, New York),** Anatole Kabore (Burkina Faso, half-time),*** Aikaterini Koutsopoulou (Greece, half-time),*** Martin Musaluke (Zambia, half-time),*** Mira Mihaylova Raycheva-Shekerdzhieva (Bulgaria, half-time),*** Xiangzhuang Sun (China, full-time, Geneva),* Elda Vrioni (Albania, half-time),*** Solomon Waktolla (Ethiopia, half-time)* and Sean Daniel Wallace (United States of America, full-time, Nairobi).*\n\n* Term of office expires on 30 June 2030.\n** Term of office expires on 30 June 2033.\n*** Term of office expires on 9 July 2033.\n",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-11-19T00:00:00.192Z"
+}

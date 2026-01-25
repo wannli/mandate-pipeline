@@ -1,0 +1,25 @@
+{
+  "_id": "691cdb41dbbfaeaa0f83594d",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/404",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Election of members of the Committee for Programme and Coordination",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-11-17T05:00:00.000Z",
+      "ED_Number": "42nd plenary meeting",
+      "_id": "691cdb41dbbfaeaa0f83594e"
+    }
+  ],
+  "ED_AgendaItem": "114 (a)",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 42nd plenary meeting, on 17 November 2025, the General Assembly, on the basis of nominations by the Economic and Social Council (footnote: See A/80/385; see also Economic and Social Council decisions 2025/218 A and B.) and in accordance with the annex to Council resolution 2008 (LX) of 14 May 1976 and Assembly decision 42/450 of 17 December 1987, elected China, Cuba, Egypt, Indonesia, Nigeria, the Republic of Korea and Senegal as members of the Committee for Programme and Coordination for a three-year term of office beginning on 1 January 2026 to fill the vacancies occurring on the expiration of the terms of office of Argentina, China, Liberia, Morocco, the Philippines, the Republic of Korea and Tunisia. \nAs a result, as of 1 January 2026, the Committee for Programme and Coordination is composed of the following 34 Member States: Armenia,* Belgium,** Botswana,** Brazil,* Bulgaria,* Cameroon,* China,*** Costa Rica,* C\u00f4te d\u2019Ivoire,* Cuba,*** Egypt,*** France,** Germany,* Haiti,** India,*Indonesia,*** Iran (Islamic Republic of),* Israel,* Italy,* Japan,* Kenya,** Mexico,* Nigeria,*** Pakistan,* Paraguay,** Poland,* Republic of Korea,*** Russian Federation,** Rwanda,* Senegal,*** South Africa,* United Kingdom of Great Britain and Northern Ireland,* United States of America* and Uruguay.* \n\n* Term of office expires on 31 December 2026. \n** Term of office expires on 31 December 2027. \n*** Term of office expires on 31 December 2028.",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-11-19T00:00:00.125Z"
+}

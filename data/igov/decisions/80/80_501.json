@@ -1,0 +1,25 @@
+{
+  "_id": "68c080aefb27e0653faace82",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/501",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Meetings of subsidiary organs and entities during the main part of the eightieth session  ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-09-02T04:00:00.000Z",
+      "ED_Number": "1 plenary meeting",
+      "_id": "68c080aefb27e0653faace83"
+    }
+  ],
+  "ED_AgendaItem": "7",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": " At its 1st plenary meeting, on 9\u202fSeptember 2025, the General Assembly decided to authorize those entities listed in the letter dated 5\u202fSeptember 2023 from the Chair of the Committee on Conferences,1 (Footnote: A/80/358.) namely the Qualified group of experts to prepare a comprehensive study of the question of nuclear-weapon-free zones, the Special Committee on Peacekeeping Operations, the Committee on the Exercise of the Inalienable Rights of the Palestinian People, the Committee on Relations with the Host Country, the Conference on the Establishment of a Middle East Zone Free of Nuclear Weapons and Other Weapons of Mass Destruction, the Independent Audit Advisory Committee, the Executive Board of the United Nations Entity for Gender Equality and the Empowerment of Women (UN-Women), the Panel of External Auditors of the United Nations, the Specialized Agencies and the International Atomic Energy Agency and the Board of Auditors to meet during the main part of the eightieth session of the General Assembly, on the strict understanding that all such meetings would be allocated conference services on an \u201cif available\u201d basis, from within existing resources, in such a way as to ensure that the work of the General Assembly and its Main Committees is not impeded. ",
+  "ED_Disclaimer": "",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-09-10T00:00:00.190Z"
+}

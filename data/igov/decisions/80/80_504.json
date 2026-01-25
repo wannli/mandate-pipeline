@@ -1,0 +1,30 @@
+{
+  "_id": "68c59d23688a408363b5c049",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/504",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Organization of the eightieth session ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-09-12T04:00:00.000Z",
+      "ED_Number": "2nd plenary meeting",
+      "_id": "68c59d23688a408363b5c04a"
+    },
+    {
+      "ED_Date": "2025-11-19T05:00:00.000Z",
+      "ED_Number": "46th plenary meeting",
+      "_id": "691de062369bb45934f3be0c"
+    }
+  ],
+  "ED_AgendaItem": "7",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 2nd plenary meeting, on 12\u202fSeptember 2025, the General Assembly, on the recommendation of the General Committee as set forth in its first report, (Footnote: A/80/250.) adopted a number of provisions concerning the organization of the eightieth session. \n\nAt the 46th meeting, on 19 November 2025, the General Assembly, on the proposal of its President, decided to postpone the date of recess of the eightieth of the Assembly from Monday, 8 December 2025, to Wednesday, 24 December 2025. \n\n At the same meeting, the General Assembly, at the request of the Chair of the Fifth Committee, decided to extend the work of the Committee until Wednesday, 24 December 2025.",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. II) after editorial review. \n",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": true,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-09-14T00:00:00.147Z"
+}

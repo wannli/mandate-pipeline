@@ -1,0 +1,25 @@
+{
+  "_id": "691cdc0bdbbfaeaa0f835954",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/406",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Confirmation of the appointment of the Administrator of the United Nations Development Programme",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-11-17T05:00:00.000Z",
+      "ED_Number": "42nd plenary meeting",
+      "_id": "691cdc0bdbbfaeaa0f835955"
+    }
+  ],
+  "ED_AgendaItem": "115 (h)",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 42nd plenary meeting, on 17 November 2025, the General Assembly confirmed the appointment by the Secretary-General  (Footnote: see A/80/526) of Alexander De Croo of Belgium as Administrator of the United Nations Development Programme for a four-year term of office beginning on 2 December 2025 and ending on 1 December 2029.",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-11-19T00:00:00.146Z"
+}

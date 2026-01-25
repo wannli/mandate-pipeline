@@ -1,0 +1,25 @@
+{
+  "_id": "68c59b8dfb27e0653faacffe",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/502",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "General debate of the eightieth session of the General Assembly\t  ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-09-12T04:00:00.000Z",
+      "ED_Number": "2 plenary meeting",
+      "_id": "68c59b8dfb27e0653faacfff"
+    }
+  ],
+  "ED_AgendaItem": "7",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 2nd plenary meeting, on 12\u202fSeptember 2025, the General Assembly, on the recommendation of the General Committee as set forth in its first report,2 (Footnote: A/80/250, para.10.) and taking note that, pursuant to resolution 57/301 of 13\u202fMarch 2003, the general debate would begin at 9 a.m. on Tuesday, 23\u202fSeptember 2025, and would continue on Wednesday, Thursday and Friday, 24\u201326\u202fSeptember, and on Monday, 29\u202fSeptember, decided that the general debate would continue on Saturday, 27\u202fSeptember 2025, in order to maximize the number of speakers during that week. ",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. II) after editorial review. \n",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-09-14T00:00:00.133Z"
+}

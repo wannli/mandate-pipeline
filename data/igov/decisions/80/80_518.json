@@ -1,0 +1,25 @@
+{
+  "_id": "693c8213dcabf116ec6be844",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/518",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Proposed programme of work and timetable of the Special Political and Decolonization Committee (Fourth Committee) for the eighty-first session of the General Assembly",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-12-05T05:00:00.000Z",
+      "ED_Number": "55th plenary meeting",
+      "_id": "693c8213dcabf116ec6be845"
+    }
+  ],
+  "ED_AgendaItem": "121",
+  "ED_Plenary_Committee": "Fourth Committee",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Fourth Committee",
+  "ED_DecisionText": "At its 55th plenary meeting, on 5 December 2025, the General Assembly, on the recommendation of the Special Political and Decolonization Committee (Fourth Committee),  (Footnote: A/80/537, para. 16, Draft decision 6.) approved the proposed programme of work and timetable of the Special Political and Decolonization Committee (Fourth Committee) for the eighty-first session of the Assembly as set out in the report of the Committee (A/80/537).",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-12-13T00:00:00.156Z"
+}

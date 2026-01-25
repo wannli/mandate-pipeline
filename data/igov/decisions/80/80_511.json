@@ -1,0 +1,25 @@
+{
+  "_id": "6925c456dbbfaeaa0f835a93",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/511",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "High-level meeting on the appraisal of the United Nations Global Plan of Action to Combat Trafficking in Persons",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-11-24T05:00:00.000Z",
+      "ED_Number": "48th plenary meeting",
+      "_id": "6925c456dbbfaeaa0f835a94"
+    }
+  ],
+  "ED_AgendaItem": "107",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 48th\u00a0plenary meeting, on 24 November 2025, the General Assembly, on the proposal of its President, decided that the High-level meeting on the appraisal of the United Nations Global Plan of Action to Combat Trafficking in Persons would also feature a statement by the Acting Chief of the Organized Crime Branch of the United Nations Office on Drugs and Crime, Mr. Ilias Chatzist, in lieu of a statement by the Executive Director of the United Nations Office on Drugs and Crime.",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-11-26T00:00:00.101Z"
+}
