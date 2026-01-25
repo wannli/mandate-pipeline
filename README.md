@@ -269,6 +269,25 @@ mandate igov-sync \
 | `--data` | Base data directory (stores in data/igov/) |
 | `--verbose` | Log new/updated decisions |
 
+### mandate igov-signals
+
+Generate a standalone signal browser for IGov decisions (proof of concept).
+
+```bash
+mandate igov-signals \
+  --session 80 \
+  --config ./config \
+  --data ./data \
+  --output ./docs/igov
+```
+
+| Option | Description |
+|--------|-------------|
+| `--session` | General Assembly session number (defaults to config) |
+| `--config` | Directory containing checks.yaml and igov.yaml |
+| `--data` | Base data directory (reads from data/igov/) |
+| `--output` | Output directory for the IGov signal browser |
+
 ### mandate build
 
 Run discover + generate (full pipeline).

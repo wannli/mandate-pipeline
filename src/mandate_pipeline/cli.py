@@ -9,7 +9,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from .discovery import sync_all_patterns_verbose, load_sync_state, sync_session_resolutions
-from .generation import generate_site_verbose, generate_session_unified_signals_page
+from .generation import (
+    generate_site_verbose,
+    generate_session_unified_signals_page,
+    generate_igov_signals_page,
+)
 from .detection import load_checks, run_checks
 from .extractor import (
     extract_text,
@@ -347,6 +351,39 @@ def main():
         help="Enable verbose logging",
     )
 
+    igov_signals_parser = subparsers.add_parser(
+        "igov-signals",
+        help="Generate IGov decision signal browser",
+    )
+    igov_signals_parser.add_argument(
+        "--session",
+        type=int,
+        help="UN General Assembly session number (default from config)",
+    )
+    igov_signals_parser.add_argument(
+        "--config",
+        type=Path,
+        default=Path("./config"),
+        help="Path to config directory (default: ./config)",
+    )
+    igov_signals_parser.add_argument(
+        "--data",
+        type=Path,
+        default=Path("./data"),
+        help="Path to data directory (default: ./data)",
+    )
+    igov_signals_parser.add_argument(
+        "--output",
+        type=Path,
+        default=Path("./docs/igov"),
+        help="Output directory (default: ./docs/igov)",
+    )
+    igov_signals_parser.add_argument(
+        "--verbose", "-v",
+        action="store_true",
+        help="Enable verbose logging",
+    )
+
     # Download resolutions command (deprecated - keeping for compatibility)
     download_parser = subparsers.add_parser(
         "download-resolutions",
@@ -447,6 +484,8 @@ def main():
         cmd_build_session(args)
     elif args.command == "igov-sync":
         cmd_igov_sync(args)
+    elif args.command == "igov-signals":
+        cmd_igov_signals(args)
     elif args.command == "download-resolutions":
         # Deprecated command - redirect to download-session
         gh_warning("Command 'download-resolutions' is deprecated. Use 'download-session' instead.")
@@ -860,6 +899,39 @@ def cmd_igov_sync(args):
         if len(result.updated_decisions) > 10:
             print(f"  ... and {len(result.updated_decisions) - 10} more")
 
+    gh_group_end()
+
+    return result
+
+
+def cmd_igov_signals(args):
+    """Generate a standalone IGov decision signal browser."""
+    verbose = args.verbose or is_github_actions()
+
+    config = load_igov_config(args.config)
+    session = args.session or config.get("session", 80)
+
+    checks = load_checks(args.config / "checks.yaml")
+
+    gh_group_start("IGov Signal Browser")
+    print(f"Session number: {session}")
+    print(f"Config directory: {args.config}")
+    print(f"Data directory: {args.data}")
+    print(f"Output directory: {args.output}")
+    print(f"Verbose: {verbose}")
+    gh_group_end()
+
+    result = generate_igov_signals_page(
+        session=session,
+        checks=checks,
+        data_dir=args.data,
+        output_dir=args.output,
+    )
+
+    gh_group_start("IGov Signal Browser Summary")
+    print(f"Decisions processed: {result['total_decisions']}")
+    print(f"Decisions with signals: {result['decisions_with_signals']}")
+    print(f"Signal paragraphs: {result['total_signal_paragraphs']}")
     gh_group_end()
 
     return result

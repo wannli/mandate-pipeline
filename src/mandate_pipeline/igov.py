@@ -89,6 +89,51 @@ def decision_hash(decision: dict[str, Any]) -> str:
     return hashlib.sha256(payload).hexdigest()
 
 
+def build_igov_url(session: int, decision_number: str) -> str | None:
+    """Build an IGov decision URL when possible."""
+    number_value = normalize_decision_number(decision_number)
+    if number_value is None:
+        return None
+    return f"https://igov.un.org/a/dec/{session}/{number_value}"
+
+
+def load_igov_decisions(data_dir: Path, session: int) -> list[dict[str, Any]]:
+    """Load IGov decision JSON files from disk."""
+    decisions_dir = Path(data_dir) / "igov" / "decisions" / str(session)
+    if not decisions_dir.exists():
+        return []
+
+    decisions = []
+    for decision_file in sorted(decisions_dir.glob("*.json")):
+        with open(decision_file) as f:
+            payload = json.load(f)
+
+        decision_number = str(payload.get("ED_DecisionNumber", "")).strip()
+        meeting_info = payload.get("ED_Meeting", []) or []
+        meeting = meeting_info[0] if meeting_info else {}
+
+        decisions.append({
+            "decision_number": decision_number,
+            "title": payload.get("ED_Title", ""),
+            "decision_type": payload.get("ED_Type", ""),
+            "agenda_item": payload.get("ED_AgendaItem", ""),
+            "originating_body": payload.get("ED_OriginatingBody", ""),
+            "plenary_committee": payload.get("ED_Plenary_Committee", ""),
+            "session_label": payload.get("ED_Session", ""),
+            "meeting_number": meeting.get("ED_Number", ""),
+            "meeting_date": meeting.get("ED_Date", ""),
+            "decision_text": payload.get("ED_DecisionText", ""),
+            "igov_url": build_igov_url(session, decision_number),
+        })
+
+    def sort_key(entry: dict[str, Any]) -> tuple[int, str]:
+        number_value = normalize_decision_number(entry.get("decision_number", ""))
+        return (number_value or 0, entry.get("decision_number", ""))
+
+    decisions.sort(key=sort_key)
+    return decisions
+
+
 def load_state(state_path: Path) -> dict[str, Any]:
     """Load the IGov sync state file."""
     if not state_path.exists():

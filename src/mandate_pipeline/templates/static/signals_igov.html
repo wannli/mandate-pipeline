@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+
+{% block title %}IGov Decision Signals - Mandate Pipeline{% endblock %}
+
+{% block nav_index %}./index.html{% endblock %}
+{% block nav_signals %}./signals.html{% endblock %}
+{% block nav_signals_info %}../signals-info.html{% endblock %}
+{% block nav_api %}../data.json{% endblock %}
+
+{% block content %}
+<div class="mb-8">
+    <h1 class="text-3xl font-bold text-gray-900 tracking-tight">IGov Decision Signal Browser</h1>
+    <p class="mt-2 text-muted" id="stats-text">
+        {{ total_paragraphs }} decision texts across {{ total_docs }} decisions{% if session_label %} · {{ session_label }}{% endif %}
+    </p>
+</div>
+
+<div class="mb-8 flex flex-wrap gap-4 items-end">
+    <div class="flex-1 min-w-[240px]">
+        <label for="signal-filter" class="inline-flex items-center text-xs font-semibold uppercase tracking-wide text-gray-500">Signal Type</label>
+        <select id="signal-filter" multiple class="mt-2 w-full px-3 py-2 border border-gray-300 rounded-lg bg-white text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-un-blue focus:border-transparent" size="4">
+            {% for check in checks %}
+            <option value="{{ check.signal }}"
+                {% if check.signal == 'agenda' %}class="text-blue-700"
+                {% elif check.signal == 'PGA' %}class="text-purple-700"
+                {% elif check.signal == 'process' %}class="text-amber-700"
+                {% elif check.signal == 'report' %}class="text-green-700"{% endif %}>{{ check.signal }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button id="clear-filters" class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">
+        Clear filters
+    </button>
+</div>
+
+<div class="flex gap-6" id="main-content">
+    <div class="flex-1 min-w-0" id="document-list">
+        <div class="space-y-4" id="documents-container">
+            {% for doc in documents %}
+            <div class="border border-gray-200 rounded-lg overflow-hidden document-card hover:border-gray-300 transition-colors"
+                 data-symbol="{{ doc.decision_number }}"
+                 data-signals="{{ doc.signal_summary.keys()|list|join(',') }}">
+                <div class="bg-gray-50 px-4 py-3 border-b border-gray-200">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-wrap items-center gap-3 mb-1">
+                                <span class="font-semibold text-gray-900">{{ doc.decision_number }}</span>
+                                {% if doc.decision_type %}
+                                <span class="px-2 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-700">
+                                    {{ doc.decision_type }}
+                                </span>
+                                {% endif %}
+                            </div>
+                            {% if doc.title %}
+                            <p class="text-sm text-gray-600">{{ doc.title }}</p>
+                            {% endif %}
+                            <div class="mt-2 flex flex-wrap gap-3 text-xs text-gray-500">
+                                {% if doc.meeting_date %}
+                                <span>Adopted {{ doc.meeting_date }}</span>
+                                {% endif %}
+                                {% if doc.meeting_number %}
+                                <span>Meeting {{ doc.meeting_number }}</span>
+                                {% endif %}
+                                {% if doc.agenda_item %}
+                                <span>Agenda {{ doc.agenda_item }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% if doc.igov_url %}
+                        <div class="flex items-center gap-2 flex-shrink-0">
+                            <a href="{{ doc.igov_url }}" target="_blank"
+                               class="text-xs text-muted hover:text-un-blue transition-colors">
+                                View IGov
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="divide-y divide-gray-100">
+                    {% for para in doc.signal_paragraphs %}
+                    <div class="px-4 py-3 paragraph-item" data-signals="{{ para.signals|join(',') }}">
+                        <div class="flex flex-wrap items-start gap-2 text-sm text-gray-700 leading-relaxed">
+                            <div class="inline-flex flex-wrap gap-1.5 items-center">
+                                {% for signal in para.signals %}
+                                <span class="px-2 py-0.5 rounded text-xs font-medium signal-tag inline-flex items-center justify-center
+                                    {% if signal == 'agenda' %}bg-blue-100 text-blue-700
+                                    {% elif signal == 'PGA' %}bg-purple-100 text-purple-700
+                                    {% elif signal == 'process' %}bg-amber-100 text-amber-700
+                                    {% elif signal == 'report' %}bg-green-100 text-green-700
+                                    {% else %}bg-gray-100 text-gray-600{% endif %}">
+                                    {{ signal }}
+                                </span>
+                                {% endfor %}
+                            </div>
+                            <span class="font-medium text-gray-700">{{ para.number }}.</span>
+                            <span class="flex-1 min-w-0">{{ para.text|highlight_signals(para.signals) }}</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div id="empty-state" class="hidden text-center py-16">
+            <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+            <p class="text-muted">No decisions match the selected filters.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const signalFilter = document.getElementById('signal-filter');
+    const clearFiltersBtn = document.getElementById('clear-filters');
+    const documentsContainer = document.getElementById('documents-container');
+    const documentCards = document.querySelectorAll('.document-card');
+    const emptyState = document.getElementById('empty-state');
+    const statsText = document.getElementById('stats-text');
+
+    function getSelectedValues(selectElement) {
+        return Array.from(selectElement.selectedOptions).map(opt => opt.value);
+    }
+
+    function applyFilters() {
+        const selectedSignals = getSelectedValues(signalFilter);
+        let decisionCount = 0;
+        let paragraphCount = 0;
+
+        documentCards.forEach(card => {
+            const cardSignals = card.dataset.signals.split(',').filter(s => s);
+            const signalMatch = selectedSignals.length === 0 || selectedSignals.some(s => cardSignals.includes(s));
+
+            if (signalMatch) {
+                card.classList.remove('hidden');
+                decisionCount++;
+
+                const paragraphs = card.querySelectorAll('.paragraph-item');
+                paragraphs.forEach(para => {
+                    const paraSignals = para.dataset.signals.split(',').filter(s => s);
+                    if (selectedSignals.length === 0 || selectedSignals.some(s => paraSignals.includes(s))) {
+                        para.classList.remove('hidden');
+                        paragraphCount++;
+                    } else {
+                        para.classList.add('hidden');
+                    }
+                });
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+
+        if (decisionCount === 0) {
+            emptyState.classList.remove('hidden');
+            documentsContainer.classList.add('hidden');
+        } else {
+            emptyState.classList.add('hidden');
+            documentsContainer.classList.remove('hidden');
+        }
+
+        const statsParts = [`${paragraphCount} decision texts across ${decisionCount} decisions`];
+        statsText.textContent = statsParts.join('');
+    }
+
+    signalFilter.addEventListener('change', applyFilters);
+
+    clearFiltersBtn.addEventListener('click', function() {
+        Array.from(signalFilter.options).forEach(opt => opt.selected = false);
+        applyFilters();
+    });
+
+    applyFilters();
+});
+</script>
+{% endblock %}
+
+{% block footer %}
+Generated {{ generated_at }} · IGov session {{ session }}
+{% endblock %}

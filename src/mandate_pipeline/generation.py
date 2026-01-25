@@ -30,8 +30,10 @@ from .linking import (
     derive_origin_from_symbol,
     normalize_title,
     get_linking_audit,
+    get_undl_cache_stats,
     COMMITTEE_NAMES,
 )
+from .igov import load_igov_decisions
 
 
 def get_un_document_url(symbol: str) -> str:
@@ -268,7 +270,7 @@ def highlight_signal_phrases(text: str, phrases: list[str]) -> str:
 _template_checks = []
 
 
-def get_templates_env(checks: list = None) -> Environment:
+def get_templates_env(checks=None) -> Environment:
     """Get Jinja2 environment for static templates."""
     global _template_checks
     if checks is not None:
@@ -1113,6 +1115,76 @@ def generate_unified_explorer_page(
     logger.info(f"Unified explorer generation completed in {total_time:.2f}s")
 
 
+def generate_igov_signals_page(
+    session: int,
+    checks: list,
+    data_dir: Path,
+    output_dir: Path,
+) -> dict:
+    """Generate a standalone IGov decision signal browser page."""
+    decisions = load_igov_decisions(data_dir, session)
+
+    decision_docs = []
+    for decision in decisions:
+        decision_text = (decision.get("decision_text") or "").strip()
+        if not decision_text:
+            continue
+
+        paragraphs = {1: decision_text}
+        signals = run_checks(paragraphs, checks) if checks else {}
+
+        signal_summary = {}
+        signal_paragraphs = []
+        for para_num, para_signals in signals.items():
+            if para_signals:
+                signal_paragraphs.append({
+                    "number": para_num,
+                    "text": paragraphs.get(para_num, ""),
+                    "signals": para_signals,
+                })
+                for sig in para_signals:
+                    signal_summary[sig] = signal_summary.get(sig, 0) + 1
+
+        decision_docs.append({
+            **decision,
+            "paragraphs": paragraphs,
+            "signals": signals,
+            "signal_summary": signal_summary,
+            "signal_paragraphs": signal_paragraphs,
+        })
+
+    docs_with_signals = [doc for doc in decision_docs if doc.get("signal_paragraphs")]
+    total_paragraphs = sum(len(doc.get("signal_paragraphs", [])) for doc in docs_with_signals)
+    session_label = decisions[0].get("session_label") if decisions else ""
+
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    env = get_templates_env(checks)
+    template = env.get_template("signals_igov.html")
+
+    html = template.render(
+        documents=docs_with_signals,
+        checks=checks,
+        total_docs=len(docs_with_signals),
+        total_paragraphs=total_paragraphs,
+        session=session,
+        session_label=session_label,
+        generated_at=datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
+    )
+
+    with open(output_dir / "signals.html", "w") as f:
+        f.write(html)
+    with open(output_dir / "index.html", "w") as f:
+        f.write(html)
+
+    return {
+        "total_decisions": len(decision_docs),
+        "decisions_with_signals": len(docs_with_signals),
+        "total_signal_paragraphs": total_paragraphs,
+    }
+
+
 def generate_session_unified_signals_page(
     session: int,
     all_documents: list[dict],
@@ -1504,13 +1576,13 @@ def generate_site_verbose(
     data_dir: Path,
     output_dir: Path,
     skip_debug: bool = False,
-    on_load_start: callable = None,
-    on_load_document: callable = None,
-    on_load_error: callable = None,
-    on_load_end: callable = None,
-    on_generate_start: callable = None,
-    on_generate_page: callable = None,
-    on_generate_end: callable = None,
+    on_load_start=None,
+    on_load_document=None,
+    on_load_error=None,
+    on_load_end=None,
+    on_generate_start=None,
+    on_generate_page=None,
+    on_generate_end=None,
 ) -> dict:
     """
     Generate the complete static site with verbose callbacks.
