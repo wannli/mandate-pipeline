@@ -1,0 +1,25 @@
+{
+  "_id": "67532bcd548f08cf6d7c4a5e",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/536",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Report of the Credentials Committee (item 3 (b))",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-12-06T05:00:00.000Z",
+      "ED_Number": "48 plenary meeting",
+      "_id": "67532bcd548f08cf6d7c4a5f"
+    }
+  ],
+  "ED_AgendaItem": "3 (b)",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 48th plenary meeting, on 6 December 2024, the General Assembly decided to accept the information concerning the appointment of representatives of Sierra Leone to the seventy-ninth session of the General Assembly.\n",
+  "ED_Disclaimer": "The final version of decisions adopted during the main part of the session will be contained in document A/79/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-12-07T00:00:00.148Z"
+}

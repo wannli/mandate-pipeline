@@ -1,0 +1,25 @@
+{
+  "_id": "66e45b92674e0a36abab4fac",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/402",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Appointment of the Under-Secretary-General for Internal Oversight Services",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-09-13T04:00:00.000Z",
+      "ED_Number": "2nd plenary meeting",
+      "_id": "66e45b92674e0a36abab4fad"
+    }
+  ],
+  "ED_AgendaItem": "116(j)",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 2nd plenary meeting, on 13 September 2024, the General Assembly approved, notwithstanding resolution 48/218 B of 29 July 1994, the exceptional extension by the Secretary-General (footnote: A/79/286.) of the term of Fatoumata Ndiaye as Under-Secretary-General for Internal Oversight Services by two years, until 24 October 2026.\n",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/79/49 (Vol. II) after editorial review. ",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-09-14T00:00:00.138Z"
+}

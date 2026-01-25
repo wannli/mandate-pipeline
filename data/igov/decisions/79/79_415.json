@@ -1,0 +1,25 @@
+{
+  "_id": "67fe69d785252a74bede92fd",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/415",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Appointment of members of the Independent Audit Advisory Committee",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-04-11T04:00:00.000Z",
+      "ED_Number": "63rd plenary meeting",
+      "_id": "67fe69d785252a74bede92fe"
+    }
+  ],
+  "ED_AgendaItem": "116(l)",
+  "ED_Plenary_Committee": "Fifth Committee",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Fifth Committee",
+  "ED_DecisionText": "At its 63rd plenary meeting, on 11 April 2025, the General Assembly, on the recommendation of the Fifth Committee,    (Footnote: A/79/835, para.5) appointed Eric Oduro Osae (Ghana) as a member of the Independent Audit Advisory Committee for a term of office beginning on 11 April 2025 and expiring on 31 December 2026, as a result of the passing of Imran Vanker (South Africa).\n\nAs a result, as of 11 April 2025, the Independent Audit Advisory Committee is composed as follows: Dorothy Bradley (Belize),* Jeanette Franzel (United States of America),** Anton V. Kosyanenko (Russian Federation),* Eric Oduro Osae (Ghana)** and  Suresh Raj Sharma (Nepal)*.\n\n* Term of office expires on 31 December 2025.\n** Term of office expires on 31 December 2026.\n",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/79/49 (Vol. III) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-04-16T00:00:00.149Z"
+}

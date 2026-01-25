@@ -1,0 +1,25 @@
+{
+  "_id": "683f3a915fa300faa395b655",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/420",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Election of the Chairs of the Main Committees of the General Assembly at its eightieth session",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-06-03T04:00:00.000Z",
+      "ED_Number": "73rd plenary meeting",
+      "_id": "683f3a915fa300faa395b656"
+    }
+  ],
+  "ED_AgendaItem": "5",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "On 2 June 2025, the First, Special Political and Decolonization (Fourth), Second, Third, Fifth and Sixth Committees of the General Assembly held meetings in accordance with rules 99 (a) and 103 of the rules of procedure of the Assembly for the purpose of electing their Chairs. At its 73rd plenary meeting, on 3 June 2025, the President of the General Assembly announced that the following persons had been elected as Chairs of the First, Special Political and Decolonization (Fourth), Second, Third, Fifth and Sixth Committees of the Assembly at its eightieth session and are accordingly members of the General Committee for that session:\n\nFirst Committee: Maurizio Massari (Italy)\nSpecial Political and Decolonization Committee (Fourth Committee): Jos\u00e9 Alberto Briz Guti\u00e9rrez (Guatemala)\nSecond Committee: Lamin Dibba (Gambia)\nThird Committee: Cherdchai Chaivaivid (Thailand)\nFifth Committee: Zsuzsanna Horv\u00e1th (Hungary)\nSixth Committee: Leila Castillon Lora-Santos (Philippines)",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/79/49 (Vol. III) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-06-04T00:00:00.188Z"
+}

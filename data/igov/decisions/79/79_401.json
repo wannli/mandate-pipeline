@@ -1,0 +1,25 @@
+{
+  "_id": "66e0a4ea674e0a36abab4e34",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/401",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Appointment of the members of the Credentials Committee",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-09-10T04:00:00.000Z",
+      "ED_Number": "1st plenary meeting",
+      "_id": "66e0a4ea674e0a36abab4e35"
+    }
+  ],
+  "ED_AgendaItem": "3(a)",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 1st plenary meeting, on 10 September 2024, the General Assembly, in accordance with rule 28 of its rules of procedure, appointed a Credentials Committee for its seventy-ninth session consisting of the following Member States: ANTIGUA AND BARBUDA, CABO VERDE, CHINA, DOMINICA, LAO PEOPLE\u2019S DEMOCRATIC REPUBLIC, LIBERIA, MONACO, RUSSIAN FEDERATION AND UNITED STATES OF AMERICA.\n",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/79/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-09-11T00:00:00.147Z"
+}

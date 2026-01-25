@@ -1,0 +1,25 @@
+{
+  "_id": "683e1825dcce5e8bfc4d1711",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/418",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Election of the Vice-Presidents of the General Assembly at its eightieth session",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-06-02T04:00:00.000Z",
+      "ED_Number": "72nd plenary meeting",
+      "_id": "683e1825dcce5e8bfc4d1712"
+    }
+  ],
+  "ED_AgendaItem": "6",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 72nd plenary meeting, on 2 June 2025, the General Assembly, in accordance with rule 30 of the rules of procedure of the Assembly and paragraphs 2 and 3 of the annex to resolution 33/138 of 19 December 1978, elected the following 21 Member States as Vice-Presidents of the General Assembly at its eightieth session: Andorra, Argentina, Bangladesh, Cabo Verde, China, Democratic Republic of the Congo, France, Kenya, Lebanon, Lesotho, Maldives, Montenegro, Russian Federation, Saint Kitts and Nevis, Saudi Arabia, Senegal, Timor-Leste, Tunisia, United Kingdom of Great Britain and Northern Ireland, United States of America and Venezuela (Bolivarian Republic of). ",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/79/49 (Vol. III) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-06-03T00:00:00.185Z"
+}

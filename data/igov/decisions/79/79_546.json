@@ -1,0 +1,25 @@
+{
+  "_id": "6765d9bc7a89aefc67041754",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/546",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Revitalization of the work of the Second  Committee",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-12-19T05:00:00.000Z",
+      "ED_Number": "54 plenary meeting",
+      "_id": "6765d9bc7a89aefc67041755"
+    }
+  ],
+  "ED_AgendaItem": "121",
+  "ED_Plenary_Committee": "Second Committee",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Second Committee",
+  "ED_DecisionText": "At its 54th plenary meeting, on 19 December 2024, the General Assembly, on the recommendation of the Second Committee  (Footnote: A/79/446, para. 8, Draft decision II.), recalling its resolution 77/335 of 1 September 2023, in particular the provisions relating to working methods, as well as its decisions 74/537 B of 11 August 2020, 75/548 B of 29 July 2021 and 77/538 B of 24 July 2023: \n(a)\tDecided that the Bureau of the Second Committee would convene informal dialogues to discuss the revitalization of the work of the Committee in the first months of 2025; \n(b)\tAlso decided that the Second Committee would convene a plenary meeting following those dialogues to take stock of the deliberations and, as appropriate, take action on any recommendations, for subsequent approval by the General Assembly, to allow any change to come into effect ahead of the eightieth session.\n",
+  "ED_Disclaimer": "",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-12-21T00:00:00.154Z"
+}

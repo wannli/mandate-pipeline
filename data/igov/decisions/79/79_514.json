@@ -1,0 +1,25 @@
+{
+  "_id": "674e1ae5ad75f04746d79ec2",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/514",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Missiles",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-12-02T05:00:00.000Z",
+      "ED_Number": "44 plenary meeting",
+      "_id": "674e1ae5ad75f04746d79ec3"
+    }
+  ],
+  "ED_AgendaItem": "98 (s)",
+  "ED_Plenary_Committee": "First Committee ",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "First Committee ",
+  "ED_DecisionText": "At its 44th plenary meeting, on 2\u202fDecember 2024, the General Assembly, by a recorded vote of 163 to 6, with 11 abstentions   (Footnote: See A/79/PV.43.), on the recommendation of the First Committee,  (Footnote: A/79/408, para.115, Draft decision II.) recalling its resolutions 54/54 F of 1 December 1999, 55/33 A of 20 November 2000, 56/24 B of 29 November 2001, 57/71 of 22 November 2002, 58/37 of 8 December 2003, 59/67 of 3 December 2004, 61/59 of 6 December 2006 and 63/55 of 2 December 2008 and its decisions 60/515 of 8 December 2005, 62/514 of 5 December 2007, 65/517 of 8 December 2010, 66/516 of 2 December 2011, 67/516 of 3 December 2012, 68/517 of 5 December 2013, 69/517 of 2 December 2014, 71/516 of 5 December 2016, 73/513 of 5 December 2018, 75/518 of 7 December 2020 and 77/515 of 7 December 2022, decided to include in the provisional agenda of its eighty-first session, under the item entitled \u201cGeneral and complete disarmament\u201d, the sub-item entitled \u201cMissiles\u201d.\n",
+  "ED_Disclaimer": "The final version of decisions adopted during the main part of the session will be contained in document A/79/49 (Vol. II) after editorial review. ",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-12-03T00:00:00.130Z"
+}

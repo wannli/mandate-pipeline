@@ -1,0 +1,35 @@
+{
+  "_id": "66e4b2e9674e0a36abab502c",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/504",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Organization of the seventy-ninth session",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-09-13T04:00:00.000Z",
+      "ED_Number": "2 plenary meeting",
+      "_id": "66e4b2e9674e0a36abab502d"
+    },
+    {
+      "ED_Date": "2024-11-26T05:00:00.000Z",
+      "ED_Number": "42 plenary meeting",
+      "_id": "67462a66ad75f04746d79d31"
+    },
+    {
+      "ED_Date": "2024-12-12T05:00:00.000Z",
+      "ED_Number": "52 plenary meeting",
+      "_id": "675b00cb63046bb699f3f024"
+    }
+  ],
+  "ED_AgendaItem": "7",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 2nd plenary meeting, on 13 September 2024, the General Assembly, on the recommendation of the General Committee as set forth in its first report, (Footnote: A/79/250.) adopted a number of provisions concerning the organization of the seventy-ninth session.\n\nAt the 42nd meeting, on 26 November 2024, the General Assembly, on the proposal of its President, decided to postpone the date of recess of the seventy-ninth session of the Assembly from Monday, 9 December 2024, to Thursday, 19 December 2024.   \n\nAt the same meeting, the General Assembly, at the request of the Chair of the Fifth Committee, decided to extend the work of the Committee until Friday, 13 December 2024.    \n\nAt the 52nd meeting, on 12 December 2024, the General Assembly, on the proposal of its President, decided to postpone the date of recess of the seventy-ninth session of the Assembly from Thursday, 19 December 2024 to Monday, 23 December 2024 \n \nAt the same meeting, the General Assembly, at the request of the Chair of the Fifth Committee, decided to extend the work of the Committee until Friday, 20 December 2024.   \n\n",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/79/49 (Vol. II) after editorial review.\n",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-09-14T00:00:00.143Z"
+}

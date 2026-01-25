@@ -1,0 +1,25 @@
+{
+  "_id": "66e0a2ad674e0a36abab4e1a",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/501",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Meetings of subsidiary organs and entities during the main part of the seventy-ninth session",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-09-10T04:00:00.000Z",
+      "ED_Number": "1 plenary meeting",
+      "_id": "66e0a2ad674e0a36abab4e1b"
+    }
+  ],
+  "ED_AgendaItem": "7",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 1st plenary meeting, on 10\u202fSeptember 2024, the General Assembly decided to authorize those entities listed in the letter dated 3\u202fSeptember 2024 from the Chair of the Committee on Conferences,1 (Footnote: A/79/335.) namely the Committee on the Exercise of the Inalienable Rights of the Palestinian People; the Executive Board of the United Nations Entity for Gender Equality and the Empowerment of Women; the Group of Governmental Experts on the continuing operation of the United Nations Register of Conventional Arms; the Conference on the Establishment of a Middle East Zone Free of Nuclear Weapons and Other Weapons of Mass Destruction; the Committee on Relations with the Host Country; the open-ended working group on security of and in the use of information and communications technologies 2021\u20132025, the Independent Audit Advisory Committee; the Working Group of the Whole of the Special Committee on Peacekeeping Operations; and the Meeting of States Parties to the United Nations Convention on the Law of the Sea to meet during the main part of the seventy-ninth session of the General Assembly, on the strict understanding that all such meetings would be allocated conference services in such a way as to ensure that the work of the General Assembly and its Main Committees is not impeded. \n",
+  "ED_Disclaimer": "The final version of decisions will be contained in document A/79/49 (Vol. II) after editorial review.\n",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-09-11T00:00:00.140Z"
+}

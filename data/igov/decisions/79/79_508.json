@@ -1,0 +1,25 @@
+{
+  "_id": "6722a80aaa2be6b6c0c633b2",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/508",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Report of the International  Court of Justice",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-10-30T04:00:00.000Z",
+      "ED_Number": "31 plenary meeting",
+      "_id": "6722a80aaa2be6b6c0c633b3"
+    }
+  ],
+  "ED_AgendaItem": "73",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 31st plenary meeting, on 30 October 2024, the General Assembly took note of the report of the International Court of Justice. (Footnote: A/79/4.)\n",
+  "ED_Disclaimer": "The final version of decisions adopted during the main part of the session will be contained in document A/79/49 (Vol. II) after editorial review. ",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-10-31T00:00:00.096Z"
+}

@@ -1,0 +1,25 @@
+{
+  "_id": "68bf11e3fb27e0653faacdcc",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/581",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Cooperation between the United Nations and the Pacific Islands Forum ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-09-05T04:00:00.000Z",
+      "ED_Number": "95 plenary meeting",
+      "_id": "68bf11e3fb27e0653faacdcd"
+    }
+  ],
+  "ED_AgendaItem": "125 (p)",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 95th plenary meeting, on 5 September 2025, the General Assembly decided to include the sub-item entitled \u201cCooperation between the United Nations and the Pacific Islands Forum\u201d of the item entitled \u201cCooperation between the United Nations and regional and other organizations\u201d in the draft agenda of its eightieth session. ",
+  "ED_Disclaimer": "",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-09-09T00:00:00.235Z"
+}

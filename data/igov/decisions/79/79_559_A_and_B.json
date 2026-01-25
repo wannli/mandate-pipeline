@@ -1,0 +1,30 @@
+{
+  "_id": "67f948e68ddd3cda1ac3a4e1",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/559 A and B",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Improving the financial situation of the United Nations ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-04-11T04:00:00.000Z",
+      "ED_Number": "63 plenary meeting",
+      "_id": "67f948e68ddd3cda1ac3a4e2"
+    },
+    {
+      "ED_Date": "2025-06-30T04:00:00.000Z",
+      "ED_Number": "81 plenary meeting",
+      "_id": "6863df69005e12a85dedf7e7"
+    }
+  ],
+  "ED_AgendaItem": "141",
+  "ED_Plenary_Committee": "Fifth Committee",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Fifth Committee",
+  "ED_DecisionText": "A\n\nAt its 63rd plenary meeting, on 11 April 2025, the General Assembly took note of the report of the Fifth Committee18. (Footnote: A/79/838.)\n\nB \n\nAt its 81st plenary meeting, on 30 June 2025, the General Assembly took note of the report of the Fifth Committee.  (Footnote: A/79/838/Add.1.)",
+  "ED_Disclaimer": "",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": true,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-04-12T00:00:00.148Z"
+}

@@ -1,0 +1,25 @@
+{
+  "_id": "67e2f80eb6c4cee546fc76ab",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/557",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Commemorative  meeting of the General Assembly to mark the International Day of Remembrance of the Victims of Slavery and the Transatlantic Slave Trade ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-03-25T04:00:00.000Z",
+      "ED_Number": "62 plenary meeting",
+      "_id": "67e2f80eb6c4cee546fc76ac"
+    }
+  ],
+  "ED_AgendaItem": "119",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 62nd plenary meeting, on 25 March 2024, the General Assembly, on the proposal of its President,  decided, without setting a precedent, to invite Wole Soyinka, Nobel Prize-winning playwright and novelist and Salome Agbaroji, National Youth Poet Laureate., to make statements at the commemorative meeting on the occasion of the International Day of Remembrance of the Victims of Slavery and the Transatlantic Slave Trade.   \n",
+  "ED_Disclaimer": "",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-03-26T00:00:00.187Z"
+}

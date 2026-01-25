@@ -1,0 +1,25 @@
+{
+  "_id": "66f02a08674e0a36abab54cc",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/506 A and B ",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Summit of the Future \u202f\u202f\u202f ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-09-22T04:00:00.000Z",
+      "ED_Number": "3 plenary meeting",
+      "_id": "66f02a08674e0a36abab54cd"
+    }
+  ],
+  "ED_AgendaItem": "123",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "\u202fA \n\nAt its 3rd plenary meeting, on 22 September 2024, the General Assembly decided that, after the departure of the Secretary-General, his seat at the podium might be occupied by his representative.\u202f\u202f\u202f\u202f\u202f \n\nB\n\nAt the 3rd plenary meeting, on 22 September 2024, the General Assembly decided to reopen the list of speakers for three additional delegations to hear their statements at the last position in the appropriate category at the 4th plenary meeting on 22 September 2024. ",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/79/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-09-23T00:00:00.106Z"
+}

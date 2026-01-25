@@ -1,0 +1,25 @@
+{
+  "_id": "6772aa237a89aefc670419af",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/549",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Administrative and budgetary coordination of the United Nations with the specialized agencies and the International Atomic Energy Agency",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-12-24T05:00:00.000Z",
+      "ED_Number": "55th (resumed) plenary meeting",
+      "_id": "6772aa237a89aefc670419b0"
+    }
+  ],
+  "ED_AgendaItem": "149",
+  "ED_Plenary_Committee": "Fifth Committee",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Fifth Committee",
+  "ED_DecisionText": "At its 55th (resumed) plenary meeting, on 24\u202fDecember 2024, the General Assembly took note of the report of the Fifth Committee. (Footnote: A/79/647.)",
+  "ED_Disclaimer": "The final version of decisions adopted during the main part of the session will be contained in document A/79/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-12-31T00:00:00.093Z"
+}

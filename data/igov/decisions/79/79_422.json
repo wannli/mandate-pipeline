@@ -1,0 +1,25 @@
+{
+  "_id": "68af20e07203656397dc7f1d",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/422",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Confirmation of the appointment of the Secretary-General of the United Nations Conference on Trade and Development",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-08-25T04:00:00.000Z",
+      "ED_Number": "88th plenary meeting",
+      "_id": "68af20e07203656397dc7f1e"
+    }
+  ],
+  "ED_AgendaItem": "116 (h)",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 88th plenary meeting, on 25 August 2025, the General Assembly confirmed the appointment by the Secretary-General of Rebeca Grynspan as Secretary-General of the United Nations Conference on Trade and Development for a further two-year term of office, beginning on 12 September 2025 and ending on 11 September 2027. (Footnote: See A/79/996.)\n",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/79/49 (Vol. III) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-08-28T00:00:00.155Z"
+}

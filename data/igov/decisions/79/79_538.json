@@ -1,0 +1,25 @@
+{
+  "_id": "67657e0c7a89aefc670416c4",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/538",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Promotion and protection of human rights",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-12-17T05:00:00.000Z",
+      "ED_Number": "53 plenary meeting",
+      "_id": "67657e0c7a89aefc670416c5"
+    }
+  ],
+  "ED_AgendaItem": "71",
+  "ED_Plenary_Committee": "Third Committee",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Third Committee",
+  "ED_DecisionText": "At its 53rd plenary meeting, on 17 December 2024, the General Assembly took note of the report of the Third Committee.  (Footnote: A/79/458.) \n",
+  "ED_Disclaimer": "The final version of decisions adopted during the main part of the session will be contained in document A/79/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-12-21T00:00:00.136Z"
+}

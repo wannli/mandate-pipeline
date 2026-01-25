@@ -1,0 +1,25 @@
+{
+  "_id": "6751c547ad75f04746d7a0c5",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/522",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Proposed programme  of work and timetable of the Special Political and Decolonization Committee (Fourth Committee) for the eightieth session of the General Assembly",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-12-04T05:00:00.000Z",
+      "ED_Number": "47 plenary meeting",
+      "_id": "6751c547ad75f04746d7a0c6"
+    }
+  ],
+  "ED_AgendaItem": "121",
+  "ED_Plenary_Committee": "Fourth Committee",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Fourth Committee",
+  "ED_DecisionText": "At its 47th plenary meeting, on 4 December 2024, the General Assembly, on the recommendation of the Special Political and Decolonization Committee (Fourth Committee),  (Footnote: A/79/432.), approved the proposed programme of work and timetable of the Fourth Committee for the eightieth session of the Assembly, as set out in the report of the Committee.  (Footnote: A/79/432.)\n",
+  "ED_Disclaimer": "",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-12-06T00:00:00.114Z"
+}

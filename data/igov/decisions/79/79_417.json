@@ -1,0 +1,25 @@
+{
+  "_id": "683e17f25fa300faa395b628",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/417",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Election of the President of the General Assembly at its eightieth session",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-06-02T04:00:00.000Z",
+      "ED_Number": "72nd plenary meeting",
+      "_id": "683e17f25fa300faa395b629"
+    }
+  ],
+  "ED_AgendaItem": "4",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 72nd plenary meeting, on 2 June 2025, the General Assembly, in accordance with Article 21 of the Charter of the United Nations, rule 30 of the rules of procedure of the Assembly and paragraph 1 of the annex to resolution 33/138 of 19 December 1978, elected Annalena Baerbock of Germany as President of the General Assembly at its eightieth session.",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/79/49 (Vol. III) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-06-03T00:00:00.165Z"
+}

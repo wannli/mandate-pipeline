@@ -1,0 +1,25 @@
+{
+  "_id": "6765d9fa7a89aefc6704175a",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/547",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Programme planning  (Second Committee )",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-12-19T05:00:00.000Z",
+      "ED_Number": "54 plenary meeting",
+      "_id": "6765d9fa7a89aefc6704175b"
+    }
+  ],
+  "ED_AgendaItem": "140",
+  "ED_Plenary_Committee": "Second Commitee",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Second Commitee",
+  "ED_DecisionText": "At its 54th plenary meeting, on 19 December 2024, the General Assembly took note of the report of the Second Committee.  (Footnote: A/79/447.) \n",
+  "ED_Disclaimer": "",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-12-21T00:00:00.159Z"
+}

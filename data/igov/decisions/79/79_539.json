@@ -1,0 +1,25 @@
+{
+  "_id": "67657d6c7a89aefc670416ba",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/539",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Comprehensive implementation of and follow-up to the Vienna Declaration and Programme of\u202fAction",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-12-17T05:00:00.000Z",
+      "ED_Number": "53 plenary meeting",
+      "_id": "67657d6c7a89aefc670416bb"
+    }
+  ],
+  "ED_AgendaItem": "71 (d)",
+  "ED_Plenary_Committee": "Third Committee",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Third Committee",
+  "ED_DecisionText": "At its 53rd plenary meeting, on 17 December 2024, the General Assembly took note of the report of the Third Committee.  (Footnote: A/79/458/Add.4.) \n",
+  "ED_Disclaimer": "",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-12-21T00:00:00.131Z"
+}

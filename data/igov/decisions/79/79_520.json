@@ -1,0 +1,25 @@
+{
+  "_id": "6751c4b4ad75f04746d7a0b9",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/520",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Comprehensive review of the whole  question of peacekeeping operations in all their aspects ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-12-04T05:00:00.000Z",
+      "ED_Number": "47 plenary meeting",
+      "_id": "6751c4b4ad75f04746d7a0ba"
+    }
+  ],
+  "ED_AgendaItem": "51",
+  "ED_Plenary_Committee": "Fourth Committee",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Fourth Committee",
+  "ED_DecisionText": "At its 47th plenary meeting, on 4 December 2024, the General Assembly took note of the report of the Special\nPolitical and Decolonization Committee (Fourth Committee).  (Footnote: A/79/424.) \n",
+  "ED_Disclaimer": "The final version of decisions adopted during the main part of the session will be contained in document A/79/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-12-06T00:00:00.105Z"
+}

@@ -1,0 +1,25 @@
+{
+  "_id": "674e178aad75f04746d79ea7",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/510",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Reduction  of military budgets ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-12-02T05:00:00.000Z",
+      "ED_Number": "43 plenary meeting",
+      "_id": "674e178aad75f04746d79ea8"
+    }
+  ],
+  "ED_AgendaItem": "90",
+  "ED_Plenary_Committee": "First Committee ",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "First Committee ",
+  "ED_DecisionText": "At its 43rd plenary meeting, on 2\u202fDecember 2024, the General Assembly took note of the report of the First Committee.  (Footnote: A/79/400.)",
+  "ED_Disclaimer": "",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-12-03T00:00:00.107Z"
+}

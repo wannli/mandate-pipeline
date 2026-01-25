@@ -1,0 +1,25 @@
+{
+  "_id": "684c26372c1db154250f628f",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/562",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Report of the Security Council",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-06-11T04:00:00.000Z",
+      "ED_Number": "77th plenary meeting",
+      "_id": "684c26372c1db154250f6290"
+    }
+  ],
+  "ED_AgendaItem": "28",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 77th plenary meeting, on 11 June 2025, the General Assembly took note of the report of the Security Council. (Footnote: A/79/2.)",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/79/49 (Vol. III) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-06-14T00:00:00.193Z"
+}

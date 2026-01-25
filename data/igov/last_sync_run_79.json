@@ -1,0 +1,12 @@
+{
+  "run_id": "21335049610",
+  "run_attempt": "1",
+  "event_name": "workflow_dispatch",
+  "ref": "refs/heads/main",
+  "ref_name": "main",
+  "sha": "b9aaabec3deedbcd73c83d986c95d5497103d079",
+  "actor": "wannli",
+  "timestamp_utc": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+  "session_number": "79",
+  "session_label": ""
+}

@@ -1,0 +1,25 @@
+{
+  "_id": "672a6e64aa2be6b6c0c63514",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/509",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Report of the Economic and Social Council",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-11-05T05:00:00.000Z",
+      "ED_Number": "34 plenary meeting",
+      "_id": "672a6e64aa2be6b6c0c63515"
+    }
+  ],
+  "ED_AgendaItem": "9",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 34th plenary meeting, on 5 November 2024, the General Assembly took note of the report of the Economic and Social Council (Footnote: Official Records of the General Assembly, Seventy-ninth Session, Supplement No. 3 (A/79/3).). \n",
+  "ED_Disclaimer": "The final version of decisions adopted during the main part of the session will be contained in document A/79/49 (Vol. II) after editorial review. ",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-11-06T00:00:00.093Z"
+}

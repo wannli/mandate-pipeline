@@ -1,0 +1,25 @@
+{
+  "_id": "6813af2084075a4996c817ec",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/560",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Accreditation and participation of intergovernmental organizations in the Fourth International Conference on Financing for Development ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-04-29T04:00:00.000Z",
+      "ED_Number": "67 plenary meeting",
+      "_id": "6813af2084075a4996c817ed"
+    }
+  ],
+  "ED_AgendaItem": "17",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At the 67th plenary meeting, on 29 April 2025, the General Assembly, on the proposal of its President,14 (footnote: A/79/L.78.) taking note of the note by the Secretariat,15 (footnote: A/79/858.) decided to accredit the organizations identified in the note by the Secretariat and invite them to participate as intergovernmental organizations in the work of the Fourth International Conference on Financing for Development and its preparatory process, with observer status, in accordance with paragraph 3 (b) of its resolution 78/271 of 11 April 2024. ",
+  "ED_Disclaimer": "",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-05-02T00:00:00.176Z"
+}

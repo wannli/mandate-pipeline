@@ -1,0 +1,30 @@
+{
+  "_id": "6772aa9b7a89aefc670419be",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/550 A and B ",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Report on the activities of the Office of Internal Oversight Services",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-12-24T05:00:00.000Z",
+      "ED_Number": "55th (resumed) plenary meeting",
+      "_id": "6772aa9b7a89aefc670419bf"
+    },
+    {
+      "ED_Date": "2025-04-11T04:00:00.000Z",
+      "ED_Number": "63 plenary meeting",
+      "_id": "67f94ab48ddd3cda1ac3a4f5"
+    }
+  ],
+  "ED_AgendaItem": "137, 150",
+  "ED_Plenary_Committee": "Fifth Committeee",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Fifth Committeee",
+  "ED_DecisionText": "A \n\nAt its 55th (resumed) plenary meeting, on 24\u202fDecember 2024, the General Assembly took note of the report of the Fifth Committee. (Footnote: A/79/648.)\n\nB [Footnote: Decision 79/550, in section B.6 of the Official Records of the General Assembly, Seventy-ninth Session, Supplement No. 49 (A/79/49), vol.\u202fII, becomes decision 79/550 A.] \n\nAt the 63rd plenary meeting, on 11 April 2025, the General Assembly took note of the report of the Fifth Committee10. (Footnote: A/79/648/Add.1).  ",
+  "ED_Disclaimer": "The final version of decisions adopted during the main part of the session will be contained in document A/79/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-12-31T00:00:00.102Z"
+}

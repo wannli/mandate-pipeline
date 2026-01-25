@@ -1,0 +1,25 @@
+{
+  "_id": "66e44a06674e0a36abab4f69",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/502",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "General debate of the seventy-ninth session of the General Assembly",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-09-13T04:00:00.000Z",
+      "ED_Number": "2 plenary meeting",
+      "_id": "66e44a06674e0a36abab4f6a"
+    }
+  ],
+  "ED_AgendaItem": "7",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 2nd plenary meeting, on 13 September 2024, the General Assembly, on the recommendation of the General Committee as set forth in its first report,  (Footnote: A/79/250, para.37.) and taking note that, pursuant to resolution 57/301 of 13 March 2003, the general debate would begin at 9 a.m. on MondayTuesday, 24 September 2024, and would continue on Wednesday, Thursday and Friday, 25\u201327 September, and on Monday, 30 September, decided that the general debate would continue on Saturday, 28 September 2024, in order to maximize the number of speakers during that week.\n",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/79/49 (Vol. II) after editorial review.\n",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-09-14T00:00:00.122Z"
+}

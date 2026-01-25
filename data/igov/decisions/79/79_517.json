@@ -1,0 +1,25 @@
+{
+  "_id": "674e243bad75f04746d79f14",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/517",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Provisional programme of work and timetable of the First Committee for 2025",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-12-02T05:00:00.000Z",
+      "ED_Number": "44 plenary meeting",
+      "_id": "674e243bad75f04746d79f15"
+    }
+  ],
+  "ED_AgendaItem": "121",
+  "ED_Plenary_Committee": "First Committee",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "First Committee",
+  "ED_DecisionText": "At its 44th plenary meeting, on 2 December 2024, the General Assembly, on the recommendation of the First Committee,   (Footnote: A/79/417, para. 8, Draft decision II.) approved the provisional programme of work and timetable of the Committee for 2024, as set out in the annex to the report of the Committee.   (Footnote: A/79/471.)\n",
+  "ED_Disclaimer": "The final version of decisions adopted during the main part of the session will be contained in document A/79/49 (Vol. II) after editorial review. ",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-12-03T00:00:00.143Z"
+}

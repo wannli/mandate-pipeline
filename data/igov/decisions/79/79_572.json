@@ -1,0 +1,25 @@
+{
+  "_id": "68b863117203656397dc815b",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/572",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "High-level meeting to commemorate and promote the International Day against Nuclear Tests (item 98)",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-09-03T04:00:00.000Z",
+      "ED_Number": "91 plenary meeting",
+      "_id": "68b863117203656397dc815c"
+    }
+  ],
+  "ED_AgendaItem": "98",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 91st plenary meeting, on 3 September 2025, the General Assembly, on the proposal of its President, decided, without setting a precedent, to invite the Executive Secretary of the Preparatory Commission for the Comprehensive Nuclear-Test-Ban Treaty Organization, Robert Floyd, the Director of the International Atomic Energy Agency Liaison Office in New York, Vivian Okeke, on behalf of the Director General of the Agency, Rafael Mariano Grossi, and a youth representative from Kiribati, Ms. Oemwa Johnson, to make statements at the high-level meeting to commemorate and promote the International Day against Nuclear Tests.\n\n\n",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/79/49 (Vol. III) after editorial review.\n",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-09-04T00:00:00.250Z"
+}

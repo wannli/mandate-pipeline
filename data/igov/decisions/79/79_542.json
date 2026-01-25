@@ -1,0 +1,25 @@
+{
+  "_id": "6765d96e7a89aefc6704174e",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/542",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Macroeconomic  policy questions ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-12-19T05:00:00.000Z",
+      "ED_Number": "54 plenary meeting",
+      "_id": "6765d96e7a89aefc6704174f"
+    }
+  ],
+  "ED_AgendaItem": "16",
+  "ED_Plenary_Committee": "Second Committee",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Second Committee",
+  "ED_DecisionText": "At its 54th plenary meeting, on 19 December 2024, the General Assembly took note of the report of the Second Committee.  (Footnote: A/79/435.) \n",
+  "ED_Disclaimer": "The final version of decisions adopted during the main part of the session will be contained in document A/79/49 (Vol. II) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-12-21T00:00:00.148Z"
+}

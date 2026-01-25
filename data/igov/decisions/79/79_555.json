@@ -1,0 +1,25 @@
+{
+  "_id": "67dd8db9b6c4cee546fc7581",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/555",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "United Nations Pledging Conference for Development Activities ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-03-21T04:00:00.000Z",
+      "ED_Number": "61 plenary meeting",
+      "_id": "67dd8db9b6c4cee546fc7582"
+    }
+  ],
+  "ED_AgendaItem": "23",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 61st plenary meeting, on 21 March 2025, the General Assembly, on the proposal of its President45 (Footnote: A/79/L.61.) recalling its decision 75/511 B of 9 September 2021, by which it had decided to adjust the scope of the United Nations Pledging Conference for Development Activities and to hold the Conference on an annual basis shortly after the operational activities for development segment of the Economic and Social Council session, and taking into account the letter dated 10 February 2025 from the Under-Secretary-General for Economic and Social Affairs addressed to the President of the General Assembly, decided to convene the next Pledging Conference for Development Activities in 2026.  ",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/79/49 (Vol. III) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-03-22T00:00:00.164Z"
+}

@@ -1,0 +1,25 @@
+{
+  "_id": "67dd8d56b6c4cee546fc757b",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/554",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Commemorative meeting of the General Assembly on the occasion of the International Day for the Elimination of Racial Discrimination\t   ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-03-21T04:00:00.000Z",
+      "ED_Number": "61 plenary meeting",
+      "_id": "67dd8d56b6c4cee546fc757c"
+    }
+  ],
+  "ED_AgendaItem": "69",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 61st plenary meeting, on 21 March 2025, the General Assembly, on the proposal of its President,  decided, without setting a precedent, to invite Ilze Brand Kehris, Assistant Secretary-General for Human Rights, Michal Balcerzak, Chair of the Committee on the Elimination of Racial Discrimination, and Sarah Lewis, Associate Professor at Harvard University and Founder of Vision & Justice, to make statements at the commemorative meeting on the occasion of the International Day for the Elimination of Racial Discrimination.    ",
+  "ED_Disclaimer": "",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-03-22T00:00:00.147Z"
+}

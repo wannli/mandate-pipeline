@@ -1,0 +1,30 @@
+{
+  "_id": "67376570ad75f04746d79860",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/411",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Appointment of members and alternate members and alternate members of the United Nations Staff Pension Committee",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-11-13T05:00:00.000Z",
+      "ED_Number": "38th plenary meeting",
+      "_id": "67376570ad75f04746d79861"
+    },
+    {
+      "ED_Date": "2024-12-06T05:00:00.000Z",
+      "ED_Number": "48th plenary meeting",
+      "_id": "6753772763046bb699f3ec91"
+    }
+  ],
+  "ED_AgendaItem": "116(e)",
+  "ED_Plenary_Committee": "Fifth Committee",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Fifth Committee",
+  "ED_DecisionText": "At its 38th plenary meeting, on 13 November 2024, the General Assembly, on the recommendation of the Fifth Committee (footnote: A/79/536, para. 4), appointed or reappointed the following persons as members or alternate members of the United Nations Staff Pension Committee for a four-year term of office beginning on 1 January 2025: Dmitry S. CHUMAKOV (Russian Federation), KOZAKI Hitoshi (Japan), Lovemore MAZEMO (Zimbabwe), Philip Richard Okanda OWADE (Kenya), Mustafizur RAHMAN (Bangladesh), J\u00f6rg STOSBERG (Germany) and David TRAYSTMAN (United States of America).\n\nAt its 48th plenary meeting, on 6 December 2024, the General Assembly, on the recommendation of the Fifth Committee (footnote: A/79/536/Add.1, para. 4), appointed Guillermo Rodolico (Argentina) as a member or alternate member of the United Nations Staff Pension Committee for a four-year term of office beginning on 1 January 2025.\n\nAs a result, as of 1 January 2025, the members and alternate members of the United Nations Staff Pension Committee appointed by the General Assembly are as follows: Dmitry S. CHUMAKOV (Russian Federation), KOZAKI Hitoshi (Japan), Lovemore MAZEMO (Zimbabwe), Philip Richard Okanda OWADE (Kenya), Mustafizur RAHMAN (Bangladesh), Guillermo RODOLICO (Argentina), J\u00f6rg STOSBERG (Germany) and David TRAYSTMAN (United States of America).\n",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/79/49 (Vol. II) after editorial review. ",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-11-16T00:00:00.152Z"
+}

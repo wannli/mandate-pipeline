@@ -1,0 +1,30 @@
+{
+  "_id": "67883d0d0f96beb0cb465b70",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/553 A and B",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Report of the Secretary-General on the work of the Organization\u202f\u202f ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-01-15T05:00:00.000Z",
+      "ED_Number": "56 plenary meeting",
+      "_id": "67883d0d0f96beb0cb465b71"
+    },
+    {
+      "ED_Date": "2025-01-15T05:00:00.000Z",
+      "ED_Number": "56 (resumed) plenary meeting",
+      "_id": "67883d820f96beb0cb465b83"
+    }
+  ],
+  "ED_AgendaItem": "111",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "A\u202f\u202f \nAt its 56th plenary meeting, on 15 January 2025, the General Assembly decided that, after the departure of the Secretary-General, his seat at the podium might be occupied by his representative.\u202f\u202f\u202f\u202f \n\u202f\u202f \nB\u202f\u202f\u202f \nAt its 56th (resumed) plenary meeting, on 15 January 2025, the General Assembly took note of the\u202freport of the Secretary-General\u202fon the work of the Organization. (Footnote: A/79/1.)\u202f\u202f\u202f \n",
+  "ED_Disclaimer": "The final version of decisions adopted during the resumed part of the session will be contained in document A/79/49 (Vol. III) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-01-16T00:00:00.102Z"
+}

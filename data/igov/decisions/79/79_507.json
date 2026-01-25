@@ -1,0 +1,25 @@
+{
+  "_id": "671021c9fb370bf158ae42c3",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/507",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Report of the International Residual Mechanism for Criminal Tribunals ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-10-16T04:00:00.000Z",
+      "ED_Number": "23 plenary meeting",
+      "_id": "671021c9fb370bf158ae42c4"
+    }
+  ],
+  "ED_AgendaItem": "128",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 23rd plenary meeting, on 16 October 2024, the General Assembly took note of the report of the International Residual Mechanism for Criminal Tribunals (Footnote: A/79/249.) ",
+  "ED_Disclaimer": "",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-10-17T00:00:00.108Z"
+}

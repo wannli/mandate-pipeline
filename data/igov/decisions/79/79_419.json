@@ -1,0 +1,25 @@
+{
+  "_id": "683f39715fa300faa395b650",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/419",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Election of non-permanent members of the Security Council",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-06-03T04:00:00.000Z",
+      "ED_Number": "73rd plenary meeting",
+      "_id": "683f39715fa300faa395b651"
+    }
+  ],
+  "ED_AgendaItem": "114(a)",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 73rd plenary meeting, on 3 June 2025, the General Assembly, in accordance with Article 23 of the Charter of the United Nations, rule 142 of the rules of procedure of the Assembly and paragraph 17 of Assembly resolution 68/307 of 10 September 2014, elected Bahrain, Colombia, the Democratic Republic of the Congo, Latvia and Liberia as non-permanent members of the Security Council for a two-year term of office beginning on 1 January 2026 to fill the vacancies occurring on the expiration of the terms of office of Algeria, Guyana, the Republic of Korea, Sierra Leone and Slovenia.\n\nAs a result, as of 1 January 2026, the Security Council is composed of the following 15 Member States: Bahrain,** China, Colombia,** Democratic Republic of the Congo,** Denmark,* France, Greece,* Latvia,** Liberia,** Pakistan,* Panama,* Russian Federation, Somalia,* United Kingdom of Great Britain and Northern Ireland and United States of America.\n\n__________________\n* Term of office expires on 31 December 2026.\n** Term of office expires on 31 December 2027.",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/79/49 (Vol. III) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-06-04T00:00:00.177Z"
+}

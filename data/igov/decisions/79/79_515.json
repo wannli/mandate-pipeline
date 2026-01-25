@@ -1,0 +1,25 @@
+{
+  "_id": "674e1b9aad75f04746d79eca",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/515",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Compliance with non -proliferation, arms limitation and disarmament agreements and commitments",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-12-02T05:00:00.000Z",
+      "ED_Number": "44 plenary meeting",
+      "_id": "674e1b9aad75f04746d79ecb"
+    }
+  ],
+  "ED_AgendaItem": "98 (ee)",
+  "ED_Plenary_Committee": "First Committee",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "First Committee",
+  "ED_DecisionText": "At its 44th plenary meeting, on 2\u202fDecember 2024, the General Assembly, by a recorded vote of 175 to 3, with 7 abstentions   (Footnote: See A/79/PV.43.), on the recommendation of the First Committee,  (Footnote: A/79/408, para.115, Draft decision III.) recalling its resolutions 76/33 of 6 December 2021, 72/32 of 4 December 2017, 69/59 of 2 December 2014, 66/49 of 2 December 2011, 63/59 of 2 December 2008 and 60/55 of 8 December 2005, decides to include in the provisional agenda of its eightieth session, under the item entitled \u201cGeneral and complete disarmament\u201d, the sub-item entitled \u201cCompliance with non-proliferation, arms limitation and disarmament agreements and commitments\u201d.\n",
+  "ED_Disclaimer": "The final version of decisions adopted during the main part of the session will be contained in document A/79/49 (Vol. II) after editorial review. ",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-12-03T00:00:00.134Z"
+}

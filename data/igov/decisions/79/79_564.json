@@ -1,0 +1,25 @@
+{
+  "_id": "68b1f74dfb34a7a7d4da42a1",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/564",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Venue and dates of the sixteenth session of the United Nations Conference on Trade and Development",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-07-25T04:00:00.000Z",
+      "ED_Number": "86th plenary meeting",
+      "_id": "68b1f74dfb34a7a7d4da42a2"
+    }
+  ],
+  "ED_AgendaItem": "13",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 86th plenary meeting, on 25 July 2025, on the proposal of the Netherlands (Kingdom of the) and Switzerland, (Footnote: A/79/L.103.) the General Assembly took note of decision 589 (S-XXXV) approved by the Trade and Development Board at its thirty-fifth special session, held in Geneva on 23 June 2025, and welcomed the generous offer of the Government of Switzerland to host the sixteenth session of the United Nations Conference on Trade and Development in Geneva in October 2025.",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/79/49 (Vol. III) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-08-30T00:00:00.232Z"
+}

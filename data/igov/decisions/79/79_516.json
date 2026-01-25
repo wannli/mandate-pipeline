@@ -1,0 +1,25 @@
+{
+  "_id": "674e2401ad75f04746d79f0e",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/516",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Information on requests for votes  ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2024-12-02T05:00:00.000Z",
+      "ED_Number": "44 plenary meeting",
+      "_id": "674e2401ad75f04746d79f0f"
+    }
+  ],
+  "ED_AgendaItem": "121",
+  "ED_Plenary_Committee": "First Committee",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "First Committee",
+  "ED_DecisionText": "At its 44th plenary meeting, on 2\u202fDecember 2024, the General Assembly, on the recommendation of the First Committee,22 (Footnote: A/79/417, para.8, Draft decision I.) recalling rules 87 and 127 of its rules of procedure, in which it was stated that any representative of a Member State might request a recorded vote, reaffirming the need to continue to improve the working methods of the Main Committees of the Assembly, emphasizing the importance of openness, transparency and accountability in the work of the United Nations, as well as respect for the sovereign equality of all Member States, which were crucial to building trust and confidence among Member States, and recalling the invitation by the Assembly to the Chairs of the Main Committees to draw on best practices and lessons learned with a view to improving working methods: \n\n(a)\tDecided that, with regard to the work of the First Committee, the identity of the Member State or States that request a vote on specific paragraphs and/or draft resolutions as a whole must be provided by the Chair of the First Committee to the Committee when requested by a Member State; \n\n(b)\tAlso decided to implement the decision in paragraph (a) above with immediate effect. ",
+  "ED_Disclaimer": "",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2024-12-03T00:00:00.138Z"
+}

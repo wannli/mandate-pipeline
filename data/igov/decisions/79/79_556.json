@@ -1,0 +1,25 @@
+{
+  "_id": "67dd8e0fb6c4cee546fc7587",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "79/556",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Speakers for the opening segment of the \u201cWorld Social Summit\u201d under the title \u201cthe Second World Summit for Social Development\u201d ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2025-03-21T04:00:00.000Z",
+      "ED_Number": "61 plenary meeting",
+      "_id": "67dd8e0fb6c4cee546fc7588"
+    }
+  ],
+  "ED_AgendaItem": "26 (b) ",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "79th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 61st plenary meeting, on 21 March 2025, the General Assembly, on the proposal of its President (Footnote: A/79/L.65.) decided that, in addition to those listed in its resolution 78/318 of 16 July 2024, the opening segment of the \u201cWorld Social Summit\u201d under the title \u201cthe Second World Summit for Social Development\u201d would also feature a statement by the Amir of the State of Qatar in its capacity as host country, to be delivered immediately following the statement by the Secretary-General. \n\n ",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/79/49 (Vol. III) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2025-03-22T00:00:00.169Z"
+}
