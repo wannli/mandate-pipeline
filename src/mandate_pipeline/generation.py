@@ -1124,15 +1124,9 @@ def generate_igov_signals_page(
     """Generate a standalone IGov decision signal browser page."""
     def format_decision_text_lines(text: str) -> dict:
         if not text:
-            return {"main": [], "footnotes": [], "annex": None}
+            return {"main": [], "footnotes": []}
 
         normalized = " ".join(text.split())
-
-        annex_text = None
-        annex_match = re.search(r"(?i)(\(?[Aa]nnex\s+\w+\)?.+)$", normalized)
-        if annex_match:
-            annex_text = annex_match.group(1).strip()
-            normalized = normalized[:annex_match.start()].strip()
 
         footnote_pattern = r"([^*]+)((\s*[*]{1,4}\s*))$"
         main_text = normalized
@@ -1177,8 +1171,7 @@ def generate_igov_signals_page(
 
         return {
             "main": lines,
-            "footnotes": footnotes,
-            "annex": annex_text
+            "footnotes": footnotes
         }
     if session is None:
         decisions = load_igov_decisions_all(data_dir)

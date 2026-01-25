@@ -147,12 +147,6 @@
                                 {% elif doc.decision_text %}
                                     <p class="text-gray-700 leading-relaxed mt-2" data-paragraph data-search>{{ doc.decision_text }}</p>
                                 {% endif %}
-                                {% if doc.formatted_lines and doc.formatted_lines.annex %}
-                                    <details class="mt-3">
-                                        <summary class="text-xs font-semibold uppercase tracking-wide text-gray-500 cursor-pointer hover:text-gray-700">Annex</summary>
-                                        <p class="text-gray-600 leading-relaxed mt-1 pl-2 border-l-2 border-gray-200" data-paragraph data-search>{{ doc.formatted_lines.annex }}</p>
-                                    </details>
-                                {% endif %}
                             </div>
                         {% endif %}
                     </div>
