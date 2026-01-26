@@ -76,6 +76,7 @@ jobs:
       - name: Install dependencies
         run: |
           apt-get update && apt-get install -y --no-install-recommends git
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           pip install --cache-dir ${{ env.PIP_CACHE_DIR }} -e .
 
       - name: Discover new documents
@@ -132,6 +133,7 @@ jobs:
       - name: Install dependencies
         run: |
           apt-get update && apt-get install -y --no-install-recommends git
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           pip install --cache-dir ${{ env.PIP_CACHE_DIR }} -e .
 
       - name: Extract document content
@@ -232,6 +234,7 @@ jobs:
       - name: Install dependencies
         run: |
           apt-get update && apt-get install -y --no-install-recommends git
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           pip install --cache-dir ${{ env.PIP_CACHE_DIR }} -e .
 
       - name: Run signal detection
@@ -348,6 +351,7 @@ jobs:
       - name: Install dependencies
         run: |
           apt-get update && apt-get install -y --no-install-recommends git
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           pip install --cache-dir ${{ env.PIP_CACHE_DIR }} -e .
 
       - name: Run document linking
@@ -445,6 +449,7 @@ jobs:
       - name: Install dependencies
         run: |
           apt-get update && apt-get install -y --no-install-recommends git
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           pip install --cache-dir ${{ env.PIP_CACHE_DIR }} -e .
 
       - name: Generate unified signals explorer
@@ -537,6 +542,7 @@ jobs:
       - name: Install dependencies
         run: |
           apt-get update && apt-get install -y --no-install-recommends git
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           pip install --cache-dir ${{ env.PIP_CACHE_DIR }} -e .
 
       - name: Sync IGov decisions
@@ -606,6 +612,7 @@ jobs:
       - name: Install dependencies
         run: |
           apt-get update && apt-get install -y --no-install-recommends git
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           pip install --cache-dir ${{ env.PIP_CACHE_DIR }} -e .
 
       - name: Generate IGov signal browser
@@ -646,7 +653,7 @@ jobs:
     name: Build Session
     runs-on: ubuntu-latest
     container: python:3.12-slim
-    if: inputs.stages == 'all' || inputs.stages == 'build-session'
+    if: (inputs.stages == 'all' || inputs.stages == 'build-session') && inputs.session_number != ''
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -654,6 +661,7 @@ jobs:
       - name: Install dependencies
         run: |
           apt-get update && apt-get install -y --no-install-recommends git
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           pip install --cache-dir ${{ env.PIP_CACHE_DIR }} -e .
 
       - name: Build session
