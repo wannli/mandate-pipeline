@@ -1807,3 +1807,164 @@ def generate_site_verbose(
 def generate_sessions_index_page(output_dir: Path):
     """Deprecated: historical sessions index page removed."""
     return
+
+
+def generate_consolidated_signals_page(
+    documents: list[dict],
+    checks: list,
+    data_dir: Path,
+    output_dir: Path,
+) -> dict:
+    """
+    Generate the consolidated signals page combining resolutions, proposals, and IGov decisions.
+
+    Args:
+        documents: All processed documents (resolutions and proposals)
+        checks: All check definitions
+        data_dir: Directory containing IGov data
+        output_dir: Root output directory
+
+    Returns:
+        Dict with stats about the generation
+    """
+    import time
+    import logging
+
+    logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+    logger = logging.getLogger(__name__)
+
+    start_time = time.time()
+    logger.info(f"Starting consolidated signals page generation")
+
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Enrich documents with signal_paragraphs if needed
+    enriched_docs = []
+    for doc in documents:
+        if doc.get("signal_paragraphs"):
+            enriched_docs.append(doc)
+            continue
+
+        signal_paras = []
+        for para_num, para_signals in doc.get("signals", {}).items():
+            if para_signals:
+                para_text = doc.get("paragraphs", {}).get(para_num, "")
+                signal_paras.append({
+                    "number": para_num,
+                    "text": para_text,
+                    "signals": para_signals,
+                })
+
+        if signal_paras:
+            signal_paras.sort(key=lambda p: int(p["number"]))
+            doc_copy = doc.copy()
+            doc_copy["signal_paragraphs"] = signal_paras
+            enriched_docs.append(doc_copy)
+        else:
+            enriched_docs.append(doc)
+
+    # Filter to documents with signals
+    docs_with_signals = [doc for doc in enriched_docs if doc.get("signal_paragraphs")]
+    logger.info(f"Found {len(docs_with_signals)} documents with signals")
+
+    # Load IGov decisions
+    igov_decisions = load_igov_decisions_all(data_dir)
+    logger.info(f"Loaded {len(igov_decisions)} IGov decisions")
+
+    # Process IGov decisions and detect signals
+    decision_docs = []
+    for decision in igov_decisions:
+        decision_text = (decision.get("decision_text") or "").strip()
+        if not decision_text:
+            continue
+
+        paragraphs = {1: decision_text}
+        signals = run_checks(paragraphs, checks) if checks else {}
+
+        signal_summary = {}
+        signal_paragraphs = []
+        for para_num, para_signals in signals.items():
+            if para_signals:
+                signal_paragraphs.append({
+                    "number": para_num,
+                    "text": paragraphs.get(para_num, ""),
+                    "signals": para_signals,
+                })
+                for sig in para_signals:
+                    signal_summary[sig] = signal_summary.get(sig, 0) + 1
+
+        if signal_paragraphs:
+            decision_docs.append({
+                **decision,
+                "paragraphs": paragraphs,
+                "signals": signals,
+                "signal_summary": signal_summary,
+                "signal_paragraphs": signal_paragraphs,
+                "doc_type": "decision",
+            })
+
+    logger.info(f"Found {len(decision_docs)} IGov decisions with signals")
+
+    # Combine all documents
+    all_docs = docs_with_signals + decision_docs
+
+    # Sort documents using unified sorting logic
+    all_docs.sort(key=unified_sort_key)
+
+    # Count statistics
+    resolution_count = len([d for d in all_docs if d.get("doc_type") == "resolution"])
+    proposal_count = len([d for d in all_docs if d.get("doc_type") == "proposal"])
+    decision_count = len([d for d in all_docs if d.get("doc_type") == "decision"])
+    total_paragraphs = sum(len(doc.get("signal_paragraphs", [])) for doc in all_docs)
+
+    # Get origin order for filtering
+    origin_order = ["Plenary", "C1", "C2", "C3", "C4", "C5", "C6"]
+
+    env = get_templates_env(checks)
+    template = env.get_template("signals_consolidated.html")
+
+    html = template.render(
+        documents=all_docs,
+        checks=checks,
+        origin_order=origin_order,
+        origin_names=COMMITTEE_NAMES,
+        total_docs=len(all_docs),
+        total_paragraphs=total_paragraphs,
+        resolution_count=resolution_count,
+        proposal_count=proposal_count,
+        decision_count=decision_count,
+        generated_at=datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
+    )
+
+    # Write HTML files
+    with open(output_dir / "signals-consolidated.html", "w") as f:
+        f.write(html)
+
+    # Generate consolidated data JSON for AJAX loading
+    data = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "checks": checks,
+        "documents": all_docs,
+        "stats": {
+            "total_documents": len(all_docs),
+            "resolution_count": resolution_count,
+            "proposal_count": proposal_count,
+            "decision_count": decision_count,
+            "total_paragraphs": total_paragraphs,
+        },
+    }
+
+    with open(output_dir / "data-consolidated.json", "w") as f:
+        json.dump(data, f, indent=2)
+
+    total_time = time.time() - start_time
+    logger.info(f"Consolidated signals page generation completed in {total_time:.2f}s")
+
+    return {
+        "total_documents": len(all_docs),
+        "resolution_count": resolution_count,
+        "proposal_count": proposal_count,
+        "decision_count": decision_count,
+        "total_paragraphs": total_paragraphs,
+    }
