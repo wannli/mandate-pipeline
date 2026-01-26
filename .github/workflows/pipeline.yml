@@ -72,12 +72,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install dependencies
         run: |
           apt-get update && apt-get install -y --no-install-recommends git
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
           pip install --cache-dir ${{ env.PIP_CACHE_DIR }} -e .
+
+      - name: Ensure branch checkout
+        run: git checkout -B "${GITHUB_REF_NAME}"
 
       - name: Discover new documents
         if: inputs.session_number == ''
@@ -129,12 +134,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install dependencies
         run: |
           apt-get update && apt-get install -y --no-install-recommends git
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
           pip install --cache-dir ${{ env.PIP_CACHE_DIR }} -e .
+
+      - name: Ensure branch checkout
+        run: git checkout -B "${GITHUB_REF_NAME}"
 
       - name: Extract document content
         run: |
@@ -230,12 +240,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install dependencies
         run: |
           apt-get update && apt-get install -y --no-install-recommends git
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
           pip install --cache-dir ${{ env.PIP_CACHE_DIR }} -e .
+
+      - name: Ensure branch checkout
+        run: git checkout -B "${GITHUB_REF_NAME}"
 
       - name: Run signal detection
         run: |
@@ -347,12 +362,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install dependencies
         run: |
           apt-get update && apt-get install -y --no-install-recommends git
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
           pip install --cache-dir ${{ env.PIP_CACHE_DIR }} -e .
+
+      - name: Ensure branch checkout
+        run: git checkout -B "${GITHUB_REF_NAME}"
 
       - name: Run document linking
         run: |
@@ -445,12 +465,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install dependencies
         run: |
           apt-get update && apt-get install -y --no-install-recommends git
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
           pip install --cache-dir ${{ env.PIP_CACHE_DIR }} -e .
+
+      - name: Ensure branch checkout
+        run: git checkout -B "${GITHUB_REF_NAME}"
 
       - name: Generate unified signals explorer
         env:

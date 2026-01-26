@@ -25,6 +25,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -34,6 +36,9 @@ jobs:
 
       - name: Install dependencies
         run: pip install -e .
+
+      - name: Ensure branch checkout
+        run: git checkout -B "${GITHUB_REF_NAME}"
 
       - name: Discover new documents
         if: github.event.inputs.session_number == ''
