@@ -1,10 +1,10 @@
 {
-  "run_id": "21336401317",
+  "run_id": "21345506611",
   "run_attempt": "1",
-  "event_name": "workflow_dispatch",
-  "ref": "refs/heads/main",
-  "ref_name": "main",
-  "sha": "40cbaf389e13333ca0212610f76dd80b07aeffd1",
+  "event_name": "schedule",
+  "ref": "refs/heads/master",
+  "ref_name": "master",
+  "sha": "ae8d055efd056fd8ca5257fd4c883af3295415e1",
   "actor": "wannli",
   "timestamp_utc": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
   "session_number": ""
