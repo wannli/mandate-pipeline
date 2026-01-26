@@ -13,6 +13,8 @@ from .generation import (
     generate_site_verbose,
     generate_session_unified_signals_page,
     generate_igov_signals_page,
+    generate_consolidated_signals_page,
+    load_all_documents,
 )
 from .detection import load_checks, run_checks
 from .extractor import (
@@ -384,6 +386,35 @@ def main():
         help="Enable verbose logging",
     )
 
+    # Consolidated signals browser command
+    consolidated_parser = subparsers.add_parser(
+        "consolidated-signals",
+        help="Generate consolidated signal browser (resolutions, proposals, and IGov decisions)",
+    )
+    consolidated_parser.add_argument(
+        "--config",
+        type=Path,
+        default=Path("./config"),
+        help="Path to config directory (default: ./config)",
+    )
+    consolidated_parser.add_argument(
+        "--data",
+        type=Path,
+        default=Path("./data"),
+        help="Path to data directory (default: ./data)",
+    )
+    consolidated_parser.add_argument(
+        "--output",
+        type=Path,
+        default=Path("./docs"),
+        help="Output directory (default: ./docs)",
+    )
+    consolidated_parser.add_argument(
+        "--verbose", "-v",
+        action="store_true",
+        help="Enable verbose logging",
+    )
+
     # Download resolutions command (deprecated - keeping for compatibility)
     download_parser = subparsers.add_parser(
         "download-resolutions",
@@ -486,6 +517,8 @@ def main():
         cmd_igov_sync(args)
     elif args.command == "igov-signals":
         cmd_igov_signals(args)
+    elif args.command == "consolidated-signals":
+        cmd_consolidated_signals(args)
     elif args.command == "download-resolutions":
         # Deprecated command - redirect to download-session
         gh_warning("Command 'download-resolutions' is deprecated. Use 'download-session' instead.")
@@ -932,6 +965,43 @@ def cmd_igov_signals(args):
     print(f"Decisions processed: {result['total_decisions']}")
     print(f"Decisions with signals: {result['decisions_with_signals']}")
     print(f"Signal paragraphs: {result['total_signal_paragraphs']}")
+    gh_group_end()
+
+    return result
+
+
+def cmd_consolidated_signals(args):
+    """Generate the consolidated signal browser (resolutions, proposals, and IGov decisions)."""
+    verbose = args.verbose or is_github_actions()
+
+    checks = load_checks(args.config / "checks.yaml")
+
+    gh_group_start("Consolidated Signal Browser")
+    print(f"Config directory: {args.config}")
+    print(f"Data directory: {args.data}")
+    print(f"Output directory: {args.output}")
+    print(f"Verbose: {verbose}")
+    gh_group_end()
+
+    # Load documents
+    gh_group_start("Loading Documents")
+    documents = load_all_documents(args.data, checks)
+    print(f"Loaded {len(documents)} documents")
+    gh_group_end()
+
+    result = generate_consolidated_signals_page(
+        documents=documents,
+        checks=checks,
+        data_dir=args.data,
+        output_dir=args.output,
+    )
+
+    gh_group_start("Consolidated Signal Browser Summary")
+    print(f"Total documents: {result['total_documents']}")
+    print(f"Resolutions: {result['resolution_count']}")
+    print(f"Proposals: {result['proposal_count']}")
+    print(f"Decisions: {result['decision_count']}")
+    print(f"Signal paragraphs: {result['total_paragraphs']}")
     gh_group_end()
 
     return result
