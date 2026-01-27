@@ -180,12 +180,33 @@ jobs:
           metrics['signal_type_counts'] = signal_type_counts
           metrics['total_duration_seconds'] = round(time.time() - total_start, 2)
 
+          # Write metrics to file for shell to read
+          with open('/tmp/detect_metrics.txt', 'w') as f:
+              f.write(f'documents_to_process={metrics[\"documents_to_process\"]}\n')
+              f.write(f'documents_processed={processed_count}\n')
+              f.write(f'documents_errors={error_count}\n')
+              f.write(f'total_signals_found={total_signals_found}\n')
+              f.write(f'checks_count={metrics[\"checks_count\"]}\n')
+              f.write(f'config_changed={config_changed}\n')
+              # Write signal breakdown
+              for sig, count in signal_type_counts.items():
+                  f.write(f'signal_{sig}={count}\n')
+
           print('::group::Detection Metrics')
           for key, value in metrics.items():
               print(f'{key}={value}')
           print('::endgroup::')
           "
+
+          # Read metrics into env vars
+          if [ -f /tmp/detect_metrics.txt ]; then
+            while IFS='=' read -r key value; do
+              echo "DETECT_${key^^}=$value" >> $GITHUB_ENV
+            done < /tmp/detect_metrics.txt
+          fi
+
           DURATION=$(($(date +%s) - $STEP_START))
+          echo "DETECT_STEP_DURATION=$DURATION" >> $GITHUB_ENV
           echo "::notice::step=detect duration_seconds=$DURATION"
 
       - name: Commit detection results
@@ -194,23 +215,70 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/detected/
+
+          DETECTED_SIZE=$(du -sh data/detected 2>/dev/null | cut -f1 || echo "0")
+          DETECTED_COUNT=$(ls -1 data/detected/*.json 2>/dev/null | wc -l || echo 0)
+          echo "DETECTED_SIZE=$DETECTED_SIZE" >> $GITHUB_ENV
+          echo "DETECTED_COUNT=$DETECTED_COUNT" >> $GITHUB_ENV
+
           if git diff --staged --quiet; then
+            echo "COMMIT_RESULT=no_changes" >> $GITHUB_ENV
             echo "::notice::step=commit result=no_changes"
           else
+            FILES_CHANGED=$(git diff --staged --numstat | wc -l)
+            echo "COMMIT_RESULT=pushed" >> $GITHUB_ENV
+            echo "FILES_CHANGED=$FILES_CHANGED" >> $GITHUB_ENV
             git commit -m "chore: detect signals in documents"
             git pull --rebase origin "${GITHUB_REF_NAME}" || true
             git push
-            echo "::notice::step=commit result=pushed"
+            echo "::notice::step=commit result=pushed files_changed=$FILES_CHANGED"
           fi
           DURATION=$(($(date +%s) - $STEP_START))
-          echo "::notice::step=commit duration_seconds=$DURATION"
+          echo "COMMIT_DURATION=$DURATION" >> $GITHUB_ENV
 
-      - name: Log workflow completion
+      - name: Write workflow summary
+        if: always()
         run: |
           TOTAL_DURATION=$(($(date +%s) - $WORKFLOW_START))
-          echo "::group::Workflow Summary"
-          echo "workflow_name=detect"
-          echo "run_id=${{ github.run_id }}"
-          echo "total_duration_seconds=$TOTAL_DURATION"
-          echo "completed_at=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
-          echo "::endgroup::"
+
+          cat >> $GITHUB_STEP_SUMMARY << EOF
+          ## 🔍 Detect Workflow Summary
+
+          **Run:** #${{ github.run_number }} | **Trigger:** \`${{ github.event_name }}\` | **Duration:** ${TOTAL_DURATION}s
+
+          ### 📊 Signal Detection
+          | Metric | Value |
+          |--------|-------|
+          | Documents to Process | ${DETECT_DOCUMENTS_TO_PROCESS:-0} |
+          | **Documents Processed** | **${DETECT_DOCUMENTS_PROCESSED:-0}** |
+          | Detection Errors | ${DETECT_DOCUMENTS_ERRORS:-0} |
+          | Config Changed | ${DETECT_CONFIG_CHANGED:-false} |
+          | Signal Checks Loaded | ${DETECT_CHECKS_COUNT:-0} |
+          | Detection Duration | ${DETECT_STEP_DURATION:-N/A}s |
+
+          ### 📈 Signals Found
+          | Metric | Value |
+          |--------|-------|
+          | **Total Signal Matches** | **${DETECT_TOTAL_SIGNALS_FOUND:-0}** |
+          | Agenda Signals | ${DETECT_SIGNAL_AGENDA:-0} |
+          | PGA Signals | ${DETECT_SIGNAL_PGA:-0} |
+          | Process Signals | ${DETECT_SIGNAL_PROCESS:-0} |
+          | Report Signals | ${DETECT_SIGNAL_REPORT:-0} |
+
+          ### 📦 Output
+          | Metric | Value |
+          |--------|-------|
+          | Total Detected Files | ${DETECTED_COUNT:-N/A} |
+          | Detected Data Size | ${DETECTED_SIZE:-N/A} |
+
+          ### 📤 Commit Status
+          | Metric | Value |
+          |--------|-------|
+          | Result | ${COMMIT_RESULT:-N/A} |
+          | Files Changed | ${FILES_CHANGED:-0} |
+
+          ---
+          *Completed at $(date -u +%Y-%m-%dT%H:%M:%SZ)*
+          EOF
+
+          echo "::notice::workflow=detect total_duration=$TOTAL_DURATION docs_processed=${DETECT_DOCUMENTS_PROCESSED:-0} signals=${DETECT_TOTAL_SIGNALS_FOUND:-0}"

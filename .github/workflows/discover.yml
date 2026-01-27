@@ -72,10 +72,22 @@ jobs:
         run: |
           STEP_START=$(date +%s)
           PDF_COUNT_BEFORE=$(ls -1 data/pdfs/*.pdf 2>/dev/null | wc -l || echo 0)
+          PDF_SIZE_BEFORE=$(du -sh data/pdfs 2>/dev/null | cut -f1 || echo "0")
+
           python -m mandate_pipeline.cli discover --config ./config --data ./data --verbose
+
           PDF_COUNT_AFTER=$(ls -1 data/pdfs/*.pdf 2>/dev/null | wc -l || echo 0)
+          PDF_SIZE_AFTER=$(du -sh data/pdfs 2>/dev/null | cut -f1 || echo "0")
           NEW_PDFS=$((PDF_COUNT_AFTER - PDF_COUNT_BEFORE))
           DURATION=$(($(date +%s) - $STEP_START))
+
+          # Save metrics for summary
+          echo "DISCOVER_DURATION=$DURATION" >> $GITHUB_ENV
+          echo "PDF_COUNT_BEFORE=$PDF_COUNT_BEFORE" >> $GITHUB_ENV
+          echo "PDF_COUNT_AFTER=$PDF_COUNT_AFTER" >> $GITHUB_ENV
+          echo "PDF_SIZE_AFTER=$PDF_SIZE_AFTER" >> $GITHUB_ENV
+          echo "NEW_PDFS=$NEW_PDFS" >> $GITHUB_ENV
+
           echo "::notice::step=discover duration_seconds=$DURATION pdfs_before=$PDF_COUNT_BEFORE pdfs_after=$PDF_COUNT_AFTER new_pdfs=$NEW_PDFS"
 
       - name: Record discovery run metadata
@@ -96,9 +108,17 @@ jobs:
       - name: Sync IGov decisions
         run: |
           STEP_START=$(date +%s)
+          IGOV_COUNT_BEFORE=$(ls -1 data/igov/state/*.json 2>/dev/null | wc -l || echo 0)
+
           python -m mandate_pipeline.cli igov-sync --config ./config --data ./data --verbose
+
+          IGOV_COUNT_AFTER=$(ls -1 data/igov/state/*.json 2>/dev/null | wc -l || echo 0)
           DURATION=$(($(date +%s) - $STEP_START))
-          echo "::notice::step=igov_sync duration_seconds=$DURATION"
+
+          echo "IGOV_SYNC_DURATION=$DURATION" >> $GITHUB_ENV
+          echo "IGOV_COUNT=$IGOV_COUNT_AFTER" >> $GITHUB_ENV
+
+          echo "::notice::step=igov_sync duration_seconds=$DURATION igov_sessions=$IGOV_COUNT_AFTER"
 
       - name: Record IGov sync metadata
         run: |
@@ -126,7 +146,12 @@ jobs:
             --output "docs/igov" \
             --verbose
           DURATION=$(($(date +%s) - $STEP_START))
-          echo "::notice::step=igov_signals duration_seconds=$DURATION"
+
+          IGOV_HTML_SIZE=$(du -sh docs/igov 2>/dev/null | cut -f1 || echo "0")
+          echo "IGOV_GENERATE_DURATION=$DURATION" >> $GITHUB_ENV
+          echo "IGOV_HTML_SIZE=$IGOV_HTML_SIZE" >> $GITHUB_ENV
+
+          echo "::notice::step=igov_signals duration_seconds=$DURATION output_size=$IGOV_HTML_SIZE"
 
       - name: Commit changes
         run: |
@@ -134,23 +159,58 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/ docs/igov
+
           if git diff --staged --quiet; then
+            echo "COMMIT_RESULT=no_changes" >> $GITHUB_ENV
             echo "::notice::step=commit result=no_changes"
           else
+            FILES_CHANGED=$(git diff --staged --numstat | wc -l)
+            echo "COMMIT_RESULT=pushed" >> $GITHUB_ENV
+            echo "FILES_CHANGED=$FILES_CHANGED" >> $GITHUB_ENV
             git commit -m "chore: discover documents and sync IGov ($(date -I))"
             git pull --rebase origin "${GITHUB_REF_NAME}" || true
             git push
-            echo "::notice::step=commit result=pushed"
+            echo "::notice::step=commit result=pushed files_changed=$FILES_CHANGED"
           fi
           DURATION=$(($(date +%s) - $STEP_START))
-          echo "::notice::step=commit duration_seconds=$DURATION"
+          echo "COMMIT_DURATION=$DURATION" >> $GITHUB_ENV
 
-      - name: Log workflow completion
+      - name: Write workflow summary
+        if: always()
         run: |
           TOTAL_DURATION=$(($(date +%s) - $WORKFLOW_START))
-          echo "::group::Workflow Summary"
-          echo "workflow_name=discover"
-          echo "run_id=${{ github.run_id }}"
-          echo "total_duration_seconds=$TOTAL_DURATION"
-          echo "completed_at=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
-          echo "::endgroup::"
+
+          cat >> $GITHUB_STEP_SUMMARY << EOF
+          ## 📥 Discover + IGov Workflow Summary
+
+          **Run:** #${{ github.run_number }} | **Trigger:** \`${{ github.event_name }}\` | **Duration:** ${TOTAL_DURATION}s
+
+          ### 📄 Document Discovery
+          | Metric | Value |
+          |--------|-------|
+          | PDFs Before | ${PDF_COUNT_BEFORE:-N/A} |
+          | PDFs After | ${PDF_COUNT_AFTER:-N/A} |
+          | **New PDFs Downloaded** | **${NEW_PDFS:-0}** |
+          | Total PDF Size | ${PDF_SIZE_AFTER:-N/A} |
+          | Discovery Duration | ${DISCOVER_DURATION:-N/A}s |
+
+          ### 🏛️ IGov Sync
+          | Metric | Value |
+          |--------|-------|
+          | Sessions Synced | ${IGOV_COUNT:-N/A} |
+          | Sync Duration | ${IGOV_SYNC_DURATION:-N/A}s |
+          | Browser Generation | ${IGOV_GENERATE_DURATION:-N/A}s |
+          | Output Size | ${IGOV_HTML_SIZE:-N/A} |
+
+          ### 📤 Commit Status
+          | Metric | Value |
+          |--------|-------|
+          | Result | ${COMMIT_RESULT:-N/A} |
+          | Files Changed | ${FILES_CHANGED:-0} |
+          | Commit Duration | ${COMMIT_DURATION:-N/A}s |
+
+          ---
+          *Completed at $(date -u +%Y-%m-%dT%H:%M:%SZ)*
+          EOF
+
+          echo "::notice::workflow=discover total_duration=$TOTAL_DURATION new_pdfs=${NEW_PDFS:-0} commit=${COMMIT_RESULT:-N/A}"

@@ -154,7 +154,15 @@ jobs:
               if (output_dir / 'data.json').exists():
                   metrics['data_json_bytes'] = (output_dir / 'data.json').stat().st_size
 
+          # Count documents with signals
+          docs_with_signals = len([d for d in documents if d.get('signal_summary')])
+          metrics['documents_with_signals'] = docs_with_signals
           metrics['total_duration_seconds'] = round(time.time() - total_start, 2)
+
+          # Write metrics to file for shell to read
+          with open('/tmp/generate_metrics.txt', 'w') as f:
+              for key, value in metrics.items():
+                  f.write(f'{key}={value}\n')
 
           # Output metrics as structured log
           print('::group::Build Metrics')
@@ -166,7 +174,16 @@ jobs:
           with open('docs/build-metrics.json', 'w') as f:
               json.dump(metrics, f, indent=2)
           "
+
+          # Read metrics into env vars
+          if [ -f /tmp/generate_metrics.txt ]; then
+            while IFS='=' read -r key value; do
+              echo "GEN_${key^^}=$value" >> $GITHUB_ENV
+            done < /tmp/generate_metrics.txt
+          fi
+
           DURATION=$(($(date +%s) - $STEP_START))
+          echo "GEN_STEP_DURATION=$DURATION" >> $GITHUB_ENV
           echo "::notice::step=generate_site duration_seconds=$DURATION"
 
       - name: Commit site changes
@@ -175,16 +192,28 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/
+
+          DOCS_SIZE=$(du -sh docs/ 2>/dev/null | cut -f1 || echo "0")
+          DOCS_FILE_COUNT=$(find docs/ -type f | wc -l)
+          INDEX_SIZE=$(stat -c%s docs/index.html 2>/dev/null || echo 0)
+          echo "DOCS_SIZE=$DOCS_SIZE" >> $GITHUB_ENV
+          echo "DOCS_FILE_COUNT=$DOCS_FILE_COUNT" >> $GITHUB_ENV
+          echo "INDEX_SIZE=$INDEX_SIZE" >> $GITHUB_ENV
+
           if git diff --staged --quiet; then
+            echo "COMMIT_RESULT=no_changes" >> $GITHUB_ENV
             echo "::notice::step=commit result=no_changes"
           else
+            FILES_CHANGED=$(git diff --staged --numstat | wc -l)
+            echo "COMMIT_RESULT=pushed" >> $GITHUB_ENV
+            echo "FILES_CHANGED=$FILES_CHANGED" >> $GITHUB_ENV
             git commit -m "chore: generate static site"
             git pull --rebase origin "${GITHUB_REF_NAME}" || true
             git push
-            echo "::notice::step=commit result=pushed"
+            echo "::notice::step=commit result=pushed files_changed=$FILES_CHANGED"
           fi
           DURATION=$(($(date +%s) - $STEP_START))
-          echo "::notice::step=commit duration_seconds=$DURATION"
+          echo "COMMIT_DURATION=$DURATION" >> $GITHUB_ENV
 
       - name: Setup Pages
         id: setup-pages
@@ -195,6 +224,7 @@ jobs:
       - name: Log Pages setup duration
         run: |
           DURATION=$(($(date +%s) - $STEP_START))
+          echo "PAGES_SETUP_DURATION=$DURATION" >> $GITHUB_ENV
           echo "::notice::step=setup_pages duration_seconds=$DURATION"
 
       - name: Upload artifact
@@ -208,7 +238,7 @@ jobs:
       - name: Log upload duration
         run: |
           DURATION=$(($(date +%s) - $STEP_START))
-          DOCS_SIZE=$(du -sh docs/ | cut -f1)
+          echo "UPLOAD_DURATION=$DURATION" >> $GITHUB_ENV
           echo "::notice::step=upload_artifact duration_seconds=$DURATION docs_size=$DOCS_SIZE"
 
       - name: Deploy to GitHub Pages
@@ -218,15 +248,51 @@ jobs:
       - uses: actions/deploy-pages@v4
         id: deploy-pages
 
-      - name: Log workflow completion
+      - name: Write workflow summary
+        if: always()
         run: |
           DEPLOY_DURATION=$(($(date +%s) - $STEP_START))
           TOTAL_DURATION=$(($(date +%s) - $WORKFLOW_START))
-          echo "::notice::step=deploy_pages duration_seconds=$DEPLOY_DURATION"
-          echo "::group::Workflow Summary"
-          echo "workflow_name=generate"
-          echo "run_id=${{ github.run_id }}"
-          echo "total_duration_seconds=$TOTAL_DURATION"
-          echo "completed_at=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
-          echo "pages_url=${{ steps.deploy-pages.outputs.page_url }}"
-          echo "::endgroup::"
+
+          # Format bytes to human readable
+          INDEX_SIZE_KB=$((${INDEX_SIZE:-0} / 1024))
+
+          cat >> $GITHUB_STEP_SUMMARY << EOF
+          ## 🚀 Generate Workflow Summary
+
+          **Run:** #${{ github.run_number }} | **Trigger:** \`${{ github.event_name }}\` | **Duration:** ${TOTAL_DURATION}s
+
+          ### 📄 Site Generation
+          | Metric | Value |
+          |--------|-------|
+          | **Documents Loaded** | **${GEN_DOCUMENTS_LOADED:-0}** |
+          | Documents with Signals | ${GEN_DOCUMENTS_WITH_SIGNALS:-0} |
+          | Signal Checks | ${GEN_CHECKS_LOADED:-0} |
+          | Generation Duration | ${GEN_STEP_DURATION:-N/A}s |
+
+          ### 📦 Output Files
+          | Metric | Value |
+          |--------|-------|
+          | Total Site Size | ${DOCS_SIZE:-N/A} |
+          | Total Files | ${DOCS_FILE_COUNT:-N/A} |
+          | index.html Size | ${INDEX_SIZE_KB:-N/A} KB |
+
+          ### 🌐 Deployment
+          | Metric | Value |
+          |--------|-------|
+          | Pages Setup | ${PAGES_SETUP_DURATION:-N/A}s |
+          | Upload | ${UPLOAD_DURATION:-N/A}s |
+          | Deploy | ${DEPLOY_DURATION:-N/A}s |
+          | **Pages URL** | ${{ steps.deploy-pages.outputs.page_url }} |
+
+          ### 📤 Commit Status
+          | Metric | Value |
+          |--------|-------|
+          | Result | ${COMMIT_RESULT:-N/A} |
+          | Files Changed | ${FILES_CHANGED:-0} |
+
+          ---
+          *Completed at $(date -u +%Y-%m-%dT%H:%M:%SZ)*
+          EOF
+
+          echo "::notice::workflow=generate total_duration=$TOTAL_DURATION docs_loaded=${GEN_DOCUMENTS_LOADED:-0} site_size=${DOCS_SIZE:-N/A}"

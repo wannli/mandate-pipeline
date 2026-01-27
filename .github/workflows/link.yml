@@ -156,14 +156,32 @@ jobs:
           metrics['documents_linked'] = len(linked_documents)
           metrics['resolutions'] = doc_type_counts['resolution']
           metrics['proposals'] = doc_type_counts['proposal']
+          metrics['other'] = doc_type_counts['other']
           metrics['total_duration_seconds'] = round(time.time() - total_start, 2)
+
+          # Write metrics to file for shell to read
+          with open('/tmp/link_metrics.txt', 'w') as f:
+              f.write(f'documents_loaded={metrics[\"documents_loaded\"]}\n')
+              f.write(f'documents_linked={len(linked_documents)}\n')
+              f.write(f'resolutions={doc_type_counts[\"resolution\"]}\n')
+              f.write(f'proposals={doc_type_counts[\"proposal\"]}\n')
+              f.write(f'other={doc_type_counts[\"other\"]}\n')
 
           print('::group::Linking Metrics')
           for key, value in metrics.items():
               print(f'{key}={value}')
           print('::endgroup::')
           "
+
+          # Read metrics into env vars
+          if [ -f /tmp/link_metrics.txt ]; then
+            while IFS='=' read -r key value; do
+              echo "LINK_${key^^}=$value" >> $GITHUB_ENV
+            done < /tmp/link_metrics.txt
+          fi
+
           DURATION=$(($(date +%s) - $STEP_START))
+          echo "LINK_STEP_DURATION=$DURATION" >> $GITHUB_ENV
           echo "::notice::step=link duration_seconds=$DURATION"
 
       - name: Commit linking results
@@ -172,23 +190,65 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/linked/
+
+          LINKED_SIZE=$(du -sh data/linked 2>/dev/null | cut -f1 || echo "0")
+          LINKED_COUNT=$(ls -1 data/linked/*.json 2>/dev/null | wc -l || echo 0)
+          echo "LINKED_SIZE=$LINKED_SIZE" >> $GITHUB_ENV
+          echo "LINKED_COUNT=$LINKED_COUNT" >> $GITHUB_ENV
+
           if git diff --staged --quiet; then
+            echo "COMMIT_RESULT=no_changes" >> $GITHUB_ENV
             echo "::notice::step=commit result=no_changes"
           else
+            FILES_CHANGED=$(git diff --staged --numstat | wc -l)
+            echo "COMMIT_RESULT=pushed" >> $GITHUB_ENV
+            echo "FILES_CHANGED=$FILES_CHANGED" >> $GITHUB_ENV
             git commit -m "chore: link related documents"
             git pull --rebase origin "${GITHUB_REF_NAME}" || true
             git push
-            echo "::notice::step=commit result=pushed"
+            echo "::notice::step=commit result=pushed files_changed=$FILES_CHANGED"
           fi
           DURATION=$(($(date +%s) - $STEP_START))
-          echo "::notice::step=commit duration_seconds=$DURATION"
+          echo "COMMIT_DURATION=$DURATION" >> $GITHUB_ENV
 
-      - name: Log workflow completion
+      - name: Write workflow summary
+        if: always()
         run: |
           TOTAL_DURATION=$(($(date +%s) - $WORKFLOW_START))
-          echo "::group::Workflow Summary"
-          echo "workflow_name=link"
-          echo "run_id=${{ github.run_id }}"
-          echo "total_duration_seconds=$TOTAL_DURATION"
-          echo "completed_at=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
-          echo "::endgroup::"
+
+          cat >> $GITHUB_STEP_SUMMARY << EOF
+          ## 🔗 Link Workflow Summary
+
+          **Run:** #${{ github.run_number }} | **Trigger:** \`${{ github.event_name }}\` | **Duration:** ${TOTAL_DURATION}s
+
+          ### 📊 Document Linking
+          | Metric | Value |
+          |--------|-------|
+          | Documents Loaded | ${LINK_DOCUMENTS_LOADED:-0} |
+          | **Documents Linked** | **${LINK_DOCUMENTS_LINKED:-0}** |
+          | Linking Duration | ${LINK_STEP_DURATION:-N/A}s |
+
+          ### 📁 Document Types
+          | Type | Count |
+          |------|-------|
+          | Resolutions | ${LINK_RESOLUTIONS:-0} |
+          | Proposals | ${LINK_PROPOSALS:-0} |
+          | Other | ${LINK_OTHER:-0} |
+
+          ### 📦 Output
+          | Metric | Value |
+          |--------|-------|
+          | Total Linked Files | ${LINKED_COUNT:-N/A} |
+          | Linked Data Size | ${LINKED_SIZE:-N/A} |
+
+          ### 📤 Commit Status
+          | Metric | Value |
+          |--------|-------|
+          | Result | ${COMMIT_RESULT:-N/A} |
+          | Files Changed | ${FILES_CHANGED:-0} |
+
+          ---
+          *Completed at $(date -u +%Y-%m-%dT%H:%M:%SZ)*
+          EOF
+
+          echo "::notice::workflow=link total_duration=$TOTAL_DURATION docs_linked=${LINK_DOCUMENTS_LINKED:-0} resolutions=${LINK_RESOLUTIONS:-0} proposals=${LINK_PROPOSALS:-0}"
