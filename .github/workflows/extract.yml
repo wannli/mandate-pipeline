@@ -17,38 +17,71 @@ jobs:
     name: Extract
     runs-on: ubuntu-latest
     steps:
+      - name: Log workflow start
+        run: |
+          echo "::group::Workflow Metadata"
+          echo "workflow_name=extract"
+          echo "run_id=${{ github.run_id }}"
+          echo "run_number=${{ github.run_number }}"
+          echo "event_name=${{ github.event_name }}"
+          echo "ref=${{ github.ref_name }}"
+          echo "started_at=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          echo "::endgroup::"
+          echo "WORKFLOW_START=$(date +%s)" >> $GITHUB_ENV
+
       - name: Checkout
-        uses: actions/checkout@v4
+        run: echo "STEP_START=$(date +%s)" >> $GITHUB_ENV
+
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
+      - name: Log checkout duration
+        run: |
+          DURATION=$(($(date +%s) - $STEP_START))
+          echo "::notice::step=checkout duration_seconds=$DURATION"
+
       - name: Set up Python
-        uses: actions/setup-python@v5
+        run: echo "STEP_START=$(date +%s)" >> $GITHUB_ENV
+
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
           cache: 'pip'
 
+      - name: Log Python setup duration
+        run: |
+          DURATION=$(($(date +%s) - $STEP_START))
+          echo "::notice::step=setup_python duration_seconds=$DURATION"
+
       - name: Install dependencies
         run: |
+          STEP_START=$(date +%s)
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
           pip install -e .
+          DURATION=$(($(date +%s) - $STEP_START))
+          echo "::notice::step=install_dependencies duration_seconds=$DURATION"
 
       - name: Ensure branch checkout
         run: git checkout -B "${GITHUB_REF_NAME}"
 
       - name: Extract document content
         run: |
+          STEP_START=$(date +%s)
           python -c "
           import sys
           import os
+          import time
           from pathlib import Path
           sys.path.insert(0, 'src')
           from mandate_pipeline.extractor import extract_text, extract_operative_paragraphs, extract_title, extract_agenda_items, find_symbol_references
           import json
           import subprocess
 
-          print('Finding PDFs to process...')
+          total_start = time.time()
+          metrics = {'step': 'extract'}
 
+          print('::group::Find PDFs')
           if os.environ.get('GITHUB_EVENT_NAME') == 'push':
               try:
                   result = subprocess.run(['git', 'diff', '--name-only', 'HEAD~1', 'HEAD', '--', 'data/pdfs/*.pdf'],
@@ -61,13 +94,19 @@ jobs:
               changed_files = [str(f) for f in pdf_dir.rglob('*.pdf')] if pdf_dir.exists() else []
 
           pdf_files = [f for f in changed_files if f.strip()]
+          metrics['pdfs_to_process'] = len(pdf_files)
           print(f'Found {len(pdf_files)} PDFs to process')
+          print('::endgroup::')
 
           if not pdf_files:
               print('No PDFs to process')
               exit(0)
 
+          print('::group::Extract PDFs')
           processed_count = 0
+          error_count = 0
+          total_paragraphs = 0
+
           for pdf_path_str in pdf_files:
               pdf_path = Path(pdf_path_str)
               if not pdf_path.exists():
@@ -75,7 +114,7 @@ jobs:
                   continue
 
               try:
-                  print(f'Extracting: {pdf_path.name}')
+                  pdf_start = time.time()
                   text = extract_text(pdf_path)
                   paragraphs = extract_operative_paragraphs(text)
                   title = extract_title(text)
@@ -98,25 +137,54 @@ jobs:
                   with open(output_file, 'w') as f:
                       json.dump(extracted, f, indent=2)
 
-                  print(f'Extracted to: {output_file}')
+                  pdf_duration = time.time() - pdf_start
+                  total_paragraphs += len(paragraphs)
+                  print(f'Extracted {pdf_path.name}: {len(paragraphs)} paragraphs in {pdf_duration:.2f}s')
                   processed_count += 1
 
               except Exception as e:
                   print(f'Error processing {pdf_path}: {e}')
+                  error_count += 1
                   continue
 
-          print(f'Successfully processed {processed_count} PDFs')
+          print('::endgroup::')
+
+          metrics['pdfs_processed'] = processed_count
+          metrics['pdfs_errors'] = error_count
+          metrics['total_paragraphs'] = total_paragraphs
+          metrics['total_duration_seconds'] = round(time.time() - total_start, 2)
+
+          print('::group::Extraction Metrics')
+          for key, value in metrics.items():
+              print(f'{key}={value}')
+          print('::endgroup::')
           "
+          DURATION=$(($(date +%s) - $STEP_START))
+          echo "::notice::step=extract duration_seconds=$DURATION"
 
       - name: Commit extraction results
         run: |
+          STEP_START=$(date +%s)
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/extracted/
           if git diff --staged --quiet; then
-            echo "No extraction changes to commit"
+            echo "::notice::step=commit result=no_changes"
           else
             git commit -m "chore: extract document content"
             git pull --rebase origin "${GITHUB_REF_NAME}" || true
             git push
+            echo "::notice::step=commit result=pushed"
           fi
+          DURATION=$(($(date +%s) - $STEP_START))
+          echo "::notice::step=commit duration_seconds=$DURATION"
+
+      - name: Log workflow completion
+        run: |
+          TOTAL_DURATION=$(($(date +%s) - $WORKFLOW_START))
+          echo "::group::Workflow Summary"
+          echo "workflow_name=extract"
+          echo "run_id=${{ github.run_id }}"
+          echo "total_duration_seconds=$TOTAL_DURATION"
+          echo "completed_at=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          echo "::endgroup::"

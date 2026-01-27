@@ -2,9 +2,11 @@ name: Discover + IGov
 
 on:
   schedule:
-    - cron: '0 * * * *'
-    - cron: '30 * * * *'
-  workflow_dispatch: 
+    # Run at :00 and :30, but only between 7am-9pm NY time
+    # NY is UTC-5 (EST) or UTC-4 (EDT), so 7am-9pm NY = ~11:00-02:00 UTC
+    - cron: '0,30 11-23 * * *'
+    - cron: '0,30 0-1 * * *'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -18,27 +20,63 @@ jobs:
     name: Discover + IGov
     runs-on: ubuntu-latest
     steps:
+      - name: Log workflow start
+        run: |
+          echo "::group::Workflow Metadata"
+          echo "workflow_name=discover"
+          echo "run_id=${{ github.run_id }}"
+          echo "run_number=${{ github.run_number }}"
+          echo "event_name=${{ github.event_name }}"
+          echo "ref=${{ github.ref_name }}"
+          echo "started_at=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          echo "::endgroup::"
+          echo "WORKFLOW_START=$(date +%s)" >> $GITHUB_ENV
+
       - name: Checkout
-        uses: actions/checkout@v4
+        run: echo "STEP_START=$(date +%s)" >> $GITHUB_ENV
+
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
+      - name: Log checkout duration
+        run: |
+          DURATION=$(($(date +%s) - $STEP_START))
+          echo "::notice::step=checkout duration_seconds=$DURATION"
+
       - name: Set up Python
-        uses: actions/setup-python@v5
+        run: echo "STEP_START=$(date +%s)" >> $GITHUB_ENV
+
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
           cache: 'pip'
 
+      - name: Log Python setup duration
+        run: |
+          DURATION=$(($(date +%s) - $STEP_START))
+          echo "::notice::step=setup_python duration_seconds=$DURATION"
+
       - name: Install dependencies
         run: |
+          STEP_START=$(date +%s)
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
           pip install -e .
+          DURATION=$(($(date +%s) - $STEP_START))
+          echo "::notice::step=install_dependencies duration_seconds=$DURATION"
 
       - name: Ensure branch checkout
         run: git checkout -B "${GITHUB_REF_NAME}"
 
       - name: Discover new documents
-        run: python -m mandate_pipeline.cli discover --config ./config --data ./data --verbose
+        run: |
+          STEP_START=$(date +%s)
+          PDF_COUNT_BEFORE=$(ls -1 data/pdfs/*.pdf 2>/dev/null | wc -l || echo 0)
+          python -m mandate_pipeline.cli discover --config ./config --data ./data --verbose
+          PDF_COUNT_AFTER=$(ls -1 data/pdfs/*.pdf 2>/dev/null | wc -l || echo 0)
+          NEW_PDFS=$((PDF_COUNT_AFTER - PDF_COUNT_BEFORE))
+          DURATION=$(($(date +%s) - $STEP_START))
+          echo "::notice::step=discover duration_seconds=$DURATION pdfs_before=$PDF_COUNT_BEFORE pdfs_after=$PDF_COUNT_AFTER new_pdfs=$NEW_PDFS"
 
       - name: Record discovery run metadata
         run: |
@@ -56,7 +94,11 @@ jobs:
           EOF
 
       - name: Sync IGov decisions
-        run: python -m mandate_pipeline.cli igov-sync --config ./config --data ./data --verbose
+        run: |
+          STEP_START=$(date +%s)
+          python -m mandate_pipeline.cli igov-sync --config ./config --data ./data --verbose
+          DURATION=$(($(date +%s) - $STEP_START))
+          echo "::notice::step=igov_sync duration_seconds=$DURATION"
 
       - name: Record IGov sync metadata
         run: |
@@ -77,21 +119,38 @@ jobs:
 
       - name: Generate IGov signal browser
         run: |
+          STEP_START=$(date +%s)
           python -m mandate_pipeline.cli igov-signals \
             --config ./config \
             --data ./data \
             --output "docs/igov" \
             --verbose
+          DURATION=$(($(date +%s) - $STEP_START))
+          echo "::notice::step=igov_signals duration_seconds=$DURATION"
 
       - name: Commit changes
         run: |
+          STEP_START=$(date +%s)
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/ docs/igov
           if git diff --staged --quiet; then
-            echo "No changes to commit"
+            echo "::notice::step=commit result=no_changes"
           else
             git commit -m "chore: discover documents and sync IGov ($(date -I))"
             git pull --rebase origin "${GITHUB_REF_NAME}" || true
             git push
+            echo "::notice::step=commit result=pushed"
           fi
+          DURATION=$(($(date +%s) - $STEP_START))
+          echo "::notice::step=commit duration_seconds=$DURATION"
+
+      - name: Log workflow completion
+        run: |
+          TOTAL_DURATION=$(($(date +%s) - $WORKFLOW_START))
+          echo "::group::Workflow Summary"
+          echo "workflow_name=discover"
+          echo "run_id=${{ github.run_id }}"
+          echo "total_duration_seconds=$TOTAL_DURATION"
+          echo "completed_at=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          echo "::endgroup::"

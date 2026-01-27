@@ -17,36 +17,70 @@ jobs:
     name: Link
     runs-on: ubuntu-latest
     steps:
+      - name: Log workflow start
+        run: |
+          echo "::group::Workflow Metadata"
+          echo "workflow_name=link"
+          echo "run_id=${{ github.run_id }}"
+          echo "run_number=${{ github.run_number }}"
+          echo "event_name=${{ github.event_name }}"
+          echo "ref=${{ github.ref_name }}"
+          echo "started_at=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          echo "::endgroup::"
+          echo "WORKFLOW_START=$(date +%s)" >> $GITHUB_ENV
+
       - name: Checkout
-        uses: actions/checkout@v4
+        run: echo "STEP_START=$(date +%s)" >> $GITHUB_ENV
+
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
+      - name: Log checkout duration
+        run: |
+          DURATION=$(($(date +%s) - $STEP_START))
+          echo "::notice::step=checkout duration_seconds=$DURATION"
+
       - name: Set up Python
-        uses: actions/setup-python@v5
+        run: echo "STEP_START=$(date +%s)" >> $GITHUB_ENV
+
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
           cache: 'pip'
 
+      - name: Log Python setup duration
+        run: |
+          DURATION=$(($(date +%s) - $STEP_START))
+          echo "::notice::step=setup_python duration_seconds=$DURATION"
+
       - name: Install dependencies
         run: |
+          STEP_START=$(date +%s)
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
           pip install -e .
+          DURATION=$(($(date +%s) - $STEP_START))
+          echo "::notice::step=install_dependencies duration_seconds=$DURATION"
 
       - name: Ensure branch checkout
         run: git checkout -B "${GITHUB_REF_NAME}"
 
       - name: Run document linking
         run: |
+          STEP_START=$(date +%s)
           python -c "
           import sys
           import json
+          import time
           from pathlib import Path
           sys.path.insert(0, 'src')
           from mandate_pipeline.linking import derive_resolution_origin
 
-          print('Running document linking...')
+          total_start = time.time()
+          metrics = {'step': 'link'}
 
+          print('::group::Load Documents')
+          load_start = time.time()
           detected_dir = Path('data/detected')
           linked_dir = Path('data/linked')
           linked_dir.mkdir(parents=True, exist_ok=True)
@@ -58,13 +92,21 @@ jobs:
                       doc = json.load(f)
                       documents.append(doc)
 
-          print(f'Loaded {len(documents)} detected documents')
+          load_duration = time.time() - load_start
+          metrics['documents_loaded'] = len(documents)
+          metrics['load_duration_seconds'] = round(load_duration, 2)
+          print(f'Loaded {len(documents)} detected documents in {load_duration:.2f}s')
+          print('::endgroup::')
 
+          print('::group::Create Linkages')
+          link_start = time.time()
           linked_documents = []
+          doc_type_counts = {'resolution': 0, 'proposal': 0, 'other': 0}
 
           for doc in documents:
               symbol = doc['symbol']
               doc_type = 'resolution' if 'RES' in symbol else 'proposal' if 'L.' in symbol else 'other'
+              doc_type_counts[doc_type] += 1
 
               linked_doc = {
                   'symbol': symbol,
@@ -85,12 +127,20 @@ jobs:
               with open(output_file, 'w') as f:
                   json.dump(linked_doc, f, indent=2)
 
+          link_duration = time.time() - link_start
+          metrics['link_duration_seconds'] = round(link_duration, 2)
+          print(f'Created linkages in {link_duration:.2f}s')
+          print('::endgroup::')
+
+          print('::group::Write Index')
+          index_start = time.time()
           linkage_index = {
               'documents': linked_documents,
               'stats': {
                   'total_documents': len(linked_documents),
-                  'resolutions': len([d for d in linked_documents if d['doc_type'] == 'resolution']),
-                  'proposals': len([d for d in linked_documents if d['doc_type'] == 'proposal']),
+                  'resolutions': doc_type_counts['resolution'],
+                  'proposals': doc_type_counts['proposal'],
+                  'other': doc_type_counts['other'],
                   'linked_pairs': 0
               }
           }
@@ -98,19 +148,47 @@ jobs:
           with open(linked_dir / 'index.json', 'w') as f:
               json.dump(linkage_index, f, indent=2)
 
-          print(f'Created linkages for {len(linked_documents)} documents')
-          print('Document types:', linkage_index['stats'])
+          index_duration = time.time() - index_start
+          metrics['index_duration_seconds'] = round(index_duration, 2)
+          print(f'Wrote index in {index_duration:.2f}s')
+          print('::endgroup::')
+
+          metrics['documents_linked'] = len(linked_documents)
+          metrics['resolutions'] = doc_type_counts['resolution']
+          metrics['proposals'] = doc_type_counts['proposal']
+          metrics['total_duration_seconds'] = round(time.time() - total_start, 2)
+
+          print('::group::Linking Metrics')
+          for key, value in metrics.items():
+              print(f'{key}={value}')
+          print('::endgroup::')
           "
+          DURATION=$(($(date +%s) - $STEP_START))
+          echo "::notice::step=link duration_seconds=$DURATION"
 
       - name: Commit linking results
         run: |
+          STEP_START=$(date +%s)
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/linked/
           if git diff --staged --quiet; then
-            echo "No linking changes to commit"
+            echo "::notice::step=commit result=no_changes"
           else
             git commit -m "chore: link related documents"
             git pull --rebase origin "${GITHUB_REF_NAME}" || true
             git push
+            echo "::notice::step=commit result=pushed"
           fi
+          DURATION=$(($(date +%s) - $STEP_START))
+          echo "::notice::step=commit duration_seconds=$DURATION"
+
+      - name: Log workflow completion
+        run: |
+          TOTAL_DURATION=$(($(date +%s) - $WORKFLOW_START))
+          echo "::group::Workflow Summary"
+          echo "workflow_name=link"
+          echo "run_id=${{ github.run_id }}"
+          echo "total_duration_seconds=$TOTAL_DURATION"
+          echo "completed_at=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          echo "::endgroup::"
