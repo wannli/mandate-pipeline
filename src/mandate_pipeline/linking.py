@@ -285,6 +285,10 @@ def normalize_symbol(symbol: str) -> str:
 
 def normalize_title(title: str) -> str:
     """Normalize a document title for fuzzy matching."""
+    # Remove leading session/number pattern (e.g. "73/24. ")
+    # Matches "digits/digits. " or just "digits/digits " at start
+    title = re.sub(r'^\d+/\d+\.\s*', '', title)
+    title = re.sub(r'^\d+/\d+\s+', '', title)
     return title.strip().lower()
 
 
