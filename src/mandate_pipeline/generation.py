@@ -583,6 +583,16 @@ def generate_unified_explorer_page(
     start_time = time.time()
     logger.info(f"Starting unified explorer generation for {len(documents)} documents")
 
+    # HACK: Ensure documents are linked properly, as the generate.yml workflow
+    # might rely on stale data/linked files without running link_documents.
+    # We force a re-link using fast fuzzy matching (skipping slow UNDL lookups).
+    # This modifies the documents list in-place, which propagates to subsequent steps.
+    from .linking import link_documents, annotate_linkage
+    logger.info("Forcing document re-linking (fast mode)...")
+    # use_undl_metadata=False skips network calls but uses title matching + text refs
+    link_documents(documents, use_undl_metadata=False)
+    annotate_linkage(documents)
+
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
