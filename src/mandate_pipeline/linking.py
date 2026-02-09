@@ -474,7 +474,18 @@ def link_documents(documents: list[dict], use_undl_metadata: bool = True) -> Non
             audit["pass0_undl"]["found"] = True
 
             # Filter to only include proposals we have locally
-            linked = [s for s in draft_symbols if s in proposals_by_symbol]
+            # Also handle revision suffixes (e.g. metadata has .../Rev.1 but we have base doc)
+            linked = []
+            for draft_symbol in draft_symbols:
+                if draft_symbol in proposals_by_symbol:
+                    linked.append(draft_symbol)
+                else:
+                    # Try to strip revision/addendum suffix
+                    # e.g. A/80/L.2/Rev.1 -> A/80/L.2
+                    base = re.sub(r"/(?:Rev|Add|Corr)\.\d+.*$", "", draft_symbol, flags=re.IGNORECASE)
+                    if base != draft_symbol and base in proposals_by_symbol:
+                        linked.append(base)
+            
             audit["pass0_undl"]["linked"] = linked
 
             if linked:
