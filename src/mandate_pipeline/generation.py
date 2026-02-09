@@ -590,6 +590,33 @@ def generate_unified_explorer_page(
     from .linking import link_documents, annotate_linkage
     print("Forcing document re-linking (fast mode)...")
     
+    # CRITICAL FIX: The caller (generate.yml) might not have populated 'agenda_items'
+    # or 'symbol_references' from the extracted data, only 'paragraphs' and 'title'.
+    # We must ensure these fields are present for linking to work correctly.
+    # This assumes we are running in the repo root where data/extracted exists.
+    extracted_dir = Path("data/extracted")
+    if extracted_dir.exists():
+        print("Enriching documents with linking metadata from extracted files...")
+        extracted_by_stem = {}
+        for ef in extracted_dir.glob("*.json"):
+            extracted_by_stem[ef.stem] = ef
+            
+        for doc in documents:
+            # Only enrich if missing
+            if doc.get("agenda_items") is None or doc.get("symbol_references") is None:
+                stem = doc["symbol"].replace("/", "_")
+                extracted_file = extracted_by_stem.get(stem)
+                if extracted_file:
+                    try:
+                        with open(extracted_file) as f:
+                            extracted = json.load(f)
+                        if "agenda_items" in extracted:
+                            doc["agenda_items"] = extracted["agenda_items"]
+                        if "symbol_references" in extracted:
+                            doc["symbol_references"] = extracted["symbol_references"]
+                    except Exception as e:
+                        print(f"Error enriching metadata for {doc['symbol']}: {e}")
+
     # Debug: Print some titles before linking
     res_titles = [d.get('title') for d in documents if d.get('doc_type') == 'resolution' and d.get('title')]
     prop_titles = [d.get('title') for d in documents if d.get('doc_type') == 'proposal' and d.get('title')]
