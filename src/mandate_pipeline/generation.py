@@ -589,9 +589,22 @@ def generate_unified_explorer_page(
     # This modifies the documents list in-place, which propagates to subsequent steps.
     from .linking import link_documents, annotate_linkage
     logger.info("Forcing document re-linking (fast mode)...")
+    
+    # Debug: Print some titles before linking
+    res_titles = [d.get('title') for d in documents if d.get('doc_type') == 'resolution' and d.get('title')]
+    prop_titles = [d.get('title') for d in documents if d.get('doc_type') == 'proposal' and d.get('title')]
+    logger.info(f"Sample resolution titles: {res_titles[:3]}")
+    logger.info(f"Sample proposal titles: {prop_titles[:3]}")
+    
     # use_undl_metadata=False skips network calls but uses title matching + text refs
     link_documents(documents, use_undl_metadata=False)
     annotate_linkage(documents)
+    
+    # Debug: Check results
+    adopted = [d for d in documents if d.get('is_adopted_draft')]
+    logger.info(f"Re-linking complete. Adopted proposals: {len(adopted)}")
+    if adopted:
+        logger.info(f"Sample adoption: {adopted[0]['symbol']} -> {adopted[0].get('adopted_by')}")
 
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
