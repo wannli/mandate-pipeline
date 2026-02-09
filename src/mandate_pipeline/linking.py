@@ -556,13 +556,6 @@ def link_documents(documents: list[dict], use_undl_metadata: bool = True) -> Non
         if res_match:
             resolution_session = res_match.group(1)
 
-        # Debug specific resolution
-        is_debug_target = "80/73" in doc["symbol"]
-        if is_debug_target:
-            print(f"DEBUG: Processing {doc['symbol']} (Session {resolution_session})")
-            print(f"DEBUG: Raw title: '{doc.get('title', '')}'")
-            print(f"DEBUG: Norm title: '{resolution_title}'")
-
         if not resolution_title:
             continue
 
@@ -580,23 +573,11 @@ def link_documents(documents: list[dict], use_undl_metadata: bool = True) -> Non
             if resolution_session and proposal_session and resolution_session != proposal_session:
                 continue
 
-            # Debug specific proposal against target
-            is_debug_prop = is_debug_target and "L.36" in proposal["symbol"]
-            
             proposal_title = normalize_title(proposal.get("title", ""))
-            
-            if is_debug_prop:
-                 print(f"DEBUG: Checking against {proposal['symbol']} (Session {proposal_session})")
-                 print(f"DEBUG: Prop raw title: '{proposal.get('title', '')}'")
-                 print(f"DEBUG: Prop norm title: '{proposal_title}'")
-
             if not proposal_title:
                 continue
 
             score = fuzz.ratio(resolution_title, proposal_title)
-            
-            if is_debug_prop:
-                 print(f"DEBUG: Score: {score}")
 
             # Agenda overlap bonus
             proposal_agenda = set(proposal.get("agenda_items", []))
