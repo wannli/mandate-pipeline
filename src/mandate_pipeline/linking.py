@@ -15,6 +15,7 @@ from typing import Any
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
+from rapidfuzz import fuzz
 
 logger = logging.getLogger(__name__)
 
@@ -537,6 +538,83 @@ def link_documents(documents: list[dict], use_undl_metadata: bool = True) -> Non
             if proposal.get("linked_resolution_symbol") is None:
                 proposal["linked_resolution_symbol"] = doc["symbol"]
 
+    # Pass 2: Fuzzy Title Matching
+    for doc in documents:
+        if not is_resolution(doc.get("symbol", "")):
+            continue
+        if doc.get("linked_proposal_symbols"):
+            continue
+
+        audit = _linking_audit[doc["symbol"]]
+        audit["pass2_fuzzy"]["attempted"] = True
+
+        resolution_title = normalize_title(doc.get("title", ""))
+        
+        # Debug specific resolution
+        is_debug_target = "80/73" in doc["symbol"]
+        if is_debug_target:
+            print(f"DEBUG: Processing {doc['symbol']}")
+            print(f"DEBUG: Raw title: '{doc.get('title', '')}'")
+            print(f"DEBUG: Norm title: '{resolution_title}'")
+
+        if not resolution_title:
+            continue
+
+        candidates = []
+        doc_agenda = set(doc.get("agenda_items", []))
+
+        for proposal in proposals:
+            # Debug specific proposal against target (check A/80/L.36 which is likely the one)
+            is_debug_prop = is_debug_target and "L.36" in proposal["symbol"]
+            
+            proposal_title = normalize_title(proposal.get("title", ""))
+            
+            if is_debug_prop:
+                 print(f"DEBUG: Checking against {proposal['symbol']}")
+                 print(f"DEBUG: Prop raw title: '{proposal.get('title', '')}'")
+                 print(f"DEBUG: Prop norm title: '{proposal_title}'")
+
+            if not proposal_title:
+                continue
+
+            score = fuzz.ratio(resolution_title, proposal_title)
+            
+            if is_debug_prop:
+                 print(f"DEBUG: Score: {score}")
+
+            # Agenda overlap bonus
+            proposal_agenda = set(proposal.get("agenda_items", []))
+            agenda_overlap = bool(doc_agenda & proposal_agenda)
+
+            if agenda_overlap:
+                score += 5
+
+            if score >= 85:
+                candidates.append({
+                    "symbol": proposal["symbol"],
+                    "score": score,
+                    "agenda_overlap": agenda_overlap
+                })
+
+        if candidates:
+            # Sort by score descending
+            candidates.sort(key=lambda x: x["score"], reverse=True)
+            best = candidates[0]
+
+            audit["pass2_fuzzy"]["candidates"] = candidates
+            audit["pass2_fuzzy"]["best_match"] = best["symbol"]
+            audit["pass2_fuzzy"]["best_score"] = best["score"]
+            audit["pass2_fuzzy"]["agenda_overlap"] = best["agenda_overlap"]
+
+            linked = [best["symbol"]]
+            doc["linked_proposal_symbols"] = linked
+            audit["final_method"] = "fuzzy_title"
+            audit["final_linked"] = linked
+            audit["confidence"] = best["score"]
+
+            proposal = proposals_by_symbol.get(best["symbol"])
+            if proposal and proposal.get("linked_resolution_symbol") is None:
+                proposal["linked_resolution_symbol"] = doc["symbol"]
 
 
 def annotate_linkage(documents: list[dict]) -> None:
