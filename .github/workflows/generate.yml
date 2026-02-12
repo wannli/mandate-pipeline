@@ -234,11 +234,12 @@ jobs:
               # so re-linking works correctly across resolutions and proposals.
               generate_unified_explorer_page(documents, checks, output_dir)
 
-              # Filter AFTER re-linking so all adopted proposals are caught.
-              visible_documents = [doc for doc in documents if not doc.get('is_adopted_draft')]
-              adopted_count = len(documents) - len(visible_documents)
-              metrics['adopted_filtered'] = adopted_count
-              print(f'Filtered {adopted_count} adopted drafts from data export')
+              # Filter AFTER re-linking so all adopted/superseded proposals are caught.
+              visible_documents = [doc for doc in documents if not doc.get('is_adopted_draft') and not doc.get('is_superseded')]
+              filtered_count = len(documents) - len(visible_documents)
+              metrics['adopted_filtered'] = len([d for d in documents if d.get('is_adopted_draft')])
+              metrics['superseded_filtered'] = len([d for d in documents if d.get('is_superseded')])
+              print(f'Filtered {filtered_count} documents from data export ({metrics["adopted_filtered"]} adopted, {metrics["superseded_filtered"]} superseded)')
 
               generate_data_json(visible_documents, checks, output_dir)
               gen_duration = time.time() - gen_start

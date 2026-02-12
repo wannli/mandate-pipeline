@@ -47,6 +47,7 @@ from .extractor import (
 from .linking import (
     link_documents,
     annotate_linkage,
+    detect_superseded_proposals,
     is_resolution,
     is_proposal,
     symbol_to_filename,
@@ -626,6 +627,7 @@ def generate_unified_explorer_page(
     # use_undl_metadata=False skips network calls but uses title matching + text refs
     link_documents(documents, use_undl_metadata=False)
     annotate_linkage(documents)
+    detect_superseded_proposals(documents)
     
     # Debug: Check results
     adopted = [d for d in documents if d.get('is_adopted_draft')]
@@ -737,7 +739,8 @@ def generate_site(config_dir: Path, data_dir: Path, output_dir: Path) -> None:
     use_undl_metadata = os.getenv("SKIP_UNDL_METADATA", "false").lower() != "true"
     link_documents(documents, use_undl_metadata=use_undl_metadata)
     annotate_linkage(documents)
-    visible_documents = [doc for doc in documents if not doc.get("is_adopted_draft")]
+    detect_superseded_proposals(documents)
+    visible_documents = [doc for doc in documents if not doc.get("is_adopted_draft") and not doc.get("is_superseded")]
     igov_decisions = build_igov_decision_documents(load_igov_decisions_all(data_dir), checks)
     browser_documents = visible_documents + igov_decisions
     ensure_document_sessions(browser_documents)
@@ -884,7 +887,8 @@ def generate_site_verbose(
 
     link_documents(documents)
     annotate_linkage(documents)
-    visible_documents = [doc for doc in documents if not doc.get("is_adopted_draft")]
+    detect_superseded_proposals(documents)
+    visible_documents = [doc for doc in documents if not doc.get("is_adopted_draft") and not doc.get("is_superseded")]
     igov_decisions = build_igov_decision_documents(load_igov_decisions_all(data_dir), checks)
     browser_documents = visible_documents + igov_decisions
     ensure_document_sessions(browser_documents)

@@ -645,3 +645,84 @@ def annotate_linkage(documents: list[dict]) -> None:
     for doc in documents:
         doc.pop("linked_resolution_symbol", None)
         doc.pop("linked_proposal_symbols", None)
+
+
+def detect_superseded_proposals(
+    documents: list[dict],
+    extracted_dir: Path | None = None,
+) -> None:
+    """
+    Detect Second Committee proposals superseded by informal-consultation drafts.
+
+    In the Second Committee, the Rapporteur submits a new draft "on the basis of
+    informal consultations on draft resolution A/C.2/…/L.X", which replaces the
+    original.  This function marks the original as superseded so it can be hidden
+    from the interface.
+
+    Sets on the *original* proposal:
+        is_superseded = True
+        superseded_by = <symbol of the new draft>
+
+    Args:
+        documents: List of document dicts (modified in-place).
+        extracted_dir: Directory containing extracted JSON files with full text.
+                       Falls back to ``Path("data/extracted")``.
+    """
+    if extracted_dir is None:
+        extracted_dir = Path("data/extracted")
+
+    if not extracted_dir.exists():
+        return
+
+    # Build lookup of extracted text by symbol stem
+    extracted_text: dict[str, str] = {}
+    for ef in extracted_dir.glob("*.json"):
+        try:
+            with open(ef, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            extracted_text[ef.stem] = data.get("text", "")
+        except (json.JSONDecodeError, OSError):
+            continue
+
+    proposals_by_symbol = {
+        doc["symbol"]: doc
+        for doc in documents
+        if is_proposal(doc.get("symbol", ""))
+    }
+
+    # Initialise fields
+    for doc in documents:
+        doc.setdefault("is_superseded", False)
+        doc.setdefault("superseded_by", None)
+
+    # Pattern: "on the basis of informal consultations on draft resolution A/C.2/…/L.N"
+    supersede_re = re.compile(
+        r"on the basis of informal consultations on\s+draft\s+resolution\s+"
+        r"(A/C\.2/\d+/L\.\d+)",
+        re.IGNORECASE,
+    )
+
+    for doc in documents:
+        symbol = doc.get("symbol", "")
+        if "/C.2/" not in symbol or not is_proposal(symbol):
+            continue
+
+        stem = symbol.replace("/", "_")
+        text = extracted_text.get(stem, "")
+        if not text:
+            continue
+
+        # Normalise whitespace so multi-line headers are matched
+        flat_text = " ".join(text.split())
+        match = supersede_re.search(flat_text)
+        if not match:
+            continue
+
+        original_symbol = match.group(1)
+        original = proposals_by_symbol.get(original_symbol)
+        if original is None:
+            continue
+
+        original["is_superseded"] = True
+        original["superseded_by"] = symbol
+        logger.info("Superseded: %s → %s", original_symbol, symbol)
