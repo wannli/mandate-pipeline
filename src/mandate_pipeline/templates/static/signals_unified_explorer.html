@@ -824,12 +824,14 @@ function sortDocuments(docs) {
 }
 
 function compareSymbols(a, b) {
-    // Numeric-aware comparison: split on / and compare segments
-    const partsA = a.split('/'), partsB = b.split('/');
-    for (let i = 0; i < Math.max(partsA.length, partsB.length); i++) {
-        const pA = partsA[i] || '', pB = partsB[i] || '';
+    // Numeric-aware comparison that handles L.N and C.N segments.
+    // Split each symbol into tokens of text and numbers, then compare pairwise.
+    const tokenize = s => s.match(/[A-Za-z]+|\d+/g) || [];
+    const tokA = tokenize(a), tokB = tokenize(b);
+    for (let i = 0; i < Math.max(tokA.length, tokB.length); i++) {
+        const pA = tokA[i] || '', pB = tokB[i] || '';
         const nA = Number(pA), nB = Number(pB);
-        if (!isNaN(nA) && !isNaN(nB)) {
+        if (!isNaN(nA) && !isNaN(nB) && pA !== '' && pB !== '') {
             if (nA !== nB) return nA - nB;
         } else {
             const cmp = pA.localeCompare(pB);
