@@ -204,6 +204,11 @@ jobs:
               print(f'Loaded {len(igov_decisions)} IGov decisions in {igov_duration:.2f}s')
               print('::endgroup::')
 
+              # Filter out adopted drafts - they should not appear in the interface
+              visible_documents = [doc for doc in documents if not doc.get('is_adopted_draft')]
+              metrics['adopted_filtered'] = len(documents) - len(visible_documents)
+              print(f'Filtered {metrics["adopted_filtered"]} adopted drafts from interface')
+
               print('::group::Generate Explorer')
               gen_start = time.time()
               output_dir = Path('docs')
@@ -226,8 +231,8 @@ jobs:
                       doc['signal_paragraphs'] = signal_paras
 
               generate_signals_info_page(checks, output_dir)
-              generate_unified_explorer_page(documents, checks, output_dir)
-              generate_data_json(documents, checks, output_dir)
+              generate_unified_explorer_page(visible_documents, checks, output_dir)
+              generate_data_json(visible_documents, checks, output_dir)
               gen_duration = time.time() - gen_start
               metrics['generation_duration_seconds'] = round(gen_duration, 2)
               print(f'Generated explorer in {gen_duration:.2f}s')
@@ -239,10 +244,10 @@ jobs:
               if (output_dir / 'data.json').exists():
                   metrics['data_json_bytes'] = (output_dir / 'data.json').stat().st_size
 
-          # Count documents with signals
-          docs_with_signals = len([d for d in documents if d.get('signal_summary')])
+          # Count documents with signals (use visible_documents for accurate counts)
+          docs_with_signals = len([d for d in visible_documents if d.get('signal_summary')])
           metrics['documents_with_signals'] = docs_with_signals
-          metrics['documents_processed'] = len(documents)
+          metrics['documents_processed'] = len(visible_documents)
           metrics['total_duration_seconds'] = round(time.time() - total_start, 2)
 
           # Write metrics to file for shell to read
