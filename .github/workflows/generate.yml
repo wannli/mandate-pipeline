@@ -239,7 +239,7 @@ jobs:
               filtered_count = len(documents) - len(visible_documents)
               metrics['adopted_filtered'] = len([d for d in documents if d.get('is_adopted_draft')])
               metrics['superseded_filtered'] = len([d for d in documents if d.get('is_superseded')])
-              print(f'Filtered {filtered_count} documents from data export ({metrics["adopted_filtered"]} adopted, {metrics["superseded_filtered"]} superseded)')
+              print(f'Filtered {filtered_count} documents from data export ({metrics[\"adopted_filtered\"]} adopted, {metrics[\"superseded_filtered\"]} superseded)')
 
               generate_data_json(visible_documents, checks, output_dir)
               gen_duration = time.time() - gen_start
