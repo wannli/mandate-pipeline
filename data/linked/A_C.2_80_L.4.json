@@ -62,7 +62,12 @@
   "symbol_references": [
     "A/C.2/80/L.4"
   ],
+  "agenda_items": [
+    "Item 23"
+  ],
   "is_adopted_draft": false,
   "adopted_by": null,
+  "is_superseded": true,
+  "superseded_by": "A/C.2/80/L.56",
   "linked_proposals": []
 }

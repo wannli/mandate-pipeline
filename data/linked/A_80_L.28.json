@@ -18,7 +18,12 @@
     "A/80/L.28",
     "A/80/L.3"
   ],
+  "agenda_items": [
+    "Item 72"
+  ],
   "is_adopted_draft": false,
   "adopted_by": null,
+  "is_superseded": false,
+  "superseded_by": null,
   "linked_proposals": []
 }

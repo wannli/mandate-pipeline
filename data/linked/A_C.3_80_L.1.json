@@ -36,7 +36,24 @@
   "symbol_references": [
     "A/C.3/80/L.1"
   ],
+  "agenda_items": [
+    "Item 25",
+    "Item 26",
+    "Item 68",
+    "Item 69",
+    "Item 108",
+    "Item 109",
+    "Item 72",
+    "Item 67",
+    "Item 70",
+    "Item 71",
+    "Item 62",
+    "Item 122",
+    "Item 138b"
+  ],
   "is_adopted_draft": false,
   "adopted_by": null,
+  "is_superseded": false,
+  "superseded_by": null,
   "linked_proposals": []
 }

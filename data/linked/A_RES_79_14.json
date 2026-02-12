@@ -1,9 +1,19 @@
 {
   "symbol": "A/RES/79/14",
   "doc_type": "resolution",
-  "origin": "Unknown",
-  "linked_proposals": [],
-  "linked_resolutions": [],
+  "title": "79/14. Cooperation between the United Nations and the Preparatory Commission for the Comprehensive Nuclear-Test-Ban Treaty Organization",
+  "paragraphs": {},
+  "signals": {},
   "signal_summary": {},
-  "signals": {}
+  "symbol_references": [
+    "A/79/L.15"
+  ],
+  "agenda_items": [
+    "Item 125"
+  ],
+  "is_adopted_draft": false,
+  "adopted_by": null,
+  "is_superseded": false,
+  "superseded_by": null,
+  "linked_proposals": []
 }

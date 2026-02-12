@@ -9,7 +9,12 @@
     "A/80/L.32",
     "A/80/L.25"
   ],
+  "agenda_items": [
+    "Item 72"
+  ],
   "is_adopted_draft": false,
   "adopted_by": null,
+  "is_superseded": false,
+  "superseded_by": null,
   "linked_proposals": []
 }

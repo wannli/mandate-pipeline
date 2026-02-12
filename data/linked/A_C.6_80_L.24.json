@@ -9,7 +9,12 @@
     "A/C.6/80/L.24",
     "A/C.6/80/L.14"
   ],
-  "is_adopted_draft": false,
-  "adopted_by": null,
+  "agenda_items": [
+    "Item 86"
+  ],
+  "is_adopted_draft": true,
+  "adopted_by": "A/RES/80/169",
+  "is_superseded": false,
+  "superseded_by": null,
   "linked_proposals": []
 }

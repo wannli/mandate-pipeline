@@ -8,7 +8,12 @@
   "symbol_references": [
     "A/80/L.39"
   ],
+  "agenda_items": [
+    "Item 16"
+  ],
   "is_adopted_draft": false,
   "adopted_by": null,
+  "is_superseded": false,
+  "superseded_by": null,
   "linked_proposals": []
 }

@@ -55,7 +55,12 @@
     "A/C.2/80/L.50",
     "A/C.2/80/L.39"
   ],
-  "is_adopted_draft": false,
-  "adopted_by": null,
+  "agenda_items": [
+    "Item 18"
+  ],
+  "is_adopted_draft": true,
+  "adopted_by": "A/RES/80/143",
+  "is_superseded": false,
+  "superseded_by": null,
   "linked_proposals": []
 }

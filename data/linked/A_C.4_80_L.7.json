@@ -45,7 +45,12 @@
   "symbol_references": [
     "A/C.4/80/L.7"
   ],
-  "is_adopted_draft": false,
-  "adopted_by": null,
+  "agenda_items": [
+    "Item 46"
+  ],
+  "is_adopted_draft": true,
+  "adopted_by": "A/RES/80/74",
+  "is_superseded": false,
+  "superseded_by": null,
   "linked_proposals": []
 }

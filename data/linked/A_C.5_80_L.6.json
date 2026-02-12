@@ -13,7 +13,12 @@
   "symbol_references": [
     "A/C.5/80/L.6"
   ],
+  "agenda_items": [
+    "Item 136"
+  ],
   "is_adopted_draft": false,
   "adopted_by": null,
+  "is_superseded": false,
+  "superseded_by": null,
   "linked_proposals": []
 }

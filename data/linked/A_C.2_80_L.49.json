@@ -102,7 +102,12 @@
     "A/C.2/80/L.49",
     "A/C.2/80/L.6"
   ],
+  "agenda_items": [
+    "Item 21"
+  ],
   "is_adopted_draft": false,
   "adopted_by": null,
+  "is_superseded": false,
+  "superseded_by": null,
   "linked_proposals": []
 }
