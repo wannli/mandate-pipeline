@@ -725,4 +725,38 @@ def detect_superseded_proposals(
 
         original["is_superseded"] = True
         original["superseded_by"] = symbol
+
+        # If the original was linked to a resolution, transfer the link to
+        # the superseding draft (which is the text that was actually adopted).
+        if original.get("is_adopted_draft") and original.get("adopted_by"):
+            resolution_symbol = original["adopted_by"]
+            resolution = next(
+                (d for d in documents if d.get("symbol") == resolution_symbol),
+                None,
+            )
+
+            # Mark the superseding draft as adopted instead
+            superseder = proposals_by_symbol.get(symbol)
+            if superseder is not None:
+                superseder["is_adopted_draft"] = True
+                superseder["adopted_by"] = resolution_symbol
+
+            # Clear the original's adoption (it's superseded, not adopted)
+            original["is_adopted_draft"] = False
+            original["adopted_by"] = None
+
+            # Update the resolution's linked_proposals to point to the new draft
+            if resolution is not None:
+                resolution["linked_proposals"] = [
+                    {"symbol": symbol, "filename": symbol.replace("/", "_") + ".html"}
+                    if lp.get("symbol") == original_symbol
+                    else lp
+                    for lp in resolution.get("linked_proposals", [])
+                ]
+
+            logger.info(
+                "Transferred adoption: %s → %s (via %s)",
+                original_symbol, symbol, resolution_symbol,
+            )
+
         logger.info("Superseded: %s → %s", original_symbol, symbol)
