@@ -75,98 +75,138 @@ jobs:
           import time
           from pathlib import Path
           sys.path.insert(0, 'src')
-          from mandate_pipeline.linking import derive_resolution_origin
+          from mandate_pipeline.linking import (
+              link_documents,
+              annotate_linkage,
+              detect_superseded_proposals,
+              derive_origin_from_symbol,
+              is_resolution,
+              is_proposal,
+              classify_symbol,
+          )
 
           total_start = time.time()
           metrics = {'step': 'link'}
 
-          print('::group::Load Documents')
-          load_start = time.time()
           detected_dir = Path('data/detected')
+          extracted_dir = Path('data/extracted')
           linked_dir = Path('data/linked')
           linked_dir.mkdir(parents=True, exist_ok=True)
 
-          documents = []
+          # ------------------------------------------------------------------
+          # 1. Load detected documents (symbol + signals)
+          # ------------------------------------------------------------------
+          print('::group::Load Documents')
+          load_start = time.time()
+
+          detected_by_stem = {}
           if detected_dir.exists():
-              for detected_file in detected_dir.glob('*.json'):
-                  with open(detected_file) as f:
-                      doc = json.load(f)
-                      documents.append(doc)
+              for f in detected_dir.glob('*.json'):
+                  with open(f) as fh:
+                      detected_by_stem[f.stem] = json.load(fh)
+
+          # ------------------------------------------------------------------
+          # 2. Merge with extracted metadata (title, paragraphs, refs, agenda)
+          # ------------------------------------------------------------------
+          extracted_by_stem = {}
+          if extracted_dir.exists():
+              for f in extracted_dir.glob('*.json'):
+                  with open(f) as fh:
+                      extracted_by_stem[f.stem] = json.load(fh)
+
+          documents = []
+          for stem, det in detected_by_stem.items():
+              symbol = det['symbol']
+              ext = extracted_by_stem.get(stem, {})
+
+              doc = {
+                  'symbol': symbol,
+                  'doc_type': classify_symbol(symbol),
+                  'title': ext.get('title', ''),
+                  'paragraphs': ext.get('paragraphs', {}),
+                  'agenda_items': ext.get('agenda_items', []),
+                  'symbol_references': ext.get('symbol_references', []),
+                  'signals': det.get('signals', {}),
+                  'signal_summary': det.get('signal_summary', {}),
+              }
+              documents.append(doc)
 
           load_duration = time.time() - load_start
           metrics['documents_loaded'] = len(documents)
           metrics['load_duration_seconds'] = round(load_duration, 2)
-          print(f'Loaded {len(documents)} detected documents in {load_duration:.2f}s')
+          print(f'Loaded {len(documents)} documents ({len(detected_by_stem)} detected, {len(extracted_by_stem)} extracted)')
           print('::endgroup::')
 
-          print('::group::Create Linkages')
+          # ------------------------------------------------------------------
+          # 3. Run real linking (symbol refs + fuzzy title matching)
+          # ------------------------------------------------------------------
+          print('::group::Link Documents')
           link_start = time.time()
-          linked_documents = []
+
+          link_documents(documents, use_undl_metadata=False)
+          annotate_linkage(documents)
+          detect_superseded_proposals(documents, extracted_dir)
+
+          adopted_count = len([d for d in documents if d.get('is_adopted_draft')])
+          superseded_count = len([d for d in documents if d.get('is_superseded')])
+          link_duration = time.time() - link_start
+          metrics['link_duration_seconds'] = round(link_duration, 2)
+          metrics['adopted_drafts'] = adopted_count
+          metrics['superseded'] = superseded_count
+          print(f'Linked in {link_duration:.2f}s: {adopted_count} adopted, {superseded_count} superseded')
+          print('::endgroup::')
+
+          # ------------------------------------------------------------------
+          # 4. Derive origin and write linked JSON files
+          # ------------------------------------------------------------------
+          print('::group::Write Linked Files')
+          write_start = time.time()
           doc_type_counts = {'resolution': 0, 'proposal': 0, 'other': 0}
 
           for doc in documents:
               symbol = doc['symbol']
-              doc_type = 'resolution' if 'RES' in symbol else 'proposal' if 'L.' in symbol else 'other'
-              doc_type_counts[doc_type] += 1
+              doc_type = doc.get('doc_type', 'other')
+              doc_type_counts[doc_type] = doc_type_counts.get(doc_type, 0) + 1
 
               linked_doc = {
                   'symbol': symbol,
                   'doc_type': doc_type,
-                  'origin': derive_resolution_origin({
-                      'symbol': symbol,
-                      'linked_proposal_symbols': []
-                  }),
-                  'linked_proposals': [],
-                  'linked_resolutions': [],
+                  'title': doc.get('title', ''),
+                  'paragraphs': doc.get('paragraphs', {}),
+                  'signals': doc.get('signals', {}),
                   'signal_summary': doc.get('signal_summary', {}),
-                  'signals': doc.get('signals', {})
+                  'symbol_references': doc.get('symbol_references', []),
+                  'agenda_items': doc.get('agenda_items', []),
+                  'is_adopted_draft': doc.get('is_adopted_draft', False),
+                  'adopted_by': doc.get('adopted_by'),
+                  'is_superseded': doc.get('is_superseded', False),
+                  'superseded_by': doc.get('superseded_by'),
+                  'linked_proposals': doc.get('linked_proposals', []),
               }
 
-              linked_documents.append(linked_doc)
-
-              output_file = linked_dir / f'{Path(symbol.replace(\"/\", \"_\")).stem}.json'
+              output_file = linked_dir / f'{symbol.replace(\"/\", \"_\")}.json'
               with open(output_file, 'w') as f:
                   json.dump(linked_doc, f, indent=2)
 
-          link_duration = time.time() - link_start
-          metrics['link_duration_seconds'] = round(link_duration, 2)
-          print(f'Created linkages in {link_duration:.2f}s')
+          write_duration = time.time() - write_start
+          print(f'Wrote {len(documents)} files in {write_duration:.2f}s')
           print('::endgroup::')
 
-          print('::group::Write Index')
-          index_start = time.time()
-          linkage_index = {
-              'documents': linked_documents,
-              'stats': {
-                  'total_documents': len(linked_documents),
-                  'resolutions': doc_type_counts['resolution'],
-                  'proposals': doc_type_counts['proposal'],
-                  'other': doc_type_counts['other'],
-                  'linked_pairs': 0
-              }
-          }
-
-          with open(linked_dir / 'index.json', 'w') as f:
-              json.dump(linkage_index, f, indent=2)
-
-          index_duration = time.time() - index_start
-          metrics['index_duration_seconds'] = round(index_duration, 2)
-          print(f'Wrote index in {index_duration:.2f}s')
-          print('::endgroup::')
-
-          metrics['documents_linked'] = len(linked_documents)
-          metrics['resolutions'] = doc_type_counts['resolution']
-          metrics['proposals'] = doc_type_counts['proposal']
-          metrics['other'] = doc_type_counts['other']
+          metrics['documents_linked'] = len(documents)
+          metrics['resolutions'] = doc_type_counts.get('resolution', 0)
+          metrics['proposals'] = doc_type_counts.get('proposal', 0)
+          metrics['other'] = doc_type_counts.get('other', 0)
           metrics['total_duration_seconds'] = round(time.time() - total_start, 2)
 
           # Write metrics to file for shell to read
           with open('/tmp/link_metrics.txt', 'w') as f:
               f.write(f'documents_loaded={metrics[\"documents_loaded\"]}\n')
-              f.write(f'documents_linked={len(linked_documents)}\n')
-              f.write(f'resolutions={doc_type_counts[\"resolution\"]}\n')
-              f.write(f'proposals={doc_type_counts[\"proposal\"]}\n')
-              f.write(f'other={doc_type_counts[\"other\"]}\n')
+              f.write(f'documents_linked={len(documents)}\n')
+              f.write(f'resolutions={doc_type_counts.get(\"resolution\", 0)}\n')
+              f.write(f'proposals={doc_type_counts.get(\"proposal\", 0)}\n')
+              f.write(f'other={doc_type_counts.get(\"other\", 0)}\n')
+              f.write(f'adopted_drafts={adopted_count}\n')
+              f.write(f'superseded={superseded_count}\n')
 
           print('::group::Linking Metrics')
           for key, value in metrics.items():
