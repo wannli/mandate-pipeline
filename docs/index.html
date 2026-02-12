@@ -1040,12 +1040,14 @@ function sortDocuments(docs) {
 }
 
 function compareSymbols(a, b) {
-    // Numeric-aware comparison: split on / and compare segments
-    const partsA = a.split('/'), partsB = b.split('/');
-    for (let i = 0; i < Math.max(partsA.length, partsB.length); i++) {
-        const pA = partsA[i] || '', pB = partsB[i] || '';
+    // Numeric-aware comparison that handles L.N and C.N segments.
+    // Split each symbol into tokens of text and numbers, then compare pairwise.
+    const tokenize = s => s.match(/[A-Za-z]+|\d+/g) || [];
+    const tokA = tokenize(a), tokB = tokenize(b);
+    for (let i = 0; i < Math.max(tokA.length, tokB.length); i++) {
+        const pA = tokA[i] || '', pB = tokB[i] || '';
         const nA = Number(pA), nB = Number(pB);
-        if (!isNaN(nA) && !isNaN(nB)) {
+        if (!isNaN(nA) && !isNaN(nB) && pA !== '' && pB !== '') {
             if (nA !== nB) return nA - nB;
         } else {
             const cmp = pA.localeCompare(pB);
@@ -1114,12 +1116,7 @@ function renderDocumentCard(doc, isCollapsed = true, forceExpand = false) {
     const decisionText = escapeHtml(doc.decision_text || '');
     const metaItems = [];
 
-    if (isDecision) {
-        if (doc.meeting_date) metaItems.push(`Date ${escapeHtml(doc.meeting_date)}`);
-        if (doc.meeting_number) metaItems.push(`Meeting ${escapeHtml(doc.meeting_number)}`);
-        if (doc.agenda_item) metaItems.push(`Agenda ${escapeHtml(doc.agenda_item)}`);
-        if (doc.session) metaItems.push(`Session ${escapeHtml(doc.session)}`);
-    }
+    // Decision metadata (date, meeting, agenda, session) intentionally hidden
 
     const paragraphsHtml = signalParagraphs.length
         ? signalParagraphs.map(para => `
@@ -1429,7 +1426,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="max-w-5xl mx-auto px-6 py-8">
             <p class="text-sm text-muted">
                 
-Generated 2026-02-12 20:34 UTC · <a href="./data.json" class="text-un-blue hover:underline">JSON API</a>
+Generated 2026-02-12 20:50 UTC · <a href="./data.json" class="text-un-blue hover:underline">JSON API</a>
 
             </p>
         </div>
