@@ -900,12 +900,7 @@ function renderDocumentCard(doc, isCollapsed = true, forceExpand = false) {
     const decisionText = escapeHtml(doc.decision_text || '');
     const metaItems = [];
 
-    if (isDecision) {
-        if (doc.meeting_date) metaItems.push(`Date ${escapeHtml(doc.meeting_date)}`);
-        if (doc.meeting_number) metaItems.push(`Meeting ${escapeHtml(doc.meeting_number)}`);
-        if (doc.agenda_item) metaItems.push(`Agenda ${escapeHtml(doc.agenda_item)}`);
-        if (doc.session) metaItems.push(`Session ${escapeHtml(doc.session)}`);
-    }
+    // Decision metadata (date, meeting, agenda, session) intentionally hidden
 
     const paragraphsHtml = signalParagraphs.length
         ? signalParagraphs.map(para => `
