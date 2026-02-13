@@ -1,0 +1,23 @@
+{
+  "_id": "698f3502ccf40d396f04d2c6",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/418",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Appointment of members of the Independent International Scientific Panel on Artificial Intelligence",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2026-02-12T05:00:00.000Z",
+      "ED_Number": "72nd plenary meeting",
+      "_id": "698f3502ccf40d396f04d2c7"
+    }
+  ],
+  "ED_AgendaItem": "115 (m)",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 72nd plenary meeting, on 12 February 2026, the General Assembly, in accordance with resolution 79/325 of 26 August 2025 and on the recommendation by the Secretary-General, (footnote: See A/80/619.) appointed the following as members of the Independent International Scientific Panel on Artificial Intelligence for a term beginning on 12 February 2026 and ending on 11 February 2029:\n\nGirmaw Abebe Tadesse (Ethiopia)\nTuka Alhanai (United Arab Emirates)\nJo\u00eblle Barral (France)\nYoshua Bengio (Canada)\nTegawend\u00e9 Bissyand\u00e9 (Burkina Faso)\nLoreto Bravo (Chile)\nMark Coeckelbergh (Belgium)\nCarlos Coello Coello (Mexico)\nMelahat Bilge Demirk\u00f6z (T\u00fcrkiye)\nAdji Bousso Dieng (Senegal)\nAwa Bousso Dram\u00e9 (Cabo Verde)\nMennatallah El-Assady (Egypt)\nHoda Heidari (Islamic Republic of Iran)\nJuho Kim (Republic of Korea)\nAnna Korhonen (Finland)\nAleksandra Korolova (Latvia)\nVipin Kumar (United States of America)\nSonia Livingstone (United Kingdom of Great Britain and Northern Ireland)\nQinghua Lu (Australia)\nTeresa Ludermir (Brazil)\nVukosi Marivate (South Africa)\nBilal Mateen (Pakistan)\nYutaka Matsuo (Japan)\nJoyce Nakatumba Nabende (Uganda)\nAndrei Neznamov (Russian Federation)\nMaximilian Nickel (Germany)\nRita Orji (Nigeria)\nRom\u00e1n Or\u00fas (Spain)\nAlvitta Ottley (Saint Kitts and Nevis)\nMartha Palmer (United States of America)\nJohanna Pirker (Austria)\nBalaraman Ravindran (India)\nMaria Ressa (Philippines)\nLior Rokach (Israel)\nPiotr Sankowski (Poland)\nSilvio Savarese (Italy)\nBernhard Sch\u00f6lkopf (Germany)\nHaitao Song (China)\nLeslie Teo (Singapore)\nJian Wang (China)",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. III) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0
+}
