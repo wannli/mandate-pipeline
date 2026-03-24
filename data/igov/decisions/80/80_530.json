@@ -1,0 +1,23 @@
+{
+  "_id": "69c2f9d51ac8ee3edc05511e",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/530",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Commemorative meeting of the General Assembly on the occasion of the International Day for the Elimination of Racial Discrimination\t",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2026-03-23T04:00:00.000Z",
+      "ED_Number": "74 plenary meeting",
+      "_id": "69c2f9d51ac8ee3edc05511f"
+    }
+  ],
+  "ED_AgendaItem": "69",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 74th plenary meeting, on 23 March 2026, the General Assembly, on the proposal of its President,   decided, without setting a precedent, to invite Volker T\u00fcrk, High Commissioner for Human Rights, and Justin Hansford, Executive Director of the Thurgood Marshall Civil Rights Centre and member of the Permanent Forum on People of African Descent, to make statements at the commemorative meeting on the occasion of the International Day for the Elimination of Racial Discrimination.",
+  "ED_Disclaimer": "",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0
+}
