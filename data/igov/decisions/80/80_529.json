@@ -17,7 +17,7 @@
   "ED_OriginatingBody": "Plenary",
   "ED_DecisionText": "At its 71st plenary meeting, on 30 January 2026, the General Assembly took note of the solemn appeal made by the President of the General Assembly in connection with the observance of the Olympic Truce.  (Footnote: A/80/598)\n",
   "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. III) after editorial review.",
-  "ED_MarkNew": true,
+  "ED_MarkNew": false,
   "ED_MarkUpdated": false,
   "__v": 0,
   "DEC_NotificationSent": true,
