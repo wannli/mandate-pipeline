@@ -17,7 +17,7 @@
   "ED_OriginatingBody": "Plenary",
   "ED_DecisionText": "At its 48th\u00a0plenary meeting, on 24 November 2025, the General Assembly, on the proposal of its President, decided that the High-level meeting on the appraisal of the United Nations Global Plan of Action to Combat Trafficking in Persons would also feature a statement by the Acting Chief of the Organized Crime Branch of the United Nations Office on Drugs and Crime, Mr. Ilias Chatzist, in lieu of a statement by the Executive Director of the United Nations Office on Drugs and Crime.",
   "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. II) after editorial review.",
-  "ED_MarkNew": true,
+  "ED_MarkNew": false,
   "ED_MarkUpdated": false,
   "__v": 0,
   "DEC_NotificationSent": true,
