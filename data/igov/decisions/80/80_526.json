@@ -9,16 +9,21 @@
       "ED_Date": "2025-12-30T05:00:00.000Z",
       "ED_Number": "69th (resumed) plenary meeting",
       "_id": "6955555f977b29ce13813158"
+    },
+    {
+      "ED_Date": "2026-04-15T04:00:00.000Z",
+      "ED_Number": "78 plenary meeting",
+      "_id": "69e140dd43c741e572116dee"
     }
   ],
   "ED_AgendaItem": "134",
   "ED_Plenary_Committee": "Fifth Committee",
   "ED_Session": "80th session of the General Assembly",
   "ED_OriginatingBody": "Fifth Committee",
-  "ED_DecisionText": "At its 69th (resumed) plenary meeting, on 30\u202fDecember 2025, the General Assembly, on the recommendation of the Fifth Committee,  (Footnote: A/80/568, para.19.) The General Assembly decided to defer until the main part of its eighty-first session consideration of the following documents: \n\nItem 136 \nProposed programme budget for 2026 \nEstimates in respect of special political missions \nReport of the Secretary-General on the review of arrangements for funding and backstopping special political missions  (Footnote: A/66/340.)\nRelated report of the Advisory Committee on Administrative and Budgetary Questions  (Footnote: A/66/7/Add.21.)",
+  "ED_DecisionText": "A \n\nAt its 69th (resumed) plenary meeting, on 30\u202fDecember 2025, the General Assembly, on the recommendation of the Fifth Committee, (Footnote: A/80/568, para.19.) The General Assembly decided to defer until the main part of its eighty-first session consideration of the following documents: \n\nItem 136 \nProposed programme budget for 2026 \nEstimates in respect of special political missions \nReport of the Secretary-General on the review of arrangements for funding and backstopping special political missions  (Footnote: A/66/340.)\nRelated report of the Advisory Committee on Administrative and Budgetary Questions  (Footnote: A/66/7/Add.21.)\n\nB [Footnote: Decision 80/526, in section B.6 of the Official Records of the General Assembly, Eightieth Session, Supplement No. 49 (A/80/49), vol.\u202fII, becomes decision 80/526 A.] \n\nAt its 78th plenary meeting, on 15 April 2026, the General Assembly, on the recommendation of the Fifth Committee, (Footnote: A/80/568/Add.1, para15.) \n\nSection A \n\nDecided to defer until the second part of its resumed eightieth session consideration of the following documents: \n\nItem 134 \n\nReview of the efficiency of the administrative and financial functioning of the United Nations \n\nProposed revisions to the Financial Regulations of the United Nations \n\nReport of the Secretary-General on proposed revisions to the Financial Regulations of the United Nations (Footnote: A/80/367.) \n\nRelated report of the Advisory Committee on Administrative and Budgetary Questions (Footnote: A/80/7/Add.29.) \n\nProposed revisions to the Regulations and Rules Governing Programme Planning, the Programme Aspects of the Budget, the Monitoring of Implementation and the Methods of Evaluation \n\nReport of the Secretary-General on proposed revisions to the Regulations and Rules Governing Programme Planning, the Programme Aspects of the Budget, the Monitoring of Implementation and the Methods of Evaluation (Footnote: A/80/69/Rev.1.) \n\nSection B \n\nDecided to defer until the main part of its eighty-first session consideration of the following documents: \n\nItem 135 \n\nProgramme budget for 2025 \n\nStandards of accommodation for air travel \n\nReport of the Secretary-General on standards of accommodation for air travel (Footnote: A/79/628.) \n\nRelated report of the Advisory Committee on Administrative and Budgetary Questions (Footnote: A/79/7/Add.44.) \n\nSection C \n\nDecided to defer until the first part of its resumed eighty-first session consideration of the following documents:   \n\nItem 134 \n\nReview of the efficiency of the administrative and financial functioning of the United Nations \n\nCost recovery \n\nReport of the Secretary-General on cost recovery in the United Nations Secretariat (Footnote: A/80/369.) \n\nRelated report of the Advisory Committee on Administrative and Budgetary Questions (Footnote: A/80/475.) \n\nItem 141 \n\nHuman resources management \n\nReport of the Secretary-General on the review of the United Nations Secretariat Internship Programme (Footnote: A/79/566/Add.1.) \n\nRelated report of the Advisory Committee on Administrative and Budgetary Questions (Footnote: A/79/746.) ",
   "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. II) after editorial review.",
   "ED_MarkNew": false,
-  "ED_MarkUpdated": false,
+  "ED_MarkUpdated": true,
   "__v": 0,
   "DEC_NotificationSent": true,
   "DEC_NotificationSentTime": "2026-01-01T00:00:00.132Z"
