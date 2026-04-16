@@ -1,0 +1,23 @@
+{
+  "_id": "69e136740a83041f85f846e1",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/533",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Fifteenth United Nations Congress on Crime Prevention and Criminal Justice",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2026-04-15T04:00:00.000Z",
+      "ED_Number": "78 plenary meeting",
+      "_id": "69e136740a83041f85f846e2"
+    }
+  ],
+  "ED_AgendaItem": "107",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 78th plenary meeting, on 15 April 2026, the General Assembly, on the proposal of the United Arab Emirates (Footnote: A/80/L.50.),  recalling its resolution 79/186 of 17 December 2024, in which it had decided to hold the Fifteenth United Nations Congress on Crime Prevention and Criminal Justice in Abu Dhabi from 25 to 30 April 2026, with pre-Congress consultations to be held on 24 April 2026, decided to postpone the holding of the Fifteenth Congress and to hold it in Abu Dhabi from 26 September to 1 October 2026, with pre-Congress consultations to be held on 25 September 2026. \n\n",
+  "ED_Disclaimer": "",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0
+}

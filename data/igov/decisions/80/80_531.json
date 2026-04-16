@@ -17,7 +17,7 @@
   "ED_OriginatingBody": "Plenary",
   "ED_DecisionText": "At its 75th plenary meeting, on 25 March 2026, the General Assembly, on the proposal of its President, decided, without setting a precedent, to invite Esther Phillips, First Poet Laureate of Barbados; and Shahaddah Jack, First Youth Poet Laureate of Toronto, Canada, to make statements at the commemorative meeting on the occasion of the International Day of Remembrance of the Victims of Slavery and the Transatlantic Slave Trade. \n\n \n\n ",
   "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. III) after editorial review. ",
-  "ED_MarkNew": true,
+  "ED_MarkNew": false,
   "ED_MarkUpdated": false,
   "__v": 0,
   "DEC_NotificationSent": true,
