@@ -1,0 +1,23 @@
+{
+  "_id": "6a1f080c93e1b86760fb75f9",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/422",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Election of the Vice-Presidents of the General Assembly at its eighty-first session ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2026-06-02T04:00:00.000Z",
+      "ED_Number": "85th plenary meeting",
+      "_id": "6a1f080c93e1b86760fb75fa"
+    }
+  ],
+  "ED_AgendaItem": "6",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 85th plenary meeting, on 2 June 2026, the General Assembly, in accordance with rule 30 of the rules of procedure of the Assembly and paragraphs 2 and 3 of the annex to resolution 33/138 of 19 December 1978, elected the following 21 Member States as Vice-Presidents of the General Assembly at its eighty-first session: Afghanistan, Antigua and Barbuda, Cabo Verde, China, Dominican Republic, Egypt, Eritrea, Finland, France, Gabon, Guinea-Bissau, Iraq, Ireland, Lebanon, Mongolia, Paraguay, Poland, Russian Federation, United Kingdom of Great Britain and Northern Ireland, United States of America and Zimbabwe.",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. III) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0
+}
