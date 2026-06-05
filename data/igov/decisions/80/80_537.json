@@ -1,0 +1,23 @@
+{
+  "_id": "6a2340f41594550f48dc2b31",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/537",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Notification by the Secretary-General under Article 12, paragraph 2, of the Charter of the United Nations ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2026-06-04T04:00:00.000Z",
+      "ED_Number": "89 plenary meeting",
+      "_id": "6a2340f41594550f48dc2b32"
+    }
+  ],
+  "ED_AgendaItem": "112",
+  "ED_Plenary_Committee": "Plenary ",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary ",
+  "ED_DecisionText": "At its 89th plenary meeting, on 5 June 2026, the General Assembly took note of the note of the Secretary-General. (Footnote: A/80/300.) ",
+  "ED_Disclaimer": "",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0
+}

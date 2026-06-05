@@ -1,0 +1,23 @@
+{
+  "_id": "6a23404393e1b86760fb76cc",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/536",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Report of the International Court of Justice ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2026-06-04T04:00:00.000Z",
+      "ED_Number": "87 plenary meeting",
+      "_id": "6a23404393e1b86760fb76cd"
+    }
+  ],
+  "ED_AgendaItem": "73",
+  "ED_Plenary_Committee": "Plenary ",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary ",
+  "ED_DecisionText": "At its 87th plenary meeting, on 4 June 2026, the General Assembly took note of the report of the International Court of Justice. (Footnote: A/80/4.) ",
+  "ED_Disclaimer": "",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0
+}

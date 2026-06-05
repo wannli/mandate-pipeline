@@ -1,0 +1,23 @@
+{
+  "_id": "6a23425f93e1b86760fb76d7",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/538",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Report of the Security Council ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2026-06-05T04:00:00.000Z",
+      "ED_Number": "89 plenary meeting",
+      "_id": "6a23425f93e1b86760fb76d8"
+    }
+  ],
+  "ED_AgendaItem": "112",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 89th plenary meeting, on 5 June 2026, the General Assembly took note of the report of the Security Council. (Footnote: A/80/2.) ",
+  "ED_Disclaimer": "",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0
+}
