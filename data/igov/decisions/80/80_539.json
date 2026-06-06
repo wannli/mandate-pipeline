@@ -19,5 +19,7 @@
   "ED_Disclaimer": "",
   "ED_MarkNew": true,
   "ED_MarkUpdated": false,
-  "__v": 0
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2026-06-06T00:00:00.188Z"
 }
