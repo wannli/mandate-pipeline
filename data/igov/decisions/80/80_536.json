@@ -17,7 +17,7 @@
   "ED_OriginatingBody": "Plenary ",
   "ED_DecisionText": "At its 87th plenary meeting, on 4 June 2026, the General Assembly took note of the report of the International Court of Justice. (Footnote: A/80/4.) ",
   "ED_Disclaimer": "",
-  "ED_MarkNew": true,
+  "ED_MarkNew": false,
   "ED_MarkUpdated": false,
   "__v": 0,
   "DEC_NotificationSent": true,
