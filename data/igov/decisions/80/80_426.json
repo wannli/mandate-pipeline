@@ -1,0 +1,25 @@
+{
+  "_id": "6a74bbb782e2990375cc2783",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/426",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Approval of the appointment of the United Nations High Commissioner for Human Rights",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2026-07-24T04:00:00.000Z",
+      "ED_Number": "plenary meeting",
+      "_id": "6a74bbb782e2990375cc2784"
+    }
+  ],
+  "ED_AgendaItem": "115 (n)",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 106th plenary meeting, on 24 July 2026, the General Assembly, by a recorded vote of 144 to 10, with 13 abstentions,  (Footnote: A/80/PV.106) approved the renewal of appointment by the Secretary-General  (Footnote: see A/80/797) of Volker T\u00fcrk of Austria as the United Nations High Commissioner for Human Rights, for a period of four years beginning on 12 October 2026 and expiring on 11 October 2030.",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. III) after editorial review.",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2026-08-07T00:00:00.264Z"
+}

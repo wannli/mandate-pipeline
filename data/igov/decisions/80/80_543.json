@@ -17,7 +17,7 @@
   "ED_OriginatingBody": "Plenary",
   "ED_DecisionText": "At its 93rd plenary meeting, on 7 July 2026, the General Assembly, on the proposal of Cuba, recalling that the Assembly had held a debate on agenda item 38 entitled \u201cNecessity of ending the economic, commercial and financial embargo imposed by the United States of America against Cuba\u201d at its 21st and 22nd plenary meetings on 28 and 29 October 2025, decided to hold an additional debate on agenda item 38.\n",
   "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. III) after editorial review.",
-  "ED_MarkNew": true,
+  "ED_MarkNew": false,
   "ED_MarkUpdated": false,
   "__v": 0,
   "DEC_NotificationSent": true,

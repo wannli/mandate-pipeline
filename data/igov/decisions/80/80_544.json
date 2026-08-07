@@ -1,25 +1,25 @@
 {
-  "_id": "6a735f51afe7ceb7b8240217",
+  "_id": "6a74f5705e75fffc2e37b59b",
   "ED_Division": "GA",
-  "ED_DecisionNumber": "80/544 ",
+  "ED_DecisionNumber": "80/544",
   "ED_Type": "Other Decisions",
-  "ED_Title": "High-level meeting on improving global road safety",
+  "ED_Title": "High-level meeting on the midterm review of the New Urban Agenda ",
   "ED_Meeting": [
     {
-      "ED_Date": "2026-07-28T04:00:00.000Z",
+      "ED_Date": "2026-07-16T04:00:00.000Z",
       "ED_Number": "102 plenary meeting",
-      "_id": "6a735f51afe7ceb7b8240218"
+      "_id": "6a74f5705e75fffc2e37b59c"
     }
   ],
-  "ED_AgendaItem": "12",
+  "ED_AgendaItem": "178",
   "ED_Plenary_Committee": "Plenary ",
   "ED_Session": "80th session of the General Assembly",
   "ED_OriginatingBody": "Plenary ",
-  "ED_DecisionText": "\nAt its 102nd plenary meeting, on 21 July 2026, the General Assembly, on the proposal of its President, decided to allow Etienne Krug, Director of the Department for Health Determinants, Promotion and Prevention at the World Health Organization, to present the summaries of multi-stakeholder panels one and two; and Nawal El Moutawakel to deliver a statement as an eminent high-level champion of road safety in accordance with resolution 80/247 at the closing segment of the high-level meeting on improving global road safety.\n",
+  "ED_DecisionText": "At its 102nd plenary meeting, on 16 July, on the proposal of its President, decided to invite Nga Kor Ming, Minister of Housing and Local Government of Malaysia and President of the United Nations Habitat Assembly; Chimwemwe Chipungu, Minister of Lands, Housing and Urban Development of Malawi; Jan Szyszko, Secretary of State at the Ministry of Development Funds and Regional Policy of Poland; Anar Guliyev, Chairman of the State Committee on Urban Planning and Architecture of Azerbaijan; and Anacl\u00e1udia Rossbach, Executive Director of the United Nations Human Settlements Programme to make statements in the opening segment of the high-level meeting on the midterm review of the New Urban Agenda.\n",
   "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. III) after editorial review.",
   "ED_MarkNew": true,
   "ED_MarkUpdated": false,
   "__v": 0,
   "DEC_NotificationSent": true,
-  "DEC_NotificationSentTime": "2026-08-06T00:00:00.181Z"
+  "DEC_NotificationSentTime": "2026-08-07T00:00:00.277Z"
 }
