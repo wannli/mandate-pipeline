@@ -1,0 +1,30 @@
+{
+  "_id": "69b07fc4b6edefcb22544c14",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/419 A, B and C",
+  "ED_Type": "Elections and Appointments",
+  "ED_Title": "Membership of the Committee on the Exercise of the Inalienable Rights of the Palestinian People",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2026-03-10T04:00:00.000Z",
+      "ED_Number": "73rd plenary meeting",
+      "_id": "69b07fc4b6edefcb22544c15"
+    },
+    {
+      "ED_Date": "2026-08-31T04:00:00.000Z",
+      "ED_Number": "109th plenary meeting",
+      "_id": "6a96ecc38f9ee3c8acfbc635"
+    }
+  ],
+  "ED_AgendaItem": "35",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "A\n\nAt its 73rd plenary meeting, on 10 March 2026, the General Assembly, in the light of the decision of the Committee on the Exercise of the Inalienable Rights of the Palestinian People conveyed by its Chair to the President of the General Assembly,  (see footnote: A/80/640.) decided to appoint Chile as a member of the Committee.\n\nB\n\nAt its 73rd plenary meeting, on 10 March 2026, the General Assembly, in light of the decision of the Committee on the Exercise of the Inalienable Rights of the Palestinian People conveyed by its Chair to the President of the General Assembly, (see footnote: A/80/645.) took note of the change in the membership of the Committee, that is, that Ecuador had ceased  its membership in the Committee, effective 2 February 2026. \n\nC\n\nAt its 109th plenary meeting, on 31 August 2026, the General Assembly, in the light of the decision of the Committee on the Exercise of the Inalienable Rights of the Palestinian People conveyed by its Chair to the President of the General Assembly,  (footnote: See A/80/777.) took note of the change in the membership of the Committee, that is, that Chile had ceased its membership in the Committee, effective 13 April 2026. \n\nAs a result, the Committee on the Exercise of the Inalienable Rights of the Palestinian People is composed of the following 24 Member States: Afghanistan, Belarus, Bolivia (Plurinational State of), Cuba, Cyprus, Guinea, Guyana, India, Indonesia, Lao People\u2019s Democratic Republic, Madagascar, Malaysia, Mali, Malta, Namibia, Nicaragua, Nigeria, Pakistan, Senegal, Sierra Leone, South Africa, Tunisia, T\u00fcrkiye and Venezuela (Bolivarian Republic of).",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. III) after editorial review.",
+  "ED_MarkNew": false,
+  "ED_MarkUpdated": true,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2026-03-11T00:00:00.556Z"
+}
