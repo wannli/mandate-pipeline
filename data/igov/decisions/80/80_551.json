@@ -1,0 +1,25 @@
+{
+  "_id": "6a9b58178f9ee3c8acfbc743",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/551",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Dates and venue of the United Nations Conference of Plenipotentiaries on Protection of Persons in the Event of Disasters     ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2026-09-04T04:00:00.000Z",
+      "ED_Number": "114 plenary meeting",
+      "_id": "6a9b58178f9ee3c8acfbc744"
+    }
+  ],
+  "ED_AgendaItem": "86",
+  "ED_Plenary_Committee": "Plenary",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary",
+  "ED_DecisionText": "At its 114th plenary meeting, on 4 September, on the proposal of Thailand (Footnote: A/80/L.115.), the General Assembly, recalling its resolution 80/169 of 15 December 2025, in which it had decided to convene the United Nations Conference of Plenipotentiaries on Protection of Persons in the Event of Disasters, to meet for three weeks from 25 January to 12 February 2027 in Manila, and, if necessary, for a further two weeks in August 2027, noting that the Conference would not meet on the dates and at the venue previously decided, and noting the recommendation of the Preparatory Committee regarding the offer by the Government of Thailand to host the Conference in Bangkok: \n\n\n(a) Accepted with appreciation the generous offer of the Government of Thailand to host the Conference, and decided that the Conference shall instead meet in Bangkok from 25 January to 12 February 2027, and, if necessary, for a further two weeks, the dates and venue of which shall be decided at a later stage;  \n\n(b) Recalled section I, paragraph 5, of its resolutions 31/140 of 17 December 1976 and 40/243 of 18 December 1985, and decided, without setting a precedent, that the United Nations shall bear the costs in connection with the provision of interpretation and documentation services and minor incidental administrative expenses, while the Government of Thailand shall bear all other actual additional costs in holding the Conference in Bangkok rather than at United Nations Headquarters in New York. \n\n  ",
+  "ED_Disclaimer": "",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0,
+  "DEC_NotificationSent": true,
+  "DEC_NotificationSentTime": "2026-09-05T00:00:00.278Z"
+}

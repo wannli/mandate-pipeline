@@ -1,0 +1,23 @@
+{
+  "_id": "6a9b5f168f9ee3c8acfbc74e",
+  "ED_Division": "GA",
+  "ED_DecisionNumber": "80/554.",
+  "ED_Type": "Other Decisions",
+  "ED_Title": "Question of the Comorian island of Mayotte     ",
+  "ED_Meeting": [
+    {
+      "ED_Date": "2026-09-04T04:00:00.000Z",
+      "ED_Number": "115 plenary meeting",
+      "_id": "6a9b5f168f9ee3c8acfbc74f"
+    }
+  ],
+  "ED_AgendaItem": "37",
+  "ED_Plenary_Committee": "Plenary ",
+  "ED_Session": "80th session of the General Assembly",
+  "ED_OriginatingBody": "Plenary ",
+  "ED_DecisionText": "At its 115th plenary meeting, on 4 September 2026, the General Assembly decided to include the item entitled \u201cQuestion of the Comorian island of Mayotte\u201d in the draft agenda of the eighty-first session.  ",
+  "ED_Disclaimer": "The final text of this decision will be contained in document A/80/49 (Vol. III) after editorial review",
+  "ED_MarkNew": true,
+  "ED_MarkUpdated": false,
+  "__v": 0
+}
